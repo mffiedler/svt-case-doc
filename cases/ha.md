@@ -117,3 +117,11 @@ root@<host>: ~ # systemctl status atomic-openshift-master*
    Active: active (running) since Wed 2017-07-05 09:23:43 EDT; 3h 44min ago
 ```
 
+### check etcd service
+
+```sh
+root@<host>: ~ # systemctl status etcd
+● etcd.service - Etcd Server
+   Loaded: loaded (/usr/lib/systemd/system/etcd.service; enabled; vendor preset: disabled)
+   Active: active (running) since Wed 2017-07-05 09:03:13 EDT; 5h 43min ago
+```

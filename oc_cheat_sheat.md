@@ -1,6 +1,10 @@
 
 
+## check on which node a pod runs
 
+```sh
+$ oc get pods -o wide
+```
 
 ## delete project
 

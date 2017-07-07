@@ -20,17 +20,41 @@ in [1] if IOPS is reuqired.
 ## Stats
 
 * EC2 Console
-* Bash
+* Bash (IOPS)
 
 ```sh
-# iostat -p /dev/xvdb 10
-Linux 3.10.0-691.el7.x86_64 (ip-172-31-31-187.us-west-2.compute.internal) 	07/06/2017 	_x86_64_	(4 CPU)
+# # iostat -p /dev/xvdb 1
+Linux 3.10.0-691.el7.x86_64 (ip-172-31-61-63.us-west-2.compute.internal) 	07/07/2017 	_x86_64_	(4 CPU)
 
 avg-cpu:  %user   %nice %system %iowait  %steal   %idle
-           2.95    0.00    0.70    0.16    0.13   96.06
+           2.44    0.00    1.20    0.56    0.08   95.72
 
 Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
-xvdb              0.24         3.14         2.95     339066     318094
+xvdb            134.43      3463.83      2186.52  137494921   86792676
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+          24.47    0.00   18.95    6.05    1.05   49.47
+
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+xvdb           2812.00     37940.00     19477.00      37940      19477
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+          11.70    0.00   17.29    9.31    0.53   61.17
+
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+xvdb           3165.00     76858.00     86449.00      76858      86449
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+          29.43    0.00   26.56    7.81    0.78   35.42
+
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+xvdb           2738.00     48497.50     36813.50      48497      36813
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+          31.15    0.00   25.13    9.16    0.79   33.77
+
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+xvdb           2890.00     55595.00     56796.50      55595      56796
 ```
 where _tps_ is the major parameter.
 

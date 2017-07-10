@@ -1,4 +1,4 @@
-# Prepare for online test: conc-build
+# Prepare for online test: conc-build (Internal)
 
 
 ## Launch a plain t2.medium AWS instance from EC2 web console

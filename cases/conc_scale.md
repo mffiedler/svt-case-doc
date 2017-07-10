@@ -12,4 +12,8 @@ Basic cluster setup
 | infra  | 1  |
 | computing-nodes  | 2  |
 
-## HA cluster
+## Run the test by Ansible playbooks
+
+```sh
+$ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i "ec2-54-200-142-84.us-west-2.compute.amazonaws.com," --private-key ~/.ssh/id_rsa_perf svt/openshift_performance/ci/content/scale_up_complete.yaml
+```

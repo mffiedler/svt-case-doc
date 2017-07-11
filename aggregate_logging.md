@@ -3,7 +3,7 @@
 [Guideline](https://docs.openshift.org/latest/install_config/aggregate_logging_sizing.html)
 
 ## Installation via Ansible (Internal)
-This
+Installation is performed on master.
 
 ### Modify [the inventory file](http://pastebin.test.redhat.com/501979)
 

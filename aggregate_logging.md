@@ -128,6 +128,9 @@ Log file locations:
 ```
 
 ## Reference
+
 [1]. https://medium.com/@yoanis_gil/logging-with-docker-part-1-b23ef1443aac
+
 [2]. http://www.projectatomic.io/blog/2015/04/logging-docker-container-output-to-journald/
+
 [3]. https://www.loggly.com/ultimate-guide/using-journalctl/

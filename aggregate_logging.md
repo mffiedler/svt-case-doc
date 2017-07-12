@@ -108,3 +108,21 @@ In this case, this is <code>journald</code>.
 # journalctl -b CONTAINER_NAME=<CONTAINER_NAME>
 ```
 
+#### json-file
+
+Change _docker daemon_ options by <code>/etc/docker/daemon.json</code>:
+
+```sh
+# cat /etc/docker/daemon.json 
+{
+"log-driver": "json-file"
+}
+# systemctl restart docker
+# docker info | grep "Logging Driver"
+Logging Driver: json-file
+```
+Log file locations:
+
+```sh
+# ls /var/lib/docker/containers/1962de2f6e3f645fa20e21c107763f71d7f0db1fce9e82021b79a68d043be35a/1962de2f6e3f645fa20e21c107763f71d7f0db1fce9e82021b79a68d043be35a-json.log
+```

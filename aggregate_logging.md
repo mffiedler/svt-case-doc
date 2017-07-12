@@ -62,7 +62,7 @@ logging-fluentd   4         4         4         4            4           logging
 # oc create -f logging-fluentd.yaml
 ```
 
-New pods will be deployed automatically after dc is updated. The daemonset (https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
+New pods will be deployed automatically after dc is updated. The [daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 for fluentd is handled differently: export a file and edit it manually.
 
 The correct status of pods

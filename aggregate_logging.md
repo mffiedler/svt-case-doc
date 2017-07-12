@@ -126,3 +126,8 @@ Log file locations:
 ```sh
 # ls /var/lib/docker/containers/1962de2f6e3f645fa20e21c107763f71d7f0db1fce9e82021b79a68d043be35a/1962de2f6e3f645fa20e21c107763f71d7f0db1fce9e82021b79a68d043be35a-json.log
 ```
+
+## Reference
+[1]. https://medium.com/@yoanis_gil/logging-with-docker-part-1-b23ef1443aac
+[2]. http://www.projectatomic.io/blog/2015/04/logging-docker-container-output-to-journald/
+[3]. https://www.loggly.com/ultimate-guide/using-journalctl/

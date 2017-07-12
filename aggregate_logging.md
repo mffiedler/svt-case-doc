@@ -79,3 +79,32 @@ logging-kibana-3-bnkfv                    2/2       Running   0          22m
 logging-mux-2-kbcw7                       1/1       Running   0          27m
 ```
 
+## Search (logs in Kibana)
+Aggregate logging in Openshift collects, stores, and indexes logs genrated in the cluster. Eg, docker container logs.
+Copy a keyword in the log entries, input it in the search box on Kibana web UI. We should see it in the returned results.
+
+* On the top of navigation tree, choose <code>.all</code> which search all indecies in ElasticSearch.
+* Choose a proper time range, *the last 15 mins* is the default.
+
+
+
+## How it works (partially)
+
+### docker logs
+
+#### journald
+Check [docker config for logging](https://docs.docker.com/engine/admin/logging/overview/#supported-logging-drivers):
+
+```sh
+# docker info | grep "Logging Driver"
+Logging Driver: journald
+```
+
+In this case, this is <code>journald</code>.
+
+[Retrieve the container logs](https://docs.docker.com/engine/admin/logging/journald/#retrieving-log-messages-with-journalctl)
+
+```sh
+# journalctl -b CONTAINER_NAME=<CONTAINER_NAME>
+```
+

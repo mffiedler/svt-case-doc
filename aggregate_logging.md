@@ -32,7 +32,15 @@ Check the parameter's meaning [here](https://docs.openshift.org/latest/install_c
 ```sh
 $ oc project logging
 $ oc get pods
+$ oc get pvc
+NAME           STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS   AGE
+logging-es-0   Bound     pvc-d97744c7-670f-11e7-9ab4-028b0ef184e0   50Gi       RWO           gp2            7h
+$ oc get pv
+NAME                                       CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM                  STORAGECLASS   REASON    AGE
+pvc-d97744c7-670f-11e7-9ab4-028b0ef184e0   50Gi       RWO           Delete          Bound     logging/logging-es-0   gp2                      7h
 ```
+
+Note that PV is attached to ES-pods.
 
 Assume that we put a wrong value of openshift_logging_image_version, eg, the image does not exist. We would see
 

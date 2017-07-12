@@ -1,6 +1,6 @@
 # Aggregate Logging
 
-[Guideline](https://docs.openshift.org/latest/install_config/aggregate_logging_sizing.html)
+[Guideline](https://docs.openshift.org/latest/install_config/aggregate_logging.html)
 
 ## Installation via Ansible (Internal)
 Installation is performed on master.

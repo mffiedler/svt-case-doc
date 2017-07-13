@@ -19,8 +19,6 @@ Installation is performed on master.
   # docker images | grep ose
   ```
 
-*Note* that <code>openshift_logging_fluentd_use_journal<code> tells _fluentd_ to checkout container logs from _journald_.
-
 ### Run [the playbook](https://github.com/openshift/openshift-ansible/blob/master/playbooks/byo/openshift-cluster/openshift-logging.yml)
 
 ```sh
@@ -88,6 +86,7 @@ logging-fluentd-nqxn0                     1/1       Running   0          23m
 logging-kibana-3-bnkfv                    2/2       Running   0          22m
 logging-mux-2-kbcw7                       1/1       Running   0          27m
 ```
+
 *Note* that the dataflow is fluentd(s), es, kibana, curator (for cleanups).
 
 

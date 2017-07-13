@@ -19,6 +19,8 @@ Installation is performed on master.
   # docker images | grep ose
   ```
 
+*Note* that <code>openshift_logging_fluentd_use_journal<code> tells _fluentd_ to checkout container logs from _journald_.
+
 ### Run [the playbook](https://github.com/openshift/openshift-ansible/blob/master/playbooks/byo/openshift-cluster/openshift-logging.yml)
 
 ```sh

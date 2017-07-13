@@ -86,6 +86,8 @@ logging-fluentd-nqxn0                     1/1       Running   0          23m
 logging-kibana-3-bnkfv                    2/2       Running   0          22m
 logging-mux-2-kbcw7                       1/1       Running   0          27m
 ```
+*Note* that the dataflow is fluentd(s), es, kibana, curator (for cleanups).
+
 
 ## Search (logs in Kibana)
 Aggregate logging in Openshift collects, stores, and indexes logs genrated in the cluster. Eg, docker container logs.

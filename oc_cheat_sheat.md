@@ -39,3 +39,8 @@ $ oc get builds --all-namespaces | grep Fail | grep -E "proj[0-9]+" | while read
   # oc get nodes
   # oc delete node <node_name>
   ```
+## restart ectd
+
+```sh
+# systemctl restart etcd
+```

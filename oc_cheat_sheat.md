@@ -44,3 +44,9 @@ $ oc get builds --all-namespaces | grep Fail | grep -E "proj[0-9]+" | while read
 ```sh
 # systemctl restart etcd
 ```
+
+## get log from container in pod
+
+```sh
+$ oc logs <pod_name> -c kibana --loglevel=10
+```

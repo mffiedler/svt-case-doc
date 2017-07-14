@@ -91,6 +91,32 @@ logging-mux-2-kbcw7                       1/1       Running   0          27m
 
 *Note* that the dataflow is fluentd(s), es, kibana, curator (for cleanups).
 
+If we need to redeplay the logging stack, we can delete logging project and recreate it, and then rerun the above playbook:
+
+```sh
+# cat /tmp/logging.project.yaml 
+apiVersion: v1
+kind: Project
+metadata:
+  annotations:
+    openshift.io/description: ""
+    openshift.io/display-name: ""
+    openshift.io/sa.scc.mcs: s0:c8,c2
+    openshift.io/sa.scc.supplemental-groups: 1000060000/10000
+    openshift.io/sa.scc.uid-range: 1000060000/10000
+  creationTimestamp: 2017-07-14T01:36:56Z
+  name: logging
+  resourceVersion: "1617"
+  selfLink: /oapi/v1/projects/logging
+  uid: ebce4a9f-6834-11e7-b351-021cdd15ec52
+spec:
+  finalizers:
+  - openshift.io/origin
+  - kubernetes
+status:
+  phase: Active
+# oc create -f /tmp/logging.project.yaml
+```
 
 ## Search (logs in Kibana)
 Aggregate logging in Openshift collects, stores, and indexes logs genrated in the cluster. Eg, docker container logs.

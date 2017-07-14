@@ -50,3 +50,10 @@ $ oc get builds --all-namespaces | grep Fail | grep -E "proj[0-9]+" | while read
 ```sh
 $ oc logs <pod_name> -c kibana --loglevel=10
 ```
+
+## get all objects of a project
+```sh
+$ oc project <project_name>
+$ oc get all
+```
+

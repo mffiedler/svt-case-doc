@@ -20,9 +20,11 @@
 # ansible-playbook -i /tmp/inv-metrics.file openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml 
 ```
 
-Check the parameter's meaning [here](https://docs.openshift.org/latest/install_config/aggregate_logging.html#install-config-aggregate-logging).
+Check the parameter's meaning [here](https://docs.openshift.org/latest/install_config/cluster_metrics.html).
 
-### Verify
+## Verify
+
+### Terminal
 
 ```sh
 # oc get pods -n openshift-infra
@@ -31,3 +33,8 @@ hawkular-cassandra-1-ppp7f   1/1       Running   0          3m
 hawkular-metrics-k2w3t       1/1       Running   0          3m
 heapster-jf3nz               1/1       Running   0          3m
 ```
+
+### Web Console
+_Note_ that one needs to logout/login to see it.
+
+

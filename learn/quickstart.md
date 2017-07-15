@@ -34,14 +34,7 @@ NAME                 READY     STATUS    RESTARTS   AGE
 po/jenkins-1-zpxnp   1/1       Running   0          3m
 ```
 
-### [Templates](https://docs.openshift.org/latest/dev_guide/templates.html#dev-guide-templates)
-
 Can we do it directly? Or more precisely, can we manipulate those objects directly?
 
-```sh
-# oc get pods -o yaml > aaa.items.yaml
-```
-
-See [aaa.items.yaml](aaa.items.yaml)
-
+Yes, See [template](template.md).
 

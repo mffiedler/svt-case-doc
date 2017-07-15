@@ -21,7 +21,9 @@ See [aaa.project.template.yaml](aaa.project.template.yaml).
 
 ### Read the template
 
-#### object kind is the starting points
+#### Object kind
+
+FInd object kind and find them in K8S and OC documents.
 
 ```sh
 # grep "kind:" aaa.project.template.yaml 
@@ -37,6 +39,18 @@ kind: Template
       kind: ReplicationController
 ```
 
+*Only to this point the yaml contents of the objects in the ducuments start to make sense.*
+
+All those objects above created automatically when we create a new app by one oc command in [quickstart](quickstart.md):
+
+
+```sh
+# oc new-app docker.io/library/jenkins:2.46.3
+```
+
+
 ### Modify the template file
+
+Achieve the same using <code>template</code> instead of <code>new-app</code> command.
 
 ###

@@ -3,7 +3,7 @@
 ### Get objects of a project
 
 ```sh
-# oc get pods -o yaml > aaa.items.yaml
+# oc get all -o yaml > aaa.items.yaml
 ```
 
 See [aaa.items.yaml](aaa.items.yaml).
@@ -94,9 +94,16 @@ NAME                 READY     STATUS    RESTARTS   AGE
 po/jenkins-1-81636   1/1       Running   0          15m
 ```
 
+*Note that* rolling out dc results to creating rc and po.
+
 
 ### Modify the template file
 
-Achieve the same using <code>template</code> instead of <code>new-app</code> command.
+It has been shown above that we can achieve the same using <code>template</code> instead of <code>new-app</code> command.
+
+
+
+
+It is stated in [K8S doc](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) that dc is a referred way to deploy an app.
 
 ###

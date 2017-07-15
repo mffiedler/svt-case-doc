@@ -112,4 +112,4 @@ Assume that we want to create rc directly.
 
 However, it does *not* create rc. I guess (did fiind supporting doc) it has dependency on the dc. Remove <code>annotations</code> and <code>ownerReferences</code> sections. Then rc is created successfully via [aaa.rc.template.yaml](aaa.rc.template.yaml).
 
-###
+### Parameterized template

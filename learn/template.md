@@ -101,9 +101,15 @@ po/jenkins-1-81636   1/1       Running   0          15m
 
 It has been shown above that we can achieve the same using <code>template</code> instead of <code>new-app</code> command.
 
-
-
-
 It is stated in [K8S doc](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) that dc is a referred way to deploy an app.
+
+Assume that we want to create rc directly.
+
+```sh
+# oc export rc --as-template=aaa-rc-yaml > aaa.rc.template.yaml
+# oc process -f aaa.rc.template.yaml | oc create -f -
+```
+
+However, it does *not* create rc. I guess (did fiind supporting doc) it has dependency on the dc. Remove <code>annotations</code> and <code>ownerReferences</code> sections. Then rc is created successfully via [aaa.rc.template.yaml](aaa.rc.template.yaml).
 
 ###

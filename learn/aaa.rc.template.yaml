@@ -57,3 +57,13 @@ objects:
           name: jenkins-volume-1
   status:
     replicas: 0
+parameters:
+  - name: JINKINS_IMAGE
+    description: "Jenkins Image"
+    value: "docker.io/library/jenkins:2.46.3"
+    required: true
+  - name: REPLICA_COUNT
+    description: Number of replicas to run
+    value: "1"
+    required: true
+

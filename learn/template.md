@@ -113,3 +113,11 @@ Assume that we want to create rc directly.
 However, it does *not* create rc. I guess (did fiind supporting doc) it has dependency on the dc. Remove <code>annotations</code> and <code>ownerReferences</code> sections. Then rc is created successfully via [aaa.rc.template.yaml](aaa.rc.template.yaml).
 
 ### Parameterized template
+
+The last section <code>parameters</code> in [aaa.rc.template.yaml](aaa.rc.template.yaml) is added manually. It gives the default value of variables in the templates. We can also use [oc command args](https://docs.openshift.org/latest/dev_guide/templates.html#templates-parameters) to override them.
+
+
+### SVT
+
+[SVT](https://github.com/openshift/svt), specially the cluster loader, uses every often the result (in json format) of <code>oc process</code> command directly as the input of <code>oc create</code> command.
+

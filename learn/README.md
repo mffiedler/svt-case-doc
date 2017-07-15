@@ -11,3 +11,6 @@
   Flexy (a RH interal Jenkins job) which builds a cluster on EC2.
 * [Quickstart](quickstart.md)
 * [Template](template.md)
+* [Metrics](metrics.md)
+* [Aggreate logging](aggregate_logging.md)
+* [Troubleshooting](template.md)

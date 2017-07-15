@@ -14,7 +14,7 @@ The file is very close to [OC template](https://docs.openshift.org/latest/dev_gu
 
 
 ```sh
-# oc export all --as-template=aaa_project_template > aaa.project.template.yaml
+# oc export all --as-template=aaa-project-template > aaa.project.template.yaml
 ```
 
 See [aaa.project.template.yaml](aaa.project.template.yaml).

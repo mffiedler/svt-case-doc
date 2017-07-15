@@ -19,4 +19,24 @@ The file is very close to [OC template](https://docs.openshift.org/latest/dev_gu
 
 See [aaa.project.template.yaml](aaa.project.template.yaml).
 
+### Read the template
 
+#### object kind is the starting points
+
+```sh
+# grep "kind:" aaa.project.template.yaml 
+kind: Template
+  kind: ImageStream
+        kind: DockerImage
+  kind: DeploymentConfig
+          kind: ImageStreamTag
+  kind: ReplicationController
+      kind: DeploymentConfig
+  kind: Service
+  kind: Pod
+      kind: ReplicationController
+```
+
+### Modify the template file
+
+###

@@ -13,4 +13,4 @@
 * [Template](template.md)
 * [Metrics](metrics.md)
 * [Aggreate logging](aggregate_logging.md)
-* [Troubleshooting](template.md)
+* [Test routine](test_routine.md)

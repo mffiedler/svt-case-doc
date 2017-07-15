@@ -14,7 +14,7 @@ objects:
       openshift.io/deployment-config.name: jenkins
     name: jenkins-1
   spec:
-    replicas: 1
+    replicas: "${REPLICA_COUNT}"
     selector:
       app: jenkins
       deployment: jenkins-1
@@ -33,7 +33,7 @@ objects:
           deploymentconfig: jenkins
       spec:
         containers:
-        - image: docker.io/library/jenkins@sha256:1a017bc762d8177347dbccbe258de842015114806110db060d91cff7e8a3264f
+        - image: "${JINKINS_IMAGE}"
           imagePullPolicy: IfNotPresent
           name: jenkins
           ports:

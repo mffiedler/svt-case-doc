@@ -3,12 +3,10 @@
 ### Get objects of a project
 
 ```sh
-# oc get all -o yaml > aaa.items.yaml
+# oc get all -o yaml
 ```
 
-See [aaa.items.yaml](aaa.items.yaml).
-
-The file is very close to [OC template](https://docs.openshift.org/latest/dev_guide/templates.html#dev-guide-templates).
+The output can be used as input for <code>oc create</code> command.
 
 ### [Export template from project](https://docs.openshift.org/latest/dev_guide/templates.html#export-as-template)
 

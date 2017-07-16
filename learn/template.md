@@ -104,18 +104,18 @@ It is stated in [K8S doc](https://kubernetes.io/docs/concepts/workloads/controll
 Assume that we want to create rc directly.
 
 ```sh
-# oc export rc --as-template=aaa-rc-yaml > aaa.rc.template.yaml
-# oc process -f aaa.rc.template.yaml | oc create -f -
+# oc export -o json rc --as-template=aaa-rc-json > aaa.rc.template.json
+# oc process -f aaa.rc.template.json | oc create -f -
 ```
 
-However, it does *not* create rc. I guess (did fiind supporting doc) it has dependency on the dc. Remove <code>annotations</code> and <code>ownerReferences</code> sections. Then rc is created successfully via [aaa.rc.template.yaml](aaa.rc.template.yaml).
+However, it does *not* create rc. I guess (did fiind supporting doc) it has dependency on the dc. Start to lean up sections. Then rc is created successfully via [aaa.rc.template.json](aaa.rc.template.json).
 
 ### Parameterized template
 
-The last section <code>parameters</code> in [aaa.rc.template.yaml](aaa.rc.template.yaml) is added manually. It gives the default value of variables in the templates. We can also use [oc command args](https://docs.openshift.org/latest/dev_guide/templates.html#templates-parameters) to override them.
+The last section <code>parameters</code> in [aaa.rc.template.json](aaa.rc.template.json) is added manually. It gives the default value of variables in the templates. We can also use [oc command args](https://docs.openshift.org/latest/dev_guide/templates.html#templates-parameters) to override them.
 
 
 ### SVT
 
-[SVT](https://github.com/openshift/svt), specially the cluster loader, uses every often the result (in json format) of <code>oc process</code> command directly as the input of <code>oc create</code> command.
+[SVT](https://github.com/openshift/svt), specially the cluster loader, uses every often templates to create oc objects.
 

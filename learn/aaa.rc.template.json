@@ -1,66 +1,68 @@
 {
-    "kind": "Template",
-    "apiVersion": "v1",
-    "metadata": {
-        "name": "aaa-rc-json",
-        "creationTimestamp": null
-    },
-    "objects": [
-        {
-            "kind": "ReplicationController",
-            "apiVersion": "v1",
-            "metadata": {
-                "name": "jenkins-1",
-                "labels": {
-                    "test": "jenkins"
-                }
-            },
-            "spec": {
-                "replicas": 1,
-                "template": {
-                    "metadata": {
-                        "generateName": "centos-logtest-",
-                        "labels": {
-                            "run": "jenkins",
-                            "test": "jenkins"
-                        }
-                    },
-                    "spec": {
-                        "volumes": [
-                            {
-                                "name": "jenkins-volume-1",
-                                "emptyDir": {}
-                            }
-                        ],
-                        "containers": [
-                            {
-                                "name": "jenkins",
-                                "image": "jenkins:2.46.3",
-                                "ports": [
-                                    {
-                                        "containerPort": 50000,
-                                        "protocol": "TCP"
-                                    },
-                                    {
-                                        "containerPort": 8080,
-                                        "protocol": "TCP"
-                                    }
-                                ],
-                                "resources": {},
-                                "volumeMounts": [
-                                    {
-                                        "name": "jenkins-volume-1",
-                                        "mountPath": "/var/jenkins_home"
-                                    }
-                                ],
-                                "terminationMessagePath": "/dev/termination-log",
-                                "terminationMessagePolicy": "File",
-                                "imagePullPolicy": "Always"
-                            }
-                        ]
-                    }
-                }
-            }
-        }
-    ]
+	"kind": "Template",
+	"apiVersion": "v1",
+	"metadata": {
+		"name": "aaa-rc-json",
+		"creationTimestamp": null
+	},
+	"objects": [{
+		"kind": "ReplicationController",
+		"apiVersion": "v1",
+		"metadata": {
+			"name": "jenkins-1",
+			"labels": {
+				"test": "jenkins"
+			}
+		},
+		"spec": {
+			"replicas": "${REPLICAS}",
+			"template": {
+				"metadata": {
+					"generateName": "centos-logtest-",
+					"labels": {
+						"run": "jenkins",
+						"test": "jenkins"
+					}
+				},
+				"spec": {
+					"volumes": [{
+						"name": "jenkins-volume-1",
+						"emptyDir": {}
+					}],
+					"containers": [{
+						"name": "jenkins",
+						"image": "${JENKINS_IMAGE}",
+						"ports": [{
+								"containerPort": 50000,
+								"protocol": "TCP"
+							},
+							{
+								"containerPort": 8080,
+								"protocol": "TCP"
+							}
+						],
+						"resources": {},
+						"volumeMounts": [{
+							"name": "jenkins-volume-1",
+							"mountPath": "/var/jenkins_home"
+						}],
+						"terminationMessagePath": "/dev/termination-log",
+						"terminationMessagePolicy": "File",
+						"imagePullPolicy": "Always"
+					}]
+				}
+			}
+		}
+	}],
+	"parameters": [{
+			"name": "JENKINS_IMAGE",
+			"displayName": "Jenkins Image",
+			"value": "jenkins:2.46.3"
+		},
+		{
+			"name": "REPLICAS",
+			"displayName": "Replicas",
+			"value": "1"
+		}
+	]
 }

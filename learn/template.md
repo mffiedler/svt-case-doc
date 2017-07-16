@@ -110,6 +110,8 @@ Assume that we want to create rc directly.
 
 However, it does *not* create rc. I guess (did fiind supporting doc) it has dependency on the dc. Start to lean up sections. Then rc is created successfully via [aaa.rc.template.json](aaa.rc.template.json).
 
+*Note that* the value docker image is _jenkins:2.46.3_. It does not work (pull image failure) if _docker.io/library/jenkins:2.46.3_. Maybe for library it has too be like that. (July 15, 2017)
+
 ### Parameterized template
 
 The last section <code>parameters</code> in [aaa.rc.template.json](aaa.rc.template.json) is added manually. It gives the default value of variables in the templates. We can also use [oc command args](https://docs.openshift.org/latest/dev_guide/templates.html#templates-parameters) to override them.

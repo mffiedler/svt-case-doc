@@ -1,69 +1,66 @@
-apiVersion: v1
-kind: Template
-metadata:
-  creationTimestamp: null
-  name: aaa-rc-yaml
-objects:
-- apiVersion: v1
-  kind: ReplicationController
-  metadata:
-    creationTimestamp: null
-    generation: 1
-    labels:
-      app: jenkins
-      openshift.io/deployment-config.name: jenkins
-    name: jenkins-1
-  spec:
-    replicas: "${REPLICA_COUNT}"
-    selector:
-      app: jenkins
-      deployment: jenkins-1
-      deploymentconfig: jenkins
-    template:
-      metadata:
-        annotations:
-          openshift.io/deployment-config.latest-version: "1"
-          openshift.io/deployment-config.name: jenkins
-          openshift.io/deployment.name: jenkins-1
-          openshift.io/generated-by: OpenShiftNewApp
-        creationTimestamp: null
-        labels:
-          app: jenkins
-          deployment: jenkins-1
-          deploymentconfig: jenkins
-      spec:
-        containers:
-        - image: "${JINKINS_IMAGE}"
-          imagePullPolicy: IfNotPresent
-          name: jenkins
-          ports:
-          - containerPort: 50000
-            protocol: TCP
-          - containerPort: 8080
-            protocol: TCP
-          resources: {}
-          terminationMessagePath: /dev/termination-log
-          terminationMessagePolicy: File
-          volumeMounts:
-          - mountPath: /var/jenkins_home
-            name: jenkins-volume-1
-        dnsPolicy: ClusterFirst
-        restartPolicy: Always
-        schedulerName: default-scheduler
-        securityContext: {}
-        terminationGracePeriodSeconds: 30
-        volumes:
-        - emptyDir: {}
-          name: jenkins-volume-1
-  status:
-    replicas: 0
-parameters:
-  - name: JINKINS_IMAGE
-    description: "Jenkins Image"
-    value: "docker.io/library/jenkins:2.46.3"
-    required: true
-  - name: REPLICA_COUNT
-    description: Number of replicas to run
-    value: "1"
-    required: true
-
+{
+    "kind": "Template",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "aaa-rc-json",
+        "creationTimestamp": null
+    },
+    "objects": [
+        {
+            "kind": "ReplicationController",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "jenkins-1",
+                "labels": {
+                    "test": "jenkins"
+                }
+            },
+            "spec": {
+                "replicas": 1,
+                "template": {
+                    "metadata": {
+                        "generateName": "centos-logtest-",
+                        "labels": {
+                            "run": "jenkins",
+                            "test": "jenkins"
+                        }
+                    },
+                    "spec": {
+                        "volumes": [
+                            {
+                                "name": "jenkins-volume-1",
+                                "emptyDir": {}
+                            }
+                        ],
+                        "containers": [
+                            {
+                                "name": "jenkins",
+                                "image": "jenkins:2.46.3",
+                                "ports": [
+                                    {
+                                        "containerPort": 50000,
+                                        "protocol": "TCP"
+                                    },
+                                    {
+                                        "containerPort": 8080,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "volumeMounts": [
+                                    {
+                                        "name": "jenkins-volume-1",
+                                        "mountPath": "/var/jenkins_home"
+                                    }
+                                ],
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "imagePullPolicy": "Always"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}

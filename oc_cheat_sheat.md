@@ -52,8 +52,17 @@ $ oc logs <pod_name> -c kibana --loglevel=10
 ```
 
 ## get all objects of a project
+
 ```sh
 $ oc project <project_name>
 $ oc get all
 ```
 
+## authentication
+
+```sh
+$ oc whoami
+$ oc login -u redhat -p <password>
+$ oc login -u system:admin
+$ oadm policy add-cluster-role-to-user cluster-admin redhat
+```

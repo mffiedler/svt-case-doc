@@ -170,6 +170,12 @@ Log file locations:
 
 TODO find if there is a better solution for this.
 
+### Recreate logging project
+
+```sh
+# oadm new-project logging --node-selector=""
+```
+
 ## Reference
 
 [1]. https://medium.com/@yoanis_gil/logging-with-docker-part-1-b23ef1443aac

@@ -66,3 +66,8 @@ $ oc login -u redhat -p <password>
 $ oc login -u system:admin
 $ oadm policy add-cluster-role-to-user cluster-admin redhat
 ```
+## new-app
+
+```sh
+# oc new-app https://github.com/dev-tool-index/calculator-monitor-docker
+```

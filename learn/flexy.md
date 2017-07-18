@@ -12,8 +12,8 @@ which generates OC cluster. It runs a ruby script on a Jenkins slave.
 * [yaml config](http://git.app.eng.bos.redhat.com/git/openshift-misc.git/plain/v3-launch-templates/system-testing/aos-36/aws/vars.ose36-aws-svt.yaml) set up parameters for the ruby script.
 
 * Tasks:
-  * Apply for sub-domain (TODO)
-  * Host provisioning: based on the AMI specified by <code><code>
+  * Apply for subdomain (TODO)
+  * Host provisioning: based on the AMI specified by <code>${LAUNCHER_VARS}.image</code>
   * Installation: 2 playbooks.
  
 ## AMI
@@ -23,9 +23,10 @@ TODO: Jenkins job
 
 ## Starting from AMI
 Launch 4 instances of m4.xlarge type based on AMI eg, ocp-3.6.151-1-gold-auto.
+Create /tmp/1.file and /tmp/2.file
 
-
-
+If you get subdomain before running the 2nd notebook, then uncomment those 2 line with the right value. Otherwise, change
+the [master-config.yaml](https://docs.openshift.com/enterprise/3.0/install_config/install/deploy_router.html#customizing-the-default-routing-subdomain) and restart master.
 
 ## Debugging
 

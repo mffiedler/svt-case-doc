@@ -33,7 +33,13 @@ Create /tmp/1.file and /tmp/2.file and modify the following value:
 #openshift_master_default_subdomain=0718-wo2.qe.rhcloud.com
 ```
 
-Note that if no subdomain is configured, then the 2nd playbook will wait for <code>TASK [openshift_hosted : Ensure OpenShift registry correctly rolls out (best-effort today)] ***</code> for 10 mins (see the [code](https://github.com/openshift/openshift-ansible/blob/master/roles/openshift_hosted/tasks/router/router.yml) for details).
+TODO
+[Error](https://paste.fedoraproject.org/paste/QOLK4aFrNEUfPz9caojfmg) occurred in the run of the 2nd playbook.
+Only master node is up.
+
+```sh
+Message:  Unable to start service atomic-openshift-node: Job for atomic-openshift-node.service failed because the control process exited with error code. See "systemctl status atomic-openshift-node.service" and "journalctl -xe" for details.
+```
 
 ## Debugging
 

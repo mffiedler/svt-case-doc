@@ -51,7 +51,7 @@ Copy the inventory file and remove
 ```
 
 ```sh
-# ansible-playbook -i /tmp/1.file aos-ansible/playbooks/aws_install_prep.yml
+# ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
 ```
 
 2. config

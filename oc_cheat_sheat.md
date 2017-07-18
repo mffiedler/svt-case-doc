@@ -71,3 +71,10 @@ $ oadm policy add-cluster-role-to-user cluster-admin redhat
 ```sh
 # oc new-app https://github.com/dev-tool-index/calculator-monitor-docker
 ```
+
+## config and restart master
+
+```sh
+# vi /etc/origin/master/master-config.yaml
+# systemctl restart atomic-openshift-master
+```

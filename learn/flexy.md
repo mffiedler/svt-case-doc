@@ -25,8 +25,16 @@ TODO: Jenkins job
 Launch 4 instances of m4.xlarge type based on AMI eg, ocp-3.6.151-1-gold-auto.
 Create /tmp/1.file and /tmp/2.file
 
-If you get subdomain before running the 2nd notebook, then uncomment those 2 line with the right value. Otherwise, change
-the [master-config.yaml](https://docs.openshift.com/enterprise/3.0/install_config/install/deploy_router.html#customizing-the-default-routing-subdomain) and restart master.
+If you get subdomain before running the 2nd notebook, then uncomment those 2 line with the right value.
+
+```sh
+#openshift_master_default_subdomain_enable=true
+#openshift_master_default_subdomain=0718-wo2.qe.rhcloud.com
+```
+
+Otherwise, change the [master-config.yaml](https://docs.openshift.com/enterprise/3.0/install_config/install/deploy_router.html#customizing-the-default-routing-subdomain) and restart master.
+
+Note that if no subdomain is configured, then the 2nd playbook will wait for <code>TASK [openshift_hosted : Ensure OpenShift registry correctly rolls out (best-effort today)] ***</code> for 10 mins (see the [code](https://github.com/openshift/openshift-ansible/blob/master/roles/openshift_hosted/tasks/router/router.yml) for details).
 
 ## Debugging
 

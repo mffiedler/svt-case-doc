@@ -32,6 +32,8 @@ If you get subdomain before running the 2nd notebook, then uncomment those 2 lin
 #openshift_master_default_subdomain=0718-wo2.qe.rhcloud.com
 ```
 
+https://openshift-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/Dynect%20subdomain%20create/253/console
+
 Otherwise, change the [master-config.yaml](https://docs.openshift.com/enterprise/3.0/install_config/install/deploy_router.html#customizing-the-default-routing-subdomain) and restart master.
 
 Note that if no subdomain is configured, then the 2nd playbook will wait for <code>TASK [openshift_hosted : Ensure OpenShift registry correctly rolls out (best-effort today)] ***</code> for 10 mins (see the [code](https://github.com/openshift/openshift-ansible/blob/master/roles/openshift_hosted/tasks/router/router.yml) for details).
@@ -61,5 +63,5 @@ Copy the inventory file and remove
 ```
 
 ```sh
-# ansible-playbook -i /tmp/1.file aos-ansible/playbooks/aws_install_prep.yml
+# ansible-playbook -i /tmp/1.file openshift-ansible/playbooks/byo/config.yml
 ```

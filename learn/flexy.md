@@ -33,8 +33,7 @@ Create /tmp/1.file and /tmp/2.file and modify the following value:
 #openshift_master_default_subdomain=0718-wo2.qe.rhcloud.com
 ```
 
-TODO
-[Error](https://paste.fedoraproject.org/paste/QOLK4aFrNEUfPz9caojfmg) occurred in the run of the 2nd playbook.
+TODO: [Error](https://paste.fedoraproject.org/paste/QOLK4aFrNEUfPz9caojfmg) occurred in the run of the 2nd playbook.
 Only master node is up.
 
 ```sh

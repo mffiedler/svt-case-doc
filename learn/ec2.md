@@ -27,3 +27,6 @@ Default output format [None]: json
 (awsenv) [hongkliu@hongkliu awscli]$ ls ~/.aws/
 config  credentials
 ```
+
+## [Cli tutorial](http://docs.aws.amazon.com/cli/latest/userguide/tutorial-ec2-ubuntu.html)
+

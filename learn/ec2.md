@@ -22,7 +22,7 @@ aws-cli/1.11.121 Python/2.7.5 Linux/3.10.0-514.21.1.el7.x86_64 botocore/1.5.84
 (awsenv) [hongkliu@hongkliu awscli]$ aws configure
 AWS Access Key ID [None]: <ask_flexy_output>
 AWS Secret Access Key [None]: <ask_flexy_output>
-Default region name [None]: us-west-2b
+Default region name [None]: us-west-2
 Default output format [None]: json
 (awsenv) [hongkliu@hongkliu awscli]$ ls ~/.aws/
 config  credentials

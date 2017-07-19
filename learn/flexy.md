@@ -44,10 +44,15 @@ Message:  Unable to start service atomic-openshift-node: Job for atomic-openshif
 ```
 
 ### Ansible configuration (Optional)
-1.  edit /etc/ansible/ansible.cfg
-    - set forks to 20 (for our standard 4 node clusters, does not matter, but helps for larger clusters)
-    - uncomment the log path
-2.  Run the playbook with <code>ansible-inventory -vvv -i <inventory> <playbook></code>
+
+1. edit /etc/ansible/ansible.cfg
+     - set forks to 20 (for our standard 4 node clusters, does not matter, but helps for larger clusters)
+     - uncomment the log path
+2. Run the playbook with 
+
+  ```sh
+  ansible-inventory -vvv -i <inventory> <playbook>
+  ```
 
 ## Debugging for flexy
 

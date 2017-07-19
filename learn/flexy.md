@@ -30,7 +30,7 @@ Launch 4 instances of m4.xlarge type based on AMI eg, ocp-3.6.151-1-gold-auto us
 $ (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-f2d3cd8b --security-group-ids sg-5c5ace38 --count 4 --instance-type m4.xlarge --key-name id_rsa_perf --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\", \"Ebs\":{\"VolumeSize\": 60}}]"
 ```
 
-The instance ids are in the return message.
+The instance ids are in the return message. *Note that* <code>--image-id</code> is the AMI id and the value of <code>--image-id</code> is _the default group id_.
 
 ### Get a subdomain
 Get a subdomain from [Dynect subdomain create](https://openshift-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/Dynect%20subdomain%20create/253/console) using parameters *ip of router*, "openshift", "v3"
@@ -87,6 +87,10 @@ Copy the inventory file and remove
 ```sh
 # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
 ```
+
+### Failed on some ansible task
+
+Try to search it in [bugzilla](bugzalla.md)
 
 
 ### SSH to Jenkins slave

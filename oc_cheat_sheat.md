@@ -78,3 +78,10 @@ $ oadm policy add-cluster-role-to-user cluster-admin redhat
 # vi /etc/origin/master/master-config.yaml
 # systemctl restart atomic-openshift-master
 ```
+
+## [journalctl](https://www.loggly.com/ultimate-guide/using-journalctl/)
+
+```sh
+# systemctl list-unit-files --all
+# journalctl -u atomic-openshift-node.service
+```

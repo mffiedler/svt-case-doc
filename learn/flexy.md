@@ -21,18 +21,21 @@ It is build by the playbooks in [svt/image_provisioner](https://github.com/opens
 
 TODO: Jenkins job
 
-## Starting from AMI
+## Starting from AMI (manual steps if Flexy is not available)
+
+### Launch instances
 Launch 4 instances of m4.xlarge type based on AMI eg, ocp-3.6.151-1-gold-auto.
 
+### Get a subdomain
 Get a subdomain from [Dynect subdomain create](https://openshift-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/Dynect%20subdomain%20create/253/console) using parameters *ip of router*, "openshift", "v3"
 
-Create /tmp/1.file and /tmp/2.file and modify the following value:
+### Create inventory file and run playbook
+Create <code>/tmp/1.file</code> and <code>/tmp/2.file</code> and modify the following value in <code>2.file</code>:
 
 ```sh
 #openshift_master_default_subdomain_enable=true
 #openshift_master_default_subdomain=0718-wo2.qe.rhcloud.com
 ```
-
 TODO: [Error](https://paste.fedoraproject.org/paste/QOLK4aFrNEUfPz9caojfmg) occurred in the run of the 2nd playbook.
 Only master node is up.
 
@@ -40,7 +43,13 @@ Only master node is up.
 Message:  Unable to start service atomic-openshift-node: Job for atomic-openshift-node.service failed because the control process exited with error code. See "systemctl status atomic-openshift-node.service" and "journalctl -xe" for details.
 ```
 
-## Debugging
+### Ansible configuration (Optional)
+1.  edit /etc/ansible/ansible.cfg
+    - set forks to 20 (for our standard 4 node clusters, does not matter, but helps for larger clusters)
+    - uncomment the log path
+2.  Run the playbook with <code>ansible-inventory -vvv -i <inventory> <playbook></code>
+
+## Debugging for flexy
 
 ### Flexy failed to run playbooks
 
@@ -48,7 +57,7 @@ We can rerun the 2 playbooks on master node. In the output of Jenkins build, sea
 Copy the inventory file and remove
 <code>ansible_user=root ansible_ssh_user=root ansible_ssh_private_key_file="/home/slave1/workspace/Launch Environment Flexy/private/config/keys/id_rsa_perf"</code>
 
-1. aws_install_prep
+1. aws_install_prep (optional if based on gold-AMI)
 
 ```
 ["ansible-playbook", "-v", "-i", "/home/slave1/workspace/Launch Environment Flexy/workdir/OS1-install36-1-0/inventory.aos-ansible", "/home/slave1/workspace/Launch Environment Flexy/private-aos-ansible/playbooks/aws_install_prep.yml"]

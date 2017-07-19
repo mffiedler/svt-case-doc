@@ -24,7 +24,11 @@ TODO: Jenkins job
 ## Starting from AMI (manual steps if Flexy is not available)
 
 ### Launch instances
-Launch 4 instances of m4.xlarge type based on AMI eg, ocp-3.6.151-1-gold-auto.
+Launch 4 instances of m4.xlarge type based on AMI eg, ocp-3.6.151-1-gold-auto using [aws-cli](ec2.md).
+
+```sh
+$ aaa
+```
 
 ### Get a subdomain
 Get a subdomain from [Dynect subdomain create](https://openshift-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/Dynect%20subdomain%20create/253/console) using parameters *ip of router*, "openshift", "v3"

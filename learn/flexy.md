@@ -81,3 +81,15 @@ Copy the inventory file and remove
 ```sh
 # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
 ```
+
+
+### SSH to Jenkins slave
+
+#### Get slave IP
+Click on the output of Jenkins build.
+
+### SSH
+
+```sh
+$ ssh -i ~/.ssh/libra.pem root@<slave_ip>
+```

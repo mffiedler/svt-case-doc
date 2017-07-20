@@ -9,20 +9,20 @@ TODO (see AMI provisioning)
 
 ```sh
 # oc get nodes
-NAME                                          STATUS                        AGE       VERSION
-ip-172-31-3-240.us-west-2.compute.internal    NotReady                      51m       v1.6.1+5115d708d7
-ip-172-31-38-21.us-west-2.compute.internal    NotReady                      51m       v1.6.1+5115d708d7
-ip-172-31-42-144.us-west-2.compute.internal   NotReady,SchedulingDisabled   58m       v1.6.1+5115d708d7
-ip-172-31-60-244.us-west-2.compute.internal   NotReady                      50m       v1.6.1+5115d708d7
+NAME                                          STATUS                     AGE       VERSION
+ip-172-31-19-228.us-west-2.compute.internal   Ready                      9m        v1.6.1+5115d708d7
+ip-172-31-20-24.us-west-2.compute.internal    Ready                      9m        v1.6.1+5115d708d7
+ip-172-31-45-92.us-west-2.compute.internal    Ready                      9m        v1.6.1+5115d708d7
+ip-172-31-58-220.us-west-2.compute.internal   Ready,SchedulingDisabled   9m        v1.6.1+5115d708d7
 ```
 
 ### Register
 If run on master, register.sh will include itself automatically. So just list nodes other than master.
 
 ```sh
-# svt/openshift_scalability/pbench-register.sh ip-172-31-3-240.us-west-2.compute.internal \
-    ip-172-31-38-21.us-west-2.compute.internal \
-    ip-172-31-60-244.us-west-2.compute.internal
+# svt/openshift_scalability/pbench-register.sh ip-172-31-19-228.us-west-2.compute.internal \
+    ip-172-31-20-24.us-west-2.compute.internal \
+    ip-172-31-45-92.us-west-2.compute.internal
 ```
 
 ### Start

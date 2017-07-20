@@ -98,8 +98,22 @@ Try to search it in [bugzilla](bugzalla.md)
 #### Get slave IP
 Click on the output of Jenkins build.
 
-### SSH
+#### SSH
 
 ```sh
 $ ssh -i ~/.ssh/libra.pem root@<slave_ip>
+```
+
+## IOPS volumes for instances
+
+<code>${CUCUSHIFT_CONFIG}</code>
+
+```   ...
+      instance_type: m4.xlarge
+      block_device_mappings:
+      - device_name: /dev/sdb
+        ebs:
+          volume_size: 80
+          volume_type: io1
+          iops: 2400
 ```

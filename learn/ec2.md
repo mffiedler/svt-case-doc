@@ -280,4 +280,9 @@ config  credentials
 }
 (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 describe-instances --filters 'Name=tag:Name,Values=*qe-hongkliu-ttt*' --output text --query 'Reservations[*].Instances[*].InstanceId'
 i-0f6469875f9e471d3	i-048c94c680090ce7d
+(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 describe-instances --filters 'Name=tag:Name,Values=*qe-hongkliu-ttt*' --output text --query 'Reservations[*].Instances[*].{Id:InstanceId, Name:PublicDnsName}'
+i-0f6469875f9e471d3	ec2-54-186-191-136.us-west-2.compute.amazonaws.com
+i-048c94c680090ce7d	ec2-54-200-204-22.us-west-2.compute.amazonaws.com
 ```
+
+See [more examples](http://docs.aws.amazon.com/cli/latest/userguide/controlling-output.html) on query.

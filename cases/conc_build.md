@@ -1,13 +1,31 @@
 
 # Concurrent Build Test
 
-## cluster
+## Cluster
 
 [flexy](../learn/flexy.md) with IOPS volumes.
 
-## pbench
+## Test parameters
 
-## test parameters
+Check the parameters in the test cases and update them in *conc_builds.sh*:
+
+* Number of iterations: <code>-n</code>
+* Number of projects: <code>readonly PROJECT_NUM=50</code>
+* Number of concurrent builds: <code>build_array=(1 5 10 20 30 40 50)</code>
+
+## Cron job for checking failed builds
+
+```sh
+# crontab -e
+*/2 * * * * /root/svt/manual.steps/conc_build_step.sh >> /tmp/aaa.txt
+```
+
+## Run the test
+
+```sh
+nohup bash -x ./conc_builds.sh > /tmp/log.aaa.txt &
+```
 
 ## log collection
 
+They are in <code>/tmp</code>.

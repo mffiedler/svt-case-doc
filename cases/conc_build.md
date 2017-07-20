@@ -1,7 +1,9 @@
 
 # Concurrent Build Test
 
-## luster
+## cluster
+
+[../flexy.md]
 
 ## pbench
 

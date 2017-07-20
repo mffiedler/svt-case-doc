@@ -7,7 +7,7 @@
 
 ## Test parameters
 
-Check the parameters in the test cases and update them in *conc_builds.sh*:
+Check the parameters in the test case and update them in *conc_builds.sh*:
 
 * Number of iterations: <code>-n</code>
 * Number of projects: <code>readonly PROJECT_NUM=50</code>

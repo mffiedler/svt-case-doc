@@ -30,7 +30,7 @@ config  credentials
 
 ## [Cli tutorial](http://docs.aws.amazon.com/cli/latest/userguide/tutorial-ec2-ubuntu.html)
 
-### List instance ids when launching
+### Useful commands
 
 ```sh
 (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-f2d3cd8b --security-group-ids sg-5c5ace38 --count 2 --instance-type m4.xlarge --key-name id_rsa_perf --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\", \"Ebs\":{\"VolumeSize\": 60}}]" --query 'Instances[*].InstanceId'

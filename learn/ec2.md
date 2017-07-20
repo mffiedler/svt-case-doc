@@ -278,4 +278,6 @@ config  credentials
         }
     ]
 }
+(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 describe-instances --filters 'Name=tag:Name,Values=*qe-hongkliu-ttt*' --output text --query 'Reservations[*].Instances[*].InstanceId'
+i-0f6469875f9e471d3	i-048c94c680090ce7d
 ```

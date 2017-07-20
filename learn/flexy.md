@@ -16,6 +16,7 @@ which generates OC cluster. It runs a ruby script on a Jenkins slave.
   * Host provisioning: based on the AMI specified by <code>${LAUNCHER_VARS}.image</code>
   * Installation: 2 playbooks.
 
+Follow the [steps](manual_cluster.md) to create a cluster manually if flexy is not available.
 
 ## Debugging for flexy
 

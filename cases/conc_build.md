@@ -28,4 +28,4 @@ nohup bash -x ./conc_builds.sh > /tmp/log.aaa.txt &
 
 ## log collection
 
-They are in <code>/tmp</code>.
+They are in <code>/tmp</code> folder.

@@ -38,3 +38,4 @@ Create <code>/tmp/1.file</code> and <code>/tmp/2.file</code> and modify the foll
 #openshift_master_default_subdomain=0718-wo2.qe.rhcloud.com
 ```
 
+The commands to run the playbooks are [here](flexy.md).

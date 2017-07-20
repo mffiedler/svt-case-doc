@@ -28,6 +28,7 @@ Server:
 Download all the rpms from [brew](http://you_should_know.com) to <code>~/local_rpm_repo</code> folder on remote host.
 
 ```sh
+# mkdir local_rpm_repo
 # cd local_rpm_repo/
 # yum install -y createrepo
 # createrepo .

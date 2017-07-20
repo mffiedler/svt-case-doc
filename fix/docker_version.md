@@ -43,6 +43,11 @@ protect=1
 # yum list docker
 # yum update docker
 # docker version
+```
+
+## Restart OC services
+
+```sh
 # systemctl status atomic-openshift-master
 # systemctl restart atomic-openshift-master
 # systemctl restart atomic-openshift-node

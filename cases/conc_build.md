@@ -17,13 +17,14 @@ Check the parameters in the test case and update them in *conc_builds.sh*:
 
 ```sh
 # crontab -e
-*/2 * * * * /root/svt/manual.steps/conc_build_step.sh >> /tmp/aaa.txt
+*/2 * * * * /root/svt/openshift_performance/ose3_perf/scripts/conc_build_step.sh >> /tmp/aaa.txt
 ```
 
 ## Run the test
 
 ```sh
-nohup bash -x ./conc_builds.sh > /tmp/log.aaa.txt &
+# svt/openshift_performance/ci/scripts
+# nohup bash -x ./conc_builds.sh > /tmp/log.aaa.txt &
 ```
 
 ## log collection

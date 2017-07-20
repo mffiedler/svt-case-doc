@@ -51,7 +51,9 @@ To run pbench again, no need to register the tools again, but you should run <co
 
 ## Read the stats from pbench
 
-## [sar](https://linux.die.net/man/1/sar)
+Example of pbench stats is [here](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-58-220/).
+
+### [sar](https://linux.die.net/man/1/sar)
 
 CPU, Memory, Network, ...
 

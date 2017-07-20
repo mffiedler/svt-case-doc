@@ -47,4 +47,4 @@ The results should show up in 10-15 mins on the [server](http://pbench.perf.lab.
 Important stats: sar (cpu & mem) and iostat folder.
 
 ### Clean up before Rerun
-To run pbench again, no need to register the tools again, but you should run <code>pbench-clear-results</code> on every system.
+To run pbench again, no need to register the tools again, but you should run <code>pbench-clear-results</code> on _EVERY_ node.

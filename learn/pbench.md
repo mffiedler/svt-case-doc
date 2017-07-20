@@ -46,3 +46,5 @@ If run on master, register.sh will include itself automatically. So just list no
 The results should show up in 10-15 mins on the [server](http://pbench.perf.lab.eng.bos.redhat.com/results/).
 Important stats: sar (cpu & mem) and iostat folder.
 
+### Clean up before Rerun
+To run pbench again, no need to register the tools again, but you should run <code>pbench-clear-results</code> on every system.

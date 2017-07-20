@@ -3,7 +3,7 @@
 
 ## cluster
 
-[../flexy.md]
+[flexy](../flexy.md) with IOPS volumes.
 
 ## pbench
 

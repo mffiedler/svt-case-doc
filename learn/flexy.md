@@ -12,14 +12,14 @@ which generates OC cluster. It runs a ruby script on a Jenkins slave.
 * [yaml config](http://git.app.eng.bos.redhat.com/git/openshift-misc.git/plain/v3-launch-templates/system-testing/aos-36/aws/vars.ose36-aws-svt.yaml) set up parameters for the ruby script.
 
 * Tasks:
-  * Apply for subdomain (TODO)
+  * Apply for subdomain
   * Host provisioning: based on the AMI specified by <code>${LAUNCHER_VARS}.image</code>
   * Installation: 2 playbooks.
  
 ## AMI
 It is build by the playbooks in [svt/image_provisioner](https://github.com/openshift/svt/tree/master/image_provisioner). 
 
-TODO: Jenkins job
+TODO: Jenkins job for gold-AMI provisioning.
 
 ## Starting from AMI (manual steps if Flexy is not available)
 

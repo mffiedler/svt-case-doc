@@ -54,3 +54,10 @@ protect=1
 # systemctl restart atomic-openshift-node
 # systemctl status atomic-openshift-master
 ```
+
+## Sanity check
+
+```sh
+# oc get nodes
+# oc get pods --all-namespaces
+```

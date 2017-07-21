@@ -89,7 +89,7 @@ The <code>server</code> is the NFS server ip.
 #### create NFS PVC
 
 ```sh
-# cat /tmp/pvc_nfs.yaml 
+# vi /tmp/pvc_nfs.yaml 
 kind: "PersistentVolumeClaim"
 apiVersion: "v1"
 metadata:

@@ -30,8 +30,35 @@
 NAME            TYPE
 gp2 (default)   kubernetes.io/aws-ebs
 ```
-
 It shows that we can claim aws-ebs volumes dynamically.
+
+### create EBS pvc
+
+```sh
+# vi /tmp/pvc_ebs.yaml
+kind: "PersistentVolumeClaim"
+apiVersion: "v1"
+metadata:
+  name: "pvc-ebs"
+spec:
+  accessModes:
+    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: "1Gi"
+  storageClassName: gp2
+
+# oc create -f  /tmp/pvc_ebs.yaml 
+persistentvolumeclaim "pvc-ebs" created
+# oc get pv
+NAME                                       CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS      CLAIM         STORAGECLASS   REASON    AGE
+pvc-223bfa0b-6e5c-11e7-827b-0264af681eb2   1Gi        RWO           Delete          Bound       aaa/pvc-ebs   gp2                      3s
+root@ip-172-31-44-213: /tmp # oc get pvc
+NAME      STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS   AGE
+pvc-ebs   Bound     pvc-223bfa0b-6e5c-11e7-827b-0264af681eb2   1Gi        RWO           gp2            10s
+```
+
+#### use PVC in a running pod
 
 ### NFS
 
@@ -112,11 +139,6 @@ pvc-nfs   Pending                                      mynfs          7m
 ```
 
 *Error*: status is *PENDING*.
-
-#### use PVC in a running pod
-
-
-
 
 
 ## Reference

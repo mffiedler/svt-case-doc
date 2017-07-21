@@ -38,6 +38,8 @@ It shows that we can claim aws-ebs volumes dynamically.
 #### set up an NFS server
 In the test cases [1], a service supported by a pod provides the NFS server.
 
+Because <code>StorageClass</code> is set to default, let us set another one for NFS volume.
+
 ### [Create NFS storageclass](https://docs.openshift.org/latest/install_config/storage_examples/storage_classes_legacy.html)
 
 ```sh

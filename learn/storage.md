@@ -78,7 +78,7 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: mynfs
 
-# oc create -f /tmp/nfs-aaa.json
+# oc create -f /tmp/pv_nfs.yaml
 persistentvolume "pv-nfs" created
 # oc get pv
 NAME      CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS      CLAIM     STORAGECLASS   REASON    AGE

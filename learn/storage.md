@@ -58,7 +58,12 @@ NAME      STATUS    VOLUME                                     CAPACITY   ACCESS
 pvc-ebs   Bound     pvc-223bfa0b-6e5c-11e7-827b-0264af681eb2   1Gi        RWO           gp2            10s
 ```
 
-#### use PVC in a running pod
+#### [use PVC in pod](https://docs.openshift.org/latest/architecture/additional_concepts/storage.html#pvc-claims-as-volumes)
+
+```sh
+# vi /tmp/pod_with_pvc.yaml
+# oc create -f /tmp/pod_with_pvc.yaml
+```
 
 ### NFS
 
@@ -67,7 +72,7 @@ In the test cases [1], a service supported by a pod provides the NFS server.
 
 Because <code>StorageClass</code> is set to [default](https://docs.openshift.org/latest/architecture/additional_concepts/storage.html#pvc-storage-class), let us set another one for NFS volume.
 
-### [Create NFS storageclass](https://docs.openshift.org/latest/install_config/storage_examples/storage_classes_legacy.html)
+### [create NFS storageclass](https://docs.openshift.org/latest/install_config/storage_examples/storage_classes_legacy.html)
 
 ```sh
 # vi /tmp/sc_nfs.yaml

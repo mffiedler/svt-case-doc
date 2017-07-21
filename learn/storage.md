@@ -31,6 +31,10 @@ NAME            TYPE
 gp2 (default)   kubernetes.io/aws-ebs
 ```
 
-## NFS
+It shows that we can claim aws-ebs volumes dynamically.
 
-## AWS EBS
+### AWS EBS
+
+### NFS
+
+

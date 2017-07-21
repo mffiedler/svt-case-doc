@@ -8,7 +8,7 @@
 
 
 ## Flexy and AWS
-[Flexy](flexy.md) use <code>iaas_name: AWS</code> in [parameter template] to [configure master](https://docs.openshift.org/latest/install_config/configuring_aws.html#install-config-configuring-aws) to aws information.
+[Flexy](flexy.md) uses <code>iaas_name: AWS</code> in [parameter template](http://git.app.eng.bos.redhat.com/git/openshift-misc.git/plain/v3-launch-templates/system-testing/aos-36/aws/vars.ose36-aws-svt.yaml) to [configure master](https://docs.openshift.org/latest/install_config/configuring_aws.html#install-config-configuring-aws) to aws information.
 
 ```sh
 # cat /etc/origin/master/master-config.yaml | grep -i aws
@@ -23,6 +23,39 @@
 
 ## Practice
 
+### NFS
+
+#### set up an NFS server
+In the test cases [1], a service supported by a pod provides the NFS server.
+
+#### create NFS PV
+
+```sh
+# cat /tmp/nfs-aaa.json 
+{
+  "apiVersion": "v1",
+  "kind": "PersistentVolume",
+  "metadata": {
+    "name": "nfs-aaa"
+  },
+  "spec": {
+    "capacity": {
+        "storage": "5Gi"
+    },
+    "accessModes": [ "ReadWriteMany" ],
+    "nfs": {
+        "path": "/",
+        "server": "172.24.1.59"
+    },
+    "persistentVolumeReclaimPolicy": "Recycle"
+  }
+}
+```
+
+The <code>server</code> is the NFS server ip.
+
+
+
 ### Dynamic provision with AWS EBS
 
 ```sh
@@ -33,8 +66,8 @@ gp2 (default)   kubernetes.io/aws-ebs
 
 It shows that we can claim aws-ebs volumes dynamically.
 
-### AWS EBS
-
-### NFS
 
 
+
+## Reference
+1. [tsms case 499636](https://tcms.engineering.redhat.com/case/499636/?from_plan=14587)

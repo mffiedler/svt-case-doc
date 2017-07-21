@@ -23,39 +23,6 @@
 
 ## Practice
 
-### NFS
-
-#### set up an NFS server
-In the test cases [1], a service supported by a pod provides the NFS server.
-
-#### create NFS PV
-
-```sh
-# cat /tmp/nfs-aaa.json 
-{
-  "apiVersion": "v1",
-  "kind": "PersistentVolume",
-  "metadata": {
-    "name": "nfs-aaa"
-  },
-  "spec": {
-    "capacity": {
-        "storage": "5Gi"
-    },
-    "accessModes": [ "ReadWriteMany" ],
-    "nfs": {
-        "path": "/",
-        "server": "172.24.1.59"
-    },
-    "persistentVolumeReclaimPolicy": "Recycle"
-  }
-}
-```
-
-The <code>server</code> is the NFS server ip.
-
-
-
 ### Dynamic provision with AWS EBS
 
 ```sh
@@ -65,6 +32,87 @@ gp2 (default)   kubernetes.io/aws-ebs
 ```
 
 It shows that we can claim aws-ebs volumes dynamically.
+
+### NFS
+
+#### set up an NFS server
+In the test cases [1], a service supported by a pod provides the NFS server.
+
+### [Create NFS storageclass](https://docs.openshift.org/latest/install_config/storage_examples/storage_classes_legacy.html)
+
+```sh
+# vi /tmp/sc_nfs.yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: mynfs 
+provisioner: no-provisioning 
+parameters:
+
+#  oc create -f /tmp/sc_nfs.yaml 
+storageclass "mynfs" created
+# oc get storageclass 
+NAME            TYPE
+gp2 (default)   kubernetes.io/aws-ebs   
+mynfs           no-provisioning
+```
+
+#### create NFS PV
+
+```sh
+# vi /tmp/pv_nfs.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-nfs
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 5Gi
+  nfs:
+    path: /
+    server: 172.24.1.59
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: mynfs
+
+# oc create -f /tmp/nfs-aaa.json
+persistentvolume "pv-nfs" created
+# oc get pv
+NAME      CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS      CLAIM     STORAGECLASS   REASON    AGE
+pv-nfs    5Gi        RWX           Recycle         Available             mynfs                    14m
+```
+The <code>server</code> is the NFS server ip.
+
+#### create NFS PVC
+
+```sh
+# cat /tmp/pvc_nfs.yaml 
+kind: "PersistentVolumeClaim"
+apiVersion: "v1"
+metadata:
+  name: "pvc-nfs"
+  annotations:
+    volume.alpha.kubernetes.io/storage-class: "mynfs"
+spec:
+  accessModes:
+    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: "1Gi"
+  storageClassName: mynfs
+
+# oc create -f /tmp/pvc_nfs.yaml 
+persistentvolumeclaim "pvc-nfs" created
+# oc get pvc
+NAME      STATUS    VOLUME    CAPACITY   ACCESSMODES   STORAGECLASS   AGE
+pvc-nfs   Pending                                      mynfs          7m
+```
+
+*Error*: status is *PENDING*.
+
+#### use PVC in a running pod
+
 
 
 

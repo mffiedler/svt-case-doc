@@ -63,6 +63,21 @@ pvc-ebs   Bound     pvc-223bfa0b-6e5c-11e7-827b-0264af681eb2   1Gi        RWO   
 ```sh
 # vi /tmp/pod_with_pvc.yaml
 # oc create -f /tmp/pod_with_pvc.yaml
+
+      containers:
+        ...
+        volumeMounts:
+        - mountPath: /mydata
+          name: ddd
+      ...
+      securityContext: 
+        supplementalGroups: [0]
+      ...  
+      volumes:
+      - name: ddd
+        persistentVolumeClaim:
+          claimName: pvc-ebs
+
 ```
 
 ### NFS

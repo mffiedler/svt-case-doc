@@ -8,7 +8,7 @@
 
 
 ## Flexy and AWS
-[Flexy](flexy.md) uses <code>iaas_name: AWS</code> in [parameter template](http://git.app.eng.bos.redhat.com/git/openshift-misc.git/plain/v3-launch-templates/system-testing/aos-36/aws/vars.ose36-aws-svt.yaml) to [configure master](https://docs.openshift.org/latest/install_config/configuring_aws.html#install-config-configuring-aws) to aws information.
+[Flexy](flexy.md) uses <code>iaas_name: AWS</code> in [parameter template](http://git.app.eng.bos.redhat.com/git/openshift-misc.git/plain/v3-launch-templates/system-testing/aos-36/aws/vars.ose36-aws-svt.yaml) to get AWS information and to [configure master](https://docs.openshift.org/latest/install_config/configuring_aws.html#install-config-configuring-aws).
 
 ```sh
 # cat /etc/origin/master/master-config.yaml | grep -i aws

@@ -61,24 +61,34 @@ pvc-ebs   Bound     pvc-223bfa0b-6e5c-11e7-827b-0264af681eb2   1Gi        RWO   
 #### [use PVC in pod](https://docs.openshift.org/latest/architecture/additional_concepts/storage.html#pvc-claims-as-volumes)
 
 ```sh
-# vi /tmp/pod_with_pvc.yaml
-# oc create -f /tmp/pod_with_pvc.yaml
-
+# oc new-app --docker-image="docker.io/hongkailiu/test-docker:latest"
+# oc edit dc test-docker
+      ...
       containers:
         ...
         volumeMounts:
         - mountPath: /mydata
-          name: ddd
-      ...
-      securityContext: 
-        supplementalGroups: [0]
-      ...  
+          name: ddd  
       volumes:
       - name: ddd
         persistentVolumeClaim:
           claimName: pvc-ebs
 
+# oc volumes po/test-docker-3-nmm4r
+pods/test-docker-3-nmm4r
+  pvc/pvc-ebs (allocated 1GiB) as ddd
+    mounted at /mydata
+  secret/default-token-m5hfx as default-token-m5hfx
+    mounted at /var/run/secrets/kubernetes.io/serviceaccount
+
+# oc exec test-docker-3-nmm4r -- tail /mydata/run.log
+Sat Jul 22 04:41:15 UTC 2017
+Sat Jul 22 04:41:16 UTC 2017
+Sat Jul 22 04:41:17 UTC 2017
+
 ```
+
+Also read [volume security](https://docs.openshift.org/latest/install_config/persistent_storage/pod_security_context.html).
 
 ### NFS
 

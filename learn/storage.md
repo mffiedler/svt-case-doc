@@ -5,6 +5,7 @@
 * [Concepts](https://docs.openshift.org/latest/architecture/additional_concepts/storage.html)
 * [Configure](https://docs.openshift.org/latest/install_config/persistent_storage/index.html)
 * [Examples](https://docs.openshift.org/latest/install_config/storage_examples/index.html)
+* [Storage@k8s](https://kubernetes.io/docs/concepts/storage/volumes/)
 
 
 ## Flexy and AWS

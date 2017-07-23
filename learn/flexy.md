@@ -15,50 +15,8 @@ which generates OC cluster. It runs a ruby script on a Jenkins slave.
   * Apply for subdomain
   * Host provisioning: based on the AMI specified by <code>${LAUNCHER_VARS}.image</code>
   * Installation: 2 playbooks.
- 
-## AMI
-It is build by the playbooks in [svt/image_provisioner](https://github.com/openshift/svt/tree/master/image_provisioner). 
 
-TODO: Jenkins job for gold-AMI provisioning.
-
-## Starting from AMI (manual steps if Flexy is not available)
-
-### Launch instances
-Launch 4 instances of m4.xlarge type based on AMI eg, ocp-3.6.151-1-gold-auto using [aws-cli](ec2.md).
-
-```sh
-$ (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-f2d3cd8b --security-group-ids sg-5c5ace38 --count 4 --instance-type m4.xlarge --key-name id_rsa_perf --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\", \"Ebs\":{\"VolumeSize\": 60}}]"
-```
-
-The instance ids are in the return message. *Note that* <code>--image-id</code> is the AMI id and the value of <code>--image-id</code> is _the default group id_.
-
-### Get a subdomain
-Get a subdomain from [Dynect subdomain create](https://openshift-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/Dynect%20subdomain%20create/253/console) using parameters *ip of router*, "openshift", "v3"
-
-### Create inventory file and run playbook
-Create <code>/tmp/1.file</code> and <code>/tmp/2.file</code> and modify the following value in <code>2.file</code>:
-
-```sh
-#openshift_master_default_subdomain_enable=true
-#openshift_master_default_subdomain=0718-wo2.qe.rhcloud.com
-```
-TODO: [Error](https://paste.fedoraproject.org/paste/QOLK4aFrNEUfPz9caojfmg) occurred in the run of the 2nd playbook.
-Only master node is up.
-
-```sh
-Message:  Unable to start service atomic-openshift-node: Job for atomic-openshift-node.service failed because the control process exited with error code. See "systemctl status atomic-openshift-node.service" and "journalctl -xe" for details.
-```
-
-### Ansible configuration (Optional)
-
-1. edit /etc/ansible/ansible.cfg
-     - set forks to 20 (for our standard 4 node clusters, does not matter, but helps for larger clusters)
-     - uncomment the log path
-2. Run the playbook with 
-
-  ```sh
-  ansible-inventory -vvv -i <inventory> <playbook>
-  ```
+Follow the [steps](manual_cluster.md) to create a cluster manually if flexy is not available.
 
 ## Debugging for flexy
 

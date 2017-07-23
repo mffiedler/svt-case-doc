@@ -48,3 +48,36 @@ Important stats: sar (cpu & mem) and iostat folder.
 
 ### Clean up before Rerun
 To run pbench again, no need to register the tools again, but you should run <code>pbench-clear-results</code> on _EVERY_ node.
+
+## Read the stats from pbench
+
+Example of pbench stats is [here](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-58-220/).
+
+### [sar](https://linux.die.net/man/1/sar)
+
+CPU, Memory, Network, ...
+
+[command examples](https://www.ibm.com/support/knowledgecenter/en/ssw_aix_61/com.ibm.aix.cmds5/sar.htm)
+
+```sh
+# sar -A 10
+```
+
+### [pidstat](https://linux.die.net/man/1/pidstat)
+
+[command examples](http://www.thegeekstuff.com/2014/11/pidstat-examples/)
+
+```sh
+# pidstat  -l -w -u -h -d -r  -p ALL  10
+```
+
+### [iostat](https://linux.die.net/man/1/iostat)
+
+[command examples](http://www.thegeekstuff.com/2011/07/iostat-vmstat-mpstat-examples/)
+
+```sh
+# iostat  -N -t -y -x -m 10
+```
+
+
+### [pprof](https://github.com/google/pprof)

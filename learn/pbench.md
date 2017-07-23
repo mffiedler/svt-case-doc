@@ -65,6 +65,8 @@ CPU, Memory, Network, ...
 
 ### [pidstat](https://linux.die.net/man/1/pidstat)
 
+[command examples](http://www.thegeekstuff.com/2014/11/pidstat-examples/)
+
 ```sh
 # pidstat  -l -w -u -h -d -r  -p ALL  10
 ```

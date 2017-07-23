@@ -63,3 +63,10 @@ CPU, Memory, Network, ...
 # sar -A 10
 ```
 
+### [pidstat](https://linux.die.net/man/1/pidstat)
+
+```sh
+# pidstat  -l -w -u -h -d -r  -p ALL  10
+```
+
+### [pprof](https://github.com/google/pprof)

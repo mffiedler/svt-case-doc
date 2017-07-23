@@ -11,6 +11,9 @@
 
 - block:
   - name: Copy templates
+    set_fact:
+      nfs_service_ip: "unknown.yet"
+  - name: Copy templates
     template: src="{{ item }}" dest="/tmp/{{ item | basename | regex_replace('\.j2','') }}"
     with_fileglob:
       - ../templates/*.j2
@@ -24,5 +27,15 @@
       - oc label scc super-svt-test-nfs purpose=test
       - oc create -f /tmp/items_nfs-server.yaml
       - oc login -u system:admin
+  - name: get nfs-service ip
+    shell: oc get service nfs-service | grep nfs-service | awk '{print $2}'
+    register: oc_get_service_nfs_service_result
+  - name: Copy templates
+    set_fact:
+      nfs_service_ip: "{{ oc_get_service_nfs_service_result.stdout }}"
+  - name: Copy template pv_nfs.yaml
+    template:
+      src: pv_nfs.yaml.j2
+      dest: /tmp/pv_nfs.yaml
   when:
     - '"name: redhat" in oc_get_user_redhat_result.stdout'

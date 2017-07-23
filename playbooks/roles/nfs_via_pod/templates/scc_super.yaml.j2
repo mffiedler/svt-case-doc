@@ -1,0 +1,18 @@
+# https://github.com/openshift-qe/v3-testfiles/raw/master/authorization/scc/scc_super_template.yaml
+allowHostDirVolumePlugin: true
+allowHostNetwork: true
+allowHostPorts: true
+allowPrivilegedContainer: true
+allowedCapabilities: null
+runAsUser:
+  type: RunAsAny
+seLinuxContext:
+  type: RunAsAny
+apiVersion: v1
+kind: SecurityContextConstraints
+metadata:
+  name: super-{{ nfs_name }}
+groups:
+- system:serviceaccounts:{{ nfs_ns }}
+users:
+- {{ nfs_account }}

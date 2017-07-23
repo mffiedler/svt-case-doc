@@ -1,0 +1,7 @@
+---
+###
+
+nfs_project_name: svt-test-nfs
+nfs_ns: svt-test-nfs
+nfs_name: svt-test-nfs
+nfs_account: redhat

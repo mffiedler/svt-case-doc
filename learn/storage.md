@@ -96,9 +96,15 @@ Also read [volume security](https://docs.openshift.org/latest/install_config/per
 #### set up an NFS server
 In the test cases [1], a service supported by a pod provides the NFS server.
 
-Because <code>StorageClass</code> is set to [default](https://docs.openshift.org/latest/architecture/additional_concepts/storage.html#pvc-storage-class), let us set another one for NFS volume.
+```sh
+# oc delete project svt-test-nfs
+# oc delete scc super-svt-test-nfs
+# ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i "<master_host>," --private-key ~/.ssh/id_rsa_perf playbooks/nfs_via_pod.yml
+```
 
 ### [create NFS storageclass](https://docs.openshift.org/latest/install_config/storage_examples/storage_classes_legacy.html)
+
+Because <code>StorageClass</code> is set to [default](https://docs.openshift.org/latest/architecture/additional_concepts/storage.html#pvc-storage-class), let us set another one for NFS volume.
 
 ```sh
 # vi /tmp/sc_nfs.yaml

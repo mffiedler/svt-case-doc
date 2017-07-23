@@ -1,0 +1,8 @@
+---
+- name: Deploy an nfs server via pod and provide it as a service
+  hosts: all
+  remote_user: root
+
+  roles:
+    - add_redhat_user
+    - nfs_via_pod

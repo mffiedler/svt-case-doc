@@ -1,0 +1,38 @@
+---
+
+- name: Run oc version
+  command: oc version
+  register: oc_version_result
+
+- debug: msg="{{ oc_version_result.stdout }}"
+
+- debug: msg="{{ oc_version_result.stderr }}"
+
+- name: Run oc whoami
+  command: oc whoami
+  register: oc_whoami_result
+
+- debug: msg="{{ oc_whoami_result.stdout }}"
+
+- debug: msg="{{ oc_whoami_result.stderr }}"
+
+- name: Run oc get users
+  command: oc get users
+  register: oc_get_users_result
+
+- debug: msg="{{ oc_get_users_result.stdout }}"
+
+- debug: msg="{{ oc_get_users_result.stderr }}"
+
+- block:
+  - name: Login user system:admin
+    command: oc login -u system:admin
+    when: oc_whoami_result.stdout != "system:admin"
+  - name: Login user redhat
+    command: "{{ item }}"
+    with_items:
+      - oc login -u redhat -p redhat
+      - oc login -u system:admin
+      - oadm policy add-cluster-role-to-user cluster-admin redhat
+  when:
+    - oc_get_users_result.stderr == "No resources found."

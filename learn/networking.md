@@ -13,3 +13,4 @@
 
 * [SRV record](https://en.wikipedia.org/wiki/SRV_record)
 * [SkyDNS](https://github.com/skynetservices/skydns)
+* [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html)

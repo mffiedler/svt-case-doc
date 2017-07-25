@@ -13,7 +13,7 @@ When flexy generates the inventory file (2), the following parameter shows which
 
 <code>os_sdn_network_plugin_name=redhat/openshift-ovs-subnet</code>
 
-## Network interfaces on AWS EC2 instances
+## [Network interfaces on AWS EC2 instances](https://docs.openshift.org/latest/architecture/additional_concepts/sdn.html)
 
 ### master
 

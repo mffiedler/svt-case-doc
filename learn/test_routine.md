@@ -1,5 +1,9 @@
 # Routine
 
+## print cluster info
+
+> # ./svt/utils/scripts/print_test_env.sh
+
 ## cluster
 Prepare the openshift cluster against which we run tests.
 

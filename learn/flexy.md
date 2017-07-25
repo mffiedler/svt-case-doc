@@ -75,3 +75,10 @@ $ ssh -i ~/.ssh/libra.pem root@<slave_ip>
           volume_type: io1
           iops: 2400
 ```
+
+## Scaleup cluster
+TODO: Add [new nodes section] into <code>/tmp/2.file</code>
+
+```sh
+# ansible-playbook -i /tmp/3.file openshift-ansible/playbooks/byo/openshift-node/scaleup.yml 
+```

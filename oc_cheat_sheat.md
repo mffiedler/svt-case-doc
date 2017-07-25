@@ -11,6 +11,7 @@ $ oc get pods -o wide
 ```sh
 $ oc delete project -l purpose=test
 $ for i in {110..119}; do oc delete project "proj$i"; done
+$ oc get projects | cut -f1 -d" " | grep -E "proj[0-9]+" | while read i; do oc delete project $i; done
 ```
 
 ## delete build

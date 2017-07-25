@@ -25,4 +25,6 @@ In total, we have 7 project types there. Increate either the number of projects 
 The number of running pods is bigger because some apps need 2 pods to run, e.g, mysql. Set 10 as project number and it is often to see failed build and some pods are with error.
 
 ## [pbench stats](../learn/pbench.md)
-The pbench results (running 10 and 20) are available [here]().
+The pbench results (running 10 and 20) are available [here](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-62-245/).
+
+Specially pay attention to the computing nodes performance.

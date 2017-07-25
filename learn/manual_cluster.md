@@ -3,7 +3,7 @@
 ## AMI
 It is build by the playbooks in [svt/image_provisioner](https://github.com/openshift/svt/tree/master/image_provisioner). 
 
-TODO: Jenkins job
+Jenkins job: [SVT_Run_AWS_Image_provisioner_after_Puddle_Detection](https://openshift-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/System%20Verification%20Test/job/SVT_Run_AWS_Image_provisioner_after_Puddle_Detection/)
 
 ## Starting from AMI
 

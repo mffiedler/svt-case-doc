@@ -9,6 +9,7 @@ $ oc get pods -o wide
 ## delete project
 
 ```sh
+$ oc delete project -l purpose=test
 $ for i in {110..119}; do oc delete project "proj$i"; done
 ```
 
@@ -16,12 +17,6 @@ $ for i in {110..119}; do oc delete project "proj$i"; done
 
 ```
 $ oc get builds --all-namespaces | grep Fail | grep -E "proj[0-9]+" | while read i; do awk '{system("oc delete build -n " $1 "  " $2)}'; done
-```
-
-## create the project
-
-```sh
-# python ../../../openshift_scalability/cluster-loader.py -f ../content/conc_builds_nodejs.yaml
 ```
 
 ## remove a computing node from cluster

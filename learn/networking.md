@@ -51,7 +51,7 @@ root@ip-172-31-62-245: ~/svt/openshift_scalability # ip addr
        valid_lft forever preferred_lft forever
 ```
 
-# other nodes
+### other nodes
 
 More network interfaces like the following:
 

@@ -18,7 +18,7 @@ When flexy generates the inventory file (2), the following parameter shows which
 ### master
 
 ```sh
-root@ip-172-31-62-245: ~/svt/openshift_scalability # ip addr
+# ip addr
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo

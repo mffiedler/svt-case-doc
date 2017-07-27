@@ -1,6 +1,17 @@
 # Cluster Metrics
 
+
+## Doc
+
 [Guideline](https://docs.openshift.org/latest/install_config/cluster_metrics.html)
+
+## Data flow
+
+k8s cluster - [Heapster](https://github.com/kubernetes/heapster) - [Hawkular-metrics](https://github.com/hawkular/hawkular-metrics) - [cassandra](http://cassandra.apache.org/)
+
+All those above components are put together with [origin-metics](https://github.com/openshift/origin-metrics).
+
+## Installation
 
 ### Modify [the inventory file](http://pastebin.test.redhat.com/503020)
 

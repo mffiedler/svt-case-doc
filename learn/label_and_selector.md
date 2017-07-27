@@ -2,8 +2,8 @@
 
 ## Doc
 
-[label&selector@k8s](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
-[openshift blog](https://blog.openshift.com/use-of-selectors-to-get-pods-on-desired-nodes/)
+* [label&selector@k8s](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+* [openshift blog](https://blog.openshift.com/use-of-selectors-to-get-pods-on-desired-nodes/)
 
 
 ## How to label and unlabel

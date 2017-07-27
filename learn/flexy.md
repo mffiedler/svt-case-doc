@@ -82,3 +82,7 @@ TODO: Add [new nodes section] into <code>/tmp/2.file</code>
 ```sh
 # ansible-playbook -i /tmp/3.file openshift-ansible/playbooks/byo/openshift-node/scaleup.yml 
 ```
+
+
+## Setup before/after tasks in Flexy
+TODO

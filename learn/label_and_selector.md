@@ -6,9 +6,14 @@
 [openshift blog](https://blog.openshift.com/use-of-selectors-to-get-pods-on-desired-nodes/)
 
 
+## How to label and unlabel
+
+TODO
+
 ## Apply to metrics
 
 ### Nodes
+Assume that we have 3 _infra_ nodes with different labels for each component of metrics:
 
 ```sh
 # oc get node -l region=infra --show-labels  
@@ -19,7 +24,8 @@ ip-172-31-11-29.us-west-2.compute.internal    Ready     6d        v1.6.1+5115d70
 ```
 
 
-Target
+### Target
+The target is to deplay metrics pods on the nodes with its own label:
 
 ```sh
 # oc get pods -o wide
@@ -29,6 +35,12 @@ hawkular-metrics-lj4rz       1/1       Running   0          28m       172.22.0.3
 heapster-9vvkh               1/1       Running   0          10m       172.21.0.224   ip-172-31-11-29.us-west-2.compute.internal
 ```
 
+### Node Selector
+Edit rc, for example heapter and add nodeSelector:
+
 ```sh
-# oc get node -l region=infra --show-labels  
+# oc get rc heapster -o yaml | grep -i dns -A3
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        metrics: heapster
 ```

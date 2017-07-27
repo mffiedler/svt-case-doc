@@ -7,6 +7,30 @@ Installation is performed on master.
 
 ### Modify [the inventory file](http://pastebin.test.redhat.com/501979)
 
+```sh
+[oo_first_master]
+ip-172-31-31-159
+
+[oo_first_master:vars]
+openshift_deployment_type=openshift-enterprise
+openshift_release=v3.6.0
+
+openshift_logging_install_logging=true
+openshift_logging_use_ops=false
+openshift_logging_master_url=https://ec2-34-223-225-62.us-west-2.compute.amazonaws.com:8443
+openshift_logging_master_public_url=https://ec2-34-223-225-62.us-west-2.compute.amazonaws.com:8443
+openshift_logging_kibana_hostname=kibana.0620-8i0.qe.rhcloud.com
+openshift_logging_namespace=logging
+openshift_logging_image_prefix=registry.ops.openshift.com/openshift3/
+openshift_logging_image_version=v3.6.116
+openshift_logging_es_pvc_dynamic=true
+openshift_logging_es_pvc_size=50Gi
+openshift_logging_fluentd_use_journal=true
+openshift_logging_use_mux=true
+openshift_logging_use_mux_client=true
+```
+
+
 * Update hostnames and openshift_logging_image_version to match your cluster
 * Upadte the subdomain for the kibana_hostname which can be found in master-config.yaml or in your flexy job output.
   It will be mmdd-xxx.qe.rhcloud.com.

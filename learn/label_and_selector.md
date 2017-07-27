@@ -1,12 +1,15 @@
 # Labels and Slector
 
+Labels can be added on any objects. The examples on this pages uses nodes.
+
 ## Doc
 
 * [label&selector@k8s](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+* [nodeSlector@k8s](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/)
 * [openshift blog](https://blog.openshift.com/use-of-selectors-to-get-pods-on-desired-nodes/)
 
 
-## How to add/update/remove labels on a node
+## [How to add/update/remove labels on a node](https://docs.openshift.com/enterprise/3.0/cli_reference/basic_cli_operations.html)
 We can use this command to edit node on the labels part:
 
 ```sh

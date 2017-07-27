@@ -88,7 +88,7 @@ CPU, Memory, Network, ...
 After ssh to that node:
 
 ```sh
-vi ~/svt/openshift_scalability/pbench-register.sh
+# vi ~/svt/openshift_scalability/pbench-register.sh
 pbench-register-tool --name=pprof -- --osecomponent=node
 ```
 

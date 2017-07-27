@@ -6,9 +6,30 @@
 * [openshift blog](https://blog.openshift.com/use-of-selectors-to-get-pods-on-desired-nodes/)
 
 
-## How to label and unlabel
+## How to label and unlabel a node
+We can use this command to edit node on the labels part:
 
-TODO
+```sh
+$ oc edit node/<nodename>
+metadata:
+  ...
+  labels:
+    region: primary
+    zone: east
+```
+
+### label
+
+``sh
+# oc label node <nodename> “key=value” [--overwrite]
+```
+
+### label
+
+``sh
+# oc label node <nodename> “key=''”
+```
+
 
 ## Apply to metrics
 

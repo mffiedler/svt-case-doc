@@ -6,7 +6,7 @@
 * [openshift blog](https://blog.openshift.com/use-of-selectors-to-get-pods-on-desired-nodes/)
 
 
-## How to label and unlabel a node
+## How to add/update/remove labels on a node
 We can use this command to edit node on the labels part:
 
 ```sh
@@ -18,18 +18,22 @@ metadata:
     zone: east
 ```
 
-### label
+### add
 
-``sh
-# oc label node <nodename> “key=value” [--overwrite]
+```sh
+# oc label node <nodename> “key=value”
+```
+### update
+
+```sh
+# oc label node <nodename> “key=value” --overwrite
 ```
 
-### label
+### remove
 
-``sh
+```sh
 # oc label node <nodename> “key=''”
 ```
-
 
 ## Apply to metrics
 

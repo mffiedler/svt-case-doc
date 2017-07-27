@@ -11,6 +11,7 @@
   [Flexy](flexy.md) (a RH interal Jenkins job) which builds a cluster on [EC2](../ec2/ec2.md).
 * [Quickstart](quickstart.md)
 * [Template](template.md)
+* [Label and Selector](label_and_selector.md)
 * [Storage](storage.md)
 * [Networking](networking.md)
 * [Etcd](etcd.md)

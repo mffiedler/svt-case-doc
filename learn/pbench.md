@@ -81,3 +81,16 @@ CPU, Memory, Network, ...
 
 
 ### [pprof](https://github.com/google/pprof)
+
+
+## Run pbench for one node only
+
+After ssh to that node:
+
+```sh
+vi ~/svt/openshift_scalability/pbench-register.sh
+pbench-register-tool --name=pprof -- --osecomponent=node
+```
+
+Note that the value of <code>--osecomponent</code> is either _master_ or _node_, up to the role
+of the node where we want to run pbench.

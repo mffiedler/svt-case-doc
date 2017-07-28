@@ -20,6 +20,14 @@ We can change it to the following value if installing
 
 <code>os_sdn_network_plugin_name="redhat/openshift-ovs-multitenant"</code>
 
+Checking on master config:
+
+```sh
+# grep "network" /etc/origin/master/master-config.yaml 
+networkConfig:
+  networkPluginName: redhat/openshift-ovs-multitenant
+```
+
 ### Router plugin
 
 Checking running router images:

@@ -42,6 +42,12 @@ Copy the inventory file and remove
 ["ansible-playbook", "-v", "-i", "/home/slave1/workspace/Launch Environment Flexy/workdir/OS1-install36-1-0/inv.ose34-aws-svt", "/home/slave1/workspace/Launch Environment Flexy/private-openshift-ansible/playbooks/byo/config.yml"]
 ```
 
+Checking points before running the following playbook:
+
+* hostnames, variables on them
+* subdomain
+* aws keys
+
 ```sh
 # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
 ```

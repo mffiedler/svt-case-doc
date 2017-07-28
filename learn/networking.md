@@ -3,6 +3,7 @@
 ## Doc
 
 * [networking](https://docs.openshift.org/latest/architecture/additional_concepts/networking.html)
+* [managing-network](https://docs.openshift.org/latest/admin_guide/managing_networking.html#admin-guide-networking-networkpolicy)
 * [routes](https://docs.openshift.org/latest/architecture/core_concepts/routes.html)
 * [router](https://docs.openshift.org/latest/install_config/router/index.html)
 * [service](https://docs.openshift.org/latest/architecture/core_concepts/pods_and_services.html#services)
@@ -84,6 +85,17 @@ More network interfaces like the following:
     link/ether 16:45:f0:1b:b2:c0 brd ff:ff:ff:ff:ff:ff link-netnsid 1
     inet6 fe80::1445:f0ff:fe1b:b2c0/64 scope link 
        valid_lft forever preferred_lft forever
+```
+
+## Functional cases (some)
+
+* [tcms 497542](https://tcms.engineering.redhat.com/case/497542/?from_plan=14587)
+* [tcms 499866](https://tcms.engineering.redhat.com/case/499866/?from_plan=14587)
+
+Use [this rc](rc_111.yaml) to create pods. Or [this one](https://raw.githubusercontent.com/openshift-qe/v3-testfiles/master/networking/list_for_pods.json).
+
+```sh
+# oc create -f /tmp/rc_111.yaml
 ```
 
 ## Reference

@@ -22,7 +22,12 @@ We can change it to the following value if installing
 
 ### Router plugin
 
-TODO
+Checking running router images:
+
+```sh
+# oc get pod router-1-mxsb0 -o yaml | grep image
+    image: registry.ops.openshift.com/openshift3/ose-haproxy-router:v3.6.153
+```
 
 ## [Network interfaces on AWS EC2 instances](https://docs.openshift.org/latest/architecture/additional_concepts/sdn.html)
 

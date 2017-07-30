@@ -41,6 +41,11 @@ root       1624   1557  0 16:32 pts/1    00:00:02 /tmp/etcd-download-test/etcd
 ```
 
 ## etcd@oc
+TODO
+
+### Check etcd endpoints on master-config
+
+### Explore data
 
 ## Reference
 

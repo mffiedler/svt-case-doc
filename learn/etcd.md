@@ -28,6 +28,12 @@ root       1624   1557  0 16:32 pts/1    00:00:02 /tmp/etcd-download-test/etcd
 # export ETCDCTL_API=3
 ```
 
+#### Get all revisions of a key
+
+```sh
+# ./etcdctl watch <key> --rev=2
+```
+
 ## Reference
 
 [1]. https://www.consul.io/intro/vs/zookeeper.html

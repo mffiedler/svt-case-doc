@@ -31,7 +31,13 @@ root       1624   1557  0 16:32 pts/1    00:00:02 /tmp/etcd-download-test/etcd
 #### Get all revisions of a key
 
 ```sh
-# ./etcdctl watch <key> --rev=2
+# etcdctl watch <key> --rev=2
+```
+
+#### Get the current revision of a key
+
+```sh
+# # ./etcdctl get <key> -w json 
 ```
 
 ## Reference

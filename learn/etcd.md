@@ -40,6 +40,12 @@ root       1624   1557  0 16:32 pts/1    00:00:02 /tmp/etcd-download-test/etcd
 # ./etcdctl get <key> -w json 
 ```
 
+### Get all k-v pairs
+
+```sh
+# ./etcdctl get "" --prefix=true
+```
+
 ## etcd@oc
 TODO
 

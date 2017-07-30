@@ -1,11 +1,13 @@
 # ETCD
 
-# Doc
+## Doc
 
 * [etcd on github](https://github.com/coreos/etcd)
+* similar tools: [1]
+
+## Intallation
 
 
-
-* Reference
+## Reference
 
 [1]. https://www.consul.io/intro/vs/zookeeper.html

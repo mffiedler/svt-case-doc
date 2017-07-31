@@ -91,6 +91,22 @@ API version: 3.1
 # ETCDCTL_API=3 etcdctl \
     ...
     get --prefix "/kubernetes.io/pod"
+
+# ETCDCTL_API=3 etcdctl get --prefix "/kubernetes.io/persistentvolumes/pvc-eccab6ae-7615-11e7-9c34-0202902b5cf8" --cacert="/etc/origin/master/master.etcd-ca.crt" --cert="/etc/origin/master/master.etcd-client.crt" --key="/etc/origin/master/master.etcd-client.key" --endpoints=[172.31.58.73:2379] --order="DESCEND" --sort-by="CREATE" --write-out="fields" --rev=0
+2017-07-31 13:56:54.368614 I | warning: ignoring ServerName for user-provided CA for backwards compatibility is deprecated
+"ClusterID" : 14841639068965178418
+"MemberID" : 10276657743932975437
+"Revision" : 10392
+"RaftTerm" : 2
+"Key" : "/kubernetes.io/persistentvolumes/pvc-eccab6ae-7615-11e7-9c34-0202902b5cf8"
+"CreateRevision" : 9588
+"ModRevision" : 9589
+"Version" : 2
+"Value" : "k8s\x00\n\x16\n\x02v1\x12\x10PersistentVolume\x12\x84\x05\n\xb4\x03\n(pvc-eccab6ae-7615-11e7-9c34-0202902b5cf8\x12\x00\x1a\x00\"B/api/v1/persistentvolumes/pvc-eccab6ae-7615-11e7-9c34-0202902b5cf8*$ee28db00-7615-11e7-9c34-0202902b5cf82\x008\x00B\b\b\xae\xd2\xfd\xcb\x05\x10\x00Z5\n(failure-domain.beta.kubernetes.io/region\x12\tus-west-2Z4\n&failure-domain.beta.kubernetes.io/zone\x12\nus-west-2bb6\n\x17kubernetes.io/createdby\x12\x1baws-ebs-dynamic-provisionerb+\n$pv.kubernetes.io/bound-by-controller\x12\x03yesb8\n\x1fpv.kubernetes.io/provisioned-by\x12\x15kubernetes.io/aws-ebsz\x00\x12\xbd\x01\n\x10\n\astorage\x12\x05\n\x031Gi\x124\x122\n&aws://us-west-2b/vol-0974854f00804c76e\x12\x04ext4\x18\x00 \x00\x1a\rReadWriteOnce\"W\n\x15PersistentVolumeClaim\x12\x03aaa\x1a\apvc-ebs\"$eccab6ae-7615-11e7-9c34-0202902b5cf8*\x02v12\x049585:\x00*\x06Delete2\x03gp2\x1a\v\n\x05Bound\x12\x00\x1a\x00\x1a\x00\"\x00"
+"Lease" : 0
+"More" : false
+"Count" : 1
+
 ```
 
 ## Reference

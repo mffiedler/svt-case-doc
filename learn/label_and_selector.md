@@ -113,5 +113,5 @@ my-service   my-service-aaa.54.214.91.134.xip.io             my-service   8080  
 root@ip-172-31-58-73: ~ # curl my-service-aaa.54.214.91.134.xip.io
 ```
 
-_Note_ that the curl command works in the public network and this shows that <code>xip.io<code> works too.
+_Note_ that the curl command works in the public network and this shows that <code>xip.io</code> works too.
 

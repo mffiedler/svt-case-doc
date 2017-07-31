@@ -1,4 +1,4 @@
-# Quotas
+# Quota
 
 # Doc
 

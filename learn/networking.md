@@ -93,7 +93,7 @@ More network interfaces like the following:
 * [tcms 499866](https://tcms.engineering.redhat.com/case/499866/?from_plan=14587)
 * [tcms 508109](https://tcms.engineering.redhat.com/case/508109/?from_plan=14587)
 
-Use [this rc](rc_111.yaml) to create pods. Or [this one](https://raw.githubusercontent.com/openshift-qe/v3-testfiles/master/networking/list_for_pods.json).
+Use [this rc](../files/rc_111.yaml) to create pods. Or [this one](https://raw.githubusercontent.com/openshift-qe/v3-testfiles/master/networking/list_for_pods.json).
 
 ```sh
 # oc create -f /tmp/rc_111.yaml

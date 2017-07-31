@@ -15,7 +15,7 @@ The output can be used as input for <code>oc create</code> command.
 # oc export all --as-template=aaa-project-template > aaa.project.template.yaml
 ```
 
-See [aaa.project.template.yaml](aaa.project.template.yaml).
+See [aaa.project.template.yaml](../files/aaa.project.template.yaml).
 
 ### Read the template
 
@@ -114,7 +114,7 @@ However, it does *not* create rc. I guess (did fiind supporting doc) it has depe
 
 ### Parameterized template
 
-The last section <code>parameters</code> in [aaa.rc.template.json](aaa.rc.template.json) is added manually. It gives the default value of variables in the templates. We can also use [oc command args](https://docs.openshift.org/latest/dev_guide/templates.html#templates-parameters) to override them.
+The last section <code>parameters</code> in [aaa.rc.template.json](../files/aaa.rc.template.json) is added manually. It gives the default value of variables in the templates. We can also use [oc command args](https://docs.openshift.org/latest/dev_guide/templates.html#templates-parameters) to override them.
 
 
 ### SVT

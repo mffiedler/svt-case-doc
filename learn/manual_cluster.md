@@ -23,6 +23,8 @@ The instance ids are in the return message. *Note that* <code>--image-id</code> 
 ### Get a subdomain
 Get a subdomain from [Dynect subdomain create](https://openshift-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/Dynect%20subdomain%20create/253/console) using parameters *ip of router*, "openshift", "v3"
 
+If _Dynect_ is not available, one alternative is to use [xip.io](http://xip.io/). If the node, usually infra node(s), public ip where the router of the cluster runs is <code>54.214.91.134</code>, then use <code>openshift_master_default_subdomain=54.214.91.134.xip.io</code> in inventory:
+
 ### Ansible configuration (Optional)
 
 1. edit /etc/ansible/ansible.cfg

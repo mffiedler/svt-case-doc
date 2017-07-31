@@ -72,3 +72,8 @@ Edit rc, for example heapter and add nodeSelector:
       nodeSelector:
         metrics: heapster
 ```
+
+
+## Link Service and pod
+
+### Deploy pod by rc

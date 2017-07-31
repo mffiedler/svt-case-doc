@@ -103,7 +103,7 @@ my-service   172.26.114.211   <none>        8080/TCP   14m
 
 _Note_ that the selector of the svc choose pods with the _same_ label to proxy.
 
-### Create route for the svc
+### Create route for the svc (optional)
 
 ```sh
 # oc expose service my-service
@@ -114,3 +114,4 @@ root@ip-172-31-58-73: ~ # curl my-service-aaa.54.214.91.134.xip.io
 ```
 
 _Note_ that the curl command works in the public network and this shows that <code>xip.io<code> works too.
+

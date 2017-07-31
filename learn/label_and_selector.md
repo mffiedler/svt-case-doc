@@ -77,3 +77,40 @@ Edit rc, for example heapter and add nodeSelector:
 ## Link Service and pod
 
 ### Deploy pod by rc
+Use [rc_test.yaml](../files/rc_test.yaml) to create pod, which uses <code>docker.io/hongkailiu/svt-go:http</code>
+images and create a web server.
+
+```sh
+# oc create -f /tmp/rc_test.yaml
+# oc get pods -o wide --show-labels
+NAME               READY     STATUS    RESTARTS   AGE       IP           NODE                                         LABELS
+frontend-1-kml0x   1/1       Running   0          45m       172.20.0.3   ip-172-31-4-190.us-west-2.compute.internal   name=frontend
+# curl 172.20.0.3:8080
+```
+
+_Note_ that label of pods is the value of the selector of the rc.
+
+### Deploy svc to proxy the above pod
+Use [svc_test.yaml](../files/svc_test.yaml) to create svc.
+
+```sh
+oc create -f /tmp/svc_test.yaml
+# oc get svc
+NAME         CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+my-service   172.26.114.211   <none>        8080/TCP   14m
+# curl 172.26.114.211:8080
+```
+
+_Note_ that the selector of the svc choose pods with the _same_ label to proxy.
+
+### Create route for the svc
+
+```sh
+# oc expose service my-service
+# oc get routes
+NAME         HOST/PORT                             PATH      SERVICES     PORT      TERMINATION   WILDCARD
+my-service   my-service-aaa.54.214.91.134.xip.io             my-service   8080                    None
+root@ip-172-31-58-73: ~ # curl my-service-aaa.54.214.91.134.xip.io
+```
+
+_Note_ that the curl command works in the public network and this shows that <code>xip.io<code> works too.

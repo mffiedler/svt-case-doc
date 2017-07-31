@@ -92,7 +92,9 @@ API version: 3.1
     ...
     get --prefix "/kubernetes.io/pod"
 
-# ETCDCTL_API=3 etcdctl get --prefix "/kubernetes.io/persistentvolumes/pvc-eccab6ae-7615-11e7-9c34-0202902b5cf8" --cacert="/etc/origin/master/master.etcd-ca.crt" --cert="/etc/origin/master/master.etcd-client.crt" --key="/etc/origin/master/master.etcd-client.key" --endpoints=[172.31.58.73:2379] --order="DESCEND" --sort-by="CREATE" --write-out="fields" --rev=0
+# ETCDCTL_API=3 etcdctl get \
+    ...
+    --prefix "/kubernetes.io/persistentvolumes/pvc-eccab6ae-7615-11e7-9c34-0202902b5cf8" --rev=0
 2017-07-31 13:56:54.368614 I | warning: ignoring ServerName for user-provided CA for backwards compatibility is deprecated
 "ClusterID" : 14841639068965178418
 "MemberID" : 10276657743932975437

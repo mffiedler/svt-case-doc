@@ -1,10 +1,12 @@
-# Quota
+# Quota and Limit
 
 ## Doc
 
 * [quota@oc](https://docs.openshift.org/latest/dev_guide/compute_resources.html)
 
-## View quotas
+## Quota
+
+### View quotas
 Use online starter:
 
 ```sh
@@ -14,4 +16,15 @@ NAME                          AGE
 compute-resources             45d
 compute-resources-timebound   45d
 object-counts                 45d
+```
+
+
+## Limit
+
+### View limits
+
+```sh
+$ oc get limits
+NAME              AGE
+resource-limits   45d
 ```

@@ -80,6 +80,8 @@ Eg,
 
 ```sh
 # python network-test.py podIP --master ip-172-31-62-96.us-west-2.compute.internal --pods 1
+# python network-test.py svcIP --master ip-172-31-62-96.us-west-2.compute.internal \
+    --node ip-172-31-54-185.us-west-2.compute.internal ip-172-31-16-99.us-west-2.compute.internal --pods 2
 ```
 
 Playbook <code>\<pod|node|svc\>-ip-test-setup.yaml</code> will be executed

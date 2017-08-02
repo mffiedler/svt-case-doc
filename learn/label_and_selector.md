@@ -115,3 +115,20 @@ root@ip-172-31-58-73: ~ # curl my-service-aaa.54.214.91.134.xip.io
 
 _Note_ that the curl command works in the public network and this shows that <code>xip.io</code> works too.
 
+## Take [registry-console](https://docs.openshift.org/latest/install_config/registry/deploy_registry_existing_clusters.html#registry-console) to infra node
+
+Flexy ensures the router and the docker-registry containers run on infra nodes while registry-console runs on one of the computing nodes. If we want to move it to infra-node, follow those steps:
+
+Add <code>nodeSelector</code> to <code>dc</code> after <code>dnsPolicy: ClusterFirst</code>:
+
+```sh
+# oc edit dc registry-console
+      ...
+      nodeSelector:
+        region: infra
+        zone: default
+
+```
+
+After saving the dc, a new _registry-console_ pod will be deployed automatcially which replaces the existing one.
+

@@ -38,11 +38,17 @@ LASTSEEN   FIRSTSEEN   COUNT     NAME           KIND                    SUBOBJEC
 1m         5m          17        uperf-sender   ReplicationController               Warning   FailedCreate   replication-controller   Error creating: pods "" is forbidden: pod node label selector conflicts with its project node label selector
 ```
 
-#### Schedulable master node
+#### Schedulable master node (This part is now in the bash wrapper)
 
 ```sh
 # oc edit node ip-172-31-62-96.us-west-2.compute.internal
     schedulable=true
+```
+
+or,
+
+```sh
+oc adm manage-node --schedulable=false ip-172-31-62-96.us-west-2.compute.internal
 ```
 
 ### Bash wrapper

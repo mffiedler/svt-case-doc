@@ -48,7 +48,7 @@ LASTSEEN   FIRSTSEEN   COUNT     NAME           KIND                    SUBOBJEC
 or,
 
 ```sh
-oc adm manage-node --schedulable=false ip-172-31-62-96.us-west-2.compute.internal
+oc adm manage-node --schedulable=true ip-172-31-62-96.us-west-2.compute.internal
 ```
 
 ### Bash wrapper

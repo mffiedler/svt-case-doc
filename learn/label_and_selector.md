@@ -1,4 +1,4 @@
-# Labels and Slector
+# Labels and Selectors
 
 Labels can be added on any objects. The examples on this pages uses nodes.
 

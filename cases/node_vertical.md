@@ -18,6 +18,8 @@ See [here](../learn/label_and_selector.md) for details.
 # cd svt/openshift_scalability/
 # ./cluster-loader.py -f config/nodeVertical.yaml
 ```
+Check if all-pods, 500 by default, are created and running without errors.
+
 Stop bench and copy its results as usually.
 
 ### pbench stats

@@ -132,3 +132,14 @@ Add <code>nodeSelector</code> to <code>dc</code> after <code>dnsPolicy: ClusterF
 
 After saving the dc, a new _registry-console_ pod will be deployed automatcially which replaces the existing one.
 
+Checking by with _registry-console_ in browser by _https_:
+```sh
+# oc get routes
+NAME               HOST/PORT                                          PATH      SERVICES           PORT      TERMINATION   WILDCARD
+registry-console   registry-console-default.0802-c92.qe.rhcloud.com             registry-console   <all>     passthrough   None
+```
+
+In this case, url is <code>https://registry-console-default.0802-c92.qe.rhcloud.com</code>.
+
+
+

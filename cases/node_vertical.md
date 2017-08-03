@@ -25,4 +25,4 @@ Stop bench and copy its results as usually.
 ### pbench stats
 Check for CPU and memory of the computing nodes.
 
-Here is an example of [pbench results](TODO).
+Here is an example of [pbench results](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-4-27/node-virt-a/).

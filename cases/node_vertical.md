@@ -10,6 +10,8 @@ Node vertical test is to test how many pods in a single project the cluster can 
 ### Move registry console to infra node (optional)
 See [here](../learn/label_and_selector.md) for details.
 
+Although this step is optional, it would be much faster if moving.
+
 ### [Start pbench](../learn/pbench.md)
 
 ### Run with [cluster_loader.py](https://github.com/openshift/svt/blob/master/openshift_scalability/README.md)

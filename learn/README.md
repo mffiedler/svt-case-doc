@@ -18,4 +18,5 @@
 * [Etcd](etcd.md)
 * [Aggreate logging](aggregate_logging.md)
 * [Metrics](metrics.md)
+* [Federation](federation.md)
 * [Test routine](test_routine.md)

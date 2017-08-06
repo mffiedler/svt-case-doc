@@ -100,4 +100,4 @@ It is used for creating a testing/client node where it is expected the run tests
 
 ### All-in-one
 
-Use [this var-template](http://git.app.eng.bos.redhat.com/git/openshift-misc.git/plain/v3-launch-templates/functionality-testing/aos-36/vars-aws/vars.ose36-rpm-rhel7-s3_registry-aws-all_in_one) and overwrite this variable <code>image: ocp-3.6.173.0.5-1-rhel-gold-auto</code>.
+Use [this var-template](http://git.app.eng.bos.redhat.com/git/openshift-misc.git/plain/v3-launch-templates/functionality-testing/aos-36/vars-aws/vars.ose36-rpm-rhel7-s3_registry-aws-all_in_one) and overwrite this variable <code>image: ocp-3.6.173.0.5-1-rhel-gold-auto</code>. Also note that we could use <code>auth_type: allowall</code> to allow all users to login on the web console.

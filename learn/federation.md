@@ -42,7 +42,7 @@ So the latest <code>image</code> is <code>registry.ops.openshift.com/openshift3/
 ## Initialize a federation control plane
 
 ```sh
-# #This command will return in about 2 mins. No panic need. ^_^
+# #This command will return in about 2 mins. No need to panic. ^_^
 # kubefed init myfed --dns-provider=aws-route53 --dns-zone-name=54.244.59.49.xip.io \
     --etcd-persistent-storage=true --image=registry.ops.openshift.com/openshift3/ose-federation:v3.6.173.0.5-1
 Federation API server is running at: a93b5b18e7b9d11e78f980239ac70231-715675010.us-west-2.elb.amazonaws.com

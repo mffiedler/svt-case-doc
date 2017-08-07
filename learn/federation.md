@@ -60,26 +60,23 @@ users:
     client-certificate-data: REDACTED
     client-key-data: REDACTED
 ...
+
 # #check project (federation-system) created 
-# oc get all -n federation-system
+# oc get all -n federation-system 
 NAME                              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-deploy/myfed-apiserver            1         1         1            1           2h
-deploy/myfed-controller-manager   1         1         1            1           2h
+deploy/myfed-apiserver            1         1         1            1           13m
+deploy/myfed-controller-manager   1         1         1            1           13m
 
-NAME                     HOST/PORT                                                   PATH      SERVICES          PORT      TERMINATION   WILDCARD
-routes/myfed-apiserver   myfed-apiserver-federation-system.0804-1xd.qe.rhcloud.com             myfed-apiserver   https                   None
-
-NAME                  CLUSTER-IP     EXTERNAL-IP        PORT(S)         AGE
-svc/myfed-apiserver   172.24.49.14   a3bfe90c37943...   443:32091/TCP   2h
+NAME                  CLUSTER-IP      EXTERNAL-IP        PORT(S)         AGE
+svc/myfed-apiserver   172.26.241.52   a93b5b18e7b9d...   443:31901/TCP   14m
 
 NAME                                     DESIRED   CURRENT   READY     AGE
-rs/myfed-apiserver-1486087934            1         1         1         1h
-rs/myfed-apiserver-427616395             0         0         0         2h
-rs/myfed-controller-manager-3358661013   1         1         1         2h
+rs/myfed-apiserver-427616395             1         1         1         13m
+rs/myfed-controller-manager-3914078672   1         1         1         13m
 
 NAME                                           READY     STATUS    RESTARTS   AGE
-po/myfed-apiserver-1486087934-6dd97            2/2       Running   0          1h
-po/myfed-controller-manager-3358661013-wj4lr   1/1       Running   0          2h
+po/myfed-apiserver-427616395-wkljq             2/2       Running   0          13m
+po/myfed-controller-manager-3914078672-ql54h   1/1       Running   2          13m
 
 ```
 

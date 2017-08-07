@@ -47,20 +47,7 @@ So the latest <code>image</code> is <code>registry.ops.openshift.com/openshift3/
     --etcd-persistent-storage=true --image=registry.ops.openshift.com/openshift3/ose-federation:v3.6.173.0.5-1
 Federation API server is running at: a93b5b18e7b9d11e78f980239ac70231-715675010.us-west-2.elb.amazonaws.com
 # #check created context (cluster: myfed) and user (name: myfed) by the above command
-# oc config view
-...
-- context:
-    cluster: myfed
-    user: myfed
-  name: myfed
-...
-users:
-- name: myfed
-  user:
-    client-certificate-data: REDACTED
-    client-key-data: REDACTED
-...
-
+# oc config get-contexts | grep myfed
 # #check project (federation-system) created 
 # oc get all -n federation-system 
 NAME                              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
@@ -120,7 +107,7 @@ On master of <code>cluster1</code>:
 # #change back to system:admin on cluster1
 # oc config use-context default/ip-172-31-11-86-us-west-2-compute-internal:8443/system:admin
 # #find out the name of context for redhat of cluster2
-# oc config view | grep redhat
+# # oc config get-contexts | grep redhat
 # export CLUSTER2_CONTEXT=default/ec2-54-201-8-244-us-west-2-compute-amazonaws-com:8443/redhat
 # kubefed join cluster2 --cluster-context=${CLUSTER2_CONTEXT} --host-cluster-context=${HOST_CONTEXT} --context=myfed
 cluster "cluster2" created

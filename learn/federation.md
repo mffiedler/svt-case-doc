@@ -60,7 +60,7 @@ users:
     client-certificate-data: REDACTED
     client-key-data: REDACTED
 ...
-# check project (federation-system) created 
+# #check project (federation-system) created 
 # oc get all -n federation-system
 NAME                              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 deploy/myfed-apiserver            1         1         1            1           2h

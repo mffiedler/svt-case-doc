@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: frontend-1
+  namespace: myfedproject
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: frontend
+  template:
+    metadata:
+      labels:
+        name: frontend
+    spec:
+      containers:
+      - image: docker.io/hongkailiu/svt-go:http
+        name: helloworld
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      restartPolicy: Always

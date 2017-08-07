@@ -94,7 +94,7 @@ _Note_ that label of pods is the value of the selector of the rc.
 Use [svc_test.yaml](../files/svc_test.yaml) to create svc.
 
 ```sh
-oc create -f /tmp/svc_test.yaml
+# oc create -f /tmp/svc_test.yaml
 # oc get svc
 NAME         CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
 my-service   172.26.114.211   <none>        8080/TCP   14m

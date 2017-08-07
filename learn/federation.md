@@ -116,22 +116,19 @@ TODO need to know how to create system:admin context. Some doc is [here](https:/
 On master of <code>cluster1</code>:
 
 ```sh
-# oc login https://ec2-54-190-19-72.us-west-2.compute.amazonaws.com:8443 --token=ueRzBrmTFkas9urDKkJztS2p1JjyfmMx2TUHAEdMp7U
-# # change back to system:admin on cluster2
+# oc login https://ec2-54-201-8-244.us-west-2.compute.amazonaws.com:8443 -u redhat -p <secret>
+# #change back to system:admin on cluster1
 # oc config use-context default/ip-172-31-11-86-us-west-2-compute-internal:8443/system:admin
-# # find out the name of context for redhat of cluster1
-# oc config view
-# export CLUSTER2_CONTEXT=default/ec2-54-190-19-72-us-west-2-compute-amazonaws-com:8443/redhat
+# #find out the name of context for redhat of cluster2
+# oc config view | grep redhat
+# export CLUSTER2_CONTEXT=default/ec2-54-201-8-244-us-west-2-compute-amazonaws-com:8443/redhat
 # kubefed join cluster2 --cluster-context=${CLUSTER2_CONTEXT} --host-cluster-context=${HOST_CONTEXT} --context=myfed
-```
-
-### Check cluster2
-
-```sh
+cluster "cluster2" created
+# #Check cluster2
 # oc get cluster --context=myfed
 NAME       STATUS    AGE
-cluster1   Ready     1h
-cluster2   Ready     28m
+cluster1   Ready     11m
+cluster2   Ready     48s
 
 ```
 

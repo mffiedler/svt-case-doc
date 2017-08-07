@@ -159,6 +159,11 @@ myfedproject
 myfedproject
 ...
 
+```
+
+#### Create pods with rs
+
+```sh
 # #seems that rc does not recognized, we use rs here
 # vi rs_test.yaml 
 apiVersion: extensions/v1beta1

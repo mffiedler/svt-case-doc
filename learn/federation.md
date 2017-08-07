@@ -212,3 +212,29 @@ Events:
   9m		9m		1	federated-replicaset-controller			Normal		CreateInCluster	Creating replicaset in cluster cluster2
 
 ```
+
+
+It shows that the rs is created on both cluster. However, _error_ for some reason showed in <code>Pods Status:	error in fetching pods: the server could not find the requested resource</code>. Actually, the pods are not saved as objects.
+
+```sh
+# kubectl get pod -n myfedproject --context=myfed
+the server doesn't have a resource type "pod"
+```
+
+But let us verify it, not using <code>--context=myfed</code>
+
+```sh
+# kubectl get all -n myfedproject 
+NAME            DESIRED   CURRENT   READY     AGE
+rs/frontend-1   1         1         1         16m
+
+NAME                  READY     STATUS    RESTARTS   AGE
+po/frontend-1-th9ws   1/1       Running   0          16m
+
+# kubectl get all -n myfedproject --context=default/ec2-54-201-8-244-us-west-2-compute-amazonaws-com:8443/redhat
+NAME            DESIRED   CURRENT   READY     AGE
+rs/frontend-1   1         1         1         18m
+
+NAME                  READY     STATUS    RESTARTS   AGE
+po/frontend-1-9rr8p   1/1       Running   0          18m
+```

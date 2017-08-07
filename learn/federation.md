@@ -13,7 +13,7 @@ It should be installed with openshift.
 /usr/bin/kubefed
 ```
 
-## Pull ose-federation image
+## Pull ose-federation image (optional)
 E.g.,
 
 ```sh
@@ -36,7 +36,7 @@ So the latest <code>image</code> is <code>registry.ops.openshift.com/openshift3/
 # kubectl config view --minify
 ```
 
-_The above command () did not return. After sometime, ctrl + c. It seems the expected results are created._
+_The above command (_kubefed init myfed_) did not return. After sometime, ctrl + c. It seems the expected results are created._
 
 ```sh
 # oc get all -n federation-system

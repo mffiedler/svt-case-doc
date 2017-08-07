@@ -42,13 +42,25 @@ So the latest <code>image</code> is <code>registry.ops.openshift.com/openshift3/
 ## Initialize a federation control plane
 
 ```sh
-# kubefed init myfed --dns-provider=aws-route53 --dns-zone-name=54.191.25.8.xip.io --etcd-persistent-storage=true --image=registry.ops.openshift.com/openshift3/ose-federation:v3.6.173.0.5-1
-# kubectl config view --minify
-```
-
-_The above command (_kubefed init myfed_) did not return. After sometime, ctrl + c. It seems the expected results are created._
-
-```sh
+# #This command will return in about 2 mins. No panic need. ^_^
+# kubefed init myfed --dns-provider=aws-route53 --dns-zone-name=54.244.59.49.xip.io \
+    --etcd-persistent-storage=true --image=registry.ops.openshift.com/openshift3/ose-federation:v3.6.173.0.5-1
+Federation API server is running at: a93b5b18e7b9d11e78f980239ac70231-715675010.us-west-2.elb.amazonaws.com
+# #check created context (cluster: myfed) and user (name: myfed) by the above command
+# oc config view
+...
+- context:
+    cluster: myfed
+    user: myfed
+  name: myfed
+...
+users:
+- name: myfed
+  user:
+    client-certificate-data: REDACTED
+    client-key-data: REDACTED
+...
+# check project (federation-system) created 
 # oc get all -n federation-system
 NAME                              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 deploy/myfed-apiserver            1         1         1            1           2h

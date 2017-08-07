@@ -2,6 +2,7 @@
 
 ## Doc
 * [federation@k8s](https://kubernetes.io/docs/tasks/federation/federation-service-discovery/)
+* [cli: kubefed](https://kubernetes.io/docs/admin/kubefed/)
 * Deshuai Ma: [GCE](https://github.com/mdshuai/tools/blob/master/k8s/docs/deploy-federation-gce.md) and [AWS](https://github.com/mdshuai/tools/blob/master/k8s/docs/deploy-federation-ec2.md)
 * [Kelsey Hightower](https://github.com/kelseyhightower/kubernetes-cluster-federation)
 

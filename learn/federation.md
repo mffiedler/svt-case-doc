@@ -95,17 +95,14 @@ po/myfed-controller-manager-3914078672-ql54h   1/1       Running   2          13
 ### Join cluster1
 
 ```sh
-# export CLUSTER1_CONTEXT=default/ip-172-31-11-86-us-west-2-compute-internal:8443/system:admin
+# export CLUSTER1_CONTEXT=default/ip-172-31-56-203-us-west-2-compute-internal:8443/system:admin
 # export HOST_CONTEXT=${CLUSTER1_CONTEXT}
 # kubefed join cluster1 --cluster-context=${CLUSTER1_CONTEXT} --host-cluster-context=${HOST_CONTEXT} --context=myfed
-```
-
-### Check cluster1
-
-```sh
+cluster "cluster1" created
+# #Check cluster1
 # oc get cluster --context=myfed
 NAME       STATUS    AGE
-cluster1   Ready     21s
+cluster1   Ready     56s
 
 ```
 

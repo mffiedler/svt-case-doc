@@ -5,7 +5,11 @@
 * Deshuai Ma: [GCE](https://github.com/mdshuai/tools/blob/master/k8s/docs/deploy-federation-gce.md) and [AWS](https://github.com/mdshuai/tools/blob/master/k8s/docs/deploy-federation-ec2.md)
 * [Kelsey Hightower](https://github.com/kelseyhightower/kubernetes-cluster-federation)
 
-## Check kubefed command
+## Prepare 2 clusters
+
+Get 2 all-in-one clusters by (Flexy](flexy.md). The following commands are executed by default on master of cluster 1 unless it says explicity otherwise.
+
+## Check kubefed command (optional)
 It should be installed with openshift.
 
 ```sh

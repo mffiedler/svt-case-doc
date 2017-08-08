@@ -12,6 +12,7 @@
 * [Quickstart](quickstart.md)
 * [Template](template.md)
 * [Label and Selector](label_and_selector.md)
+* [StatefulSet](stateful_set.md)
 * [Quota](quota.md)
 * [Storage](storage.md)
 * [Networking](networking.md)

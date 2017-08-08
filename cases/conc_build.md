@@ -37,10 +37,14 @@ They are in <code>/tmp</code> folder.
 
 #### [bz 1465325](https://bugzilla.redhat.com/show_bug.cgi?id=1465325)
 
-Env. 3.5 on EC2 with 80G IOPS:
+* Env. 3.5 on EC2 with 80G IOPS:
 
 |           | number | type       |
 |-----------|--------|------------|
 | master    | 1      | m4.xlarge  |
 | infra     | 1      | m4.2xlarge |
 | computing | 15     | m4.xlarge  |
+
+
+* Use PVC(io1) as [docker-registry](../learn/docker_registry.md) volume.
+

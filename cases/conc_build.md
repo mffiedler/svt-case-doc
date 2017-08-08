@@ -48,5 +48,6 @@ They are in <code>/tmp</code> folder.
 
 * Use PVC(io1) as [docker-registry](../learn/docker_registry.md) volume.
 * Parameters:
-  * round1
+  * round1 (warm-up): app=phpcake; project/concurrent_build=45; n/iteration=25;
+  * round2 (bug-verification): app=phpcake; project/concurrent_build=300; n/iteration=50 and 100;
 

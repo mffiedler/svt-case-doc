@@ -34,7 +34,16 @@ Use [registry_secret.yaml](../files/registry_secret.yaml)
 ```
 
 ### Set filesystem threads limit (Optional)
+[src](https://github.com/openshift/origin/blob/master/vendor/github.com/docker/distribution/registry/storage/driver/filesystem/driver.go#L24)
 
 ```sh
 oc env dc/docker-registry REGISTRY_STORAGE_FILESYSTEM_MAXTHREADS=100
+```
+### Check if the volume is being used
+After using docker registry, eg, deployment of pods, run
+
+```sh
+# oc exec docker-registry-5-3skdd -- ls /registry                                          
+docker
+
 ```

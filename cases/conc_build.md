@@ -47,4 +47,6 @@ They are in <code>/tmp</code> folder.
 
 
 * Use PVC(io1) as [docker-registry](../learn/docker_registry.md) volume.
+* Parameters:
+  * round1
 

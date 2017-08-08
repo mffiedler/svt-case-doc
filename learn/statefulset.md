@@ -1,4 +1,4 @@
-# Stateful Application
+# StatefulSets
 
 ## Doc
 

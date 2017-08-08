@@ -1,7 +1,8 @@
 # Docker Registry
 
 ## Doc
-TODO
+
+* [Deploying a Registry on Existing Clusters](https://docs.openshift.com/container-platform/3.5/install_config/registry/deploy_registry_existing_clusters.html)
 
 ## Use filesystem driver for docker-registry
 

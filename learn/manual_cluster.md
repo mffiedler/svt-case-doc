@@ -15,7 +15,11 @@ Check the new version ([Firefox setup](https://engineering.redhat.com/trac/Libra
 Launch 4 instances of m4.xlarge type based on AMI eg, ocp-3.6.151-1-gold-auto using [aws-cli](ec2.md).
 
 ```sh
-$ (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-f2d3cd8b --security-group-ids sg-5c5ace38 --count 4 --instance-type m4.xlarge --key-name id_rsa_perf --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\", \"Ebs\":{\"VolumeSize\": 60}}]"
+$ (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-7b26c103 \
+    --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.xlarge --key-name id_rsa_perf \
+    --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\", \"Ebs\":{\"VolumeSize\": 60}}]" \
+    --query 'Instances[*].InstanceId' \
+    --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-test\"}]}]"
 ```
 
 The instance ids are in the return message. *Note that* <code>--image-id</code> is the AMI id and the value of <code>--image-id</code> is _the default group id_.

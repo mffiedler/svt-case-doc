@@ -32,3 +32,14 @@ Wait at most for 2 mins, the log folders in <code>/tmp</code> folder should be c
 ## log collection
 
 They are in <code>/tmp</code> folder.
+
+### Bz (Internal)
+
+#### [bz 1465325](https://bugzilla.redhat.com/show_bug.cgi?id=1465325)
+
+Env. 3.5 on EC2 with 80G IOPS
+|           | number | type       |
+|-----------|--------|------------|
+| master    | 1      | m4.xlarge  |
+| infra     | 1      | m4.2xlarge |
+| computing | 15     | m4.xlarge  |

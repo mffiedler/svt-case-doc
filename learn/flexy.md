@@ -103,3 +103,13 @@ It is used for creating a testing/client node where it is expected the run tests
 Use [this var-template](http://git.app.eng.bos.redhat.com/git/openshift-misc.git/plain/v3-launch-templates/functionality-testing/aos-36/vars-aws/vars.ose36-rpm-rhel7-s3_registry-aws-all_in_one) and overwrite this variable <code>image: ocp-3.6.173.0.5-1-rhel-gold-auto</code>. Also note that we could use <code>auth_type: allowall</code> to allow all users to login on the web console.
 
 Note that the above env. seems not working for [federation](federation.md) and aws config is not configured and etcd service is not available. However, objects can be created without problems. It is required to test further this env.
+
+### Cluster version 3.5
+
+* Use [parameter template for version 3.5](http://git.app.eng.bos.redhat.com/git/openshift-misc.git/plain/v3-launch-templates/system-testing/aos-35/aws/vars.ose35-aws-svt.yaml)
+* <code>LAUNCHER_VARS</code>
+
+```
+aos_ansible_vars:
+  aos_repo: https://mirror.openshift.com/enterprise/enterprise-3.5/latest/RH7-RHAOS-3.5/x86_64/os
+```

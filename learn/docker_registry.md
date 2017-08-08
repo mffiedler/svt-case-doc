@@ -6,53 +6,35 @@
 
 ## Use filesystem driver for docker-registry
 
+### Check the current setting (Optional)
+
+```sh
+# oc exec docker-registry-5-3skdd -- cat /etc/registryconfig/config.yml
+```
+
+
 ### Create PVC for registry (assumes AWS dynamic provisioning)
 Use [registry_pvc.yaml](../files/registry_pvc.yaml): 
 
 ```sh
 # oc create -f registry_pvc.yaml 
 # oc get pvc
-# oc volume deploymentconfigs/docker-registry --add --name=registry-storage -t pvc --claim-name=registry --overwrite
+# oc get pv
+# oc volume deploymentconfigs/docker-registry --add --name=registry-storage -t pvc \
+    --claim-name=registry --overwrite -m /registry
 ```
 
 ### Configure docker-registry to use filesystem
+Use [registry_secret.yaml](../files/registry_secret.yaml)
 
 ```sh
-# vi /root/config.yml:
-version: 0.1
-log:
-  level: debug
-http:
-  addr: :5000
-storage:
-  delete:
-    enabled: true
-  cache:
-    blobdescriptor: inmemory
-  filesystem:
-    rootdirectory: /registry
-auth:
-  openshift:
-    realm: openshift
-middleware:
-  registry:
-  - name: openshift
-  repository:
-  - name: openshift
-    options:
-      pullthrough: True
-      acceptschema2: False
-      enforcequota: False
-  storage:
-  - name: openshift
-
-# oc secrets new dockerregistry /root/config.yml
+# oc secrets new dockerregistry registry_secret.yaml
 # oc volume dc/docker-registry --add --name=dockersecrets -m /etc/registryconfig --type=secret --secret-name=dockerregistry
-# oc env dc/docker-registry REGISTRY_CONFIGURATION_PATH=/etc/registryconfig/config.yml
+# oc env dc/docker-registry REGISTRY_CONFIGURATION_PATH=/etc/registryconfig/registry_secret.yaml
 ```
 
 ### Set filesystem threads limit (Optional)
 
 ```sh
-oc env dc/docker-registry REGISTRY_STORAGE_FILESYSTEM_MAXTHREADS=150
+oc env dc/docker-registry REGISTRY_STORAGE_FILESYSTEM_MAXTHREADS=100
 ```

@@ -9,9 +9,10 @@
 ### Check the current setting (Optional)
 
 ```sh
-# oc exec docker-registry-5-3skdd -- cat /etc/registryconfig/config.yml
+# oc exec docker-registry-5-3skdd -- cat /etc/registry/config.yml
 ```
 
+Note that <code>storage.s3</code> section shows that it uses aws-s3 as storage.
 
 ### Create PVC for registry (assumes AWS dynamic provisioning)
 Use [registry_pvc.yaml](../files/registry_pvc.yaml): 

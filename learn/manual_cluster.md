@@ -53,11 +53,11 @@ _Hint_: In the output of Jenkins build, search for *playbook*. The inventory fil
 
 2. config
 
-Checking points before running the following playbook:
+    Checking points before running the following playbook:
 
-* hostnames, variables on them
-* subdomain
-* aws keys
+    * hostnames, variables on them
+    * subdomain
+    * aws keys
 
     ```sh
     # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml

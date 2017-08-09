@@ -47,9 +47,9 @@ _Hint_: In the output of Jenkins build, search for *playbook*. The inventory fil
 
 1. aws_install_prep (optional if based on gold-AMI)
 
-```sh
-# ansible-playbook -i /tmp/1.file aos-ansible/playbooks/aws_install_prep.yml
-```
+    ```sh
+    # ansible-playbook -i /tmp/1.file aos-ansible/playbooks/aws_install_prep.yml
+    ```
 
 2. config
 
@@ -59,9 +59,9 @@ Checking points before running the following playbook:
 * subdomain
 * aws keys
 
-```sh
-# ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
-```
+    ```sh
+    # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
+    ```
 
 ## Create all-in-one cluster
 

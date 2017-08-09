@@ -22,34 +22,14 @@ Follow the [steps](manual_cluster.md) to create a cluster manually if flexy is n
 
 ### Flexy failed to run playbooks
 
-We can rerun the 2 playbooks on master node. In the output of Jenkins build, search for *playbook*. The inventory file is printed out too.
-Copy the inventory file and remove
-<code>ansible_user=root ansible_ssh_user=root ansible_ssh_private_key_file="/home/slave1/workspace/Launch Environment Flexy/private/config/keys/id_rsa_perf"</code>
-
-1. aws_install_prep (optional if based on gold-AMI)
+The commands to rerun the playbooks are [here](manual_cluster.md) using the inventory files in the output of Jenkins build output.
 
 ```
 ["ansible-playbook", "-v", "-i", "/home/slave1/workspace/Launch Environment Flexy/workdir/OS1-install36-1-0/inventory.aos-ansible", "/home/slave1/workspace/Launch Environment Flexy/private-aos-ansible/playbooks/aws_install_prep.yml"]
 ```
 
-```sh
-# ansible-playbook -i /tmp/1.file aos-ansible/playbooks/aws_install_prep.yml
-```
-
-2. config
-
 ```
 ["ansible-playbook", "-v", "-i", "/home/slave1/workspace/Launch Environment Flexy/workdir/OS1-install36-1-0/inv.ose34-aws-svt", "/home/slave1/workspace/Launch Environment Flexy/private-openshift-ansible/playbooks/byo/config.yml"]
-```
-
-Checking points before running the following playbook:
-
-* hostnames, variables on them
-* subdomain
-* aws keys
-
-```sh
-# ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
 ```
 
 ### Failed on some ansible task

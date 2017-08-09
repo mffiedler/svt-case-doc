@@ -1,0 +1,10 @@
+---
+- name: Show keywords
+  debug: msg="image_keyword is {{ item }}"
+  with_items: "{{ keywords }}"
+
+- name: Clean docker images accroding to keywords
+  shell: docker images | grep "{{ item }}" | awk {'print $3'} | while read i; do docker rmi $i; done
+  with_items: "{{ keywords }}"
+  register: clean_docker_image_result
+

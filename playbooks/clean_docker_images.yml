@@ -1,0 +1,11 @@
+---
+- name: Deploy an nfs server via pod and provide it as a service
+  hosts: computing_nodes
+  remote_user: root
+
+  roles:
+    - clean_docker_images
+  vars:
+      keywords:
+        - 'cakephp'
+        - 'nodejs'

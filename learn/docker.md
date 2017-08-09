@@ -79,5 +79,5 @@ Observations (contd):
 * <code>LV Creation host</code> is not even the current host, it must be the host to create AMI.
 
 TODO
-* Who create that VG _docker_vg_?
-* How does docker knows which VG to use?
+* Who created that VG _docker_vg_?
+* How did docker know which VG to use?

@@ -49,3 +49,20 @@ Create <code>/tmp/1.file</code> and <code>/tmp/2.file</code> and modify the foll
 ```
 
 The commands to run the playbooks are [here](flexy.md).
+
+## Create all-in-one cluster
+
+After create 1 node using _aws-cli_, modify <code>2.file</code> with additional checking points:
+
+* router and docker-registry with <code>default</code> zone instead of infra.
+* enable master node schedulable
+
+```
+[nodes]
+...
+openshift_registry_selector="region=primary,zone=default"
+openshift_hosted_router_selector="region=primary,zone=default"
+...
+ec2-54-187-182-161.us-west-2.compute.amazonaws.com ansible_user=root ansible_ssh_user=root openshift_public_hostname=ec2-54-187-182-161.us-west-2.compute.amazonaws.com openshift_node_labels="{'region': 'primary', 'zone': 'default'}" openshift_schedulable=true
+...
+```

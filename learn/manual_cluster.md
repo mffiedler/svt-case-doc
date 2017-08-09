@@ -25,7 +25,7 @@ $ (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-7b26
 The instance ids are in the return message. *Note that* <code>--image-id</code> is the AMI id and the value of <code>--image-id</code> is _the default group id_.
 
 ### Get a subdomain
-Get a subdomain from [Dynect subdomain create](https://openshift-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/Dynect%20subdomain%20create/253/console) using parameters *ip of router*, "openshift", "v3"
+Get a subdomain, eg, <code>0718-wo2.qe.rhcloud.com</code>, from [Dynect subdomain create](https://openshift-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/Dynect%20subdomain%20create/253/console) using parameters *ip of router*, "openshift", "v3"
 
 If _Dynect_ is not available, one alternative is to use [xip.io](http://xip.io/). If the node, usually infra node(s), public ip where the router of the cluster runs is <code>54.214.91.134</code>, then use <code>openshift_master_default_subdomain=54.214.91.134.xip.io</code> in inventory:
 
@@ -41,14 +41,27 @@ If _Dynect_ is not available, one alternative is to use [xip.io](http://xip.io/)
   ```
 
 ### Create inventory file and run playbook
-Create <code>/tmp/1.file</code> and <code>/tmp/2.file</code> and modify the following value in <code>2.file</code>:
+Run the 2 playbooks on master node. 
+
+_Hint_: In the output of Jenkins build, search for *playbook*. The inventory file is printed out too. Copy the inventory file and remove <code>ansible_user=root ansible_ssh_user=root ansible_ssh_private_key_file="/home/slave1/workspace/Launch Environment Flexy/private/config/keys/id_rsa_perf"</code>.
+
+1. aws_install_prep (optional if based on gold-AMI)
 
 ```sh
-#openshift_master_default_subdomain_enable=true
-#openshift_master_default_subdomain=0718-wo2.qe.rhcloud.com
+# ansible-playbook -i /tmp/1.file aos-ansible/playbooks/aws_install_prep.yml
 ```
 
-The commands to run the playbooks are [here](flexy.md).
+2. config
+
+Checking points before running the following playbook:
+
+* hostnames, variables on them
+* subdomain
+* aws keys
+
+```sh
+# ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
+```
 
 ## Create all-in-one cluster
 

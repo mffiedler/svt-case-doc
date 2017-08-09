@@ -106,7 +106,7 @@ Use [this var-template](http://git.app.eng.bos.redhat.com/git/openshift-misc.git
 Note that the above env. seems not working for [federation](federation.md) and aws config is not configured and etcd service is not available. However, objects can be created without problems. It is required to test further this env.
 
 #### Manual cluster
-Check [here](manual_steps.md).
+Check [here](manual_cluster.md).
 
 ### Cluster version 3.5
 

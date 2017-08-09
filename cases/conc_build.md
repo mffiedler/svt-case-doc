@@ -29,6 +29,8 @@ Wait at most for 2 mins, the log folders in <code>/tmp</code> folder should be c
 # nohup bash -x ./conc_builds.sh > /tmp/log.aaa.txt &
 ```
 
+If docker runs out of space, run [this playbook](https://github.com/hongkailiu/svt-case-doc/tree/master/playbooks) to clean up.
+
 ## log collection
 
 They are in <code>/tmp</code> folder.
@@ -44,7 +46,7 @@ They are in <code>/tmp</code> folder.
 | master    | 1      | m4.2xlarge |
 | etcd      | 1      | m4.xlarge  |
 | infra     | 1      | m4.2xlarge |
-| computing | 15     | m4.xlarge  |
+| computing | 20     | m4.xlarge  |
 
 
 * Use PVC(io1) as [docker-registry](../learn/docker_registry.md) volume.

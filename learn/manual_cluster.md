@@ -66,3 +66,4 @@ openshift_hosted_router_selector="region=primary,zone=default"
 ec2-54-187-182-161.us-west-2.compute.amazonaws.com ansible_user=root ansible_ssh_user=root openshift_public_hostname=ec2-54-187-182-161.us-west-2.compute.amazonaws.com openshift_node_labels="{'region': 'primary', 'zone': 'default'}" openshift_schedulable=true
 ...
 ```
+Then run the 2nd playbook.

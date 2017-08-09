@@ -41,13 +41,15 @@ They are in <code>/tmp</code> folder.
 
 |           | number | type       |
 |-----------|--------|------------|
-| master    | 1      | m4.xlarge  |
+| master    | 1      | m4.2xlarge |
+| etcd      | 1      | m4.xlarge  |
 | infra     | 1      | m4.2xlarge |
 | computing | 15     | m4.xlarge  |
 
 
 * Use PVC(io1) as [docker-registry](../learn/docker_registry.md) volume.
 * Parameters:
-  * round1 (warm-up): app=phpcake; project/concurrent_build=45; n/iteration=25;
-  * round2 (bug-verification): app=phpcake; project/concurrent_build=300; n/iteration=50 and 100;
+  * round1 (warm-up): app=phpcake; project/concurrent_build=60; n/iteration=50;
+  * round2 (bug-verification): app=phpcake; project/concurrent_build=300; n/iteration=50 or 100;
 
+[Result](http://file.rdu.redhat.com/~hongkliu/test_result/20170809.conc.build/).

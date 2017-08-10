@@ -175,7 +175,8 @@ spec:
 persistentvolumeclaim "pvc-nfs" created
 # oc get pvc
 NAME      STATUS    VOLUME    CAPACITY   ACCESSMODES   STORAGECLASS   AGE
-pvc-nfs   Pending                                      mynfs          7m
+pvc-nfs   Bound     pv-nfs    5Gi        RWX           mynfs          13m
+
 ```
 
 

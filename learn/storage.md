@@ -6,6 +6,7 @@
 * [Configure](https://docs.openshift.org/latest/install_config/persistent_storage/index.html)
 * [Examples](https://docs.openshift.org/latest/install_config/storage_examples/index.html)
 * [Storage@k8s](https://kubernetes.io/docs/concepts/storage/volumes/)
+* [AccessMode](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) for different storage providers
 
 
 ## Flexy and AWS

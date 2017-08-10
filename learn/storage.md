@@ -100,7 +100,9 @@ In the test cases [1], a service supported by a pod provides the NFS server.
 ```sh
 # oc delete project svt-test-nfs
 # oc delete scc super-svt-test-nfs
-# ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i "<master_host>," --private-key ~/.ssh/id_rsa_perf playbooks/nfs_via_pod.yml
+# ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i "<master_host>," \
+    --private-key ~/.ssh/id_rsa_perf playbooks/nfs_via_pod.yml
+# oc project svt-test-nfs
 ```
 
 ### [create NFS storageclass](https://docs.openshift.org/latest/install_config/storage_examples/storage_classes_legacy.html)

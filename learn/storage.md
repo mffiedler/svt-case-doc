@@ -105,6 +105,8 @@ In the test cases [1], a service supported by a pod provides the NFS server.
 # oc project svt-test-nfs
 ```
 
+The playbook will copy the object files used below into the tempfolder.
+
 ### [create NFS storageclass](https://docs.openshift.org/latest/install_config/storage_examples/storage_classes_legacy.html)
 
 Because <code>StorageClass</code> is set to [default](https://docs.openshift.org/latest/architecture/additional_concepts/storage.html#pvc-storage-class), let us set another one for NFS volume.
@@ -161,11 +163,9 @@ kind: "PersistentVolumeClaim"
 apiVersion: "v1"
 metadata:
   name: "pvc-nfs"
-  annotations:
-    volume.alpha.kubernetes.io/storage-class: "mynfs"
 spec:
   accessModes:
-    - "ReadWriteOnce"
+    - "ReadWriteMany"
   resources:
     requests:
       storage: "1Gi"
@@ -178,7 +178,11 @@ NAME      STATUS    VOLUME    CAPACITY   ACCESSMODES   STORAGECLASS   AGE
 pvc-nfs   Pending                                      mynfs          7m
 ```
 
-*Error*: status is *PENDING*.
+
+If status is *PENDING*, then check those:
+
+* Remove this: <code>annotations.volume.alpha.kubernetes.io/storage-class: "mynfs"</code>
+* The PV and PVC have to have the same <code>accessModes</code>
 
 
 ## Reference

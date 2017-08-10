@@ -6,6 +6,12 @@
 * [stateful-app@k8s](https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/)
 * [stateful-example@oc](https://github.com/openshift/origin/tree/master/examples/statefulsets)
 
+## Usage
+
+* Fixed network identity
+* Fixed storage
+* Order start/termination order
+
 ## Practice stateful app in OC cluster
 Run the following command if we use examples () from the above k8s doc:
 

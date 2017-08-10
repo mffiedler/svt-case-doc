@@ -182,7 +182,7 @@ pvc-nfs   Bound     pv-nfs    5Gi        RWX           mynfs          13m
 
 If status is *PENDING*, then check those:
 
-* Remove this: <code>annotations.volume.alpha.kubernetes.io/storage-class: "mynfs"</code>
+* Remove this: <code>metadata.annotations.volume.alpha.kubernetes.io/storage-class: "mynfs"</code>
 * The PV and PVC have to have the same <code>accessModes</code>
 
 

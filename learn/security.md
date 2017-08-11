@@ -6,4 +6,5 @@
 * [Dan Walsh's Blog](http://danwalsh.livejournal.com/76358.html)
 * [sc@k8s](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
 * [secure-k8s](https://blog.openshift.com/securing-kubernetes/)
+* [sa&scc-blog](https://blog.openshift.com/understanding-service-accounts-sccs/)
 * oc: [authentication](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/authentication.html) and [authorization](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/authorization.html)

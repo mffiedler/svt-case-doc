@@ -26,6 +26,7 @@ Note that the following command did not work yet in the test:
 statefulset "web" not patched
 ```
 
-Test is done till <code>Staging an Update<code> section. Leave the rest as TODO for the moment.
+Test is done till <code>Staging an Update</code> section. Leave the rest as TODO for the moment.
 
 ## Use oc template
+Here we use probably a more realistic example: 2 replicas in <code>statefulset</code> share volumes.

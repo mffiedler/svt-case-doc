@@ -1,4 +1,5 @@
 # EC2
+[ec2 instance types](https://aws.amazon.com/ec2/instance-types/)
 
 ## Install [aws cli](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
 
@@ -29,6 +30,16 @@ config  credentials
 ```
 
 ## [Cli tutorial](http://docs.aws.amazon.com/cli/latest/userguide/tutorial-ec2-ubuntu.html)
+
+### Standard RHEL 7.3
+
+```sh
+aws ec2 run-instances --image-id ami-b55a51cc \
+    --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.large --key-name id_rsa_perf \
+    --subnet subnet-4879292d \
+    --query 'Instances[*].InstanceId' \
+    --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-rhel73-test\"}]}]"
+```
 
 ### Useful commands
 

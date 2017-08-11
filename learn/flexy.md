@@ -47,12 +47,29 @@ Click on the output of Jenkins build.
 ```sh
 $ ssh -i ~/.ssh/libra.pem root@<slave_ip>
 ```
-
-## IOPS volumes for instances
+## Control size of volumes for instances
 
 <code>${CUCUSHIFT_CONFIG}</code>
 
-```   ...
+### EBS volumes
+
+```
+...
+      block_device_mappings:
+      - device_name: /dev/sda1
+        ebs:
+          volume_size: 50
+          volume_type: gp2
+      - device_name: /dev/sdb
+        ebs:
+          volume_size: 300
+          volume_type: gp2
+```
+
+### IOPS volumes
+
+```
+...
       instance_type: m4.xlarge
       block_device_mappings:
       - device_name: /dev/sdb

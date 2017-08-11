@@ -91,5 +91,5 @@ _Note_ that Only two things different:
 * Size of <code>Data Space Available</code>
 * Lists of <code>Registry</code> and <code>Insecure Registries</code>
 
-
+This probably implies that the VG is created in AMI.
 

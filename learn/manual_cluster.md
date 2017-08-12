@@ -65,6 +65,15 @@ _Hint_: In the output of Jenkins build, search for *playbook*. The inventory fil
 
 ## Create all-in-one cluster
 
+```sh
+(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-6ca0ba15 --security-group-ids sg-5c5ace38 \
+    --count 1 --instance-type m4.xlarge --key-name id_rsa_perf --subnet subnet-4879292d  \
+    --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\", \"Ebs\":{\"VolumeSize\": 30}}]" \
+    --query 'Instances[*].InstanceId'  \
+    --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-all-in-one-test\"}]}]"
+    
+```
+
 After create 1 node using _aws-cli_, modify <code>2.file</code> with additional checking points:
 
 * router and docker-registry with <code>default</code> zone instead of infra.

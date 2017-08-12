@@ -8,3 +8,9 @@
 * [secure-k8s](https://blog.openshift.com/securing-kubernetes/)
 * [sa&scc-blog](https://blog.openshift.com/understanding-service-accounts-sccs/)
 * oc: [authentication](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/authentication.html) and [authorization](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/authorization.html)
+
+## Task A: Why cannot we deploy Nginx pod?
+
+
+
+## Task B: Why cannot Jenkens pod have access to PVC?

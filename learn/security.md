@@ -12,6 +12,9 @@ In order to solve the tasks listed below, read doc:
 * [sa&scc-blog](https://blog.openshift.com/understanding-service-accounts-sccs/)
 
 
+## Concept list
+user, group, rule, role, binding, policy, scc, sa.
+
 ## SCC
 
 SCC defines what a pod can do. Those 7 SCCs come out of the box (_restricted_ is default):

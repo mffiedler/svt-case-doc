@@ -29,6 +29,17 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]
 ```
 
+## SA
+```sh
+# oc get sa
+NAME       SECRETS   AGE
+builder    2         14h
+default    3         14h
+deployer   2         14h
+registry   4         14h
+router     2         14h
+```
+
 ## Task A: Why cannot we deploy Nginx pod?
 
 

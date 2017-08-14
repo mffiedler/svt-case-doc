@@ -57,3 +57,4 @@ are used. Seems NOT necessary to clone the origin repo either.
     -p -nodes 5  /usr/libexec/atomic-openshift/extended.test
 ```
 
+[Result](https://privatebin-it-iso.int.open.paas.redhat.com/?dd85b89ee13029d5#pD+2daSQU+xA+D7mDPK8WGoAIPB2u1X0eINqr1PruGQ=) on Aug 2017.

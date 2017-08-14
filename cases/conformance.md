@@ -39,6 +39,36 @@ Description : Origin Test Suite
 
 ```
 
+### Go and [ginkgo](http://onsi.github.io/ginkgo/)
+
+Go is installed as well.
+
+Check go env:
+
+```sh
+# go version
+go version go1.8.3 linux/amd64
+# which go
+/usr/bin/go
+# ll /usr/bin/go
+lrwxrwxrwx. 1 root root 20 Jul 28 00:06 /usr/bin/go -> /etc/alternatives/go
+# alternatives --display go
+go - status is auto.
+ link currently points to /usr/lib/golang/bin/go
+/usr/lib/golang/bin/go - priority 90
+ slave gofmt: /usr/lib/golang/bin/gofmt
+Current `best' version is /usr/lib/golang/bin/go.
+```
+
+Install [ginkgo](http://onsi.github.io/ginkgo/):
+
+```sh
+go get github.com/onsi/ginkgo/ginkgo
+```
+
+The code of ginkgo will be downloaded into <code>${GOPATH}</code>, by default, <code>$HOME/go</code>.
+
+
 ### Enable master schedulable
 
 ```sh

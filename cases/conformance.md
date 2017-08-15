@@ -166,7 +166,10 @@ Test Suite Failed
 Let us rerun only one failed test above:
 
 ```sh
-# KUBECONFIG=/etc/origin/master/admin.kubeconfig     TEST_REPORT_DIR=/tmp TEST_REPORT_FILE_NAME=svt-parallel     go/bin/ginkgo -v --focus="should propagate requested groups to the docker host config" /usr/libexec/atomic-openshift/extended.test
+# KUBECONFIG=/etc/origin/master/admin.kubeconfig \
+    TEST_REPORT_DIR=/tmp TEST_REPORT_FILE_NAME=svt-parallel go/bin/ginkgo -v \
+    --focus="should propagate requested groups to the docker host config" \
+    /usr/libexec/atomic-openshift/extended.test
 ```
 
 where <code>--focus="should propagate requested groups to the docker host config"</code> is to focus one test with regex.

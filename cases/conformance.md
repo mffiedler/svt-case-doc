@@ -160,3 +160,15 @@ FAIL! -- 201 Passed | 2 Failed | 0 Pending | 663 Skipped
 Ginkgo ran 1 suite in 24m45.160400436s
 Test Suite Failed
 ```
+
+## Debug
+
+Let us rerun only one failed test above:
+
+```sh
+# KUBECONFIG=/etc/origin/master/admin.kubeconfig     TEST_REPORT_DIR=/tmp TEST_REPORT_FILE_NAME=svt-parallel     go/bin/ginkgo -v --focus="should propagate requested groups to the docker host config" /usr/libexec/atomic-openshift/extended.test
+```
+
+where <code>--focus="should propagate requested groups to the docker host config"</code> is to focus one test with regex.
+
+

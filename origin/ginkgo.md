@@ -12,7 +12,8 @@ The following command will run specs which matches the regex <code>Http Root han
 [hongkliu@hongkliu svt-go]$ ginkgo -v --focus="Http Root handler" extended/
 ```
 
+### [precompiling test](http://onsi.github.io/ginkgo/#precompiling-tests)
+
+
 ### [custom reporter](http://onsi.github.io/ginkgo/#writing-custom-reporters)
 TODO
-
-### [precompiling test](http://onsi.github.io/ginkgo/#precompiling-tests)

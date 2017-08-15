@@ -8,12 +8,17 @@
 ### [focus](http://onsi.github.io/ginkgo/#focused-specs)
 The following command will run specs which matches the regex <code>Http Root handler</code>.
 
-```
+```sh
 [hongkliu@hongkliu svt-go]$ ginkgo -v --focus="Http Root handler" extended/
 ```
 
 ### [precompiling test](http://onsi.github.io/ginkgo/#precompiling-tests)
+build and run with precompiling test
 
+```sh
+[hongkliu@hongkliu svt-go]$ ginkgo build extended/
+[hongkliu@hongkliu svt-go]$ ginkgo -v -p -stream extended/extended.test
+```
 
-### [custom reporter](http://onsi.github.io/ginkgo/#writing-custom-reporters)
+### [junit xml](http://onsi.github.io/ginkgo/#generating-junit-xml-output)
 TODO

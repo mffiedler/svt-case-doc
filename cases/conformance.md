@@ -134,3 +134,29 @@ FAIL! -- 193 Passed | 10 Failed | 0 Pending | 663 Skipped
 Ginkgo ran 1 suite in 24m20.243649307s
 Test Suite Failed
 ```
+
+
+Fix some of the failures:
+```sh
+# oc create -f /usr/share/openshift/examples/image-streams/image-streams-centos7.json -n openshift
+```
+
+Although the above command failed up to the fact some of the is(s) existed already, <code>is/wildfly</code>
+will be created. Rerun the command leads to
+
+```sh
+...
+Summarizing 2 Failures:
+
+[Fail] [Conformance][volumes] Test local storage quota FSGroup local storage quota [local] [It] should be applied to XFS filesystem when a pod is created
+/builddir/build/BUILD/atomic-openshift-git-0.6c797dc/_output/local/go/src/github.com/openshift/origin/test/extended/localquota/local_fsgroup_quota.go:133
+
+[Fail] [security] supplemental groups [Conformance]Ensure supplemental groups propagate to docker [It] should propagate requested groups to the docker host config [local]
+/builddir/build/BUILD/atomic-openshift-git-0.6c797dc/_output/local/go/src/github.com/openshift/origin/test/extended/security/supplemental_groups.go:66
+
+Ran 203 of 866 Specs in 1484.140 seconds
+FAIL! -- 201 Passed | 2 Failed | 0 Pending | 663 Skipped
+
+Ginkgo ran 1 suite in 24m45.160400436s
+Test Suite Failed
+```

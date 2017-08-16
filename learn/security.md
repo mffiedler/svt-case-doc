@@ -108,7 +108,7 @@ web       1/1       Running   0          8m
 ```
 
 ## Task B: Why cannot we deploy Nginx pod?
-Use [pod_nginx.yaml}(../files/pod_nginx.yaml)
+Use [pod_nginx.yaml](../files/pod_nginx.yaml)
 
 ```sh
 # oc create -f pod_nginx.yaml

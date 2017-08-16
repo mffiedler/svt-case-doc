@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
     - name: front-end
-      image: nginx
+      image: docker.io/nginx
       ports:
         - containerPort: 80

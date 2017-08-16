@@ -98,7 +98,7 @@ Can not write to /var/jenkins_home/copy_reference_file.log. Wrong volume permiss
 
 Not we can explain why it did not work. Jenkins cannot write file on <code>jenkins_home</code>. Let us use volume to fix this problem:
 
-Use [pod_jenkins.yaml_volume](../files/pod_jenkins_volume.yaml)
+Use [pod_jenkins_volume.yaml](../files/pod_jenkins_volume.yaml)
 
 ```sh
 # oc create -f pod_jenkins_volume.yaml
@@ -141,11 +141,35 @@ nginx: [emerg] bind() to 0.0.0.0:80 failed (13: Permission denied)
 
 We need 80 port, which means root access?
 
+Use [pod_nginx_volume_privileged.yaml](../files/pod_nginx_volume_privileged.yaml)
+
+```sh
+# oc create -f pod_nginx_volume_privileged.yaml
+Error from server (Forbidden): error when creating "pod_nginx.yaml": pods "web" is forbidden: unable to validate against any security context constraint: [provider restricted: .spec.containers[0].securityContext.privileged: Invalid value: true: Privileged containers are not allowed]
+```
+
 Two options to workaround this:
 
 1. Get an nginx running as non-root user, not using root access, to be more precise. Preferred by OC, may not by users. Run nginx with 8080 port?
 2. Give root to pod where nginux is running. You need to what you are doing.
 
-Grand permission
-TODO
+Grand permission via <code>scc</code>
+
+Use [scc_super.yaml](../files/scc_super.yaml)
+
+```sh
+# only cluster-admin can manage scc
+# oc config use-context default/ec2-54-244-1-118-us-west-2-compute-amazonaws-com:8443/system:admin
+# oc create -f scc_aaa.yaml
+# oc config use-context bbb/ip-172-31-37-36-us-west-2-compute-internal:8443/redhat
+# oc create -f pod_nginx_volume_privileged.yaml
+# oc get pod -o wide
+NAME      READY     STATUS    RESTARTS   AGE       IP            NODE
+web       1/1       Running   0          1m        172.20.0.23   ip-172-31-37-36.us-west-2.compute.internal
+# curl -s -o /dev/null -w "%{http_code}" 172.20.0.23
+200
+
+```
+
+TODO: Can we do better than <code>privileged: true</code>?
 

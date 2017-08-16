@@ -151,7 +151,7 @@ Error from server (Forbidden): error when creating "pod_nginx.yaml": pods "web" 
 Two options to workaround this:
 
 1. Get an nginx running as non-root user, not using root access, to be more precise. Preferred by OC, may not by users. Run nginx with 8080 port?
-2. Give root to pod where nginux is running. You need to what you are doing.
+2. Give root to pod where nginux is running. You need know to what you are doing.
 
 Grand permission via <code>scc</code>
 

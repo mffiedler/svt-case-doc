@@ -45,8 +45,70 @@ registry   4         14h
 router     2         14h
 ```
 
+## User in the container
+
+Use [pvc_ebs.yaml](../files/pvc_ebs.yaml) and [rs_bbb.yaml](../files/rs_test.yaml).
+
+```sh
+# #Do NOT make redhat as admin of cluster
+# oc login -u redhat -p <secret>
+# oc create -f pvc_ebs.yaml
+# oc get pvc
+NAME      STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS   AGE
+pvc-ebs   Bound     pvc-06e77f8a-82af-11e7-aeaf-02c36d111da6   1Gi        RWO           gp2            11m
+# oc new-project bbb
+# create -f rs_bbb.yaml
+# oc get pod
+NAME               READY     STATUS    RESTARTS   AGE
+frontend-1-6cf7h   1/1       Running   0          11m
+# oc exec frontend-1-6cf7h -- id
+uid=1000080000 gid=0(root) groups=0(root),1000080000
+# oc exec frontend-1-6cf7h -- whoami
+whoami: cannot find name for user ID 1000080000
+command terminated with exit code 1
+# oc exec frontend-1-6cf7h -- touch /myapp/aaa.txt
+touch: cannot touch '/myapp/aaa.txt': Permission denied
+command terminated with exit code 1
+# oc exec frontend-1-6cf7h -- ls -Z /myapp
+drwxr-xr-x. 1000 1000 system_u:object_r:svirt_sandbox_file_t:s0:c4,c9 svt
+-rw-r--r--. root root system_u:object_r:svirt_sandbox_file_t:s0:c4,c9 svt-0.0.1-Linux-x86_64.tar.gz
+# oc exec frontend-1-6cf7h -- touch /mydata/aaa.txt
+# oc exec frontend-1-6cf7h -- ls -Z /mydata/
+-rw-r--r--. 1000080000 1000080000 system_u:object_r:svirt_sandbox_file_t:s0:c4,c9 aaa.txt
+drwxrwS---. root       1000080000 system_u:object_r:svirt_sandbox_file_t:s0:c4,c9 lost+found
+```
+
+Observation:
+
+* _permission denied_ on <code>/myapp</code>: This is different from <code>docker run</code> command.
+* We can write on the mounted volume. This is cool. At least we get a folder we can write.
+
+As pointed out by [Graham Dumpleton](http://blog.dscpl.com.au/2015/12/random-user-ids-when-running-docker.html), the user in docker container is a random UID, not root.
+
+
 ## Task A: Why cannot we deploy Nginx pod?
+Use [pod_nginx.yaml}(../files/pod_nginx.yaml)
 
+```sh
+# oc create -f pod_nginx.yaml
+# oc get pod
+NAME      READY     STATUS             RESTARTS   AGE
+web       0/1       CrashLoopBackOff   6          9m
+# oc logs web
+2017/08/16 19:05:29 [warn] 1#1: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
+nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
+2017/08/16 19:05:29 [emerg] 1#1: mkdir() "/var/cache/nginx/client_temp" failed (13: Permission denied)
+nginx: [emerg] mkdir() "/var/cache/nginx/client_temp" failed (13: Permission denied)
+```
 
+Same here: It seems that nginx tries to create a folder <code>/var/cache/nginx/client_temp</code> where Permission IS denied.
+
+Two options to workaround this:
+
+1. Get an nginx running as non-root user, not using root access, to be more precise.
+2. Give root to pod where nginux is running.
+
+Grand permission
+TODO
 
 ## Task B: Why cannot Jenkens pod have access to PVC?

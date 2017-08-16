@@ -86,7 +86,28 @@ Observation:
 As pointed out by [Graham Dumpleton](http://blog.dscpl.com.au/2015/12/random-user-ids-when-running-docker.html), the user in docker container is a random UID, not root.
 
 
-## Task A: Why cannot we deploy Nginx pod?
+## Task A: Why cannot Jenkens run?
+Use [pod_jenkins.yaml](../files/pod_jenkins.yaml)
+
+```sh
+# oc create -f pod_jenkins.yaml
+# oc logs web
+touch: cannot touch '/var/jenkins_home/copy_reference_file.log': Permission denied
+Can not write to /var/jenkins_home/copy_reference_file.log. Wrong volume permissions?
+```
+
+Not we can explain why it did not work. Jenkins cannot write file on <code>jenkins_home</code>. Let us use volume to fix this problem:
+
+Use [pod_jenkins.yaml_volume](../files/pod_jenkins_volume.yaml)
+
+```sh
+# oc create -f pod_jenkins_volume.yaml
+# oc get pod
+NAME      READY     STATUS    RESTARTS   AGE
+web       1/1       Running   0          8m
+```
+
+## Task B: Why cannot we deploy Nginx pod?
 Use [pod_nginx.yaml}(../files/pod_nginx.yaml)
 
 ```sh
@@ -102,13 +123,29 @@ nginx: [emerg] mkdir() "/var/cache/nginx/client_temp" failed (13: Permission den
 ```
 
 Same here: It seems that nginx tries to create a folder <code>/var/cache/nginx/client_temp</code> where Permission IS denied.
+The solution is the same. Let attach a volume:
+
+Use [pod_nginx_volume.yaml}(../files/pod_nginx_volume.yaml)
+
+```sh
+# oc create -f pod_nginx_volume.yaml
+# oc get pod
+NAME      READY     STATUS             RESTARTS   AGE
+web       0/1       CrashLoopBackOff   6          9m
+# oc logs web
+2017/08/16 20:13:02 [warn] 1#1: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
+nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
+2017/08/16 20:13:02 [emerg] 1#1: bind() to 0.0.0.0:80 failed (13: Permission denied)
+nginx: [emerg] bind() to 0.0.0.0:80 failed (13: Permission denied)
+```
+
+We need 80 port, which means root access?
 
 Two options to workaround this:
 
-1. Get an nginx running as non-root user, not using root access, to be more precise.
-2. Give root to pod where nginux is running.
+1. Get an nginx running as non-root user, not using root access, to be more precise. Preferred by OC, may not by users. Run nginx with 8080 port?
+2. Give root to pod where nginux is running. You need to what you are doing.
 
 Grand permission
 TODO
 
-## Task B: Why cannot Jenkens pod have access to PVC?

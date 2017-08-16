@@ -125,7 +125,7 @@ nginx: [emerg] mkdir() "/var/cache/nginx/client_temp" failed (13: Permission den
 Same here: It seems that nginx tries to create a folder <code>/var/cache/nginx/client_temp</code> where Permission IS denied.
 The solution is the same. Let attach a volume:
 
-Use [pod_nginx_volume.yaml}(../files/pod_nginx_volume.yaml)
+Use [pod_nginx_volume.yaml](../files/pod_nginx_volume.yaml)
 
 ```sh
 # oc create -f pod_nginx_volume.yaml

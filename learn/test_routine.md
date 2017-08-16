@@ -9,6 +9,16 @@
 ## cluster
 Prepare the openshift cluster against which we run tests.
 
+[systemctl service](http://playbooks-rhtconsulting.rhcloud.com/playbooks/installation/admin_overview.html)
+
+* docker
+* openvswitch
+* etcd
+* atomic-openshift-node
+* atomic-openshift-master, OR atomic-openshift-master-api and atomic-openshift-master-controllers on HA Configuration
+
+I _believe_ that kubelet service is replaced by atomic-openshift-node in the context of openshift.
+
 ## pbench
 Use pbench to collect system stats in case of troubleshooting.
 

@@ -10,10 +10,3 @@ spec:
       image: docker.io/jenkins
       ports:
         - containerPort: 8080
-      volumeMounts:
-        - mountPath: /mydata
-          name: ddd
-  volumes:
-  - name: ddd
-    persistentVolumeClaim:
-      claimName: pvc-ebs

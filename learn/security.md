@@ -155,7 +155,7 @@ Two options to workaround this:
 
 Grand permission via <code>scc</code>
 
-Use [scc_super.yaml](../files/scc_super.yaml)
+Use [scc_aaa.yaml](../files/scc_aaa.yaml)
 
 ```sh
 # only cluster-admin can manage scc

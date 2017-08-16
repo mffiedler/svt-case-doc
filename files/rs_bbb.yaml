@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: frontend-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: frontend
+  template:
+    metadata:
+      labels:
+        name: frontend
+    spec:
+      containers:
+      - image: docker.io/hongkailiu/svt-go:http
+        name: helloworld
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /mydata
+          name: ddd
+      volumes:
+      - name: ddd
+        persistentVolumeClaim:
+          claimName: pvc-ebs
+      restartPolicy: Always

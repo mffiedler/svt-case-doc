@@ -34,7 +34,7 @@ config  credentials
 ### Standard RHEL 7.3
 
 ```sh
-aws ec2 run-instances --image-id ami-b55a51cc \
+(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-b55a51cc \
     --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.large --key-name id_rsa_perf \
     --subnet subnet-4879292d \
     --query 'Instances[*].InstanceId' \

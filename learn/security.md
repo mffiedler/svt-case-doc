@@ -12,13 +12,13 @@ In order to solve the tasks listed below, read doc:
 * [sa&scc-blog](https://blog.openshift.com/understanding-service-accounts-sccs/)
 
 
-## Concept list
-[user, group](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/authentication.html#users-and-groups), policy, [scc](https://docs.openshift.org/latest/architecture/additional_concepts/authorization.html#security-context-constraints), [sa](https://docs.openshift.org/latest/dev_guide/service_accounts.html).
+## Policy
+A policy defines what a [user/group](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/authentication.html#users-and-groups) can do.
 
 * A policy defines rules, roles, bindings. Only one policy, _default_, is defined out of box. [View it](https://docs.openshift.com/container-platform/3.6/admin_guide/manage_authorization_policy.html#viewing-roles-and-bindings).
 * Polocy level: [cluster and local](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/authorization.html#cluster-policy-and-local-policy). Local actually means project.
 
-## SCC
+## [SCC](https://docs.openshift.org/latest/architecture/additional_concepts/authorization.html#security-context-constraints)
 
 SCC defines what a pod can do. Those 7 SCCs come out of the box (_restricted_ is default):
 
@@ -34,7 +34,7 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]
 ```
 
-## SA
+## [SA](https://docs.openshift.org/latest/dev_guide/service_accounts.html)
 
 SA gives a way to impersonate. Those 3 SCCs come out of the box: builder/deployer to run build/deploy pods, default to run other pods, or do any object operation.
 

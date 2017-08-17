@@ -34,7 +34,7 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]
 ```
 
-SCC can define [containers' capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities).
+SCC can define [Linux capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) that a container can use.
 
 ## [SA](https://docs.openshift.org/latest/dev_guide/service_accounts.html)
 

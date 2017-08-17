@@ -11,7 +11,7 @@ So in total we can create 60 SS(s).
 ### Vertical stress
 1 project and many pods: #proj 1 and #template 60
 
-### Vertical stress
+### Horizontal stress
 many project and 1 SS for each project: #proj 60 and #template 1
 
 ## Run

@@ -13,13 +13,14 @@
 * Order start/termination order
 
 ## Practice stateful app in OC cluster
-Run the following command if we use examples () from the above k8s doc:
+Run the following command if we use examples from the above k8s doc:
 
 ```sh
 oadm policy add-scc-to-user anyuid -z default
 ```
+This command adds default (SA) to anyuid (SCC). Check [security](security.md) for details.
 
-Note that the following command did not work yet in the test:
+Note that the following command did not work yet in the test (requiring k8s version 1.7+):
 
 ```sh
 # kubectl patch statefulset web -p '{"spec":{"updateStrategy":{"type":"RollingUpdate"}}}'

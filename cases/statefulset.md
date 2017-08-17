@@ -24,7 +24,8 @@ many project and 1 SS for each project: #proj 60 and #template 1
 ## Check
 
 ```sh
-# #pods for each SS should created in order (reverse order if delete)
+# #pods for each SS should be created in order (reverse order if delete)
+# #120 pods should be in Running status
 # watch -n 10 "oc get pods --all-namespaces"
 # or watch by oc command
 # oc get pods --all-namespaces -w

@@ -29,6 +29,9 @@ many project and 1 SS for each project: #proj 60 and #template 1
 # watch -n 10 "oc get pods --all-namespaces"
 # or watch by oc command
 # oc get pods --all-namespaces -w
+# #watch pvc
+# #120 pvc(s) should be created, each for a pod
+# oc get pvc --all-namespaces -w
 # #each sever has 2 endpoints to proxy, and #server should be equal to #SS
 # oc get endpoints --all-namespaces
 NAMESPACE         NAME               ENDPOINTS                                                  AGE

@@ -3,7 +3,7 @@
 
 ## Calculation of stress
 
-* #computing-node: 4, with limit 30 pods/pod. So #pod=120
+* #computing-node: 4, with limit 30 pods/node. So #pod=120
 * #replica: 2 for each SS
 
 So in total we can create 60 SS(s).

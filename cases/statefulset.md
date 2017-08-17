@@ -8,7 +8,7 @@
 
 So in total we can create 60 SS(s).
 
-Note that there is a [limited](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/volume_limits.html#linux-specific-volume-limits) number (40) of ebs-volumes attached to an ec2-instance.
+_Note_ that there is a [limited](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/volume_limits.html#linux-specific-volume-limits) number (40) of ebs-volumes attached to an ec2-instance.
 
 ### Vertical stress
 1 project and many pods: #proj 1 and #template 60
@@ -38,6 +38,8 @@ many project and 1 SS for each project: #proj 60 and #template 1
 # oc get endpoints --all-namespaces
 NAMESPACE         NAME               ENDPOINTS                                                  AGE
 clusterproject0   server0            172.20.0.13:8080,172.20.0.17:8080                          38m
+# #you might want to watch events too
+# oc get event --all-namespaces -w | grep -v Normal | grep -v FailedScheduling
 ...
 ```
 

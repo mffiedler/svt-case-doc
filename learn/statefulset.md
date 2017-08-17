@@ -18,7 +18,15 @@ Run the following command if we use examples from the above k8s doc:
 ```sh
 oadm policy add-scc-to-user anyuid -z default
 ```
-This command adds default (SA) to anyuid (SCC). Check [security](security.md) for details.
+This command adds default (SA) to anyuid (SCC):
+
+```sh
+# oc export  scc anyuid | grep description -A 1
+    kubernetes.io/description: anyuid provides all features of the restricted SCC
+      but allows users to run with any UID and any GID.
+```
+
+Check [security](security.md) for those concepts.
 
 Note that the following command did not work yet in the test (requiring k8s version 1.7+):
 

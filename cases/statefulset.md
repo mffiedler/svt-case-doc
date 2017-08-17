@@ -30,7 +30,7 @@ Change the numbers in <code>config/pyconfigStatefulSet.yaml</code> according to 
 # #pods for each SS should be created in order (reverse order if delete)
 # #120 pods should be in Running status
 # watch -n 10 "oc get pods --all-namespaces"
-# or watch by oc command
+# #or watch by oc command
 # oc get pods --all-namespaces -w
 # #watch pvc
 # #120 pvc(s) should be created, each for a pod

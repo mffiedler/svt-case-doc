@@ -14,10 +14,6 @@ So in total we can create 60 SS(s).
 ### Vertical stress
 many project and 1 SS for each project: #proj 60 and #template 1
 
-```sh
-
-```
-
 ## Run
 
 ```sh

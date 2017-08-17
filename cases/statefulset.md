@@ -36,3 +36,8 @@ clusterproject0   server0            172.20.0.13:8080,172.20.0.17:8080          
 ...
 ```
 
+## Clean projects
+
+```sh
+# for i in {0..2}; do oc delete project "clusterproject$i"; done
+```

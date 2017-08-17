@@ -18,6 +18,12 @@ A policy defines what a [user/group](https://docs.openshift.com/container-platfo
 * A policy defines rules, roles, bindings. Only one policy, _default_, is defined out of box. [View it](https://docs.openshift.com/container-platform/3.6/admin_guide/manage_authorization_policy.html#viewing-roles-and-bindings).
 * Polocy level: [cluster and local](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/authorization.html#cluster-policy-and-local-policy). Local actually means project.
 
+[Determine what I can do](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/authorization.html#authorization-determining-what-you-can-do-as-an-authenticated-user):
+
+```sh
+# oc policy can-i --list
+```
+
 ## [SCC](https://docs.openshift.org/latest/architecture/additional_concepts/authorization.html#security-context-constraints)
 
 SCC defines what a pod can do. Those 7 SCCs come out of the box (_restricted_ is default):

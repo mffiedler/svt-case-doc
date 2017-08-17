@@ -8,6 +8,8 @@
 
 So in total we can create 60 SS(s).
 
+Note that there is a [limited](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/volume_limits.html#linux-specific-volume-limits) number (40) of ebs-volumes attached to an ec2-instance.
+
 ### Vertical stress
 1 project and many pods: #proj 1 and #template 60
 

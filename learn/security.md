@@ -3,7 +3,7 @@
 ## Doc
 
 * [linux kernel security](https://www.linux.com/learn/overview-linux-kernel-security-features), [selinux](selinux.md)
-* [Dan Walsh's Blog](http://danwalsh.livejournal.com/76358.html), [security@docker](https://docs.docker.com/engine/security/security/), [security@container](https://opensource.com/business/14/7/docker-security-selinux)
+* [Dan Walsh's Blog](http://danwalsh.livejournal.com/), [security@docker](https://docs.docker.com/engine/security/security/), [security@container](https://opensource.com/business/14/7/docker-security-selinux)
 * [sc@k8s](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
 * [secure-k8s](https://blog.openshift.com/securing-kubernetes/)
 * oc: [authentication](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/authentication.html) and [authorization](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/authorization.html), [configure-sa](https://docs.openshift.com/container-platform/3.6/admin_guide/service_accounts.html), [manage-scc](https://docs.openshift.com/container-platform/3.6/admin_guide/manage_scc.html), [manage-policy](https://docs.openshift.com/container-platform/3.6/admin_guide/manage_authorization_policy.html)

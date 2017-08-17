@@ -15,7 +15,8 @@ In order to solve the tasks listed below, read doc:
 ## Concept list
 [user, group](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/authentication.html#users-and-groups), policy, [scc](https://docs.openshift.org/latest/architecture/additional_concepts/authorization.html#security-context-constraints), [sa](https://docs.openshift.org/latest/dev_guide/service_accounts.html).
 
-* A policy defines rules, roles, bindings.
+* A policy defines rules, roles, bindings. Only one policy, _default_, is defined out of box. [View it](https://docs.openshift.com/container-platform/3.6/admin_guide/manage_authorization_policy.html#viewing-roles-and-bindings).
+* Polocy level: [cluster and local](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/authorization.html#cluster-policy-and-local-policy). Local actually means project.
 
 ## SCC
 

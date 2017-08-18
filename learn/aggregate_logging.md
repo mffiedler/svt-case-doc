@@ -200,6 +200,11 @@ TODO find if there is a better solution for this.
 # oadm new-project logging --node-selector=""
 ```
 
+
+### Logging test tool
+Check [this](https://github.com/openshift/svt/blob/master/openshift_scalability/content/logtest/ocp_logtest-README.md)
+out.
+
 ## Reference
 
 [1]. https://medium.com/@yoanis_gil/logging-with-docker-part-1-b23ef1443aac

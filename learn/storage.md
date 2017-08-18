@@ -90,6 +90,24 @@ Sat Jul 22 04:41:17 UTC 2017
 
 ```
 
+#### Attach ebs-volume to a rs
+Create an ebs-pvc as above.
+
+Use [rs_test.yaml](../files/rs_test.yaml) with <code>replicas: 1</code> and remove <code>namespace</code>
+
+```sh
+# oc create -f /tmp/rs_test.yaml
+# oc volume rs/frontend-1 --add --name=v1 --type=persistentVolumeClaim   --claim-name=pvc-ebs --mount-path=/mydata
+# oc scale --replicas=0 rs/frontend-1
+# oc scale --replicas=1 rs/frontend-1
+# oc volumes po/frontend-1-n0kdm
+pods/frontend-1-n0kdm
+  pvc/pvc-ebs (allocated 1GiB) as v1
+    mounted at /mydata
+  secret/default-token-1stct as default-token-1stct
+    mounted at /var/run/secrets/kubernetes.io/serviceaccount
+```
+
 Also read [volume security](https://docs.openshift.org/latest/install_config/persistent_storage/pod_security_context.html).
 
 ### NFS

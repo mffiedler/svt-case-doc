@@ -97,7 +97,8 @@ Use [rs_test.yaml](../files/rs_test.yaml) with <code>replicas: 1</code> and remo
 
 ```sh
 # oc create -f /tmp/rs_test.yaml
-# oc volume rs/frontend-1 --add --name=v1 --type=persistentVolumeClaim   --claim-name=pvc-ebs --mount-path=/mydata
+# oc volume rs/frontend-1 --add --name=v1 --type=persistentVolumeClaim \
+    --claim-name=pvc-ebs --mount-path=/mydata
 # oc scale --replicas=0 rs/frontend-1
 # oc scale --replicas=1 rs/frontend-1
 # oc volumes po/frontend-1-n0kdm

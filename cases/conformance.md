@@ -3,8 +3,6 @@
 ## Doc
 
 * [conformance@svt](https://github.com/openshift/svt/tree/master/conformance)
-* [extended-test@oc-origin](https://github.com/openshift/origin/tree/master/test/extended)
-* [e2e-test@k8s](https://github.com/kubernetes/community/blob/master/contributors/devel/e2e-tests.md)
 
 ## Bash wrapper
 Check the steps in [conformance readme](https://github.com/openshift/svt/tree/master/conformance)

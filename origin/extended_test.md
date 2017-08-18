@@ -2,6 +2,8 @@
 
 ## Doc
 
+* [extended-test@oc-origin](https://github.com/openshift/origin/tree/master/test/extended)
+* [e2e-test@k8s](https://github.com/kubernetes/community/blob/master/contributors/devel/e2e-tests.md)
 * [ginkgo](ginkgo.md)
 * report: a concept in
     [extended test](https://github.com/openshift/origin/blob/master/test/extended/util/test.go#L80)

@@ -28,3 +28,6 @@ $ oc get limits
 NAME              AGE
 resource-limits   45d
 ```
+### Resource limit on pods
+
+[Doc](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/)

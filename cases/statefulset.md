@@ -16,6 +16,16 @@ _Note_ that there is a [limited](http://docs.aws.amazon.com/AWSEC2/latest/UserGu
 ### Horizontal stress
 many project and 1 SS for each project: #proj 60 and #template 1
 
+## Check SC name for PVC
+
+```sh
+# oc get storageclass 
+NAME            TYPE
+ebs (default)   kubernetes.io/aws-ebs 
+```
+
+Change the storage class name accordingly in <code>openshift_scalability/content/statefulset-pv-template.json</code>.
+
 ## Run
 Change the numbers in <code>config/pyconfigStatefulSet.yaml</code> according to the stress and then
 

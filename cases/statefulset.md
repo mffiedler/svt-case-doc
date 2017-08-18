@@ -24,7 +24,7 @@ NAME            TYPE
 ebs (default)   kubernetes.io/aws-ebs 
 ```
 
-Change the storage class name accordingly in <code>openshift_scalability/content/statefulset-pv-template.json</code>.
+Change the storage class name accordingly in <code>svt/openshift_scalability/content/statefulset-pv-template.json</code>.
 
 ## Run
 Change the numbers in <code>config/pyconfigStatefulSet.yaml</code> according to the stress and then

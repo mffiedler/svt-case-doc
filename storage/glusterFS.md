@@ -28,4 +28,4 @@
 ## Reference
 [1]. [RH Storage Server](https://access.redhat.com/documentation/en-US/Red_Hat_Storage/3/html/Administration_Guide/index.html)
 
-[2]. [CNS: Architecture and configuration guide](https://www.redhat.com/cms/managed-files/st-container-native-storage-technology-detail-inc0464300at-201611-v2-en.pdfhttps://www.redhat.com/cms/managed-files/st-container-native-storage-technology-detail-inc0464300at-201611-v2-en.pdf)
+[2]. [CNS: Architecture and configuration guide](https://www.redhat.com/cms/managed-files/st-container-native-storage-technology-detail-inc0464300at-201611-v2-en.pdf)

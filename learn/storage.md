@@ -20,12 +20,14 @@
 
 ## Volume provision
 
-* [Static](https://docs.openshift.org/latest/install_config/persistent_storage/index.html): e.g, [AWS EBS](https://docs.openshift.org/latest/install_config/persistent_storage/persistent_storage_aws.html)
-* [Dynamic](https://docs.openshift.org/latest/install_config/persistent_storage/dynamically_provisioning_pvs.html)
+* Static: pv is created by admin and then bound to pvc
+* [Dynamic](https://docs.openshift.org/latest/install_config/persistent_storage/dynamically_provisioning_pvs.html): pv created automatically when PVC is created
 
 ## Practice
 
-### Dynamic provision with AWS EBS
+### [Dynamic provision with AWS EBS](https://docs.openshift.org/latest/install_config/persistent_storage/persistent_storage_aws.html)
+
+#### Check existing SC(s)
 
 ```sh
 # oc get storageclass 
@@ -34,7 +36,7 @@ gp2 (default)   kubernetes.io/aws-ebs
 ```
 It shows that we can claim aws-ebs volumes dynamically.
 
-### create EBS pvc
+#### create EBS pvc
 
 ```sh
 # vi /tmp/pvc_ebs.yaml
@@ -126,7 +128,7 @@ In the test cases [1], a service supported by a pod provides the NFS server.
 
 The playbook will copy the object files used below into the tempfolder.
 
-### [create NFS storageclass](https://docs.openshift.org/latest/install_config/storage_examples/storage_classes_legacy.html)
+#### [create NFS storageclass](https://docs.openshift.org/latest/install_config/storage_examples/storage_classes_legacy.html)
 
 Because <code>StorageClass</code> is set to [default](https://docs.openshift.org/latest/architecture/additional_concepts/storage.html#pvc-storage-class), let us set another one for NFS volume.
 
@@ -204,6 +206,9 @@ If status is *PENDING*, then check those:
 * Remove this: <code>metadata.annotations.volume.alpha.kubernetes.io/storage-class: "mynfs"</code>
 * The PV and PVC have to have the same <code>accessModes</code>
 
+
+### [GlusterFS](../storage/glusterFS.md)
+### [Ceph](../storage/ceph.md)
 
 ## Reference
 1. [tsms case 499636](https://tcms.engineering.redhat.com/case/499636/?from_plan=14587)

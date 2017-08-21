@@ -16,7 +16,7 @@
 
 ## GlusterFS
 
-### Installation
+### [Installation](https://access.redhat.com/documentation/en-US/Red_Hat_Storage/3/html/Administration_Guide/part-Red_Hat_Storage_Administration_on_Public_Cloud.html)
 
 ### Integration with OpenShift
 

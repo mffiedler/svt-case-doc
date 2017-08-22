@@ -7,6 +7,7 @@
 * [glusterFS@oc](https://docs.openshift.com/container-platform/3.6/install_config/persistent_storage/persistent_storage_glusterfs.html)
     * containerized cluster, or containerized native storage (CNS): [containerized cluster](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/container-native_storage_for_openshift_container_platform_3.4/)
     * dedicated cluster
+* [heketi](https://github.com/heketi/heketi)
 
 ## CNS
 

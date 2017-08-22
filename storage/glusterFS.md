@@ -123,6 +123,12 @@ pvc-gluster   Bound     pvc-8744683b-8768-11e7-975f-025caffb13f6   1Gi        RW
 NAME                                       CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM             STORAGECLASS        REASON    AGE
 pvc-8744683b-8768-11e7-975f-025caffb13f6   1Gi        RWO           Delete          Bound     aaa/pvc-gluster   glusterfs-storage             18m
 
+# #This is interesting: When PVC is created, a svc is created with it.
+# oc get service
+NAME                            CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+glusterfs-dynamic-pvc-gluster   172.27.199.64   <none>        1/TCP      2m
+# #It will be deleted when the pvc is deleted.
+
 # #replace claimName: pvc-ebs by claimName: pvc-gluster
 # oc create -f pod_jenkins_volume.yaml
 # oc get pod 

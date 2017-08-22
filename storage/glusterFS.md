@@ -12,6 +12,38 @@
 
 ### Installation
 
+#### Ansible
+
+Change the inventory file: 2.file
+
+```
+[OSEv3:children]
+...
+glusterfs
+
+
+[OSEv3:vars]
+...
+glusterfs_devices=["/dev/xvdf"]
+openshift_storage_glusterfs_wipe=true
+openshift_storage_glusterfs_image=registry.access.redhat.com/rhgs3/rhgs-server-rhel7
+openshift_storage_glusterfs_version=latest
+openshift_storage_glusterfs_heketi_version=registry.access.redhat.com/rhgs3/rhgs-volmanager-rhel7
+openshift_storage_glusterfs_heketi_version=latest
+openshift_hosted_registry_glusterfs_swap=true
+
+...
+[glusterfs]
+ec2-54-202-90-213.us-west-2.compute.amazonaws.com
+ec2-54-200-102-250.us-west-2.compute.amazonaws.com
+ec2-54-213-42-122.us-west-2.compute.amazonaws.com
+```
+
+[More parameters](https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_storage_glusterfs) in the role <code>openshift_storage_glusterfs</code>.
+
+#### [cns-deplay](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/container-native_storage_for_openshift_container_platform_3.4/ch04s02)
+TODO
+
 ### Integration with OpenShift
 
 ## GlusterFS

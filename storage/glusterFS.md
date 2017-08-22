@@ -103,7 +103,12 @@ provisioner: kubernetes.io/glusterfs
 _Note_ that
 
 * Each _glusterfs_ node has <code>po/glusterfs-storage-*</code> and one of them has <code>po/heketi-storage-1-*</code>.
-* SC _glusterfs-storage_ connects to rest api provided by heketi to provion storage.
+* SC _glusterfs-storage_ connects to rest api provided by heketi to provion storage. Check the route:
+
+   ```sh
+   # curl http://heketi-storage-glusterfs.54.245.157.96.xip.io
+   Required authorization token not found
+   ```
 
 Create pvc (using [pvc_gluster.yaml](../files/pvc_gluster.yaml)) and use it in a pod ([pod_jenkins_volume.yaml](../files/pod_jenkins_volume.yaml)).
 

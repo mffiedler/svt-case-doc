@@ -14,6 +14,19 @@
 
 #### Ansible
 
+Launch 5 EC2 instances:
+
+```sh
+aws ec2 run-instances --image-id ami-6ca0ba15 \
+    --security-group-ids sg-5c5ace38 --count 5 --instance-type m4.xlarge --key-name id_rsa_perf \
+    --subnet subnet-4879292d \
+    --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\", \"Ebs\":{\"VolumeSize\": 30}},{\"DeviceName\":\"/dev/sdf\", \"Ebs\":{\"VolumeSize\": 30}}]" \
+    --query 'Instances[*].InstanceId' \
+    --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-bbb-0822\"}]}]"  
+```
+
+Note that block device <code>/dev/sdf</code> is managed by GlusterFS cluster.
+
 Change the inventory file: 2.file
 
 ```

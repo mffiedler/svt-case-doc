@@ -67,20 +67,20 @@ NAME                REVISION   DESIRED   CURRENT   TRIGGERED BY
 dc/heketi-storage   1          1         1         config
 
 NAME                  DESIRED   CURRENT   READY     AGE       CONTAINER(S)   IMAGE(S)                             SELECTOR
-rc/heketi-storage-1   1         1         1         6m        heketi         rhgs3/rhgs-volmanager-rhel7:latest   deployment=heketi-storage-1,deploymentconfig=heketi-storage,glusterfs=heketi-storage-pod
+rc/heketi-storage-1   1         1         1         1h        heketi         rhgs3/rhgs-volmanager-rhel7:latest   deployment=heketi-storage-1,deploymentconfig=heketi-storage,glusterfs=heketi-storage-pod
 
 NAME                    HOST/PORT                                       PATH      SERVICES         PORT      TERMINATION   WILDCARD
-routes/heketi-storage   heketi-storage-glusterfs.54.190.44.216.xip.io             heketi-storage   <all>                   None
+routes/heketi-storage   heketi-storage-glusterfs.54.245.157.96.xip.io             heketi-storage   heketi                  None
 
 NAME                              CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE       SELECTOR
-svc/heketi-db-storage-endpoints   172.24.85.211   <none>        1/TCP      6m        <none>
-svc/heketi-storage                172.24.37.13    <none>        8080/TCP   6m        glusterfs=heketi-storage-pod
+svc/heketi-db-storage-endpoints   172.24.85.211   <none>        1/TCP      1h        <none>
+svc/heketi-storage                172.24.37.13    <none>        8080/TCP   1h        glusterfs=heketi-storage-pod
 
 NAME                         READY     STATUS    RESTARTS   AGE       IP              NODE
-po/glusterfs-storage-bm10c   1/1       Running   0          9m        172.31.48.172   ip-172-31-48-172.us-west-2.compute.internal
-po/glusterfs-storage-pjz47   1/1       Running   0          9m        172.31.17.109   ip-172-31-17-109.us-west-2.compute.internal
-po/glusterfs-storage-qsg6l   1/1       Running   0          9m        172.31.44.251   ip-172-31-44-251.us-west-2.compute.internal
-po/heketi-storage-1-xmgdg    1/1       Running   0          6m        172.20.0.3      ip-172-31-44-251.us-west-2.compute.internal
+po/glusterfs-storage-bm10c   1/1       Running   0          1h        172.31.48.172   ip-172-31-48-172.us-west-2.compute.internal
+po/glusterfs-storage-pjz47   1/1       Running   0          1h        172.31.17.109   ip-172-31-17-109.us-west-2.compute.internal
+po/glusterfs-storage-qsg6l   1/1       Running   0          1h        172.31.44.251   ip-172-31-44-251.us-west-2.compute.internal
+po/heketi-storage-1-xmgdg    1/1       Running   0          1h        172.20.0.3      ip-172-31-44-251.us-west-2.compute.internal
 
 # oc get storageclass glusterfs-storage -o yaml
 apiVersion: storage.k8s.io/v1

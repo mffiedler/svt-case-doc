@@ -100,6 +100,38 @@ provisioner: kubernetes.io/glusterfs
 
 ```
 
+_Note_ that
+
+* Each _glusterfs_ node has <code>po/glusterfs-storage-*</code> and one of them has <code>po/heketi-storage-1-*</code>.
+* SC _glusterfs-storage_ connects to rest api provided by heketi to provion storage.
+
+Create pvc (using [pvc_gluster.yaml](../files/pvc_gluster.yaml)) and use it in a pod ([pod_jenkins_volume.yaml](../files/pod_jenkins_volume.yaml)).
+
+```sh
+# oc new-project aaa
+# oc create -f pvc_gluster.yaml
+# oc get pvc
+NAME          STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS        AGE
+pvc-gluster   Bound     pvc-8744683b-8768-11e7-975f-025caffb13f6   1Gi        RWO           glusterfs-storage   17m
+# oc get pv
+NAME                                       CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM             STORAGECLASS        REASON    AGE
+pvc-8744683b-8768-11e7-975f-025caffb13f6   1Gi        RWO           Delete          Bound     aaa/pvc-gluster   glusterfs-storage             18m
+
+# #replace claimName: pvc-ebs by claimName: pvc-gluster
+# oc create -f pod_jenkins_volume.yaml
+# oc get pod 
+NAME               READY     STATUS    RESTARTS   AGE
+web                1/1       Running   0          1m
+# oc volumes pod web
+pods/web
+  pvc/pvc-gluster (allocated 1GiB) as ddd
+    mounted at /var/jenkins_home
+  secret/default-token-gj7td as default-token-gj7td
+    mounted at /var/run/secrets/kubernetes.io/serviceaccount
+# #check if the data is written on the volume
+# oc exec web -- ls /var/jenkins_home
+```
+
 #### [cns-deplay](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/container-native_storage_for_openshift_container_platform_3.4/ch04s02)
 TODO
 

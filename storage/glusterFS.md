@@ -81,6 +81,23 @@ po/glusterfs-storage-bm10c   1/1       Running   0          9m        172.31.48.
 po/glusterfs-storage-pjz47   1/1       Running   0          9m        172.31.17.109   ip-172-31-17-109.us-west-2.compute.internal
 po/glusterfs-storage-qsg6l   1/1       Running   0          9m        172.31.44.251   ip-172-31-44-251.us-west-2.compute.internal
 po/heketi-storage-1-xmgdg    1/1       Running   0          6m        172.20.0.3      ip-172-31-44-251.us-west-2.compute.internal
+
+# oc get storageclass glusterfs-storage -o yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  creationTimestamp: 2017-08-22T17:19:11Z
+  name: glusterfs-storage
+  resourceVersion: "1824"
+  selfLink: /apis/storage.k8s.io/v1/storageclasses/glusterfs-storage
+  uid: 038306a1-875e-11e7-876d-025caffb13f6
+parameters:
+  resturl: http://heketi-storage-glusterfs.54.190.44.216.xip.io
+  restuser: admin
+  secretName: heketi-storage-admin-secret
+  secretNamespace: glusterfs
+provisioner: kubernetes.io/glusterfs
+
 ```
 
 #### [cns-deplay](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/container-native_storage_for_openshift_container_platform_3.4/ch04s02)

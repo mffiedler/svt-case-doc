@@ -42,7 +42,7 @@ glusterfs_devices=["/dev/xvdf"]
 openshift_storage_glusterfs_wipe=true
 openshift_storage_glusterfs_image=registry.access.redhat.com/rhgs3/rhgs-server-rhel7
 openshift_storage_glusterfs_version=latest
-openshift_storage_glusterfs_heketi_version=registry.access.redhat.com/rhgs3/rhgs-volmanager-rhel7
+openshift_storage_glusterfs_heketi_image=registry.access.redhat.com/rhgs3/rhgs-volmanager-rhel7
 openshift_storage_glusterfs_heketi_version=latest
 openshift_hosted_registry_glusterfs_swap=true
 

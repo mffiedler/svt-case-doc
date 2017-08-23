@@ -65,7 +65,7 @@ glusterfs_devices=["/dev/xvdf"]
 ...
 openshift_storage_glusterfs_image=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-volmanager-rhel7
 openshift_storage_glusterfs_version=3.3.0-9
-openshift_storage_glusterfs_heketi_version=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7
+openshift_storage_glusterfs_heketi_image=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7
 openshift_storage_glusterfs_heketi_version=3.3.0-9
 ...
 

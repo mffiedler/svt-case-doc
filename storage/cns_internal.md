@@ -70,3 +70,10 @@ openshift_storage_glusterfs_heketi_version=3.3.0-9
 ...
 
 ```
+
+## Check
+Check images:
+
+```sh
+# oc get pods -n glusterfs -o yaml | grep "image"
+```

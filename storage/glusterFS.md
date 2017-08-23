@@ -163,6 +163,11 @@ $ #Not working yet
 $ ./heketi-client/bin/heketi-cli --server http://heketi-storage-glusterfs.34.209.47.41.xip.io --user admin --secret eXovVmJVd00yekNZVnpBMHBJTUdodzlEY2NSMzlCeUduM1FnYm1WQWo3Yz0= cluster list
 Error: Get http://heketi-storage-glusterfs.34.209.47.41.xip.io/clusters: dial tcp: lookup heketi-storage-glusterfs.34.209.47.41.xip.io on 172.31.0.2:53: no such host
 
+$ #Next try: install heketi client on master via yum
+# yum info heketi
+...
+Version     : 4.0.0
+
 ```
 
 ## GlusterFS

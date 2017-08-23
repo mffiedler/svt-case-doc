@@ -147,7 +147,23 @@ pods/web
 #### [cns-deplay](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/container-native_storage_for_openshift_container_platform_3.4/ch04s02)
 TODO
 
-### Integration with OpenShift
+### Heketi
+
+#### Heketi client
+
+Install:
+
+```sh
+$ curl -L -o heketi-client-v4.0.0.linux.amd64.tar.gz https://github.com/heketi/heketi/releases/download/v4.0.0/heketi-client-v4.0.0.linux.amd64.tar.gz
+$ tar xzvf heketi-client-v4.0.0.linux.amd64.tar.gz
+$ ./heketi-client/bin/heketi-cli --version
+heketi-cli v4.0.0
+
+$ #Not working yet
+$ ./heketi-client/bin/heketi-cli --server http://heketi-storage-glusterfs.34.209.47.41.xip.io --user admin --secret eXovVmJVd00yekNZVnpBMHBJTUdodzlEY2NSMzlCeUduM1FnYm1WQWo3Yz0= cluster list
+Error: Get http://heketi-storage-glusterfs.34.209.47.41.xip.io/clusters: dial tcp: lookup heketi-storage-glusterfs.34.209.47.41.xip.io on 172.31.0.2:53: no such host
+
+```
 
 ## GlusterFS
 

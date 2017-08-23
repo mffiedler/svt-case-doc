@@ -4,7 +4,8 @@
 
 Login <code>QEOS10 OpenStack</code> and launch an instance based on image
 <code>rhel-atomic-cloud-7.3.4-8</code>. The reason we chose that image here
-is that docker is pre-installed.
+is that docker is pre-installed. In order to establish ssh to the machine, we
+need to assign a floating IP to it.
 
 ## Check out images version (RH internal network)
 

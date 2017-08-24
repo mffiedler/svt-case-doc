@@ -15,5 +15,5 @@ parameters:
 ...
 
 # cd svt/openshift_scalability
-# python -u cluster-loader.py -z -f content/pvc-templates/pvc-parameters.yaml
+# python -u cluster-loader.py -v -f content/pvc-templates/pvc-parameters.yaml
 ```

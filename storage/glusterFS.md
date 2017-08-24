@@ -12,6 +12,15 @@
 ## CNS
 
 ### Installation
+At least 3 glusterfs nodes in the installation, otherwise:
+
+```
+TASK [openshift_storage_glusterfs : assert] *********************************************************************************
+...
+MSG:
+
+There must be at least three GlusterFS nodes specified
+```
 
 #### Ansible
 

@@ -1,5 +1,5 @@
 # EC2
-[ec2 instance types](https://aws.amazon.com/ec2/instance-types/)
+ssh key: libra.pem; [ec2 instance types](https://aws.amazon.com/ec2/instance-types/)
 
 ## Install [aws cli](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
 

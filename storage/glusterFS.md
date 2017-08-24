@@ -112,7 +112,7 @@ provisioner: kubernetes.io/glusterfs
 
 _Note_ that
 
-* Each _glusterfs_ node has <code>po/glusterfs-storage-*</code> and one of them has <code>po/heketi-storage-1-*</code>.
+* Each _glusterfs_ node has <code>po/glusterfs-storage-\*</code> and one of them has <code>po/heketi-storage-1-\*</code>.
 * SC _glusterfs-storage_ connects to rest api provided by heketi to provion storage. Check the route:
 
    ```sh

@@ -1,6 +1,6 @@
 # GlusterFS test
 
-## pvc only
+## PVC only
 
 ### Run test
 
@@ -23,18 +23,19 @@ parameters:
 
 ### Check results
 
-## pods with pvc
+## Pods with pvc
 
 ### Run test
 
 ```sh
 # vi content/fio/fio-parameters.yaml
 ...
-parameters:
+        parameters:
           - STORAGE_CLASS: "glusterfs-storage" # this is name of storage class to use
           - STORAGE_SIZE: "3Gi" # this is size of PVC mounted inside pod
-          - MOUNT_PATH: "/var/jenkins_home"
-          - DOCKER_IMAGE: "docker.io/jenkins"
+          - MOUNT_PATH: "/mydata"
+          - DOCKER_IMAGE: "openshift/hello-openshift"
+
 ...
 
 # python -u cluster-loader.py -v -f content/fio/fio-parameters.yaml

@@ -162,22 +162,78 @@ TODO
 
 Install:
 
+On <code>gold-AMI</code>:
+
+```sh
+# yum heketi-cli
+```
+
+Or, on plain rhel:
+
 ```sh
 $ curl -L -o heketi-client-v4.0.0.linux.amd64.tar.gz https://github.com/heketi/heketi/releases/download/v4.0.0/heketi-client-v4.0.0.linux.amd64.tar.gz
 $ tar xzvf heketi-client-v4.0.0.linux.amd64.tar.gz
 $ ./heketi-client/bin/heketi-cli --version
 heketi-cli v4.0.0
+```
 
-$ #Not working yet
-$ ./heketi-client/bin/heketi-cli --server http://heketi-storage-glusterfs.34.209.47.41.xip.io --user admin --secret eXovVmJVd00yekNZVnpBMHBJTUdodzlEY2NSMzlCeUduM1FnYm1WQWo3Yz0= cluster list
-Error: Get http://heketi-storage-glusterfs.34.209.47.41.xip.io/clusters: dial tcp: lookup heketi-storage-glusterfs.34.209.47.41.xip.io on 172.31.0.2:53: no such host
+Get heketi url and token:
 
-$ #Next try: install heketi client on master via yum
-# yum info heketi
+```sh
+# oc get storageclass glusterfs-storage -o yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  creationTimestamp: 2017-08-25T14:38:05Z
+  name: glusterfs-storage
+  resourceVersion: "1869"
+  selfLink: /apis/storage.k8s.io/v1/storageclasses/glusterfs-storage
+  uid: 019ca86f-89a3-11e7-8705-0279b0aa6374
+parameters:
+  resturl: http://heketi-storage-glusterfs.0825-0lo.qe.rhcloud.com
+  restuser: admin
+  secretName: heketi-storage-admin-secret
+  secretNamespace: glusterfs
+provisioner: kubernetes.io/glusterfs
+
+# oc get secret -n glusterfs heketi-storage-admin-secret -o yaml | grep key | awk '{print $2}' | base64 --decode 
+0WTWPMxPtKWzjAoK+MUGVOPkw3RJ3TLvzBlHAJaTxqs=
+
+# heketi-cli --server http://heketi-storage-glusterfs.0825-0lo.qe.rhcloud.com --user admin --secret 0WTWPMxPtKWzjAoK+MUGVOPkw3RJ3TLvzBlHAJaTxqs= cluster list
+Clusters:
+6fac9ed1dd16ff1c330789c2e6494552
+```
+
+Via [curl command](https://github.com/heketi/heketi/wiki/API#authentication-model-):
+
+```sh
+$ python -V
+Python 2.7.5
+
+$ #Suggested to do in virtualenv
+$ pip install PyJWT
+
+$ #cp the python example:
+# #change the secret
+$ vi exmaple.py
 ...
-Version     : 4.0.0
+uri = '/clusters'
+secret = '0WTWPMxPtKWzjAoK+MUGVOPkw3RJ3TLvzBlHAJaTxqs='
+...
+
+uri = '/clusters'
+secret = '0WTWPMxPtKWzjAoK+MUGVOPkw3RJ3TLvzBlHAJaTxqs='
+
+$ #generate the jwt string
+$ python exmaple.py
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTUwMzY5MTM5MCwicXNoIjoiNDc0OWE1OWRlODdjMjdjOWIyZjQ5NWM1ZjEzMDliMjUyNTY4MWRmZTMwYzhhN2I4MzYyNTkwMWIxMzJhOWMyNiIsImV4cCI6MTUwMzY5MTk5MH0.M_33aTu_hHu9amt-Pmp2idWsKVkP3Sckf4EUkMGgsWk
+
+$ curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTUwMzY5MTM5MCwicXNoIjoiNDc0OWE1OWRlODdjMjdjOWIyZjQ5NWM1ZjEzMDliMjUyNTY4MWRmZTMwYzhhN2I4MzYyNTkwMWIxMzJhOWMyNiIsImV4cCI6MTUwMzY5MTk5MH0.M_33aTu_hHu9amt-Pmp2idWsKVkP3Sckf4EUkMGgsWk" http://heketi-storage-glusterfs.0825-0lo.qe.rhcloud.com/clusters
+{"clusters":["6fac9ed1dd16ff1c330789c2e6494552"]}
 
 ```
+
+When generate jwt string, the <code>url</code> has to match the one in the url command. If the return of the curl command is _Token is expired_, we have to regenerate the jwt string.
 
 ## GlusterFS
 

@@ -221,9 +221,6 @@ uri = '/clusters'
 secret = '0WTWPMxPtKWzjAoK+MUGVOPkw3RJ3TLvzBlHAJaTxqs='
 ...
 
-uri = '/clusters'
-secret = '0WTWPMxPtKWzjAoK+MUGVOPkw3RJ3TLvzBlHAJaTxqs='
-
 $ #generate the jwt string
 $ python exmaple.py
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTUwMzY5MTM5MCwicXNoIjoiNDc0OWE1OWRlODdjMjdjOWIyZjQ5NWM1ZjEzMDliMjUyNTY4MWRmZTMwYzhhN2I4MzYyNTkwMWIxMzJhOWMyNiIsImV4cCI6MTUwMzY5MTk5MH0.M_33aTu_hHu9amt-Pmp2idWsKVkP3Sckf4EUkMGgsWk

@@ -35,7 +35,7 @@ If error happens and we want to rerun:
 ```sh
 # oc delete project fio-1
 # oc delete scc fio
-# #might also need to kill pbench processes manually
+# #might also need to kill pbench processes manually including pbench remote nodes
 # ps -ef | grep fio | grep pbench | awk '{print $2}' | xargs kill -9
 ```
 

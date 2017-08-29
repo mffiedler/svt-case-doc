@@ -27,7 +27,7 @@ projectConfig:
 # ./start-storage-test.sh
 ```
 
-check pbench results: [example](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-24-235/) of ebs-device.
+check pbench results: [example](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-24-235/).
 
 ### Manual clean-up
 If error happens and we want to rerun:

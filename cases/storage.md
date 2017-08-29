@@ -124,4 +124,42 @@ If some error happens, we want to rerun the test:
 
 ## GlusterFS
 
-### 
+### Modify pod template
+Moidy <code>content/fio-pod-pv.json</code> to use the storage class which represents glusterFS. _Note_ that it is not supported for the moment to run 2 fio tests with the same gluster.
+
+### iostat
+
+<code>iostat</code> command is trickier for glusterFS: It is not easy to tell which volume/device is the target.
+This workaround might or might not he helpful:
+
+On master: 10 pv as expected:
+
+```sh
+# oc get pv
+NAME                                       CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM       STORAGECLASS        REASON    AGE
+pvc-e9cbba07-8ceb-11e7-9524-02389db2b36e   10Gi       RWO           Delete          Bound     fio-1/fio   glusterfs-storage             54m
+
+```
+
+On the compute node:
+
+```sh
+# dmsetup ls | grep brick
+vg_1ac8a03843d4533d13c75f98649fe2c1-brick_1b68251da2a4c23afada88be77027317	(253:14)
+vg_1ac8a03843d4533d13c75f98649fe2c1-brick_b625216d682febee41dbdafab4e9b4bd	(253:11)
+```
+This tells us that target is either 14 or 11.
+
+```sh
+# lsblk | grep brick
+│   └─vg_1ac8a03843d4533d13c75f98649fe2c1-brick_1b68251da2a4c23afada88be77027317              253:14   0  10G  0 lvm  
+│   └─vg_1ac8a03843d4533d13c75f98649fe2c1-brick_1b68251da2a4c23afada88be77027317              253:14   0  10G  0 lvm  
+│   └─vg_1ac8a03843d4533d13c75f98649fe2c1-brick_b625216d682febee41dbdafab4e9b4bd              253:11   0   2G  0 lvm  
+    └─vg_1ac8a03843d4533d13c75f98649fe2c1-brick_b625216d682febee41dbdafab4e9b4bd              253:11   0   2G  0 lvm 
+```
+
+Then we know that our volume is 10g, so number 14 is our target:
+
+```sh
+# iostat -t 10 dm-10
+```

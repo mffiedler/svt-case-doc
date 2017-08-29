@@ -33,7 +33,7 @@ projectConfig:
 where _ip-172-31-34-193.us-west-2.compute.internal_ is the master node and _ip-172-31-38-167.us-west-2.compute.internal_ is the compute node where we want to run the pod on.
 
 ### Debug
-Every test should run for a bout 2 - 3 mins. For the momemnt (OS 3.6), it takes much longer starting from <code>7-rw-4KiB</code>. It could be caused by pbench or the attached ebs-device.
+Every test should run for a bout 2 - 3 mins.
 
 ```sh
 # ll /var/lib/pbench-agent/fio_SEQ_IO_2017.08.29T13.11.11/
@@ -51,6 +51,9 @@ drwxr-xr-x. 3 root root   17 Aug 29 09:12 sysinfo
 drwxr-xr-x. 2 root root    6 Aug 29 09:12 tmp
 
 ```
+
+TODO: For the momemnt (OS 3.6), it takes much longer starting from <code>7-rw-4KiB</code>. It could be caused by pbench or the attached ebs-device.
+
 
 Run <code>iostat</code> on the compute node,
 

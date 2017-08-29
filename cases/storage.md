@@ -1,4 +1,5 @@
 # Storage Test
+This test is to run (via ssh) fio command in a CentOS pod on pbench remote node and send pbench-results to pbench server. 
 
 ## Doc
 * [src](https://github.com/openshift/svt/tree/master/storage)

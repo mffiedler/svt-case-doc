@@ -52,7 +52,7 @@ drwxr-xr-x. 2 root root    6 Aug 29 09:12 tmp
 
 ```
 
-Run <code>iostat<code> on the compute node,
+Run <code>iostat</code> on the compute node,
 
 ```sh
 # #on master

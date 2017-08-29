@@ -1,5 +1,11 @@
 # [pbench](https://github.com/distributed-system-analysis/pbench)
 
+## Doc
+
+* [pbench-agent: user guide](http://distributed-system-analysis.github.io/pbench/pbench-agent.html)
+* [pbench-fio](https://github.com/distributed-system-analysis/pbench/blob/master/agent/bench-scripts/pbench-fio.md)
+* [pbench-uperf](https://github.com/distributed-system-analysis/pbench/blob/master/agent/bench-scripts/pbench-uperf.md)
+
 ## Installation
 TODO (see AMI provisioning)
 

@@ -31,7 +31,7 @@ projectConfig:
 check pbench results: [example](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-24-235/).
 
 ### Manual clean-up
-If error happens and we want to rerun:
+If some error happens, we want to rerun the test:
 
 ```sh
 # oc delete project fio-1

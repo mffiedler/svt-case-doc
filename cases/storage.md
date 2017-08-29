@@ -5,6 +5,7 @@ This test is to run (via ssh) fio command in a CentOS pod on pbench remote node 
 * [src](https://github.com/openshift/svt/tree/master/storage)
 * [Siva's Demo](https://bluejeans.com/playback/s/BxX2fG6y4ZjAaii8JH1o7on8NfcZj2PV530lLKvyXyjPf3I5oOKQkizb939slYdT)
 * [pbench-fio](https://github.com/distributed-system-analysis/pbench/blob/master/agent/bench-scripts/pbench-fio.md)
+* [fio](../learn/fio.md)
 
 ## EBS
 

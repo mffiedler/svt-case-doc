@@ -161,5 +161,14 @@ This tells us that target is either 14 or 11.
 Then we know that our volume is 10g, so number 14 is our target:
 
 ```sh
-# iostat -t 10 dm-10
+# iostat -t 10 dm-14
+Linux 3.10.0-693.el7.x86_64 (ip-172-31-46-56.us-west-2.compute.internal) 	08/29/2017 	_x86_64_	(4 CPU)
+
+08/29/2017 03:54:55 PM
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           1.00    0.00    1.22    1.55    0.09   96.15
+
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+dm-14             4.92         0.17       792.94       4647   21995043
+
 ```

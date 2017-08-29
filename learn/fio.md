@@ -5,6 +5,8 @@ RHEL 7.3
 
 ```sh
 # yum install -y fio
+# fio --version
+fio-2.2.8
 ```
 
 ## [Examples](https://www.linux.com/learn/inspecting-disk-io-performance-fio)
@@ -51,3 +53,6 @@ Run status group 0 (all jobs):
 Disk stats (read/write):
   xvda: ios=32548/0, merge=0/0, ticks=9434/0, in_queue=9434, util=96.97%
 ```
+
+The Bigger <code>bw</code> and the smaller <code>lat</code>, the better.
+

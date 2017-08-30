@@ -7,6 +7,16 @@ This test is to run (via ssh) fio command in a CentOS pod on pbench remote node 
 * [pbench-fio](https://github.com/distributed-system-analysis/pbench/blob/master/agent/bench-scripts/pbench-fio.md)
 * [fio](../learn/fio.md)
 
+## About the test
+
+* The bash script <code>start-storage-test.sh</code> collects nodes in <code>config.yaml</code> and starts <code>storage-test.py</code>
+* The python script <code>storage-test.py</code> sets up variables and starts the playbook <code>fio-test-setup.yaml</code>.
+* <code>fio-test-setup.yaml</code>
+
+  * Build a special docker image based on Dockerfile <code>fio/Dockerfile</code>
+  * Create pod based on the above image
+  * Run <code>pbench-fio</code> using the pod as client
+
 ## EBS
 
 ### Run

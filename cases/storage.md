@@ -17,6 +17,8 @@ This test is to run (via ssh) fio command in a CentOS pod on pbench remote node 
   * Create pod based on the above image
   * Run <code>pbench-fio</code> using the pod as client
 
+See [storage_manual_steps.md](storage_manual_steps.md) for more details.
+
 ## EBS
 
 ### Run

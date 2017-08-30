@@ -56,3 +56,8 @@ Disk stats (read/write):
 
 The Bigger <code>bw</code> and the smaller <code>lat</code>, the better.
 
+## Reference
+
+[1]. [fio-howto](https://github.com/axboe/fio/blob/master/HOWTO)
+
+[2]. [pdf](https://media.readthedocs.org/pdf/fio/latest/fio.pdf)

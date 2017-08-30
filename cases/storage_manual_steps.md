@@ -39,5 +39,15 @@ Last login: Wed Aug 30 16:59:49 2017 from ip-172-20-1-1.us-west-2.compute.intern
 [root@fio-1-86n8j ~]#
 ```
 
+## Run pbench-fio
+
+```sh
+
+```
+
+Parameters of pbench-fio: [here](http://distributed-system-analysis.github.io/pbench/doc/agent/user-guide.html#orga6d8420).
+
+[pbench-fio](https://github.com/distributed-system-analysis/pbench/blob/master/agent/bench-scripts/pbench-fio) will ssh to the pod and run fio-server there and then use the local host to connect to (via <code>fio --client</code> command) the fio-server to send fio-jobs. See here for details on fio [sever/cleint](https://linux.die.net/man/1/fio).
+
 
 

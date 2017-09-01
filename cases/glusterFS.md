@@ -72,3 +72,24 @@ pods/fio-pod-2km4f
   secret/default-token-zswxf as default-token-zswxf
     mounted at /var/run/secrets/kubernetes.io/serviceaccount
 ```
+
+
+## Put together
+_Note_ that [heketivolumemonitor.py](https://github.com/ekuric/openshift/blob/master/cns/heketivolumemonitor.py) and [check_pvpods.py](https://github.com/ekuric/openshift/blob/master/cns/check_pods/check_pvpods.py) have not been pushed to SVT repo yet.
+
+```sh
+# #change the fio-parameters.yaml to create 8 pvc (via 8 templates in 1 project)
+# python -u cluster-loader.py -v -f content/fio/fio-parameters.yaml
+# python ./cns/heketivolumemonitor.py --urllocation http://heketi-storage-glusterfs.0901-9aw.qe.rhcloud.com/volumes --projectname fiotest0 --port 80 --action create --secret 'ReSm+3X58fPATPIym9Z+wYwxj9Zeq/th+b0JRLuUZA4=' --numvol 8
+# python ./cns/check_pods/check_pvpods.py -H ec2-54-200-250-50.us-west-2.compute.amazonaws.com --token 1_PsL7BFOXiH3uft9srRra65UGC91fdKJOZV4CmQLuI --check_all -ns fiotest0
+
+```
+
+The result files are generated _heketivol.txt_ and _[pod|pv|pvc]*.[json|csv]_
+
+
+TODO Draw graph
+```sh
+$ sudo yum install gcc gcc-c++ libgcc python=devel numpy
+$ pip install pandas prettytable matplotlib
+```

@@ -80,7 +80,9 @@ _Note_ that [heketivolumemonitor.py](https://github.com/ekuric/openshift/blob/ma
 ```sh
 # #change the fio-parameters.yaml to create 8 pvc (via 8 templates in 1 project)
 # python -u cluster-loader.py -v -f content/fio/fio-parameters.yaml
+# #get secret https://github.com/hongkailiu/svt-case-doc/blob/master/storage/glusterFS.md#heketi
 # python ./cns/heketivolumemonitor.py --urllocation http://heketi-storage-glusterfs.0901-9aw.qe.rhcloud.com/volumes --projectname fiotest0 --port 80 --action create --secret 'ReSm+3X58fPATPIym9Z+wYwxj9Zeq/th+b0JRLuUZA4=' --numvol 8
+# #token is oc client token
 # python ./cns/check_pods/check_pvpods.py -H ec2-54-200-250-50.us-west-2.compute.amazonaws.com --token 1_PsL7BFOXiH3uft9srRra65UGC91fdKJOZV4CmQLuI --check_all -ns fiotest0
 
 ```

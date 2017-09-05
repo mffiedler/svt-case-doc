@@ -2,6 +2,7 @@
 
 ## DOC
 
+* [gluster-storage@redhat](https://access.redhat.com/documentation/en/red-hat-gluster-storage/)
 * [glusterFS@Wiki](https://en.wikipedia.org/wiki/GlusterFS)
 * [gluster.org](https://www.gluster.org/)
 * [glusterFS@oc](https://docs.openshift.com/container-platform/3.6/install_config/persistent_storage/persistent_storage_glusterfs.html)

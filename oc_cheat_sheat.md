@@ -82,4 +82,17 @@ $ oc get all
 # systemctl restart atomic-openshift-master
 ```
 
+## Config maximal volumes
+
+### 3.6 and HA
+
+```sh
+# #on all masters:
+# vi /etc/sysconfig/atomic-openshift-master-controllers
+...
+KUBE_MAX_PD_VOLS=60
+
+# systemctl daemon-reload
+# systemctl restart atomic-openshift-master-controllers
+```
 

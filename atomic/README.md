@@ -4,6 +4,7 @@
 
 * [project-atomic](http://www.projectatomic.io)
 * [atomic@github](https://github.com/projectatomic)
+* [flannel](https://github.com/coreos/flannel)
 
 ## Launch an instance
 

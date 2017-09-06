@@ -41,6 +41,16 @@ config  credentials
     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-rhel73-test\"}]}]"
 ```
 
+### Atomic Host
+
+```sh
+(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-424cb83a \
+    --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.large --key-name id_rsa_perf \
+    --subnet subnet-4879292d \
+    --query 'Instances[*].InstanceId' \
+    --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-atomic-test\"}]}]"
+```
+
 ### Useful commands
 
 ```sh

@@ -2,7 +2,8 @@
 
 ## Doc
 
-* [linux kernel security](https://www.linux.com/learn/overview-linux-kernel-security-features), [selinux](selinux.md)
+* [linux kernel security](https://www.linux.com/learn/overview-linux-kernel-security-features)
+* [selinux](selinux.md), [linux namespace](https://en.wikipedia.org/wiki/Linux_namespaces), and [cgroup](https://en.wikipedia.org/wiki/Cgroups)
 * [Dan Walsh's Blog](http://danwalsh.livejournal.com/), [security@docker](https://docs.docker.com/engine/security/security/), [security@container](https://opensource.com/business/14/7/docker-security-selinux)
 * [sc@k8s](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
 * [secure-k8s](https://blog.openshift.com/securing-kubernetes/)

@@ -23,5 +23,7 @@ xvda                          202:0    0   50G  0 disk
   ├─atomicos-root             253:0    0 19.8G  0 lvm  /sysroot
   └─atomicos-docker--root--lv 253:1    0   30G  0 lvm  /sysroot/ostree/deploy/rhel-atomic-host/var/lib/docker
 
+# kubectl --version
+Kubernetes v1.5.2
 
 ```

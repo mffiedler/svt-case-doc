@@ -29,9 +29,9 @@
         "kind": "ReplicationController",
         "apiVersion": "v1",
         "metadata": {
-            "name": "jenkins-${IDENTIFIER}",
+            "name": "fio-${IDENTIFIER}",
             "labels": {
-                "test": "jenkins"
+                "test": "fio"
             }
         },
         "spec": {
@@ -40,8 +40,8 @@
                 "metadata": {
                     "generateName": "centos-logtest-",
                     "labels": {
-                        "run": "jenkins",
-                        "test": "jenkins"
+                        "run": "fio",
+                        "test": "fio"
                     }
                 },
                 "spec": {
@@ -52,7 +52,7 @@
                         }
                     }],
                     "containers": [{
-                        "name": "jenkins",
+                        "name": "fio",
                         "image": "${DOCKER_IMAGE}",
                         "ports": [
                             {

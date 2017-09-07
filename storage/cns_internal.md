@@ -33,12 +33,12 @@ latest
 }
 
 # systemctl restart docker
-# docker pull brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7:3.3.0-9
-# docker pull brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-volmanager-rhel7:3.3.0-9
+# docker pull brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7:3.3.0-19
+# docker pull brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-volmanager-rhel7:3.3.0-12
 
 
-# docker save --output rhgs-server-rhel7.tar brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7:3.3.0-9
-# docker save --output rhgs-volmanager-rhel7.tar brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-volmanager-rhel7:3.3.0-9
+# docker save --output rhgs-server-rhel7.tar brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7:3.3.0-19
+# docker save --output rhgs-volmanager-rhel7.tar brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-volmanager-rhel7:3.3.0-12
 # ls *.tar
 rhgs-server-rhel7.tar  rhgs-volmanager-rhel7.tar
 ```
@@ -50,8 +50,8 @@ On _each_ of them:
 # docker load --input rhgs-server-rhel7.tar
 # docker load --input rhgs-volmanager-rhel7.tar
 # docker images | grep rhgs3
-brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-volmanager-rhel7   3.3.0-9             3d13e1900590        2 weeks ago         425 MB
-brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7       3.3.0-9             b99244967506        4 weeks ago         405.9 MB
+brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-volmanager-rhel7   3.3.0-12             3d13e1900590        2 weeks ago         425 MB
+brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7       3.3.0-19             b99244967506        4 weeks ago         405.9 MB
 
 ```
 
@@ -65,9 +65,9 @@ with the following change in the inventory file:
 glusterfs_devices=["/dev/xvdf"]
 ...
 openshift_storage_glusterfs_image=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7
-openshift_storage_glusterfs_version=3.3.0-9
+openshift_storage_glusterfs_version=3.3.0-19
 openshift_storage_glusterfs_heketi_image=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-volmanager-rhel7
-openshift_storage_glusterfs_heketi_version=3.3.0-9
+openshift_storage_glusterfs_heketi_version=3.3.0-12
 ...
 
 ```

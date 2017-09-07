@@ -26,3 +26,6 @@ My plan is to test metrics with block storage ( storage for cassandra ) in next 
 Also here is list of some BZ I opened in past and related to cns.
 
 https://docs.google.com/document/d/1NwyfGsJmzcaGxCuKYG0J8dJgEXTEBpQ1k4l_0QGVTf4/edit#heading=h.3q8egzovffst 
+
+
+Network of CNS: http://post-office.corp.redhat.com/archives/aos-devel/2017-August/msg00710.html

@@ -157,6 +157,8 @@ pods/web
 #### [cns-deplay](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/container-native_storage_for_openshift_container_platform_3.4/ch04s02)
 TODO
 
+https://keithtenzer.com/2017/03/29/storage-for-containers-using-container-native-storage-part-iii/
+
 ### Heketi
 
 #### Heketi client

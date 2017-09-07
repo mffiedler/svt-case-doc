@@ -14,12 +14,12 @@ need to assign a floating IP to it.
 # curl -L -o jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
 # #rhgs3/rhgs-server-rhel7
 # curl -s -k brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/v1/repositories/rhgs3/rhgs-server-rhel7/tags | ./jq 'keys' | ./jq -r .[] | sort -V | grep latest -B1
-3.3.0-9
+3.3.0-19
 latest
 
 # #rhgs3/rhgs-volmanager-rhel7
 # curl -s -k brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/v1/repositories/rhgs3/rhgs-volmanager-rhel7/tags | ./jq 'keys' | ./jq -r .[] | sort -V | grep latest -B1
-3.3.0-9
+3.3.0-12
 latest
 
 ```

@@ -63,7 +63,7 @@ ec2-54-200-102-250.us-west-2.compute.amazonaws.com
 ec2-54-213-42-122.us-west-2.compute.amazonaws.com
 ```
 
-[More parameters](https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_storage_glusterfs) in the role <code>openshift_storage_glusterfs</code>.
+[More parameters](https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_storage_glusterfs) in the role <code>openshift_storage_glusterfs</code>. [Example of the inventory file](https://github.com/openshift/openshift-ansible/blob/master/inventory/byo/hosts.byo.glusterfs.storage-and-registry.example).
 
 Run playbook (on master):
 ```sh

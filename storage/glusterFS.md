@@ -73,6 +73,9 @@ Run playbook (on master):
 Check project <code>glusterfs</code>
 
 ```sh
+# oc get daemonset 
+NAME                DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR            AGE
+glusterfs-storage   3         3         3         3            3           glusterfs=storage-host   13m
 # oc get all -n glusterfs -o wide
 NAME                REVISION   DESIRED   CURRENT   TRIGGERED BY
 dc/heketi-storage   1          1         1         config

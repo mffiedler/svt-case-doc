@@ -44,6 +44,10 @@ sh-4.2# glusterfs --version
 glusterfs 3.8.4 built on Aug 11 2017 08:58:58
 ...
 
+# #check if brick-multiplex is supported
+sh-4.2# gluster volume set help | grep cluster.brick-multiplex
+Option: cluster.brick-multiplex
+
 sh-4.2# gluster volume set all cluster.brick-multiplex on
 Brick-multiplexing is supported only for container workloads (CNS/CRS). Also it is advised to make sure that either all volumes are in stopped state or no bricks are running before this option is modified.Do you still want to continue? (y/n) y
 volume set: success

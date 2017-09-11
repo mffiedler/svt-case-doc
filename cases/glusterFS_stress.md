@@ -143,7 +143,7 @@ heketi-storage-2-dwsn5    1/1       Running   0          4h        172.20.1.3   
 # oc label node ip-172-31-31-233.us-west-2.compute.internal "aaa=bbb"
 ```
 
-See
+See the screenshot:
 
 ![](https://github.com/hongkailiu/svt-case-doc/raw/master/files/glusterfs_stress.png)
 

@@ -145,6 +145,6 @@ heketi-storage-2-dwsn5    1/1       Running   0          4h        172.20.1.3   
 
 See
 
-![glusterfs_stress](https://github.com/hongkailiu/svt-case-doc/raw/master/files/glusterfs_stress.png =100x30)
+![](https://github.com/hongkailiu/svt-case-doc/raw/master/files/glusterfs_stress.png)
 
 TODO: Adding one more compute node should lead to 1000 pods.

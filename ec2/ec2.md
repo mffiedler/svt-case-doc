@@ -31,6 +31,17 @@ config  credentials
 
 ## [Cli tutorial](http://docs.aws.amazon.com/cli/latest/userguide/tutorial-ec2-ubuntu.html)
 
+### Fedora 26
+List of AMIs is [here](https://alt.fedoraproject.org/cloud/).
+
+```sh
+(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-2c1c0f55 \
+    --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.large --key-name id_rsa_perf \
+    --subnet subnet-4879292d \
+    --query 'Instances[*].InstanceId' \
+    --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-fedora26-test\"}]}]"
+```
+
 ### Standard RHEL 7.3
 
 ```sh

@@ -66,7 +66,7 @@ to one of the cns nodes.
         region: infra
 ...
 
-# oc edit dc/registry-console -n default
+# oc edit dc/heketi-storage -n glusterfs
 ...
       dnsPolicy: ClusterFirst
       nodeSelector:

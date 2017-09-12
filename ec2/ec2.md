@@ -37,7 +37,7 @@ List of AMIs is [here](https://alt.fedoraproject.org/cloud/).
 ```sh
 (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-2c1c0f55 \
     --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.large --key-name id_rsa_perf \
-    --subnet subnet-4879292d \
+    --subnet subnet-4879292d --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 30}}]" \
     --query 'Instances[*].InstanceId' \
     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-fedora26-test\"}]}]"
 ```

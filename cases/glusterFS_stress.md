@@ -26,7 +26,8 @@ manually. See [cns_internal.md](../storage/cns_internal.md) for details.
     "i-0b11cb6de89905932"
 ]
 ## create other nodes
-(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-6ca0ba15     --security-group-ids sg-5c5ace38 --count 5 --instance-type m4.xlarge --key-name id_rsa_perf     --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\", \"Ebs\":{\"VolumeSize\": 60}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-bbb-test-0909\"}]}]"[
+(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-6ca0ba15     --security-group-ids sg-5c5ace38 --count 5 --instance-type m4.xlarge --key-name id_rsa_perf     --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\", \"Ebs\":{\"VolumeSize\": 60}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-bbb-test-0909\"}]}]"
+[
     "i-047060dfb0eac057d",
     "i-011a7e89d81c5f4d0",
     "i-06f8115f1b7b63a83",

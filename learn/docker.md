@@ -5,7 +5,7 @@ Docker is installed and configured on AMI by [svt/image_provisioner](https://git
 ## Logging driver
 TODO
 
-## Storage driver
+## [Storage driver](https://docs.docker.com/engine/userguide/storagedriver/)
 When we create EC2 an instance, we always create a volume for docker.
 The instance based on AMI will pick that volume up and docker uses it.
 
@@ -86,10 +86,11 @@ TODO/Question
 
 ===
 
-_Note_ that Only two things different:
+_Note_ that only two things different:
 
 * Size of <code>Data Space Available</code>
 * Lists of <code>Registry</code> and <code>Insecure Registries</code>
 
 This probably implies that the VG is created in AMI.
 
+### Overlay2

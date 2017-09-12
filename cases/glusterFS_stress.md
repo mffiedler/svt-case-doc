@@ -50,7 +50,7 @@ openshift_storage_glusterfs_heketi_version=3.3.0-9
 # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
 ```
 
-##
+## Enable brick-multiplex
 
 ```sh
 # oc rsh glusterfs-storage-<change_accordingly>

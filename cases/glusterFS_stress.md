@@ -147,4 +147,8 @@ See the screenshot:
 
 ![](https://github.com/hongkailiu/svt-case-doc/raw/master/files/glusterfs_stress.png)
 
-TODO: Adding one more compute node should lead to 1000 pods.
+## pbench
+
+1000 pods with 4 compute nodes: [pbench data]().
+
+

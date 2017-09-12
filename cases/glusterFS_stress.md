@@ -50,6 +50,13 @@ openshift_storage_glusterfs_heketi_version=3.3.0-9
 # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
 ```
 
+##
+
+```sh
+# oc rsh glusterfs-storage-<change_accordingly>
+
+sh-4.2# gluster volume set all cluster.brick-multiplex on
+```
 
 ## Move pods
 

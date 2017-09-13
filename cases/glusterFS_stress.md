@@ -147,6 +147,9 @@ If log of the heketi pod shows the above entry, then scale down/up via dc:
 # oc scale --replicas=1 -n glusterfs dc/heketi-storage
 ```
 
+If that does not work, delete projects with PVCs and then delete
+<code>glusterfs</code> project. Rerun the installation ansible playbook.
+
 ## 1000 pods
 Label the 2 cns nodes where heketi does not run:
 
@@ -167,6 +170,41 @@ See the screenshot:
 
 ## pbench
 
-1000 pods with 4 compute nodes: [pbench data](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-26-166/).
+1000 pods with 4 compute nodes: [up to 500 pods](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-26-166/)
+and [up to 1000 pods](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-38-67/).
+
+There might be some data missing for 1000-pod pbench data because <code>pbench-postprocess-tools</code>
+is done by 2 shots. The first one hang and even ssh tunnel cannot be established afterwards. Stop/Start
+the 4 instances for compute nodes resolves that.
+
+Observation:
+
+* When pbench commands are executed, <code>Heketi</code>, <code>cluster-loader</code>,
+pod, nodes' readiness might be compromised:
+
+    * <code>pbench-register.sh</code>: restart of <code>Heketi</code>;
+    * <code>pbench-start-tools</code>: connection denied of <code>cluster-loader</code>;
+    * <code>pbench-postprocess-tools</code> or <code>pbench-copy-results</code>: compute nodes might be <code>NotReady</code>
+
+* <code>iostat</code> use 100% of CPU most of the time on cns nodes. It is odd that
+ <code>iostat</code> becomes a big overhead.
+* Moving heketi to a dedicated 4xlarge instance might ease the success of the test.
 
 
+Nodes for 1000-pod pbench data:
+
+```sh
+# oc get nodes --show-labels
+NAME                                          STATUS                     AGE       VERSION             LABELS
+ip-172-31-21-32.us-west-2.compute.internal    Ready                      1h        v1.6.1+5115d708d7   aaa=bbb,beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,kubernetes.io/hostname=ip-172-31-21-32.us-west-2.compute.internal,region=primary,zone=default
+ip-172-31-27-70.us-west-2.compute.internal    Ready                      1h        v1.6.1+5115d708d7   aaa=ccc,beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.4xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,kubernetes.io/hostname=ip-172-31-27-70.us-west-2.compute.internal,region=primary,zone=default
+ip-172-31-38-67.us-west-2.compute.internal    Ready,SchedulingDisabled   1h        v1.6.1+5115d708d7   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,kubernetes.io/hostname=ip-172-31-38-67.us-west-2.compute.internal,region=infra,zone=default
+ip-172-31-40-85.us-west-2.compute.internal    Ready                      1h        v1.6.1+5115d708d7   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.4xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,glusterfs=storage-host,kubernetes.io/hostname=ip-172-31-40-85.us-west-2.compute.internal,region=primary,zone=default
+ip-172-31-5-44.us-west-2.compute.internal     Ready                      1h        v1.6.1+5115d708d7   aaa=bbb,beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,kubernetes.io/hostname=ip-172-31-5-44.us-west-2.compute.internal,region=primary,zone=default
+ip-172-31-52-20.us-west-2.compute.internal    Ready                      1h        v1.6.1+5115d708d7   aaa=bbb,beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,kubernetes.io/hostname=ip-172-31-52-20.us-west-2.compute.internal,region=primary,zone=default
+ip-172-31-53-219.us-west-2.compute.internal   Ready                      1h        v1.6.1+5115d708d7   aaa=bbb,beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,kubernetes.io/hostname=ip-172-31-53-219.us-west-2.compute.internal,region=primary,zone=default
+ip-172-31-57-78.us-west-2.compute.internal    Ready                      1h        v1.6.1+5115d708d7   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.4xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,glusterfs=storage-host,kubernetes.io/hostname=ip-172-31-57-78.us-west-2.compute.internal,region=primary,zone=default
+ip-172-31-60-65.us-west-2.compute.internal    Ready                      1h        v1.6.1+5115d708d7   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,kubernetes.io/hostname=ip-172-31-60-65.us-west-2.compute.internal,region=infra,zone=default
+ip-172-31-7-52.us-west-2.compute.internal     Ready                      1h        v1.6.1+5115d708d7   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.4xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,glusterfs=storage-host,kubernetes.io/hostname=ip-172-31-7-52.us-west-2.compute.internal,region=primary,zone=default
+
+```

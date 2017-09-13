@@ -180,6 +180,7 @@ the 4 instances for compute nodes resolves that.
 Observation:
 
 * Without pbench, at least 3 projects for cluster-loader can be run at the same time while it has to be 1 after another with it.
+Enlarge the intervals of pbench tools helps.
 * When pbench commands are executed, <code>Heketi</code>, <code>cluster-loader</code>,
 pod, nodes' readiness might be compromised:
 
@@ -187,9 +188,8 @@ pod, nodes' readiness might be compromised:
     * <code>pbench-start-tools</code>: connection denied of <code>cluster-loader</code>;
     * <code>pbench-postprocess-tools</code> or <code>pbench-copy-results</code>: compute nodes might be <code>NotReady</code>.
 
-* <code>iostat</code> use 100% of CPU most of the time on cns nodes. It is odd that
- <code>iostat</code> becomes a big overhead.
-* Moving heketi to a dedicated 4xlarge instance might ease the success of the test.
+* <code>iostat</code> use [100% of CPU most of the time on cns nodes](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-26-166/hk-glusterfs-stress-a/tools-default/ip-172-31-28-89.us-west-2.compute.internal/pidstat/cpu_usage.html). It is because heketi creates thounds of LVMs on the cns nodes.
+* Moving heketi to a dedicated 4xlarge instance eases the success of the test.
 
 
 Nodes for 1000-pod pbench data:

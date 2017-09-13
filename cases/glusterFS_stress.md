@@ -107,6 +107,15 @@ onto cns nodes.
           - STORAGE_SIZE: "1Gi" # this is size of PVC mounted inside pod
           - MOUNT_PATH: "/mnt/pvcmount"
           - DOCKER_IMAGE: "gcr.io/google_containers/pause-amd64:3.0"
+
+tuningsets:
+  - name: default
+    templates:
+      stepping:
+        stepsize: 5
+        pause: 1000 ms
+      rate_limit:
+        delay: 1000 ms
 ...
 
 # python -u cluster-loader.py -v -f content/fio/fio-parameters.yaml -p 1

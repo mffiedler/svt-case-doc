@@ -185,7 +185,7 @@ pod, nodes' readiness might be compromised:
 
     * <code>pbench-register.sh</code>: restart of <code>Heketi</code>;
     * <code>pbench-start-tools</code>: connection denied of <code>cluster-loader</code>;
-    * <code>pbench-postprocess-tools</code> or <code>pbench-copy-results</code>: compute nodes might be <code>NotReady</code>
+    * <code>pbench-postprocess-tools</code> or <code>pbench-copy-results</code>: compute nodes might be <code>NotReady</code>.
 
 * <code>iostat</code> use 100% of CPU most of the time on cns nodes. It is odd that
  <code>iostat</code> becomes a big overhead.

@@ -109,7 +109,7 @@ onto cns nodes.
           - DOCKER_IMAGE: "gcr.io/google_containers/pause-amd64:3.0"
 ...
 
-# python -u cluster-loader.py -v -f content/fio/fio-parameters.yaml
+# python -u cluster-loader.py -v -f content/fio/fio-parameters.yaml -p 1
 ```
 
 ## Watch results

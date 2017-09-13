@@ -179,6 +179,7 @@ the 4 instances for compute nodes resolves that.
 
 Observation:
 
+* Without pbench, at least 3 projects for cluster-loader can be run at the same time while it has to be 1 after another with it.
 * When pbench commands are executed, <code>Heketi</code>, <code>cluster-loader</code>,
 pod, nodes' readiness might be compromised:
 

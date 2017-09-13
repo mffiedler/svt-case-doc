@@ -51,14 +51,6 @@ openshift_storage_glusterfs_heketi_version=3.3.0-9
 # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
 ```
 
-## Enable brick-multiplex
-
-```sh
-# oc rsh glusterfs-storage-<change_accordingly>
-
-sh-4.2# gluster volume set all cluster.brick-multiplex on
-```
-
 ## Move pods
 
 By default, one compute node can run 250 pods.
@@ -81,6 +73,15 @@ to one of the cns nodes.
         glusterfs: storage-host
 ...
 ```
+
+## Enable brick-multiplex
+
+```sh
+# oc rsh glusterfs-storage-<change_accordingly>
+
+sh-4.2# gluster volume set all cluster.brick-multiplex on
+```
+
 
 ## Label compute nodes
 Make sure the pods for test run only on compute nodes, instead of spreading

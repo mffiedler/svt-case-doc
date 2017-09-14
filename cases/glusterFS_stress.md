@@ -171,7 +171,7 @@ See the screenshot:
 ## pbench
 
 1000 pods with 4 compute nodes: [up to 500 pods](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-26-166/),
-[up to 1000 pods: bad](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-38-67/), and [up to 1000 pods: good]().
+[up to 1000 pods: bad](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-38-67/), and [up to 1000 pods: good](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-15-147/).
 
 There might be some data missing for 1000-pod pbench data because <code>pbench-postprocess-tools</code>
 is done by 2 shots. The first one hang and even ssh tunnel cannot be established afterwards. Stop/Start

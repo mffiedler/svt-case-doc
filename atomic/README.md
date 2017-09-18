@@ -52,3 +52,6 @@ Go OS/Arch: linux/amd64
 ...
 
 ```
+
+## Configure K8S
+TODO

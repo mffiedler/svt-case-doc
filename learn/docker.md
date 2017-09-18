@@ -143,4 +143,8 @@ _Note_ that only two things different:
 
 This probably implies that the VG is created in AMI.
 
-### Overlay2
+### [Overlay2](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/#how-the-overlay2-driver-works)
+
+As default storage driver for <code>docker-ce 17.09.0-ce-rc2</code> and <code>openshift 3.7</code>.
+
+

@@ -114,3 +114,33 @@ Check [here](manual_cluster.md).
 aos_ansible_vars:
   aos_repo: https://mirror.openshift.com/enterprise/enterprise-3.5/latest/RH7-RHAOS-3.5/x86_64/os
 ```
+
+
+### Cluster version 3.7
+
+* Use [parameter template for version 3.7](http://git.app.eng.bos.redhat.com/git/openshift-misc.git/plain/v3-launch-templates/system-testing/aos-37/aws/vars.ose37-aws-svt.yaml)
+
+#### Overlay2
+
+AMI: ocp-3.7.0-0.126.4-ol2-rhel-gold-auto
+
+```sh
+# docker info
+...
+Storage Driver: overlay2
+...
+
+# df -hT
+Filesystem                             Type      Size  Used Avail Use% Mounted on
+...
+/dev/mapper/docker_vg-docker--root--lv xfs        30G  2.6G   28G   9% /var/lib/docker
+...
+
+# docker info
+...
+Server Version: 1.12.6
+Storage Driver: overlay2
+ Backing Filesystem: xfs
+Logging Driver: journald
+...
+```

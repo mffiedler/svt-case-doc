@@ -8,6 +8,8 @@
 
 ## Extend LVM with Atomic Host on EC2 instance
 
+We could use gold AMI for (Red Hat) Atomic Host and I would nicely done the LVM partition. We use Fedora Atomic Host AMI here for training of LVMs.
+
 Launch ec2 instance without specifying the size of root device:
 
 ```sh

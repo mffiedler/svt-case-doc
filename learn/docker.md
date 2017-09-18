@@ -1,5 +1,55 @@
 # Docker
 
+## Default configuration of docker on Fedora 26
+
+Docker installation issue on Fedora 26: [workaround](https://github.com/docker/for-linux/issues/35).
+
+```sh
+[fedora@ip-172-31-33-174 ~]$ docker info
+Containers: 0
+ Running: 0
+ Paused: 0
+ Stopped: 0
+Images: 0
+Server Version: 17.09.0-ce-rc2
+Storage Driver: overlay2
+ Backing Filesystem: extfs
+ Supports d_type: true
+ Native Overlay Diff: true
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+ Volume: local
+ Network: bridge host macvlan null overlay
+ Log: awslogs fluentd gcplogs gelf journald json-file logentries splunk syslog
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: 06b9cb35161009dcb7123345749fef02f7cea8e0
+runc version: 3f2f8b84a77f73d38244dd690525642a72156c64
+init version: 949e6fa
+Security Options:
+ seccomp
+  Profile: default
+Kernel Version: 4.12.13-300.fc26.x86_64
+Operating System: Fedora 26 (Cloud Edition)
+OSType: linux
+Architecture: x86_64
+CPUs: 2
+Total Memory: 7.793GiB
+Name: ip-172-31-33-174.us-west-2.compute.internal
+ID: WR52:4N7K:SBMK:JR7E:PMTS:LGNN:QCBB:MN2A:YGGK:MECR:MNOF:ORCT
+Docker Root Dir: /var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Registry: https://index.docker.io/v1/
+Experimental: false
+Insecure Registries:
+ 127.0.0.0/8
+Live Restore Enabled: false
+```
+
 Docker is installed and configured on AMI by [svt/image_provisioner](https://github.com/openshift/svt/tree/master/image_provisioner).
 
 ## Logging driver

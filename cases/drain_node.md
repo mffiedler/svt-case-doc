@@ -6,7 +6,7 @@ Cluster:
 | role  |  number  |
 |---|---|
 | lb (master) | 1 |
-| master-etcd   |  1 |
+| master-etcd   |  2 |
 | infra  | 1  |
 | computing-nodes  | 2  |
 

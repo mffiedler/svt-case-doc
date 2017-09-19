@@ -170,8 +170,7 @@ log      =internal               bsize=4096   blocks=2906, version=2
          =                       sectsz=512   sunit=0 blks, lazy-count=1
 realtime =none                   extsz=4096   blocks=0, rtextents=0
 data blocks changed from 5952512 to 11810816
-[root@ip-172-31-10-230 ~]#
-[root@ip-172-31-10-230 ~]#
+
 [root@ip-172-31-10-230 ~]# vgdisplay
   --- Volume group ---
   VG Name               atomicos

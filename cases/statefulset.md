@@ -3,12 +3,23 @@
 
 ## Calculation of stress
 
+### online-int
+
 * #computing-node: 4, with limit 30 pods/node. So #pod=120
 * #replica: 2 for each SS
 
 So in total we can create 60 SS(s).
 
 _Note_ that there is a [limited](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/volume_limits.html#linux-specific-volume-limits) number (40) of ebs-volumes attached to an ec2-instance.
+
+### Test cluster with Flexy
+
+* #computing-node: 2
+* node_instance_type:
+  * m4.xlarge: CPU to support 16 pods
+  * m4.4xlarge: CPU to support 60 pods
+
+On test cluster, CPU resources become the bottleneck.
 
 ### Vertical stress
 1 project and many pods: #proj 1 and #template 60

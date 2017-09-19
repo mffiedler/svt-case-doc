@@ -155,28 +155,6 @@ data blocks changed from 768000 to 3840000
   Free  PE / Size       5721 / 22.35 GiB
   VG UUID               FLImoM-nkRg-hQBb-D9hB-8mqf-PHgI-7jX5S1
 
-[root@ip-172-31-10-230 ~]# vgdisplay
-  --- Volume group ---
-  VG Name               atomicos
-  System ID
-  Format                lvm2
-  Metadata Areas        1
-  Metadata Sequence No  5
-  VG Access             read/write
-  VG Status             resizable
-  MAX LV                0
-  Cur LV                2
-  Open LV               2
-  Max PV                0
-  Cur PV                1
-  Act PV                1
-  VG Size               59.70 GiB
-  PE Size               4.00 MiB
-  Total PE              15284
-  Alloc PE / Size       9563 / 37.36 GiB
-  Free  PE / Size       5721 / 22.35 GiB
-  VG UUID               FLImoM-nkRg-hQBb-D9hB-8mqf-PHgI-7jX5S1
-
 [root@ip-172-31-10-230 ~]# lvextend -l +5721 /dev/atomicos/docker-root-lv
   Size of logical volume atomicos/docker-root-lv changed from 22.71 GiB (5813 extents) to 45.05 GiB (11534 extents).
   Logical volume atomicos/docker-root-lv successfully resized.

@@ -14,7 +14,7 @@ or get AMIs on [fedora.org](https://getfedora.org/en/atomic/download/).
 
 
 ```sh
-# #Using gold AMI
+# #on gold AMI
 # cat /etc/*release
 NAME="Red Hat Enterprise Linux Atomic Host"
 VERSION="7.4.0"
@@ -29,12 +29,13 @@ xvda                          202:0    0   50G  0 disk
   └─atomicos-docker--root--lv 253:1    0   30G  0 lvm  /sysroot/ostree/deploy/rhel-atomic-host/var/lib/docker
 ```
 
-Follow the steps if using public A
+Follow the [steps](../learn/lvm.md) to extend LVMs if using public Atomic Host AMis.
 
 ## Tools
 Docker, k8s and etcd are installed out of the box.
 
 ```sh
+# #on gold AMI
 # docker info
 ...
 Server Version: 1.12.6
@@ -61,6 +62,7 @@ Follow the [steps](http://www.projectatomic.io/docs/gettingstarted/) with the fo
 * <code>KUBE_ETCD_SERVERS</code> is configured in <code>/etc/kubernetes/apiserver</code> instead of <code>/etc/kubernetes/config</code>:
 
   ```sh
+  # #on public AMI
   [fedora@ip-172-31-25-0 ~]$ sudo vi /etc/kubernetes/apiserver
   # Comma separated list of nodes in the etcd cluster
   KUBE_ETCD_SERVERS="--etcd_servers=http://172.31.25.0:2379"

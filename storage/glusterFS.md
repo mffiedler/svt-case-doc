@@ -238,6 +238,10 @@ $ curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOi
 
 When generate jwt string, the <code>url</code> has to match the one in the url command. If the return of the curl command is _Token is expired_, we have to regenerate the jwt string.
 
+### CNS and device-mapper
+
+CNS requires device-mapper. It requires <code>modprobe dm_thin_pool</code> on each nodes. Otherwise, we would meet [this issue](https://github.com/openshift/openshift-ansible/issues/5108). When our docker uses overlay2 (not device-mapper) as storage driver, we run into this issue.
+
 ## GlusterFS
 
 ### [Installation](https://access.redhat.com/documentation/en-US/Red_Hat_Storage/3/html/Administration_Guide/part-Red_Hat_Storage_Administration_on_Public_Cloud.html)

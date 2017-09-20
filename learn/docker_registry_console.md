@@ -35,3 +35,5 @@ Status: Downloaded newer image for docker-registry-default.apps.0920-iad.qe.rhcl
 
 ```
 
+## Survival of instance restart
+TODO

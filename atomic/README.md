@@ -54,7 +54,30 @@ Go OS/Arch: linux/amd64
 ```
 
 ## Configure K8S
-TODO
+Follow the [steps](http://www.projectatomic.io/docs/gettingstarted/) with the following modification:
+
+* <code>KUBE_ETCD_SERVERS</code> is configured in <code>/etc/kubernetes/apiserver</code> instead of <code>/etc/kubernetes/config</code>:
+
+  ```sh
+  [fedora@ip-172-31-25-0 ~]$ sudo vi /etc/kubernetes/apiserver
+  # Comma separated list of nodes in the etcd cluster
+  KUBE_ETCD_SERVERS="--etcd_servers=http://172.31.25.0:2379"
+  ...
+
+  # default admission control policies
+  #KUBE_ADMISSION_CONTROL=""
+  ```
+
+* <code>KUBE_ADMISSION_CONTROL</code> is disabled up to [issue 33714](https://github.com/kubernetes/kubernetes/issues/33714).
+* <code>KUBE_MASTER</code> uses port 8080 instead of 6443:
+
+  ```sh
+  [fedora@ip-172-31-25-0 ~]$ sudo vi /etc/kubernetes/config
+  ...
+  # How the controller-manager, scheduler, and proxy find the apiserver
+  KUBE_MASTER="--master=http://172.31.25.0:8080"
+  ```
+
 
 ## Tools: TODO
 

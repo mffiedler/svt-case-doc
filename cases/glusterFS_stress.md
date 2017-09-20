@@ -191,5 +191,13 @@ pod, nodes' readiness might be compromised:
 * <code>iostat</code> use [100% of CPU most of the time on cns nodes](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-26-166/hk-glusterfs-stress-a/tools-default/ip-172-31-28-89.us-west-2.compute.internal/pidstat/cpu_usage.html). It is because heketi creates thounds of LVMs on the cns nodes.
 * Moving heketi to a dedicated 4xlarge instance eases the success of the test.
 
+### pbench records
 
+| date     | os version     | docker storage driver | glusterfs image version | heketi image version | access.redhat.com | pbench data                                                                      |
+|----------|----------------|-----------------------|-------------------------|----------------------|-------------------|----------------------------------------------------------------------------------|
+| 20170920 | v3.6.172.0.0-1 | devicemapper          | 3.3.0-12                | 3.3.0-9              | no                | [link](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-15-147/) |
+| 20170920 | v3.7.0-0.126.4 | overlay2              | 3.2.0-7                 | 3.2.0-11             | yes               |                                                                                  |
+|          |                |                       |                         |                      |                   |                                                                                  |
+|          |                |                       |                         |                      |                   |                                                                                  |
+|          |                |                       |                         |                      |                   |                                                                                  |
 

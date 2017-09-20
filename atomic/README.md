@@ -14,6 +14,7 @@ or get AMIs on [fedora.org](https://getfedora.org/en/atomic/download/).
 
 
 ```sh
+# #Using gold AMI
 # cat /etc/*release
 NAME="Red Hat Enterprise Linux Atomic Host"
 VERSION="7.4.0"
@@ -28,6 +29,7 @@ xvda                          202:0    0   50G  0 disk
   └─atomicos-docker--root--lv 253:1    0   30G  0 lvm  /sysroot/ostree/deploy/rhel-atomic-host/var/lib/docker
 ```
 
+Follow the steps if using public A
 
 ## Tools
 Docker, k8s and etcd are installed out of the box.

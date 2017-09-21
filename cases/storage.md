@@ -188,4 +188,4 @@ dm-14             4.92         0.17       792.94       4647   21995043
 
 ### pbench results
 
-[example](example](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-34-193/)
+[example](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-34-193/)

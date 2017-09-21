@@ -195,8 +195,8 @@ pod, nodes' readiness might be compromised:
 
 | date     | os version     | docker storage driver | glusterfs image version | heketi image version | access.redhat.com | #pod | pbench data                                                                      |
 |----------|----------------|-----------------------|-------------------------|----------------------|-------------------|------|----------------------------------------------------------------------------------|
-| 20170920 | v3.6.172.0.0-1 | devicemapper          | 3.3.0-12                | 3.3.0-9              | no                | 1000 | [link](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-15-147/) |
+| 20170913 | v3.6.172.0.0-1 | devicemapper          | 3.3.0-12                | 3.3.0-9              | no                | 1000 | [link](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-15-147/) |
 | 20170920 | v3.7.0-0.126.4 | overlay2              | 3.2.0-7                 | 3.2.0-11             | yes               | 799  |                                                                                  |
-|          |                |                       |                         |                      |                   |      |                                                                                  |
+| 20170920 | v3.7.0-0.126.4 | overlay2              | overlay2                | overlay2             | no                | 1000 | [link]()                                                                         |
 |          |                |                       |                         |                      |                   |      |                                                                                  |
 |          |                |                       |                         |                      |                   |      |                                                                                  |

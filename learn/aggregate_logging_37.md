@@ -234,7 +234,17 @@ In this case, this is <code>journald</code>.
 [Retrieve the container logs](https://docs.docker.com/engine/admin/logging/journald/#retrieving-log-messages-with-journalctl)
 
 ```sh
-# journalctl -b CONTAINER_NAME=<CONTAINER_NAME>
+# ssh ip-172-31-5-234.us-west-2.compute.internal
+# docker ps | grep frontend-1-pklzq
+4ab7d665e371        docker.io/hongkailiu/svt-go@sha256:6b9d8e51c68409d58e925ef4a04b3bb5411a9cd63e360627a7a43ad82c87d691                                   "./svt/svt http"         18 minutes ago      Up 18 minutes                           k8s_helloworldfrontend-1-pklzq_aaa_0d355469-9fa5-11e7-8793-027497ece8ac_0
+f8ffed0ff298        registry.ops.openshift.com/openshift3/ose-pod:v3.7.0-0.126.4                                                                          "/usr/bin/pod"           18 minutes ago      Up 18 minutes                           k8s_POD_frontend-1-pklzq_aaa_0d355469-9fa5-11e7-8793-027497ece8ac_0
+
+# #journalctl -b CONTAINER_NAME=<CONTAINER_NAME>
+
+# journalctl -b CONTAINER_NAME=k8s_helloworld_frontend-1-pklzq_aaa_0d355469-9fa5-11e7-8793-027497ece8ac_0
+-- Logs begin at Fri 2017-09-22 12:38:05 UTC, end at Fri 2017-09-22 15:04:47 UTC. --
+Sep 22 14:48:19 ip-172-31-5-234.us-west-2.compute.internal dockerd-current[11733]: 2017-09-22T14:48:19.780+0000 Debug ▶ DEBU 00
+Sep 22 14:56:46 ip-172-31-5-234.us-west-2.compute.internal dockerd-current[11733]: 2017-09-22T14:56:46.245+0000 Info ▶ INFO 002
 ```
 
 #### json-file

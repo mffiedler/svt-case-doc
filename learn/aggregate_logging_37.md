@@ -33,8 +33,11 @@ ec2-54-186-165-141.us-west-2.compute.amazonaws.com
 deployment_type=openshift-enterprise                                                          
 
 openshift_deployment_type=openshift-enterprise                                                
-openshift_release=v3.7.0                       
-
+openshift_release=v3.7.0
+#The 3 following vars have to match the master config
+openshift_portal_net=172.24.0.0/14
+osm_cluster_network_cidr=172.20.0.0/14
+osm_host_subnet_length=9
 
 
 openshift_logging_install_logging=true         

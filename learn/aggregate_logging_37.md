@@ -17,7 +17,7 @@ Logging Driver: journald
 
 ### Modify the inventory file
 
-
+journald with mux:
 
 ```sh
 [OSEv3:children]                               
@@ -98,90 +98,75 @@ Check the parameter's meaning [here](https://docs.openshift.org/latest/install_c
 ## Verify
 
 ```sh
-$ oc project logging
-$ oc get pods
-$ oc get pvc
-NAME           STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS   AGE
-logging-es-0   Bound     pvc-d97744c7-670f-11e7-9ab4-028b0ef184e0   50Gi       RWO           gp2            7h
-$ oc get pv
-NAME                                       CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM                  STORAGECLASS   REASON    AGE
-pvc-d97744c7-670f-11e7-9ab4-028b0ef184e0   50Gi       RWO           Delete          Bound     logging/logging-es-0   gp2                      7h
-```
+# oc project logging
+# oc get all -o wide
+NAME                                                REVISION   DESIRED   CURRENT   TRIGGERED BY
+deploymentconfigs/logging-curator                   1          1         1         config
+deploymentconfigs/logging-es-data-master-39f9joda   1          1         1         config
+deploymentconfigs/logging-es-data-master-43lag4ik   1          1         1         config
+deploymentconfigs/logging-es-data-master-j763alrc   1          1         1         config
+deploymentconfigs/logging-kibana                    1          1         1         config
+deploymentconfigs/logging-mux                       1          1         1         config
 
-Note that PV is attached to ES-pods.
+NAME                    HOST/PORT                             PATH      SERVICES         PORT      TERMINATION          WILDCARD
+routes/logging-kibana   kibana.apps.0922-mtp.qe.rhcloud.com             logging-kibana   <all>     reencrypt/Redirect   None
 
-Assume that we put a wrong value of openshift_logging_image_version, eg, the image does not exist. We would see
+NAME                                         READY     STATUS    RESTARTS   AGE       IP            NODE
+po/logging-curator-1-xzmk3                   1/1       Running   0          4m        172.20.2.17   ip-172-31-21-185.us-west-2.compute.internal
+po/logging-es-data-master-39f9joda-1-p2qg2   1/1       Running   0          4m        172.23.0.7    ip-172-31-5-234.us-west-2.compute.internal
+po/logging-es-data-master-43lag4ik-1-z383x   1/1       Running   0          4m        172.21.0.5    ip-172-31-23-229.us-west-2.compute.internal
+po/logging-es-data-master-j763alrc-1-v1g9g   1/1       Running   0          4m        172.20.0.6    ip-172-31-10-173.us-west-2.compute.internal
+po/logging-fluentd-03nz4                     1/1       Running   0          3m        172.22.0.3    ip-172-31-5-155.us-west-2.compute.internal
+po/logging-fluentd-633f9                     1/1       Running   0          3m        172.20.2.19   ip-172-31-21-185.us-west-2.compute.internal
+po/logging-fluentd-8qk3x                     1/1       Running   0          3m        172.21.0.6    ip-172-31-23-229.us-west-2.compute.internal
+po/logging-fluentd-c9wh1                     1/1       Running   0          3m        172.23.0.8    ip-172-31-5-234.us-west-2.compute.internal
+po/logging-fluentd-v59b7                     1/1       Running   0          3m        172.20.0.7    ip-172-31-10-173.us-west-2.compute.internal
+po/logging-kibana-1-0xmzz                    2/2       Running   0          4m        172.20.2.15   ip-172-31-21-185.us-west-2.compute.internal
+po/logging-mux-1-kb1h9                       1/1       Running   0          3m        172.20.2.20   ip-172-31-21-185.us-west-2.compute.internal
 
-  > logging     logging-fluentd-341q7                      0/1       ImagePullBackOff   0          6m
+NAME                                   DESIRED   CURRENT   READY     AGE       CONTAINER(S)          IMAGE(S)                                                                                                                      SELECTOR
+rc/logging-curator-1                   1         1         1         4m        curator               registry.ops.openshift.com/openshift3/logging-curator:v3.7.0                                                                  component=curator,deployment=logging-curator-1,deploymentconfig=logging-curator,logging-infra=curator,provider=openshift
+rc/logging-es-data-master-39f9joda-1   1         1         1         4m        elasticsearch         registry.ops.openshift.com/openshift3/logging-elasticsearch:v3.7.0                                                            component=es,deployment=logging-es-data-master-39f9joda-1,deploymentconfig=logging-es-data-master-39f9joda,logging-infra=elasticsearch,provider=openshift
+rc/logging-es-data-master-43lag4ik-1   1         1         1         4m        elasticsearch         registry.ops.openshift.com/openshift3/logging-elasticsearch:v3.7.0                                                            component=es,deployment=logging-es-data-master-43lag4ik-1,deploymentconfig=logging-es-data-master-43lag4ik,logging-infra=elasticsearch,provider=openshift
+rc/logging-es-data-master-j763alrc-1   1         1         1         4m        elasticsearch         registry.ops.openshift.com/openshift3/logging-elasticsearch:v3.7.0                                                            component=es,deployment=logging-es-data-master-j763alrc-1,deploymentconfig=logging-es-data-master-j763alrc,logging-infra=elasticsearch,provider=openshift
+rc/logging-kibana-1                    1         1         1         4m        kibana,kibana-proxy   registry.ops.openshift.com/openshift3/logging-kibana:v3.7.0,registry.ops.openshift.com/openshift3/logging-auth-proxy:v3.7.0   component=kibana,deployment=logging-kibana-1,deploymentconfig=logging-kibana,logging-infra=kibana,provider=openshift
+rc/logging-mux-1                       1         1         1         3m        mux                   registry.ops.openshift.com/openshift3/logging-fluentd:v3.7.0                                                                  component=mux,deployment=logging-mux-1,deploymentconfig=logging-mux,logging-infra=mux,provider=openshift
 
-The proof of non-existing image is <code>oc get events | grep -i warn | grep -i fluentd</code>
-  
-  > Failed to pull image ...
+NAME                     CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE       SELECTOR
+svc/logging-es           172.24.228.83   <none>        9200/TCP    5m        component=es,provider=openshift
+svc/logging-es-cluster   172.26.91.224   <none>        9300/TCP    5m        component=es,provider=openshift
+svc/logging-kibana       172.27.70.64    <none>        443/TCP     4m        component=kibana,provider=openshift
+svc/logging-mux          172.26.41.150   <none>        24284/TCP   3m        component=mux,provider=openshift
 
-Instead of deleting the project and rerun the playbook, we can fix this by correcting image version in all dc(s) and ds:
 
-```sh
-# oc get dc
-NAME                              REVISION   DESIRED   CURRENT   TRIGGERED BY
-logging-curator                   2          1         1         config
-logging-es-data-master-ob9e0uqd   2          1         1         config
-logging-kibana                    3          1         1         config
-logging-mux                       2          1         1         config
-# oc edit dc <dc_name>
 # oc get ds
 NAME              DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR                AGE
-logging-fluentd   4         4         4         4            4           logging-infra-fluentd=true   21m
-# oc get ds logging-fluentd -o yaml --export > logging-fluentd.yaml
-# oc delete ds logging-fluentd
-# oc delete pod logging-curator-1-deploy logging-es-data-master-ob9e0uqd-1-deploy logging-mux-1-deploy
-# vi logging-fluentd.yaml
-# oc create -f logging-fluentd.yaml
+logging-fluentd   5         5         5         5            5           logging-infra-fluentd=true   8m
+
+# oc get ds
+NAME              DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR                AGE
+logging-fluentd   5         5         5         5            5           logging-infra-fluentd=true   8m
+
+# oc get pvc
+NAME              STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS   AGE
+logging-es-0      Bound     pvc-741c716f-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           gp2            9m
+logging-es-1      Bound     pvc-7d0bc3d0-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           gp2            9m
+logging-es-2      Bound     pvc-86039fb9-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           gp2            9m
+logging-mux-pvc   Bound     pvc-9d812f54-9fa0-11e7-8793-027497ece8ac   30Gi       RWO           gp2            8m
+
+# oc get pv
+NAME                                       CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM                     STORAGECLASS   REASON    AGE
+pvc-741c716f-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           Delete          Bound     logging/logging-es-0      gp2                      10m
+pvc-7d0bc3d0-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           Delete          Bound     logging/logging-es-1      gp2                      10m
+pvc-86039fb9-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           Delete          Bound     logging/logging-es-2      gp2                      9m
+pvc-9d812f54-9fa0-11e7-8793-027497ece8ac   30Gi       RWO           Delete          Bound     logging/logging-mux-pvc   gp2                      9m
 ```
-
-New pods will be deployed automatically after dc is updated. The [daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
-for fluentd is handled differently: export a file and edit it manually.
-
-The correct status of pods
-
-```sh# oc get pods
-NAME                                      READY     STATUS    RESTARTS   AGE
-logging-curator-2-zd13p                   1/1       Running   0          29m
-logging-es-data-master-ob9e0uqd-2-4xzk7   1/1       Running   0          28m
-logging-fluentd-cxp78                     1/1       Running   0          23m
-logging-fluentd-n2tzl                     1/1       Running   0          23m
-logging-fluentd-n56hz                     1/1       Running   0          23m
-logging-fluentd-nqxn0                     1/1       Running   0          23m
-logging-kibana-3-bnkfv                    2/2       Running   0          22m
-logging-mux-2-kbcw7                       1/1       Running   0          27m
-```
-
-*Note* that the dataflow is fluentd(s), es, kibana, curator (for cleanups).
 
 If we need to redeplay the logging stack, we can delete logging project and recreate it, and then rerun the above playbook:
 
 ```sh
-# cat /tmp/logging.project.yaml 
-apiVersion: v1
-kind: Project
-metadata:
-  annotations:
-    openshift.io/description: ""
-    openshift.io/display-name: ""
-    openshift.io/sa.scc.mcs: s0:c8,c2
-    openshift.io/sa.scc.supplemental-groups: 1000060000/10000
-    openshift.io/sa.scc.uid-range: 1000060000/10000
-  creationTimestamp: 2017-07-14T01:36:56Z
-  name: logging
-  resourceVersion: "1617"
-  selfLink: /oapi/v1/projects/logging
-  uid: ebce4a9f-6834-11e7-b351-021cdd15ec52
-spec:
-  finalizers:
-  - openshift.io/origin
-  - kubernetes
-status:
-  phase: Active
-# oc create -f /tmp/logging.project.yaml
+# oc delete project logging
+# oadm new-project logging --node-selector=""
 ```
 
 ## Search (logs in Kibana)
@@ -235,12 +220,6 @@ Log file locations:
 *Note* that if the logging driver of docker is changed. Logging stack needs to be reinstalled in order for _fluentd_ to redecide where to pick logs up. 
 
 TODO find if there is a better solution for this.
-
-### Recreate logging project
-
-```sh
-# oadm new-project logging --node-selector=""
-```
 
 
 ### Logging test tool

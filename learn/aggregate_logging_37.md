@@ -325,7 +325,7 @@ OPTIONS=' --selinux-enabled  --log-driver=json-file --log-opt max-size=100M --lo
 Rerun the playbook:
 
 ```sh
-ansible-playbook -i /tmp/inv.file openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml
+# ansible-playbook -i /tmp/inv.file openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml
 ```
 
 ## Logging test tool

@@ -204,8 +204,7 @@ replicationcontroller "frontend-1" created
 NAME               READY     STATUS    RESTARTS   AGE       IP           NODE
 frontend-1-pklzq   1/1       Running   0          5m        172.23.0.9   ip-172-31-5-234.us-west-2.compute.internal
 
-# curl 172.23.0.9:8080
-{"version":"0.0.1","ips":["127.0.0.1","::1","172.23.0.9","fe80::858:acff:fe17:9"],"now":"2017-09-22T14:53:27.044323764Z"}root@ip-172-31-5-155: ~ # curl -H "Content-Type: application/json" -X POST -d '{"line":"abcd"}' http://172.23.0.9:8080/logs
+# curl -H "Content-Type: application/json" -X POST -d '{"line":"abcd"}' http://172.23.0.9:8080/logs
 201 - Log entries created.
 
 # oc logs frontend-1-pklzq
@@ -322,10 +321,43 @@ OPTIONS=' --selinux-enabled  --log-driver=json-file --log-opt max-size=100M --lo
 
 ```
 
-Rerun the playbook:
+Run the playbook:
 
 ```sh
 # ansible-playbook -i /tmp/inv.file openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml
+```
+
+Check:
+```sh
+# #create testing pod as above
+# oc get pod -o wide
+NAME               READY     STATUS    RESTARTS   AGE       IP            NODE
+frontend-1-95lkl   1/1       Running   0          2m        172.20.0.14   ip-172-31-10-173.us-west-2.compute.internal
+
+# curl -H "Content-Type: application/json" -X POST -d '{"line":"abcd"}'
+root@ip-172-31-5-155: ~ # curl -H "Content-Type: application/json" -X POST -d '{"line":"111222"}' http://172.20.0.14:8080/logs
+
+# oc logs frontend-1-95lkl
+2017-09-22T15:40:01.375+0000 Debug ▶ DEBU 001 [aaa]
+2017-09-22T15:47:36.960+0000 Info ▶ INFO 002 [111222]
+
+# ssh ip-172-31-10-173.us-west-2.compute.internal
+
+# #get docker id
+# docker ps | grep frontend-1-95lkl
+e30921b789b3        docker.io/hongkailiu/svt-go@sha256:6b9d8e51c68409d58e925ef4a04b3bb5411a9cd63e360627a7a43ad82c87d691                                "./svt/svt http"         9 minutes ago       Up 9 minutes                            k8s_helloworld_frontend-1-95lkl_aaa_46a33191-9fac-11e7-8793-027497ece8ac_0
+128500d29c61        registry.ops.openshift.com/openshift3/ose-pod:v3.7.0-0.126.4                                                                       "/usr/bin/pod"           9 minutes ago       Up 9 minutes                            k8s_POD_frontend-1-95lkl_aaa_46a33191-9fac-11e7-8793-027497ece8ac_0
+
+
+# ls -l /var/lib/docker/containers/e30921b789b3*
+...
+-rw-r-----. 1 root root  278 Sep 22 15:47 e30921b789b39c084ddf8f6eb46fb3741b4500a5d601c628bedb0d9365d6935a-json.log
+...
+
+# cat /var/lib/docker/containers/e30921b789b39c084ddf8f6eb46fb3741b4500a5d601c628bedb0d9365d6935a/e30921b789b39c084ddf8f6eb46fb3741b4500a5d601c628bedb0d9365d6935a-json.log 
+{"log":"\u001b[36m2017-09-22T15:40:01.375+0000 Debug ▶ DEBU 001\u001b[0m [aaa]\n","stream":"stdout","time":"2017-09-22T15:40:01.376093422Z"}
+{"log":"2017-09-22T15:47:36.960+0000 Info ▶ INFO 002\u001b[0m [111222]\n","stream":"stdout","time":"2017-09-22T15:47:36.960742701Z"}
+
 ```
 
 ## Logging test tool

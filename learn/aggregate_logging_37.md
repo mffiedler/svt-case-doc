@@ -87,6 +87,8 @@ openshift_logging_mux_file_buffer_pvc_size=30Gi
 
 Note that <code>openshift_logging_fluentd_use_journal</code> tells _fluentd_ to checkout container logs from _journald_.
 
+
+
 ### Run [the playbook](https://github.com/openshift/openshift-ansible/blob/master/playbooks/byo/openshift-cluster/openshift-logging.yml)
 
 ```sh
@@ -217,11 +219,9 @@ green  open   project.aaa.dbe525d1-9fa4-11e7-8793-027497ece8ac.2017.09.22       
 
 ```
 
-## How it works (partially)
+## docker logs
 
-### docker logs
-
-#### journald
+### journald
 Check [docker config for logging](https://docs.docker.com/engine/admin/logging/overview/#supported-logging-drivers):
 
 ```sh
@@ -247,7 +247,7 @@ Sep 22 14:48:19 ip-172-31-5-234.us-west-2.compute.internal dockerd-current[11733
 Sep 22 14:56:46 ip-172-31-5-234.us-west-2.compute.internal dockerd-current[11733]: 2017-09-22T14:56:46.245+0000 Info ▶ INFO 002
 ```
 
-#### json-file
+### json-file
 
 Change _docker daemon_ options by <code>/etc/docker/daemon.json</code>:
 
@@ -268,10 +268,11 @@ Log file locations:
 
 *Note* that if the logging driver of docker is changed. Logging stack needs to be reinstalled in order for _fluentd_ to redecide where to pick logs up. 
 
-TODO find if there is a better solution for this.
+
+### json-file without mux
 
 
-### Logging test tool
+## Logging test tool
 Check [this](https://github.com/openshift/svt/blob/master/openshift_scalability/content/logtest/ocp_logtest-README.md)
 out.
 

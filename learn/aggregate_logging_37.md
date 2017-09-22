@@ -270,7 +270,63 @@ Log file locations:
 
 
 ### json-file without mux
+Modify the inv.file:
 
+```
+# vi /tmp/inv.file
+...
+openshift_logging_fluentd_use_journal=false
+#openshift_logging_fluentd_read_from_head=false
+openshift_logging_use_mux=false
+#openshift_logging_mux_client_mode=maximal
+openshift_logging_use_ops=false
+
+openshift_logging_fluentd_cpu_limit=1000m
+#openshift_logging_mux_cpu_limit=1000m
+openshift_logging_kibana_cpu_limit=200m
+openshift_logging_kibana_proxy_cpu_limit=100m
+openshift_logging_es_memory_limit=9Gi
+openshift_logging_fluentd_memory_limit=1Gi
+#openshift_logging_mux_memory_limit=2Gi
+openshift_logging_kibana_memory_limit=1Gi
+openshift_logging_kibana_proxy_memory_limit=256Mi
+
+#openshift_logging_mux_file_buffer_storage_type=pvc
+#openshift_logging_mux_file_buffer_pvc_name=logging-mux-pvc
+#openshift_logging_mux_file_buffer_pvc_size=30Gi
+
+# oc delete project logging 
+project "logging" deleted
+# oadm new-project logging --node-selector=""
+```
+
+Reset the docker logging driver _on every openshift node_:
+
+```sh
+# oc get node
+NAME                                          STATUS                     AGE       VERSION
+ip-172-31-10-173.us-west-2.compute.internal   Ready                      2h        v1.7.0+80709908fd
+ip-172-31-21-185.us-west-2.compute.internal   Ready                      2h        v1.7.0+80709908fd
+ip-172-31-23-229.us-west-2.compute.internal   Ready                      2h        v1.7.0+80709908fd
+ip-172-31-5-155.us-west-2.compute.internal    Ready,SchedulingDisabled   2h        v1.7.0+80709908fd
+ip-172-31-5-234.us-west-2.compute.internal    Ready                      2h        v1.7.0+80709908f
+
+# systemctl stop docker atomic-openshift-node
+# vi /etc/sysconfig/docker
+...
+#OPTIONS=' --selinux-enabled  --log-driver=journald'
+OPTIONS=' --selinux-enabled  --log-driver=json-file --log-opt max-size=100M --log-opt max-file=50'
+...
+
+# systemctl start docker atomic-openshift-node
+
+```
+
+Rerun the playbook:
+
+```sh
+ansible-playbook -i /tmp/inv.file openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml
+```
 
 ## Logging test tool
 Check [this](https://github.com/openshift/svt/blob/master/openshift_scalability/content/logtest/ocp_logtest-README.md)

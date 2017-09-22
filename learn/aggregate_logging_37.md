@@ -160,6 +160,19 @@ pvc-741c716f-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           Delete      
 pvc-7d0bc3d0-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           Delete          Bound     logging/logging-es-1      gp2                      10m
 pvc-86039fb9-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           Delete          Bound     logging/logging-es-2      gp2                      9m
 pvc-9d812f54-9fa0-11e7-8793-027497ece8ac   30Gi       RWO           Delete          Bound     logging/logging-mux-pvc   gp2                      9m
+
+
+# POD=logging-es-data-master-39f9joda-1-p2qg2
+# oc exec $POD -- curl --connect-timeout 2 -s -k --cert /etc/elasticsearch/secret/admin-cert --key /etc/elasticsearch/secret/admin-key https://logging-es:9200/_cat/indices?v
+health status index                                                           pri rep docs.count docs.deleted store.size pri.store.size 
+green  open   project.default.7516c4b9-9f95-11e7-ace5-027497ece8ac.2017.09.22   1   0      18099            0     17.1mb         17.1mb 
+green  open   .searchguard.logging-es-data-master-j763alrc                      1   2          5            0     91.3kb         30.4kb 
+green  open   .kibana                                                           1   0          1            0      3.1kb          3.1kb 
+green  open   .searchguard.logging-es-data-master-43lag4ik                      1   2          5            0     91.3kb         30.4kb 
+green  open   .searchguard.logging-es-data-master-39f9joda                      1   2          5            0     91.3kb         30.4kb 
+green  open   project.logging.fe039967-9f9f-11e7-8793-027497ece8ac.2017.09.22   1   0        711            0    738.1kb        738.1kb 
+green  open   .operations.2017.09.22                                            1   0      25688            0       13mb           13mb 
+
 ```
 
 If we need to redeplay the logging stack, we can delete logging project and recreate it, and then rerun the above playbook:

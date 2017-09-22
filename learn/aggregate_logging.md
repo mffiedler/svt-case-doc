@@ -5,7 +5,7 @@
 ## Installation via Ansible (Internal)
 Installation is performed on master.
 
-### Modify [the inventory file](http://pastebin.test.redhat.com/501979)
+### Modify the inventory file
 
 ```sh
 [oo_first_master]

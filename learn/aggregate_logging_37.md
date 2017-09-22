@@ -191,6 +191,32 @@ Copy a keyword in the log entries, input it in the search box on Kibana web UI. 
 
 
 
+```sh
+# oc new-project aaa
+Now using project "aaa" on server "https://ip-172-31-5-155.us-west-2.compute.internal:8443".
+
+# oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/rc_test.yaml
+replicationcontroller "frontend-1" created
+
+# oc get pod -o wide
+NAME               READY     STATUS    RESTARTS   AGE       IP           NODE
+frontend-1-pklzq   1/1       Running   0          5m        172.23.0.9   ip-172-31-5-234.us-west-2.compute.internal
+
+# curl 172.23.0.9:8080
+{"version":"0.0.1","ips":["127.0.0.1","::1","172.23.0.9","fe80::858:acff:fe17:9"],"now":"2017-09-22T14:53:27.044323764Z"}root@ip-172-31-5-155: ~ # curl -H "Content-Type: application/json" -X POST -d '{"line":"abcd"}' http://172.23.0.9:8080/logs
+201 - Log entries created.
+
+# oc logs frontend-1-pklzq
+2017-09-22T14:48:19.780+0000 Debug ▶ DEBU 001 [aaa]
+2017-09-22T14:56:46.245+0000 Info ▶ INFO 002 [abcd]
+
+# oc exec -n logging $POD -- curl --connect-timeout 2 -s -k --cert /etc/elasticsearch/secret/admin-cert --key /etc/elasticsearch/secret/admin-key https://logging-es:9200/_cat/indices?v
+health status index                                                           pri rep docs.count docs.deleted store.size pri.store.size 
+...
+green  open   project.aaa.dbe525d1-9fa4-11e7-8793-027497ece8ac.2017.09.22       1   0          2            0       48kb           48kb 
+
+```
+
 ## How it works (partially)
 
 ### docker logs

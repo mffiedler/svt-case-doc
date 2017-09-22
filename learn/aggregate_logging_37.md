@@ -25,10 +25,10 @@ masters
 etcd                                           
 
 [masters]                                      
-ec2-34-209-71-36.us-west-2.compute.amazonaws.com                                              
+ec2-54-186-165-141.us-west-2.compute.amazonaws.com                                              
 
 [etcd]                                         
-ec2-34-209-71-36.us-west-2.compute.amazonaws.com                                              
+ec2-54-186-165-141.us-west-2.compute.amazonaws.com                                              
 [OSEv3:vars]                                   
 deployment_type=openshift-enterprise                                                          
 
@@ -38,12 +38,12 @@ openshift_release=v3.7.0
 
 
 openshift_logging_install_logging=true         
-openshift_logging_master_url=https://ec2-34-209-71-36.us-west-2.compute.amazonaws.com:8443    
-openshift_logging_master_public_url=https://ec2-34-209-71-36.us-west-2.compute.amazonaws.com:8443
-openshift_logging_kibana_hostname=kibana.0918-s73.qe.rhcloud.com                              
+openshift_logging_master_url=https://ec2-54-186-165-141.us-west-2.compute.amazonaws.com:8443    
+openshift_logging_master_public_url=https://ec2-54-186-165-141.us-west-2.compute.amazonaws.com:8443
+openshift_logging_kibana_hostname=kibana.apps.0922-mtp.qe.rhcloud.com                              
 openshift_logging_namespace=logging            
 openshift_logging_image_prefix=registry.ops.openshift.com/openshift3/                         
-openshift_logging_image_version=v3.7           
+openshift_logging_image_version=v3.7.0           
 openshift_logging_es_cluster_size=3            
 openshift_logging_es_pvc_dynamic=true          
 openshift_logging_es_pvc_size=50Gi             
@@ -72,11 +72,11 @@ openshift_logging_mux_file_buffer_pvc_size=30Gi
 
 * Update hostnames and openshift_logging_image_version to match your cluster
 * Upadte the subdomain for the kibana_hostname which can be found in master-config.yaml or in your flexy job output.
-  It will be mmdd-xxx.qe.rhcloud.com.
+  It will be apps.mmdd-xxx.qe.rhcloud.com.
   
   ```sh
   # grep "qe.rhcloud.com" /etc/origin/master/master-config.yaml 
-  subdomain:  "<mmdd>-<xxx>.qe.rhcloud.com"
+  subdomain:  "apps.<mmdd>-<xxx>.qe.rhcloud.com"
   # grep -i "masterPublicURL" /etc/origin/master/master-config.yaml
   # grep -i "masterURL" /etc/origin/master/master-config.yaml
   # docker images | grep ose

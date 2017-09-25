@@ -95,7 +95,7 @@ Note that <code>openshift_logging_fluentd_use_journal</code> tells _fluentd_ to 
 # ansible-playbook -i /tmp/inv.file openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml
 ```
 
-Check the parameter's meaning [here](https://docs.openshift.org/latest/install_config/aggregate_logging.html#install-config-aggregate-logging).
+Check the parameter's meaning [here](https://docs.openshift.org/latest/install_config/aggregate_logging.html#install-config-aggregate-logging) and [here](https://github.com/openshift/openshift-ansible/blob/master/roles/openshift_logging/README.md).
 
 ## Verify
 

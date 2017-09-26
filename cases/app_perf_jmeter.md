@@ -50,4 +50,4 @@ Since the pod's IP is accessible only from the cluster, we run it on master:
 ```
 
 ## Check results
-[Example]()
+[Example](http://file.rdu.redhat.com/~hongkliu/test_result/20170926.app_perf_results_jmeter/).

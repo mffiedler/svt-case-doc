@@ -34,3 +34,27 @@ eap-app-mysql-1-zr1zr   1/1       Running     0          1m        172.20.0.23  
 # curl 172.20.0.25:8080
 
 ```
+
+## Edit config
+
+```sh
+# #change other jmeter params as the case requires
+# vi osperf/src/main/config/jmeter/JmeterTestConfig_networkperf.yaml
+...
+     appURL: http://eap-app-eap64-mysql0.34.209.136.121.xip.io
+...
+     appURL: http://172.20.0.25:8080
+...
+
+# mv osperf/src/main/config/jmeter/JmeterTestConfig_networkperf.yaml osperf/src/main/config/jmeter/JmeterTestConfig.yaml
+```
+
+## Run tests
+
+```sh
+# cd svt/application_performance/osperf
+# mvn verify
+
+```
+
+## Check results

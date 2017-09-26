@@ -38,6 +38,7 @@ eap-app-mysql-1-zr1zr   1/1       Running     0          1m        172.20.0.23  
 ```
 
 ## Edit config
+We run the test on a jump node:
 
 ```sh
 # #change other jmeter params as the case requires

@@ -27,6 +27,7 @@ secure-eap-app   secure-eap-app-eap64-mysql0.34.209.136.121.xip.io             s
 ```
 
 ## Edit config
+Since the pod's IP is accessible only from the cluster, we run it on master:
 
 ```sh
 # #change other jmeter params as the case requires

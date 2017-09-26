@@ -8,7 +8,7 @@
 
 ## Prepare 2 clusters
 
-Get 2 clusters by (Flexy](flexy.md). The following commands are executed by default on master of cluster 1 unless it says explicity otherwise.
+Get 2 clusters by [Flexy](flexy.md). The following commands are executed by default on master of cluster 1 unless it says explicity otherwise.
 
 _Note_ that all-in-one environment did not work for this test yet (tried with --etcd-persistent-storage=false/true): pods are with errors. Suspicious points:
 

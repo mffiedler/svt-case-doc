@@ -31,8 +31,10 @@ Since the pod's IP is accessible only from the cluster, we run it on master:
 
 ```sh
 # #change other jmeter params as the case requires
+# #comment out Apps which are not under test
 # vi osperf/src/main/config/jmeter/JmeterTestConfig_appperf.yaml
 ...
+   - testSuiteName: jbosseap
      appURL: http://eap-app-eap64-mysql0.34.209.136.121.xip.io
 ...
 
@@ -48,3 +50,4 @@ Since the pod's IP is accessible only from the cluster, we run it on master:
 ```
 
 ## Check results
+[Example]()

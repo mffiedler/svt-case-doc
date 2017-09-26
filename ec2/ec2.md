@@ -58,10 +58,10 @@ Fedora Atomic:
 
 ```sh
 (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-b11febc9 \
->     --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.large --key-name id_rsa_perf \
->     --subnet subnet-4879292d --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 60}}]" \
->     --query 'Instances[*].InstanceId' \
->     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-atomic-test\"}]}]"
+     --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.large --key-name id_rsa_perf \
+     --subnet subnet-4879292d --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 60}}]" \
+     --query 'Instances[*].InstanceId' \
+     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-atomic-test\"}]}]"
 
 ```
 

@@ -1,12 +1,10 @@
-# App Performance Test
+# Router Performance Test
 
-Test Case: [OCP-9188](https://polarion.engineering.redhat.com/polarion/#/project/OSE/workitem?id=OCP-9188)
+Test Case: [OCP-TODO]()
 
 This test is to measure the response time of an JBoss App.
 
-[Recording](https://bluejeans.com/playback/s/vrrSfiWkKSOdWRDLnMssReXV8Ad7NDZoG3NBHoX4wTja3iLuJGXQppfhmIlY5f6g#) from Siva's demo: From min 44:00.
-
-Jenkins job: [SVT_Application_Performance_Test](https://openshift-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/SVT_Application_Performance_Test/).
+Jenkins job: [SVT_Route_Performance_Test](https://openshift-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/SVT_Route_Performance_Test/).
 
 ## Create App with cluster-loader
 

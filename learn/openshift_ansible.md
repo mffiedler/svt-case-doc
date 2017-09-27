@@ -32,17 +32,16 @@ Openshift and Atomic Enterprise Ansible
 This repo contains Ansible code and playbooks
 for Openshift and Atomic Enterprise.
 
-```
-
-[Get repo providing openshift-ansible](https://stackoverflow.com/questions/635869/can-yum-tell-me-which-of-my-repositories-provide-a-particular-package)
-
-```sh
-# yum list openshift-ansible
+# yum list installed openshift-ansible\*
 Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
 Installed Packages
-openshift-ansible.noarch                                  3.7.0-0.126.4.git.0.3fc2b9b.el7                                  @aos
-Available Packages
-openshift-ansible.noarch                                  3.7.0-0.127.0.git.0.b9941e4.el7                                  aos 
+openshift-ansible.noarch                                          3.7.0-0.126.4.git.0.3fc2b9b.el7                          @aos
+openshift-ansible-callback-plugins.noarch                         3.7.0-0.126.4.git.0.3fc2b9b.el7                          @aos
+openshift-ansible-docs.noarch                                     3.7.0-0.126.4.git.0.3fc2b9b.el7                          @aos
+openshift-ansible-filter-plugins.noarch                           3.7.0-0.126.4.git.0.3fc2b9b.el7                          @aos
+openshift-ansible-lookup-plugins.noarch                           3.7.0-0.126.4.git.0.3fc2b9b.el7                          @aos
+openshift-ansible-playbooks.noarch                                3.7.0-0.126.4.git.0.3fc2b9b.el7                          @aos
+openshift-ansible-roles.noarch                                    3.7.0-0.126.4.git.0.3fc2b9b.el7                          @aos
 ```
 
 [get dependencies of openshift-ansible](https://superuser.com/questions/294662/how-to-get-list-of-dependencies-of-non-installed-rpm-package)
@@ -85,4 +84,11 @@ openshift-ansible-docs-0:3.7.0-0.127.0.git.0.b9941e4.el7.noarch
 /usr/share/doc/openshift-ansible-3.7.0/README_CONTAINER_IMAGE.md
 /usr/share/licenses/openshift-ansible-3.7.0
 /usr/share/licenses/openshift-ansible-3.7.0/LICENSE
+```
+
+
+[Run the playbook](https://docs.openshift.com/container-platform/3.6/install_config/install/advanced_install.html#running-the-advanced-installation-rpm):
+
+```sh
+
 ```

@@ -13,39 +13,36 @@ Here we focus on the rpm way.
 On our gold AMIs, the openshift-ansible rpm is installed already:
 
 ```sh
-# yum info openshift-ansible
-Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
-Installed Packages
-Name        : openshift-ansible
-Arch        : noarch
-Version     : 3.7.0
-Release     : 0.126.4.git.0.3fc2b9b.el7
-Size        : 41 k
-Repo        : installed
-From repo   : aos
-Summary     : Openshift and Atomic Enterprise Ansible
-URL         : https://github.com/openshift/openshift-ansible
-License     : ASL 2.0
-Description : Openshift and Atomic Enterprise Ansible
-            : 
-            : This repo contains Ansible code and playbooks
-            : for Openshift and Atomic Enterprise.
+# repoquery -i openshift-ansible
 
-Available Packages
 Name        : openshift-ansible
-Arch        : noarch
 Version     : 3.7.0
 Release     : 0.127.0.git.0.b9941e4.el7
-Size        : 286 k
-Repo        : aos
-Summary     : Openshift and Atomic Enterprise Ansible
+Architecture: noarch
+Size        : 42217
+Packager    : Red Hat, Inc. <http://bugzilla.redhat.com/bugzilla>
+Group       : Unspecified
 URL         : https://github.com/openshift/openshift-ansible
-License     : ASL 2.0
-Description : Openshift and Atomic Enterprise Ansible
-            : 
-            : This repo contains Ansible code and playbooks
-            : for Openshift and Atomic Enterprise.
+Repository  : aos
+Summary     : Openshift and Atomic Enterprise Ansible
+Source      : openshift-ansible-3.7.0-0.127.0.git.0.b9941e4.el7.src.rpm
+Description :
+Openshift and Atomic Enterprise Ansible
 
+This repo contains Ansible code and playbooks
+for Openshift and Atomic Enterprise.
+
+```
+
+[Get repo providing openshift-ansible](https://stackoverflow.com/questions/635869/can-yum-tell-me-which-of-my-repositories-provide-a-particular-package)
+
+```sh
+# yum list openshift-ansible
+Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
+Installed Packages
+openshift-ansible.noarch                                  3.7.0-0.126.4.git.0.3fc2b9b.el7                                  @aos
+Available Packages
+openshift-ansible.noarch                                  3.7.0-0.127.0.git.0.b9941e4.el7                                  aos 
 ```
 
 [get dependencies of openshift-ansible](https://superuser.com/questions/294662/how-to-get-list-of-dependencies-of-non-installed-rpm-package)

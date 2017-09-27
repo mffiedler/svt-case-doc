@@ -58,11 +58,31 @@ Check the parameter's meaning [here](https://docs.openshift.org/latest/install_c
 ### Terminal
 
 ```sh
-# oc get pods -n openshift-infra
-NAME                         READY     STATUS    RESTARTS   AGE
-hawkular-cassandra-1-ppp7f   1/1       Running   0          3m
-hawkular-metrics-k2w3t       1/1       Running   0          3m
-heapster-jf3nz               1/1       Running   0          3m
+# oc project openshift-infra
+# oc get all
+NAME                      HOST/PORT                                       PATH      SERVICES           PORT      TERMINATION   WILDCARD
+routes/hawkular-metrics   hawkular-metrics.apps.0927-7l0.qe.rhcloud.com             hawkular-metrics   <all>     reencrypt     None
+
+NAME                            READY     STATUS    RESTARTS   AGE
+po/hawkular-cassandra-1-hfmhh   1/1       Running   0          2m
+po/hawkular-metrics-sq1nb       1/1       Running   0          2m
+po/heapster-p780l               1/1       Running   0          2m
+
+NAME                      DESIRED   CURRENT   READY     AGE
+rc/hawkular-cassandra-1   1         1         1         2m
+rc/hawkular-metrics       1         1         1         3m
+rc/heapster               1         1         1         3m
+
+NAME                           CLUSTER-IP       EXTERNAL-IP   PORT(S)                               AGE
+svc/hawkular-cassandra         172.25.228.142   <none>        9042/TCP,9160/TCP,7000/TCP,7001/TCP   3m
+svc/hawkular-cassandra-nodes   None             <none>        9042/TCP,9160/TCP,7000/TCP,7001/TCP   3m
+svc/hawkular-metrics           172.26.197.91    <none>        443/TCP                               3m
+svc/heapster                   172.27.224.4     <none>        80/TCP                                3m
+
+# oc get pvc
+NAME                  STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS   AGE
+metrics-cassandra-1   Bound     pvc-a0380ff9-a3ae-11e7-bc27-025e587a7470   100Gi      RWO           gp2            3m
+
 ```
 
 ### Web Console

@@ -151,7 +151,6 @@ Logging Driver: journald
 image: ocp-3.7.0-0.127.0-1-atomic-gold
 ...
 openshift_ansible_vars:
-  openshift_logging_install_logging: false
   openshift_use_system_containers: true
   system_images_registry: registry.ops.openshift.com
 ```

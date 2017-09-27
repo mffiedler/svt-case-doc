@@ -102,4 +102,7 @@ The way I prefer to do Flexy:
 2. copy the inv. file to master
 3. run the playbook from RPM with the copied inv. file
 
-This way, flexy is still flexible to generate inv. file. Once it works, it will always work as long as AMI-based instances do not change. Moreover, we do not need to (or even should not) test all commits of the repo, only the released version from RPMs. The last but not the least, openshift-ansible rpm version is required when we fire a bug on installer. If source repo is used to test, then we have to report which commit id is under test, a rather non-standard way.
+This way, flexy is still flexible to generate inv. file. 
+* Once it works, it will always work as long as AMI-based instances do not change. 
+* Moreover, we do not need to (or even should not) test all commits of the repo, only the released versions from RPMs. 
+* The last but not the least, openshift-ansible rpm version is required when we fire a bug on installer. If source repo is used to test, then we have to report which commit id is under test, a rather non-standard way.

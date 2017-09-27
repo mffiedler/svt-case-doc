@@ -154,3 +154,5 @@ openshift_ansible_vars:
   openshift_use_system_containers: true
   system_images_registry: registry.ops.openshift.com
 ```
+
+Params' meaning is [here](https://github.com/openshift/openshift-ansible/blob/master/inventory/byo/hosts.ose.example#L50).

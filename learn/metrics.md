@@ -51,7 +51,7 @@ openshift_metrics_cassandra_pvc_size=100Gi
 # ansible-playbook -i /tmp/inv-metrics.file openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml 
 ```
 
-Check the parameter's meaning [here](https://docs.openshift.org/latest/install_config/cluster_metrics.html).
+Check the parameter's meaning [here](https://docs.openshift.org/latest/install_config/cluster_metrics.html) and [here](https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_metrics).
 
 ## Verify
 
@@ -85,4 +85,19 @@ Status=Up/Down
 |/ State=Normal/Leaving/Joining/Moving
 --  Address      Load       Tokens       Owns (effective)  Host ID                               Rack
 UN  172.20.1.83  3.91 MB    256          100.0%            980d834f-2c19-43aa-98de-663ad91163fd  rack1
+```
+
+## Redeploy
+
+Stole from [Mike's gist](https://gist.github.com/mffiedler/d20c37f28ab0a1190fbd592e429e29f4):
+
+```sh
+# oc project openshift-infra
+# oc delete --all rc
+# oc delete --all po
+# oc delete --all svc
+# oc delete --all route
+# oc delete --all pvc
+# oc delete sa heapster hawkular cassandra
+# oc delete secrets hawkular-cassandra-certs hawkular-metrics-account hawkular-metrics-certs heapster-certs heapster-secrets
 ```

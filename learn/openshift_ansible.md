@@ -102,4 +102,4 @@ The way I prefer to do Flexy:
 2. copy the inv. file to master
 3. run the playbook from RPM with the copied inv. file
 
-This way, flexy is still flexible to generate inv. file. Once it works, it will always work as long as AMI-based instances do not change. Moreover, we do not need to test all commits of the repo, only the released version from RPMs.
+This way, flexy is still flexible to generate inv. file. Once it works, it will always work as long as AMI-based instances do not change. Moreover, we do not need to (or should not) test all commits of the repo, only the released version from RPMs.

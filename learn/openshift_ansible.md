@@ -96,3 +96,10 @@ On master: Edit the inv. file: see [manual_cluster](manual_cluster.md) for detai
 ```sh
 # ansible-playbook -i  /tmp/2.file /usr/share/ansible/openshift-ansible/playbooks/byo/config.yml
 ```
+
+The way I prefer to do Flexy:
+1. generate inv. file
+2. copy the inv. file to master
+3. run the playbook from RPM with the copied inv. file
+
+

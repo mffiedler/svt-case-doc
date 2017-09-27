@@ -87,7 +87,7 @@ Status=Up/Down
 UN  172.20.1.83  3.91 MB    256          100.0%            980d834f-2c19-43aa-98de-663ad91163fd  rack1
 ```
 
-## Redeploy
+## Cleanup before Redeployment
 
 Stole from [Mike's gist](https://gist.github.com/mffiedler/d20c37f28ab0a1190fbd592e429e29f4):
 

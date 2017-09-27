@@ -32,6 +32,7 @@ Openshift and Atomic Enterprise Ansible
 This repo contains Ansible code and playbooks
 for Openshift and Atomic Enterprise.
 
+# #Actually more rpms are installed
 # yum list installed openshift-ansible\*
 Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
 Installed Packages

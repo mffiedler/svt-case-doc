@@ -63,33 +63,36 @@ openshift-ansible-docs-0:3.7.0-0.127.0.git.0.b9941e4.el7.noarch
 ```
 
 
-[list content of openshift-ansible](https://stackoverflow.com/questions/104055/how-to-list-the-contents-of-a-package-using-yum)
+[list content of openshift-ansible-playbooks](https://stackoverflow.com/questions/104055/how-to-list-the-contents-of-a-package-using-yum)
 
 ```sh
-# repoquery -l openshift-ansible
-/usr/share/ansible/openshift-ansible
-/usr/share/ansible/openshift-ansible/library
-/usr/share/ansible/openshift-ansible/library/kubeclient_ca.py
-/usr/share/ansible/openshift-ansible/library/kubeclient_ca.pyc
-/usr/share/ansible/openshift-ansible/library/kubeclient_ca.pyo
-/usr/share/ansible/openshift-ansible/library/modify_yaml.py
-/usr/share/ansible/openshift-ansible/library/modify_yaml.pyc
-/usr/share/ansible/openshift-ansible/library/modify_yaml.pyo
-/usr/share/ansible/openshift-ansible/library/rpm_q.py
-/usr/share/ansible/openshift-ansible/library/rpm_q.pyc
-/usr/share/ansible/openshift-ansible/library/rpm_q.pyo
-/usr/share/ansible/openshift-ansible/playbooks/common/openshift-master/library.rpmmoved
-/usr/share/doc/openshift-ansible-3.7.0
-/usr/share/doc/openshift-ansible-3.7.0/README.md
-/usr/share/doc/openshift-ansible-3.7.0/README_CONTAINERIZED_INSTALLATION.md
-/usr/share/doc/openshift-ansible-3.7.0/README_CONTAINER_IMAGE.md
-/usr/share/licenses/openshift-ansible-3.7.0
-/usr/share/licenses/openshift-ansible-3.7.0/LICENSE
+# repoquery -l openshift-ansible-playbooks
+...
+/usr/share/ansible/openshift-ansible/playbooks/byo/config.yml
+...
 ```
 
+So the playbook we usually need to install the cluster comes with RPMs already.
+
+## Manual installation: RPM way
+
+Launch instances:
+
+```sh
+(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-47669b3f     --security-group-ids sg-5c5ace38 --count 4 --instance-type m4.xlarge --key-name id_rsa_perf     --subnet subnet-4879292d     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-aaa-0927\"}]}]"
+```
+
+Check the version (optional):
+
+```sh
+# rpm -q openshift-ansible
+openshift-ansible-3.7.0-0.126.4.git.0.3fc2b9b.el7.noarch
+```
+
+On master: Edit the inv. file: see [manual_cluster](manual_cluster.md) for details:
 
 [Run the playbook](https://docs.openshift.com/container-platform/3.6/install_config/install/advanced_install.html#running-the-advanced-installation-rpm):
 
 ```sh
-
+# ansible-playbook -i  /tmp/2.file /usr/share/ansible/openshift-ansible/playbooks/byo/config.yml
 ```

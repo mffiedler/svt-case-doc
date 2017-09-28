@@ -66,6 +66,10 @@ runc version spec: 1.0.0
 # #atomic
 [fedora@ip-172-31-25-0 ~]$ atomic -v
 1.18.1
+
+# #skopeo
+[fedora@ip-172-31-25-0 ~]$ skopeo -v
+skopeo version 0.1.23 commit: 24510500d48f15b52ddfed6972a2a56452ef16b6
 ```
 
 ## Configure K8S

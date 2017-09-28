@@ -30,4 +30,7 @@ $ google-chrome --proxy-server="http://file.rdu.redhat.com:3128" > /dev/null 2>&
 ```
 
 ### OC client access
-vpn + libra.perm to Vikas' magic VM.
+vpn + libra.perm to Vikas' magic VM (deprecated on Sep 28, 2017).
+
+Sep 28, 2017:
+See [internal mojo page](https://mojo.redhat.com/docs/DOC-1144200#jive_content_id_Tier_1).

@@ -21,7 +21,7 @@ similar to online starter.
 ## pro [online-int](https://api.online-int.openshift.com) (internal)
 One registered RH account should have access to all online cluster.
 
-### UI access
+### UI access (deprecated on Sep 28, 2017: No need with proxy)
 
 vpn + proxy:
 

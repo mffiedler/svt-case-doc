@@ -8,7 +8,8 @@
 
 ## Existing system containers
 
-* [etcd and flannel](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html/managing_containers/running_system_containers)
+* [etcd, flannel, and others](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html/managing_containers/running_system_containers)
+* [master, node, etcd, openvswitch](https://github.com/openshift/openshift-ansible/blob/master/inventory/byo/hosts.ose.example#L50)
 
 
 ## Openshift and system container
@@ -18,6 +19,11 @@ Using flexy to install openshift cluster on Atomic Host using system containers:
 Check the system container:
 
 ```sh
+# #docker does not even know system containers
+# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+ 
+
 # atomic containers list --no-trunc 
    CONTAINER ID                        IMAGE                                                    COMMAND                                    CREATED          STATE      BACKEND    RUNTIME   
    etcd                                registry.access.redhat.com/rhel7/etcd                    /usr/bin/etcd-env.sh /usr/bin/etcd         2017-09-28 12:35 running    ostree     runc      
@@ -27,7 +33,16 @@ Check the system container:
    openvswitch                         registry.ops.openshift.com/openshift3/openvswitch:v3.7.0 /usr/local/bin/system-container-wrapper.sh 2017-09-28 12:51 running    ostree     runc
 ```
 
+We can see that openshift/k8s chooses openvswitch as [network plugin](https://kubernetes.io/docs/getting-started-guides/scratch/#network), instead of flannel.
 
+## Logging
+
+```sh
+# #all messages
+# journalctl -f
+# #by unit
+# journalctl -u atomic-openshift-node.service -f
+```
 
 ## Useful links
 

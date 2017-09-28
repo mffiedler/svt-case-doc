@@ -56,6 +56,18 @@ Go OS/Arch: linux/amd64
 
 ```
 
+## Other tools
+
+```sh
+# #runc
+[fedora@ip-172-31-25-0 ~]$ runc --version 
+runc version spec: 1.0.0
+
+# #atomic
+[fedora@ip-172-31-25-0 ~]$ atomic -v
+1.18.1
+```
+
 ## Configure K8S
 Follow the [steps](http://www.projectatomic.io/docs/gettingstarted/) with the following modification:
 

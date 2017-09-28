@@ -161,6 +161,6 @@ Params' meaning is [here](https://github.com/openshift/openshift-ansible/blob/ma
 
 TODO:
 
-AH + system containers
-AH + cri-o
-AH + docker containers
+* AH + system containers
+* AH + cri-o
+* AH + docker containers

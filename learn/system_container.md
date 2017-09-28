@@ -37,11 +37,14 @@ We can see that openshift/k8s chooses openvswitch as [network plugin](https://ku
 
 ## Logging
 
+We can see that node, master-api, and master-controllers run as system containers and no counterpart of <code>docker logs</code> has been found yet. But those containers are still under <code>systemd</code>.
+
 ```sh
 # #all messages
 # journalctl -f
 # #by unit
-# journalctl -u atomic-openshift-node.service -f
+# journalctl -u atomic-openshift-node -f
+
 ```
 
 ## Useful links

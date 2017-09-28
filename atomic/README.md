@@ -101,6 +101,7 @@ Follow the [steps](http://www.projectatomic.io/docs/gettingstarted/) with the fo
 
 ## Tools: TODO
 
+* [atomic](https://github.com/projectatomic/atomic)
 * [ostree](https://github.com/ostreedev/ostree)
 * [runc](https://github.com/opencontainers/runc)
 * [skopeo](https://github.com/projectatomic/skopeo)

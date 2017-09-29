@@ -33,6 +33,23 @@ clouds:
 ```
 
 
-## [Cli: man](https://docs.openstack.org/python-openstackclient/latest/cli/man/openstack.html)
+## Useful commands
+
+[Cli: man](https://docs.openstack.org/python-openstackclient/latest/cli/man/openstack.html)
+
+```sh
+(osenv) [hongkliu@hongkliu oscli]$ openstack --os-cloud os10 server create --availability-zone nova --image qe-rhel-74-20170928 --flavor m1.medium --network openshift-qe-jenkins --security-group default --key-name libra --min 1 --max 1 qe-hongkliu-test-0929
+
+(osenv) [hongkliu@hongkliu oscli]$ openstack --os-cloud os10 floating ip list
+# # choose one whose "Fixed IP Address" is None
+(osenv) [hongkliu@hongkliu oscli]$ openstack --os-cloud os10 server add floating ip qe-hongkliu-test-0929 10.8.241.68
+
+(osenv) [hongkliu@hongkliu oscli]$ openstack --os-cloud os10 volume create --size 23 --type ceph qe-hongkliu-v1
+VolumeLimitExceeded: Maximum number of volumes allowed (50) exceeded for quota 'volumes'. (HTTP 413) (Request-ID: req-bb897546-4346-424d-bb96-b152efc3944c)
+```
+
+TODO
+server add volume: https://docs.openstack.org/python-openstackclient/latest/cli/command-objects/server.html#server-add-volume
+
 
 

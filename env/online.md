@@ -34,3 +34,14 @@ vpn + libra.perm to Vikas' magic VM (deprecated on Sep 28, 2017).
 
 Sep 28, 2017:
 See [internal mojo page](https://mojo.redhat.com/docs/DOC-1144200#jive_content_id_Tier_1).
+
+### command alias
+
+```sh
+$ vi ~/.bashrc
+...
+alias online-int='ssh devaccess@52.91.95.85'
+
+$ source ~/.bashrc
+$ online-int oc get nodes
+```

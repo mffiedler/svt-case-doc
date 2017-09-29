@@ -60,6 +60,7 @@ Install dependencies used for cluster-loader.py to create projects
 # pip install boto3
 # pip install python-cephlibs
 # pip install flask
+# pip install pyyaml
 ```
 
 Skip this step when using online

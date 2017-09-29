@@ -49,7 +49,8 @@ VolumeLimitExceeded: Maximum number of volumes allowed (50) exceeded for quota '
 ```
 
 TODO
-server add volume: https://docs.openstack.org/python-openstackclient/latest/cli/command-objects/server.html#server-add-volume
 
+* server add volume: https://docs.openstack.org/python-openstackclient/latest/cli/command-objects/server.html#server-add-volume
+* create server with block devices: --block-device-mapping seems the right one, but also hard. https://docs.openstack.org/python-openstackclient/latest/cli/command-objects/server.html#server-create
 
 

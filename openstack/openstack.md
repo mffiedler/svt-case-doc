@@ -30,5 +30,6 @@ Failed to discover available identity versions when contacting https://ci-rhos.c
 SSL exception connecting to https://ci-rhos.centralci.eng.rdu2.redhat.com:35357/v2.0/tokens: HTTPSConnectionPool(host='ci-rhos.centralci.eng.rdu2.redhat.com', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'ssl3_get_record', 'wrong version number')],)",),))
 ```
 
+## Configure cli
 
-https://docs.openstack.org/python-openstackclient/latest/#getting-started
+doc: [1](https://docs.openstack.org/python-openstackclient/latest/#getting-started) and [2](https://docs.openstack.org/python-openstackclient/latest/configuration/index.html).

@@ -14,7 +14,7 @@
 * [Template](template.md)
 * [Label and Selector](label_and_selector.md)
 * [StatefulSet](statefulset.md)
-* [Quota](quota.md)
+* [Quota](quota_and_limit.md)
 * [Storage](storage.md)
 * [Networking](networking.md)
 * [Etcd](etcd.md)

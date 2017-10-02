@@ -37,6 +37,6 @@ To run system containers, we need to have:
 * container storage: OSTree
 * container image: skopeo
 
-And _systemd_ is used for manager the service provided by system containers.
+And _systemd_ is used for manager the services provided by system containers.
 
 Keep the goal in mind that is to containerize system services, for example, atomic-openshift-node, atomic-openshift-master-api/controllers, etcd, openvswich. Those services can be also run as docker containers.

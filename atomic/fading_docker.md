@@ -3,4 +3,7 @@
 ## Original picture
 
 ![](../images/atomic.1.png)
-<img src="../images/atomic.1.png" alt="original picutre" style="width: 20px;"/>
+
+So many features reply on docker and soon enough this became restrictions. As a result, this original picture looks like:
+
+![](../images/atomic.2.png)

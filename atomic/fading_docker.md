@@ -15,3 +15,12 @@ People want to see alternatives to docker while docker is still dominating conta
 A docker implementation for k8s. Put it in another way, we can run k8s with cri-o without docker.
 
 ![](http://cri-o.io/assets/images/architecture.png)
+
+Its components:
+
+* OCI compatible runtime, eg, runc
+* container storage, eg, overlay2, devicemapper
+* container image, a library supporting _skopeo_
+* networking (CNI), eg, openshift-SND (using openvswitch), flannel
+* container monitoring (conmon)
+* security is provided by several core Linux capabilities

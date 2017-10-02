@@ -98,6 +98,13 @@ Follow the [steps](http://www.projectatomic.io/docs/gettingstarted/) with the fo
   KUBE_MASTER="--master=http://172.31.25.0:8080"
   ```
 
+## Debug
+
+Say we need a software for debugging that usually get installed via dnf/yum. Well, we CANNOT do dnf/yum on Atomic Host.
+
+> You don’t install software on Atomic. You build containers on RHEL, CentOS, or Fedora, then run them on Atomic. Sys admin tools are no exception.
+
+Check Jerermy's blog to see how we do it: [rhel-tools](https://developers.redhat.com/blog/2015/03/11/introducing-the-rhel-container-for-rhel-atomic-host/) and [fedora/tools](https://www.projectatomic.io/blog/2015/09/introducing-the-fedora-tools-image-for-fedora-atomic-host/) and
 
 ## Tools: TODO
 

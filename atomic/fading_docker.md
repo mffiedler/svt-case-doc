@@ -7,3 +7,5 @@
 So many features reply on docker and soon enough this became restrictions. As a result, this original picture looks like:
 
 ![](../images/atomic.2.png)
+
+People want to see alternatives to docker while docker is still dominating containers world.

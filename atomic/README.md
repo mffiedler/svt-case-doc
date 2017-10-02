@@ -108,7 +108,7 @@ Check Jerermy's blog to see how we do it: [rhel-tools](https://developers.redhat
 
 ## Tools: TODO
 
-* [atomic](https://github.com/projectatomic/atomic)
+* [atomic](atomic.md)
 * [ostree](https://github.com/ostreedev/ostree)
 * [runc](https://github.com/opencontainers/runc)
 * [skopeo](https://github.com/projectatomic/skopeo)

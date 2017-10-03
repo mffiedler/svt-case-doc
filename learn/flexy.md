@@ -79,14 +79,6 @@ $ ssh -i ~/.ssh/libra.pem root@<slave_ip>
           iops: 2400
 ```
 
-## Scaleup cluster
-TODO: Add [new nodes section] into <code>/tmp/2.file</code>
-
-```sh
-# ansible-playbook -i /tmp/3.file openshift-ansible/playbooks/byo/openshift-node/scaleup.yml 
-```
-
-
 ## Setup playbooks in Flexy
 The first line in [the parameter template](template: http://git.app.eng.bos.redhat.com/git/openshift-misc.git/plain/v3-launch-templates/system-testing/aos-36/aws/template.ose36-aws-svt) is usually [the erb template](http://git.app.eng.bos.redhat.com/git/openshift-misc.git/plain/v3-launch-templates/system-testing/aos-36/aws/template.ose36-aws-svt) which defines at the bottom the playbooks with inventory file Flexy runs.
 

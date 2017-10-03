@@ -172,7 +172,20 @@ openshift_ansible_vars:
 ...
 ```
 
-AH + docker containers
+Checking:
+
+```sh
+# docker ps 
+CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS              PORTS               NAMES
+47b12564f2f7        openshift3/node:v3.7.0                  "/usr/local/bin/origi"   6 minutes ago       Up 6 minutes                            atomic-openshift-node
+e5dc3f97fe3b        openshift3/openvswitch:v3.7.0           "/usr/local/bin/ovs-r"   8 minutes ago       Up 8 minutes                            openvswitch
+96c78add8afb        openshift3/ose:v3.7.0                   "/usr/bin/openshift s"   11 minutes ago      Up 11 minutes                           atomic-openshift-master-controllers
+2dc027f6e936        openshift3/ose:v3.7.0                   "/usr/bin/openshift s"   11 minutes ago      Up 11 minutes                           atomic-openshift-master-api
+b126293639a9        registry.access.redhat.com/rhel7/etcd   "/usr/bin/etcd"          11 minutes ago      Up 11 minutes                           etcd_container
+
+```
+
+AH + cri-o:
 
 ```
 openshift_ansible_vars:

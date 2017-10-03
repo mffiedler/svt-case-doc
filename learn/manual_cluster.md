@@ -63,6 +63,14 @@ _Hint_: In the output of Jenkins build, search for *playbook*. The inventory fil
     # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
     ```
 
+## Scaleup cluster
+TODO: Add [new nodes section] into <code>/tmp/2.file</code>
+
+```sh
+# ansible-playbook -i /tmp/3.file openshift-ansible/playbooks/byo/openshift-node/scaleup.yml 
+```
+
+
 ## Create all-in-one cluster
 
 ```sh

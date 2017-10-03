@@ -159,8 +159,23 @@ openshift_ansible_vars:
 
 Params' meaning is [here](https://github.com/openshift/openshift-ansible/blob/master/inventory/byo/hosts.ose.example#L50).
 
-TODO:
 
-* AH + system containers
-* AH + cri-o
-* AH + docker containers
+AH + docker containers:
+
+```
+image: ocp-3.7.0-0.127.0-1-atomic-gold
+...
+containerized: true
+...
+openshift_ansible_vars:
+  openshift_use_system_containers: false
+...
+```
+
+AH + docker containers
+
+```
+openshift_ansible_vars:
+  openshift_use_crio: true
+  openshift_crio_systemcontainer_image_override: registry.ops.openshift.com/openshift3/cri-o:latest
+```

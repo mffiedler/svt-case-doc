@@ -147,7 +147,7 @@ Logging Driver: journald
 
 #### Atomic Host
 
-##### AH + system containers:
+##### AH + system containers
 
 ```
 image: ocp-3.7.0-0.127.0-1-atomic-gold
@@ -160,7 +160,7 @@ openshift_ansible_vars:
 Params' meaning is [here](https://github.com/openshift/openshift-ansible/blob/master/inventory/byo/hosts.ose.example#L50).
 
 
-##### AH + docker containers:
+##### AH + docker containers
 
 ```
 image: ocp-3.7.0-0.127.0-1-atomic-gold
@@ -185,7 +185,7 @@ b126293639a9        registry.access.redhat.com/rhel7/etcd   "/usr/bin/etcd"     
 
 ```
 
-##### AH + cri-o:
+##### AH + cri-o
 
 ```
 openshift_ansible_vars:

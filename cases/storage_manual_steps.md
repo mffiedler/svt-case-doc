@@ -15,7 +15,8 @@ The image has been built and pushed to docker.io:
 Create scc on master, label the computing node, and create test project:
 
 ```sh
-# oc create -f svt/storage/content/fio-scc.json
+# cd svt/storage/
+# oc create -f content/fio-scc.json
 # oc label node ip-172-31-26-174.us-west-2.compute.internal "aaa=bbb"
 # oc new-project aaa
 ```

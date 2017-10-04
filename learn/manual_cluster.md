@@ -37,7 +37,7 @@ If _Dynect_ is not available, one alternative is to use [xip.io](http://xip.io/)
 2. Run the playbook with 
 
   ```sh
-  ansible-inventory -vvv -i <inventory> <playbook>
+  ansible-playbook -vvv -i <inventory> <playbook>
   ```
 
 ### Create inventory file and run playbook

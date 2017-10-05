@@ -52,12 +52,31 @@ On master:
 ## Run pbench-fio
 
 ```sh
+# #optional: trivial run
 # pbench-fio --test-types=read --clients=172.20.1.6 --config=SEQ_IO --samples=1 --max-stddev=20 --block-sizes=4 --job-file=config/sequential_io.job
+
+# #seq-io
+# pbench-fio --test-types=read,write,rw --clients=172.20.1.6 --config=SEQ_IO --samples=3 --max-stddev=20 --block-sizes=4,128,4096 --job-file=config/sequential_io.job
+
+# #random-io
+# pbench-fio --test-types=randread,randwrite,randrw --clients=172.20.1.6 --config=RAND_IO --samples=3 --max-stddev=20 --block-sizes=4,128,4096 --job-file=config/random_io.job
+
 ```
 
 Parameters of pbench-fio: [here](http://distributed-system-analysis.github.io/pbench/doc/agent/user-guide.html#orga6d8420).
 
 [pbench-fio](https://github.com/distributed-system-analysis/pbench/blob/master/agent/bench-scripts/pbench-fio) will ssh to the pod and run fio-server there and then use the local host to connect to (via <code>fio --client</code> command) the fio-server to send fio-jobs. See here for details on fio [sever/cleint](https://linux.die.net/man/1/fio).
+
+## Collect and clear pbench data
+On master:
+
+```sh
+# pbench-copy-results
+# pbench-kill-tools
+# pbench-clear-tools
+# oc delete project aaa
+# pbench-clear-results 
+```
 
 TODO: run the fio command used by pbench-fio.
 

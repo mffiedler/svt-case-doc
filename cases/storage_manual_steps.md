@@ -45,8 +45,8 @@ Last login: Wed Aug 30 16:59:49 2017 from ip-172-20-1-1.us-west-2.compute.intern
 On master:
 
 ```sh
-pbench-register-tool-set --label=FIO
-pbench-register-tool-set --label=FIO --remote=<compute_node_interal_host_eg_ip-172-31-59-209.us-west-2.compute.internal>
+# pbench-register-tool-set --label=FIO
+# pbench-register-tool-set --label=FIO --remote=<compute_node_interal_host_eg_ip-172-31-59-209.us-west-2.compute.internal>
 ```
 
 ## Run pbench-fio

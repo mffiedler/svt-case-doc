@@ -8,7 +8,7 @@ On a compute node:
 The image has been built and pushed to docker.io:
 
 ```sh
-# #Optional
+# #NOT Optional, otherwise need to change the dc of the pod
 # docker pull docker.io/hongkailiu/centosfio:3.6.172.0.0
 ```
 

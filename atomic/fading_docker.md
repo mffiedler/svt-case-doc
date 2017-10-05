@@ -13,6 +13,11 @@ Here is a very informative slide from [Dan Walsh's presentation](https://primeti
 
 ![](../images/atomic.3.png)
 
+* image format: open container initiative (OCI)
+* push/pull images: skopeo
+* storage images locally: containers/storage
+* execute images: OCI-runtime specification, eg, runc
+
 ## [System containers](system_container.md)
 
 This is another way to run containers without docker. Even k8s is not in the picture. The name, system container, comes from the way (to achieve the goal that we want to make Atomic Host OS smaller) that some of the system services are shipped via container.
@@ -33,6 +38,8 @@ Keep the goal in mind that is to containerize system services, for example, atom
 A docker implementation for k8s. Put it in another way, we can run k8s with cri-o without docker.
 
 ![](http://cri-o.io/assets/images/architecture.png)
+
+
 
 Its components:
 

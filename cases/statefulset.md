@@ -63,6 +63,36 @@ clusterproject0   server0            172.20.0.13:8080,172.20.0.17:8080          
 ...
 ```
 
+## Check resources on compute nodes
+
+```sh
+$ oc describe node -l region=primary | grep "resources" -A 4
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  CPU Requests	CPU Limits	Memory Requests	Memory Limits
+  ------------	----------	---------------	-------------
+  15 (93%)	30 (187%)	3840Mi (5%)	7680Mi (11%)
+--
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  CPU Requests	CPU Limits	Memory Requests	Memory Limits
+  ------------	----------	---------------	-------------
+  15 (93%)	30 (187%)	3840Mi (5%)	7680Mi (11%)
+--
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  CPU Requests	CPU Limits	Memory Requests	Memory Limits
+  ------------	----------	---------------	-------------
+  15 (93%)	30 (187%)	3840Mi (5%)	7680Mi (11%)
+--
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  CPU Requests	CPU Limits	Memory Requests	Memory Limits
+  ------------	----------	---------------	-------------
+  15 (93%)	30 (187%)	3840Mi (5%)	7680Mi (11%)
+
+```
+
 ## Clean projects
 Change according to real number of created projects:
 

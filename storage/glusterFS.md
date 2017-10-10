@@ -257,3 +257,5 @@ CNS requires device-mapper. It requires <code>modprobe dm_thin_pool</code> on ea
 [1]. [RH Storage Server](https://access.redhat.com/documentation/en-US/Red_Hat_Storage/3/html/Administration_Guide/index.html)
 
 [2]. [CNS: Architecture and configuration guide](https://www.redhat.com/cms/managed-files/st-container-native-storage-technology-detail-inc0464300at-201611-v2-en.pdf)
+
+[3]. [CNS and CRS](https://access.redhat.com/documentation/en-us/reference_architectures/2017/html/deploying_and_managing_openshift_container_platform_3.6_on_amazon_web_services/persistent_storage)

@@ -63,9 +63,7 @@ clusterproject0   server0            172.20.0.13:8080,172.20.0.17:8080          
 ...
 ```
 
-## Check resources on compute nodes
-
-CPU is the bottleneck:
+Check resources on compute nodes. CPU is the bottleneck:
 
 ```sh
 $ #Resources allocated on 4 (m4.4xlarge) compute nodes with oc v3.7.0-0.147.1:

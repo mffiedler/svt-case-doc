@@ -68,6 +68,7 @@ clusterproject0   server0            172.20.0.13:8080,172.20.0.17:8080          
 CPU is the bottleneck:
 
 ```sh
+$ #Resources allocated on 4 (m4.4xlarge) compute nodes with oc v3.7.0-0.147.1:
 $ oc describe node -l region=primary | grep "resources" -A 4
 Allocated resources:
   (Total limits may be over 100 percent, i.e., overcommitted.)

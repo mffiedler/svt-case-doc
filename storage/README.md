@@ -38,3 +38,6 @@ xvdb                             202:16   0  30G  0 disk
     └─docker_vg-docker--pool     253:2    0  30G  0 lvm
 ```
 
+## Container storage
+
+[Daniel Messer's blog](https://keithtenzer.com/2017/03/24/storage-for-containers-using-gluster-part-ii/)

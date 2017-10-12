@@ -80,3 +80,34 @@ On master:
 
 TODO: run the fio command used by pbench-fio.
 
+## pbench-fio on AH
+
+Get the compute nodes and label them as <code>type=pbench</code>:
+
+```sh
+[fedora@ip-172-31-33-174 scale-testing]$ oc get node -l region=primary
+NAME                                         STATUS    AGE       VERSION
+ip-172-31-13-22.us-west-2.compute.internal   Ready     52m       v1.7.0+80709908fd
+ip-172-31-4-142.us-west-2.compute.internal   Ready     52m       v1.7.0+80709908fd
+
+[fedora@ip-172-31-33-174 ~]$ oc label node ip-172-31-13-22.us-west-2.compute.internal type=pbench
+[fedora@ip-172-31-33-174 ~]$ oc label node ip-172-31-4-142.us-west-2.compute.internal type=pbench
+```
+
+Then create sa (useroot) and ds (pbench-agent) as described [containerized_pbench.md](../atomic/containerized_pbench.md).
+
+```sh
+[fedora@ip-172-31-33-174 ~]$ oc get ds
+NAME           DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR   AGE
+pbench-agent   2         2         2         2            2           type=pbench     3m
+```
+
+After the _fio_ pod is running and ssh to its IP from master works, we establish
+a service for it:
+
+```sh
+[fedora@ip-172-31-33-174 storage]$ oc get pod -o wide --show-labels
+NAME          READY     STATUS    RESTARTS   AGE       IP           NODE                                         LABELS
+fio-1-pzxnf   1/1       Running   0          3m        172.23.0.4   ip-172-31-13-22.us-west-2.compute.internal   deployment=fio-1,deploymentconfig=fio,name=receiver,test=fio
+```
+

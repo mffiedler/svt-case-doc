@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: fio-service
+spec:
+  selector:
+    name: receiver
+  ports:
+    - protocol: TCP
+      port: 22
+      targetPort: 22
+

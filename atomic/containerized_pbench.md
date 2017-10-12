@@ -202,6 +202,8 @@ Host *perf.lab.eng.bos.redhat.com
 # ./scale-testing/run.sh
 ```
 
+The pods actually runs a script which includes running the playbook defined [here](https://github.com/distributed-system-analysis/pbench/blob/master/contrib/ansible/openshift/pbench_register.yml).
+
 No error in the log of the docker container _controller_, however, the [pbench data on the server](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-131/) is empty.
 
 TODO: Fix

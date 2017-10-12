@@ -11,7 +11,12 @@
 
 ### [Server](http://distributed-system-analysis.github.io/pbench/doc/server/installation.html)
 ### [Client](http://distributed-system-analysis.github.io/pbench/doc/agent/installation.html)
-TODO (see AMI provisioning)
+
+```sh
+# #install pbench-agent
+$ wget https://copr.fedorainfracloud.org/coprs/ndokos/pbench/repo/fedora-26/ndokos-pbench-fedora-26.repo
+$ sudo mv ndokos-pbench-fedora-26.repo /etc/yum.repos.d/
+```
 
 ## Use pbench in the test
 

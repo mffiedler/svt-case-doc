@@ -245,8 +245,8 @@ pbench-list-tools
 # #copy
 ```
 
-We can see ssh config is crucial here because it connects to cluster instance by 2022 port.
-That port is actually served by pbench-agent pods on those instance.
+We can see ssh config is crucial here because ssh connects to cluster instances via 2022 port.
+That port is actually served by pbench-agent pods on those instances. Pbench also uses ssh to send commands on those instances.
 
 ```sh
 # ssh ip-172-31-21-233.us-west-2.compute.internal

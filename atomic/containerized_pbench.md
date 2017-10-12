@@ -22,6 +22,7 @@ ip-172-31-46-42.us-west-2.compute.internal    Ready                      2h     
 
 # #create project/namespace to hold pbench-agent pods
 [fedora@ip-172-31-33-174 ~]$ oc adm new-project pbench-controller --node-selector=""
+[fedora@ip-172-31-33-174 ~]$ oc project pbench-controller
 ```
 
 

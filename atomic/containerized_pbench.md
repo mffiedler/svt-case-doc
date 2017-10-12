@@ -25,7 +25,7 @@ ip-172-31-46-42.us-west-2.compute.internal    Ready                      2h     
 ```
 
 
-Follow [the steps](https://github.com/chaitanyaenr/scale-testing) to launch
+Follow [the steps](https://github.com/chaitanyaenr/scale-testing) to launch pbench-agent pods:
 
 ```sh
 [fedora@ip-172-31-33-174 ~]$ git clone https://github.com/chaitanyaenr/scale-testing.git

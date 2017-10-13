@@ -66,6 +66,7 @@ ec2-54-213-42-122.us-west-2.compute.amazonaws.com
 [More parameters](https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_storage_glusterfs) in the role <code>openshift_storage_glusterfs</code>. [Example of the inventory file](https://github.com/openshift/openshift-ansible/blob/master/inventory/byo/hosts.byo.glusterfs.storage-and-registry.example).
 
 Run playbook (on master):
+
 ```sh
 # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
 ```
@@ -156,6 +157,14 @@ pods/web
 # #check if the data is written on the volume
 # oc exec web -- ls /var/jenkins_home
 ```
+
+#### [Deploy on existing gluster](https://github.com/openshift/openshift-ansible/tree/master/playbooks/byo/openshift-glusterfs)
+
+```sh
+# ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/openshift-glusterfs/config.yml
+```
+
+
 
 #### [cns-deplay](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/container-native_storage_for_openshift_container_platform_3.4/ch04s02)
 TODO

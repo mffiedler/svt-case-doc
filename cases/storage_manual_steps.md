@@ -80,7 +80,7 @@ On master:
 
 TODO: run the fio command used by pbench-fio.
 
-## pbench-fio on AH
+## pbench-fio on AH (NOT working yet)
 
 Get the compute nodes and label them as <code>type=pbench</code>:
 
@@ -103,11 +103,80 @@ pbench-agent   2         2         2         2            2           type=pbenc
 ```
 
 After the _fio_ pod is running and ssh to its IP from master works, we establish
-a service for it:
+a service for it (thanks to Mike):
 
 ```sh
 [fedora@ip-172-31-33-174 storage]$ oc get pod -o wide --show-labels
 NAME          READY     STATUS    RESTARTS   AGE       IP           NODE                                         LABELS
 fio-1-pzxnf   1/1       Running   0          3m        172.23.0.4   ip-172-31-13-22.us-west-2.compute.internal   deployment=fio-1,deploymentconfig=fio,name=receiver,test=fio
+
+[fedora@ip-172-31-33-174 storage]$ oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/fio-svc.yaml
+[fedora@ip-172-31-33-174 storage]$ oc get service fio-service
+NAME          CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE
+fio-service   172.26.20.172   <none>        22/TCP      5s
+[fedora@ip-172-31-33-174 storage]$ oc get service fio-service
+NAME          CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+fio-service   172.25.145.108   <nodes>       8081:32500/TCP   2h
+
+# #check if it works
+[fedora@ip-172-31-33-174 storage]$ ssh -i ~/id_rsa_perf root@ip-172-31-4-142.us-west-2.compute.internal -p 32500
+[root@fio-1-pzxnf ~]# exit
+logout
+
 ```
 
+This service will open port 32500 on each node in the cluster and forward it to port 22 of pod fio-1-pzxnf.
+
+Before we run pbench-fio on master while now we run it on pbench-controller jump node which
+has no access to the pod ip. This service fills in this gap.
+
+On pbench-controller jump node:
+
+```sh
+# vi ~/.ssh/config
+Host ec2-54-191-246-139.us-west-2.compute.amazonaws.com
+        HostName ec2-54-191-246-139.us-west-2.compute.amazonaws.com
+        User pbench
+        Port 22
+        StrictHostKeyChecking no
+        PasswordAuthentication no
+        IdentityFile /opt/pbench-agent/id_rsa
+
+Host perf-infra.ec2.breakage.org
+        HostName perf-infra.ec2.breakage.org
+        User pbench
+        Port 22
+        StrictHostKeyChecking no
+        PasswordAuthentication no
+        IdentityFile /opt/pbench-agent/id_rsa
+
+
+Host ip-172-31-4-142.us-west-2.compute.internal
+        User root
+        Port 32500
+        StrictHostKeyChecking no
+        PasswordAuthentication no
+        IdentityFile /root/.ssh/id_rsa
+
+Host *us-west-2.compute.internal
+	User root
+        Port 2022
+        StrictHostKeyChecking no
+        PasswordAuthentication no
+        IdentityFile /root/.ssh/id_rsa
+
+```
+
+Register pbench and run the test:
+
+```sh
+pbench-register-tool-set --label=FIO --interval=10
+pbench-register-tool-set --label=FIO --remote=ip-172-31-13-22.us-west-2.compute.internal --interval=10
+
+pbench-fio --test-types=read --clients=ip-172-31-4-142.us-west-2.compute.internal --config=SEQ_IO --samples=1 --max-stddev=20 --block-sizes=4 --job-file=config/sequential_io.job
+```
+
+ERROR: pbench-fio runs stuck!
+
+For pbench-fio to work, forward ssh port is not enough. Seems it also need port 8765 of fio pod to reach
+fio-server.

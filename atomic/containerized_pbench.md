@@ -265,4 +265,4 @@ pbench-agent.noarch                                   0.45-36g124b3a8           
 Check [pbench data on the server](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-131/).
 
 Note that <code>pprof</code> seems not working on that pbench-agent pods. But that is
-OK for now.
+OK for now. It is [WIP](https://github.com/distributed-system-analysis/pbench/pull/676).

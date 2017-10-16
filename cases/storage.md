@@ -193,9 +193,9 @@ dm-14             4.92         0.17       792.94       4647   21995043
 
 pbench data collection:
 
-| oc version                      | pbench version | link |
-|---------------------------------|----------------|------|
-|              3.5                |       na       |   [ex-server](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-14-88/)   |
-| 3.7.0-0.126.4.git.0.3fc2b9b.el7 | 0.45-1g8874a17 |   [ex-server](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-53-207/)   |
-|                                 |                |      |
-|                                 |                |      |
+| oc version                      | pbench version | storage   | other info                        | link                                                                                                                                                                    |
+|---------------------------------|----------------|-----------|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 3.5                             | na             | ebs       |                                   | [server](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-14-88/) and [ex-server](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-14-88/)   |
+| 3.7.0-0.126.4.git.0.3fc2b9b.el7 | 0.45-1g8874a17 | ebs       |                                   | [server](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-53-207/) and [ex-server](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-53-207/) |
+|                                 |                | glusterfs | glusterfs=3.2.0-7 heketi=3.2.0-11 |                                                                                                                                                                         |
+|                                 |                |           |                                   |                                                                                                                                                                         |

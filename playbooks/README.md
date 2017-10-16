@@ -20,3 +20,6 @@ TODO
 
 ## launch device-mapper module
 
+```sh
+$ ansible-playbook -i inv.file playbooks/dm_thin_pool.yml
+```

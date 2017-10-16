@@ -17,3 +17,6 @@ Run on master
 
 ## pbench
 TODO
+
+## launch device-mapper module
+

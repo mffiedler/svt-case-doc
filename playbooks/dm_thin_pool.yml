@@ -1,0 +1,8 @@
+---
+- name: Load device-mapper module (on overpay2 hosts)
+  hosts: all
+  remote_user: root
+
+  roles:
+    - dm_thin_pool
+

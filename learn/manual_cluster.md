@@ -25,7 +25,7 @@ $ (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-7b26
 The instance ids are in the return message. *Note that* <code>--image-id</code> is the AMI id and the value of <code>--image-id</code> is _the default group id_.
 
 ### Tag instances (OpenShift v3.7+)
-It is required to [tag the AWS instances](https://docs.openshift.com/container-platform/3.6/install_config/persistent_storage/dynamically_provisioning_pvs.html#aws-elasticblockstore-ebs) with <code>Key=KubernetesCluster,Value=clusterid</code>.
+It is required to [tag the AWS instances](https://docs.openshift.com/container-platform/3.6/install_config/persistent_storage/dynamically_provisioning_pvs.html#aws-elasticblockstore-ebs) with <code>Key=KubernetesCluster,Value=clusterid</code>. Otherwise, router pod would not be deployed successfully and byo playbook would fail on TASK [openshift_hosted : Poll for OpenShift pod deployment success].
 
 ```sh
 # #Download the script

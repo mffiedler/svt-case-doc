@@ -24,6 +24,19 @@ $ (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-7b26
 
 The instance ids are in the return message. *Note that* <code>--image-id</code> is the AMI id and the value of <code>--image-id</code> is _the default group id_.
 
+### Tag instances (OpenShift v3.7+)
+It is required to [tag the AWS instances](https://docs.openshift.com/container-platform/3.6/install_config/persistent_storage/dynamically_provisioning_pvs.html#aws-elasticblockstore-ebs) with <code>Key=KubernetesCluster,Value=clusterid</code>.
+
+```sh
+# #Download the script
+# wget https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/add_tag_to_ec2_instances.sh
+# chmod +x ./add_tag_to_ec2_instances.sh
+# #change the instance IPs
+
+# ./add_tag_to_ec2_instances.sh
+# #verify the tags on EC2 web console
+```
+
 ### Get a subdomain
 Get a subdomain, eg, <code>0718-wo2.qe.rhcloud.com</code>, from [Dynect subdomain create](https://openshift-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/Dynect%20subdomain%20create/253/console) using parameters *ip of router*, "openshift", "v3"
 

@@ -58,6 +58,6 @@ The Bigger <code>bw</code> and the smaller <code>lat</code>, the better.
 
 ## Reference
 
-[1]. [fio-howto](https://github.com/axboe/fio/blob/master/HOWTO)
+[1]. [fio-howto](https://github.com/axboe/fio/blob/master/HOWTO) and [pdf version](https://media.readthedocs.org/pdf/fio/latest/fio.pdf)
 
-[2]. [pdf](https://media.readthedocs.org/pdf/fio/latest/fio.pdf)
+[2]. [ipos wiki]() and [ipos, throughput, and latency](http://searchsolidstatestorage.techtarget.com/definition/IOPS-Input-Output-Operations-Per-Second)

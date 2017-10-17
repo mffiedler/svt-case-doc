@@ -4,7 +4,7 @@
 
 * [pbench](http://distributed-system-analysis.github.io/pbench/) and [pbench-doc](http://distributed-system-analysis.github.io/pbench/doc/)
 * [pbench-agent: user guide](http://distributed-system-analysis.github.io/pbench/pbench-agent.html)
-* [pbench-fio](https://github.com/distributed-system-analysis/pbench/blob/master/agent/bench-scripts/pbench-fio.md)
+* [pbench-fio](https://github.com/distributed-system-analysis/pbench/blob/master/agent/bench-scripts/pbench-fio.md), [ipos wiki](https://en.wikipedia.org/wiki/IOPS), [ipos, throughput, and latency](http://searchsolidstatestorage.techtarget.com/definition/IOPS-Input-Output-Operations-Per-Second), [stddevpct](http://help.mastock.michelmontagne.com/Indicateurs/CustomIndicators/keywordshelp/customIndicsstdDevPct/index.html)
 * [pbench-uperf](https://github.com/distributed-system-analysis/pbench/blob/master/agent/bench-scripts/pbench-uperf.md)
 
 ## Installation

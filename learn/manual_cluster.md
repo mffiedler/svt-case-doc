@@ -32,6 +32,7 @@ It is required to [tag the AWS instances](https://docs.openshift.com/container-p
 # wget https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/add_tag_to_ec2_instances.sh
 # chmod +x ./add_tag_to_ec2_instances.sh
 # #change the instance IPs
+# #MODIFY the UNIQUE value of your clusterid
 
 # ./add_tag_to_ec2_instances.sh
 # #verify the tags on EC2 web console

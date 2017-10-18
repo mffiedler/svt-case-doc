@@ -49,7 +49,7 @@ We can see that node, master-api, and master-controllers run as system container
 
 Pod log
 
-docker log-driver: journald
+docker log-driver: journald/json-file
 
 ```sh
 tail -f /var/log/pods/66083e1f-b368-11e7-ac9e-023e42ffd7a8/heketi_0.log

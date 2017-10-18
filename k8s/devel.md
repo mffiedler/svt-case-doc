@@ -1,6 +1,6 @@
-# [K8S Dev](https://github.com/kubernetes/community/blob/master/contributors/devel/development.md)
+# [K8S Dev](https://github.com/kubernetes/community/tree/master/contributors/devel)
 
-## Set up dev. env.
+## [Set up dev. env.](https://github.com/kubernetes/community/blob/master/contributors/devel/development.md)
 
 Fedora 25:
 
@@ -19,3 +19,6 @@ Docker version 17.09.0-ce, build afdb6d4
 ## [Build from src](https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#building-kubernetes-with-docker)
 
 ### Docker
+
+
+## [Run Test](https://github.com/kubernetes/community/blob/master/contributors/devel/testing.md)

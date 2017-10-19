@@ -26,7 +26,7 @@ Deletion Time - 172
 
 ### Create 5000 projects using cluster-loader
 
-Deletion Time - 172
+Deletion Time - 832
 
 ### Create 1000 projects with secrets etc. using cluster-loader
 $ vi ../../../openshift_scalability/config/pyconfigLoadedProject.yaml

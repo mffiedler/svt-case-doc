@@ -31,7 +31,8 @@ Deletion Time - 172
 ### Create 1000 projects with secrets etc. using cluster-loader
 $ vi ../../../openshift_scalability/config/pyconfigLoadedProject.yaml
 ### Remove projects.{users|pods|templates.*deployment-config} sections
-$ python ../../../openshift_scalability/cluster-loader.py -f ../../../openshift_scalability/config/pyconfigLoadedProject.yaml
+$ cd ../../../openshift_scalability/
+$ python ./cluster-loader.py -f ./config/pyconfigLoadedProject.yaml
 
 Deletion Time - 172
 

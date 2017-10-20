@@ -39,3 +39,12 @@ IMAGES	x86_64	2017-10-18T07:38:18.000Z	Created from build Fedora-Cloud-Base-25-2
 ```
 
 Choose the one with _HVM-standard-0_ whose ami id is _ami-7c25e604_.
+
+
+## [oc cli: auto-completion](https://bierkowski.com/openshift-cli-morsels-enable-oc-shell-completion/)
+
+```sh
+$ sudo dnf install bash-completion
+$ oc completion bash > oc_completion.sh
+$ sudo mv oc_completion.sh /usr/share/bash-completion/completions/oc
+```

@@ -34,7 +34,7 @@ $ vi ../../../openshift_scalability/config/pyconfigLoadedProject.yaml
 $ cd ../../../openshift_scalability/
 $ python ./cluster-loader.py -f ./config/pyconfigLoadedProject.yaml
 
-Deletion Time - ???
+Deletion Time - 586
 
 ### Create 5000 projects with secrets etc. using cluster-loader:
 

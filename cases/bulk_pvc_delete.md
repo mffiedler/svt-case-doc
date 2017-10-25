@@ -11,6 +11,16 @@ Move pods to desired nodes and label the nodes as described [glusterFS_stress.md
 
 ## Run the test
 
+Create PVCs with cluster-loader as described [here](glusterFS.md#run-test).
+
+Wait until all PVC are BOUND and then delete PVC and measure the time:
+
+```sh
+$ cd svt/openshift_performance/ci/scripts
+$ wget 
+$ ./delete_pvc.sh
+```
+
 
 ## PVC delete test
 
@@ -22,8 +32,8 @@ glusterfs (3.3.0-12) and heketi (3.3.0-9)
 
 | #PVC | 10  | 20 | 30 | 50 | 100 | 200 | 250 |
 |------|-----|----|----|----|-----|-----|-----|
-| #sec | 94  |    |    |    |     |     |     |
-| avg  | 9.4 |    |    |    |     |     |     |
+| #sec | 89  |    |    |    |     |     |     |
+| avg  | 8.9 |    |    |    |     |     |     |
 
 gp2
 

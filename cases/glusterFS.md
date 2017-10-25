@@ -97,16 +97,3 @@ $ pip install pandas prettytable matplotlib
 ```
 
 
-## PVC delete test
-
-### Results
-
-#### oc (v3.7.0-0.153.0) + ol2 + sc, glusterfs (3.2.0-7) and heketi (3.2.0-11)
-
-| #PVC | 10  | 30 | 50 | 100 | 200 | 250 |
-|------|-----|----|----|-----|-----|-----|
-| #sec | 94  |    |    |     |     |     |
-| avg  | 9.4 |    |    |     |     |     |
-
-
-

@@ -13,6 +13,19 @@ Move pods to desired nodes and label the nodes as described [glusterFS_stress.md
 
 Create PVCs with cluster-loader as described [here](glusterFS.md#run-test).
 
+```sh
+### Optional tuningsets
+# vi svt/openshift_scalability/content/pvc-templates/pvc-parameters.yaml
+tuningsets:
+  - name: default
+    templates:
+      stepping:
+        stepsize: 10
+        pause: 1000 ms
+      rate_limit:
+        delay: 1000 ms
+```
+
 Wait until all PVC are BOUND and then delete PVC and measure the time:
 
 ```sh

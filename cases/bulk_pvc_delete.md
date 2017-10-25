@@ -16,7 +16,8 @@ Create PVCs with cluster-loader as described [here](glusterFS.md#run-test).
 Wait until all PVC are BOUND and then delete PVC and measure the time:
 
 ```sh
-$ wget 
+$ wget https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/delete_pvc.sh
+$ chmod +x delete_pvc.sh
 $ ./delete_pvc.sh
 ```
 

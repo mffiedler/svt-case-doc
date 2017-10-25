@@ -16,7 +16,6 @@ Create PVCs with cluster-loader as described [here](glusterFS.md#run-test).
 Wait until all PVC are BOUND and then delete PVC and measure the time:
 
 ```sh
-$ cd svt/openshift_performance/ci/scripts
 $ wget 
 $ ./delete_pvc.sh
 ```

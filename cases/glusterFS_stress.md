@@ -77,7 +77,7 @@ to one of the cns nodes.
 ## Enable brick-multiplex
 
 ```sh
-# oc rsh glusterfs-storage-<change_accordingly>
+# oc rsh -n glusterfs glusterfs-storage-<change_accordingly>
 
 sh-4.2# gluster volume set all cluster.brick-multiplex on
 ```

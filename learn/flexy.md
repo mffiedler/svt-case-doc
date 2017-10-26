@@ -185,7 +185,7 @@ openshift_ansible_vars:
   openshift_crio_systemcontainer_image_override: registry.ops.openshift.com/openshift3/cri-o:latest
 ```
 
-##### AAA
+##### openshift_clusterid
 
 ```sh
 ec2_tags: qe-hongkliu-flexy-aws

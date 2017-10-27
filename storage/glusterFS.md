@@ -23,7 +23,7 @@ MSG:
 There must be at least three GlusterFS nodes specified
 ```
 
-#### Ansible
+#### [Ansible](https://docs.openshift.com/container-platform/3.6/install_config/install/advanced_install.html#advanced-install-glusterfs-persistent-storage)
 
 Launch 5 EC2 instances:
 

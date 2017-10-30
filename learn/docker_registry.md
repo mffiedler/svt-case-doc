@@ -77,4 +77,4 @@ $ oc exec -n default docker-registry-1-pth6g -- ls /registry
 docker
 ```
 
-The __ field is empty for above PV/PVC used for docker registry storage. So it does not use dynamic provision of PVC. See [here](https://docs.openshift.com/container-platform/3.6/install_config/persistent_storage/persistent_storage_glusterfs.html#gfs-provisioning) for more information where it is explained it uses gluster_plugin instead.
+The _STORAGECLASS_ field is empty for above PV/PVC used for docker registry storage. So it does not use dynamic provision of PVC. See [here](https://docs.openshift.com/container-platform/3.6/install_config/persistent_storage/persistent_storage_glusterfs.html#gfs-provisioning) for more information where it is explained it uses gluster_plugin instead.

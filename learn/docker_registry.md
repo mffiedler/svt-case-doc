@@ -44,7 +44,7 @@ oc env dc/docker-registry REGISTRY_STORAGE_FILESYSTEM_MAXTHREADS=100
 After using docker registry, eg, deployment of pods, run
 
 ```sh
-# oc exec docker-registry-5-3skdd -- ls /registry                                          
+# oc exec -n default docker-registry-5-3skdd -- ls /registry                                          
 docker
 
 ```

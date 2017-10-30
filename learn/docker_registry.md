@@ -48,3 +48,25 @@ After using docker registry, eg, deployment of pods, run
 docker
 
 ```
+
+
+## [GlusterFS As docker registery storage](https://github.com/openshift/openshift-ansible/tree/master/playbooks/byo/openshift-glusterfs)
+
+After running the byo playbook:
+
+```sh
+$ oc volumes pod docker-registry-1-pth6g
+pods/docker-registry-1-pth6g
+  pvc/registry-claim (allocated 5GiB) as registry-storage
+    mounted at /registry
+  secret/registry-certificates as registry-certificates
+    mounted at /etc/secrets
+  secret/registry-token-4wmf6 as registry-token-4wmf6
+    mounted at /var/run/secrets/kubernetes.io/serviceaccount
+$ oc get pv -n default 
+NAME              CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM                    STORAGECLASS   REASON    AGE
+registry-volume   5Gi        RWX           Retain          Bound     default/registry-claim                            33m
+$ oc get pv
+NAME              CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM                    STORAGECLASS   REASON    AGE
+registry-volume   5Gi        RWX           Retain          Bound     default/registry-claim                            33m
+```

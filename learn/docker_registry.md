@@ -104,3 +104,9 @@ docker
 ```
 
 The _STORAGECLASS_ field is empty for above PV/PVC used for docker registry storage. So it does not use dynamic provision of PVC. See [here](https://docs.openshift.com/container-platform/3.6/install_config/persistent_storage/persistent_storage_glusterfs.html#gfs-provisioning) for more information where it is explained it uses gluster_plugin instead.
+
+Or we can still use the trick above when we set glusterfs up already (creating PVC using glusterfs storage class):
+
+```sh
+$ oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/registry_pvc_glusterfs.yaml -n default
+```

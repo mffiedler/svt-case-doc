@@ -52,6 +52,29 @@ docker
 
 ## [GlusterFS As docker registery storage](https://github.com/openshift/openshift-ansible/tree/master/playbooks/byo/openshift-glusterfs)
 
+The inventory file _2.file_ includes
+
+```sh
+[OSEv3:vars]
+openshift_hosted_registry_storage_kind=glusterfs
+openshift_hosted_registry_replicas=1
+glusterfs_devices=["/dev/xvdf"]
+openshift_storage_glusterfs_wipe=true
+openshift_storage_glusterfs_image=registry.access.redhat.com/rhgs3/rhgs-server-rhel7
+openshift_storage_glusterfs_version=3.3.0-362
+openshift_storage_glusterfs_heketi_image=registry.access.redhat.com/rhgs3/rhgs-volmanager-rhel7
+openshift_storage_glusterfs_heketi_version=3.3.0-362
+openshift_hosted_registry_glusterfs_swap=true
+...
+
+[glusterfs]
+ec2-54-218-71-228.us-west-2.compute.amazonaws.com openshift_public_hostname=ec2-54-218-71-228.us-west-2.compute.amazonaws.com openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
+ec2-54-201-153-48.us-west-2.compute.amazonaws.com openshift_public_hostname=ec2-54-201-153-48.us-west-2.compute.amazonaws.com openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
+ec2-34-209-48-74.us-west-2.compute.amazonaws.com openshift_public_hostname=ec2-34-209-48-74.us-west-2.compute.amazonaws.com openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
+
+...
+```
+
 After running the byo playbook:
 
 ```sh

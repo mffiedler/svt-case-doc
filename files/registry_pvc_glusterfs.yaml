@@ -1,0 +1,11 @@
+kind: "PersistentVolumeClaim"
+apiVersion: "v1"
+metadata:
+  name: "registry"
+spec:
+  accessModes:
+    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: "300Gi"
+  storageClassName: glusterfs-storage

@@ -64,7 +64,10 @@ openshift_storage_glusterfs_image=registry.access.redhat.com/rhgs3/rhgs-server-r
 openshift_storage_glusterfs_version=3.3.0-362
 openshift_storage_glusterfs_heketi_image=registry.access.redhat.com/rhgs3/rhgs-volmanager-rhel7
 openshift_storage_glusterfs_heketi_version=3.3.0-362
-openshift_hosted_registry_glusterfs_swap=true
+#openshift_hosted_registry_glusterfs_swap=true
+openshift_hosted_registry_storage_glusterfs_swap=True
+openshift_hosted_registry_storage_glusterfs_swapcopy=True
+#openshift_hosted_registry_storage_volume_size=10Gi
 ...
 
 [glusterfs]

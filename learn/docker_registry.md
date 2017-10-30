@@ -69,4 +69,10 @@ registry-volume   5Gi        RWX           Retain          Bound     default/reg
 $ oc get pv
 NAME              CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM                    STORAGECLASS   REASON    AGE
 registry-volume   5Gi        RWX           Retain          Bound     default/registry-claim                            33m
+
+$ oc new-project 
+$ oc new-project aaa
+$ oc new-app --template=cakephp-mysql-example
+$ oc exec -n default docker-registry-1-pth6g -- ls /registry
+docker
 ```

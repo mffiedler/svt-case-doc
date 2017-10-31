@@ -4,8 +4,6 @@
   shell: systemctl add-wants multi-user rpcbind.service
   register: rpcbind_install
   changed_when: "'Created symlink' in rpcbind_install.stdout + rpcbind_install.stderr"
-  notify:
-    - Reload systemd
 
 - name: enable service rpcbind
   systemd:

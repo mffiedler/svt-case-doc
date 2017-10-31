@@ -47,26 +47,26 @@ total 11660
 -rw-r--r--. 1 root root   23708 Oct 31 18:30 python-heketi-5.0.0-16.el7rhgs.x86_64.rpm
 ```
 
-Config this folder as a local yum repo. See the steps in [docker_version.md](../fix/docker_version.md)
+Config this folder as a local yum repo. See the steps in [docker_version.md](../fix/docker_version.md).
 
+```sh
+# yum install -y cns-deploy heketi-client
+```
 
+Check images in templates:
 
+```sh
+# grep -ri rhgs /usr/share/heketi/templates/*
+/usr/share/heketi/templates/deploy-heketi-template.yaml:          image: rhgs3/rhgs-volmanager-rhel7:3.3.0-362
+/usr/share/heketi/templates/glusterblock-provisioner.yaml:          image: rhgs3/rhgs-gluster-block-prov-rhel7:3.3.0-362
+/usr/share/heketi/templates/glusterfs-template.yaml:        - image: rhgs3/rhgs-server-rhel7:3.3.0-362
+/usr/share/heketi/templates/gluster-s3-template.yaml:          image: rhgs3/rhgs-s3-server-rhel7:3.3.0-362
+/usr/share/heketi/templates/heketi-template.yaml:          image: rhgs3/rhgs-volmanager-rhel7:3.3.0-362
+```
 
-1) 
+Those images have been released already on [access](https://access.redhat.com/containers/#/search/rhgs3).
 
-
-install them on ocp nodes supposed to run cns pods.
-
-These new packages will require new images, ( do : grep -ri rhgs /usr/share/heketi/templates/* ) and you will get what images these packages requires.
-
-Further , to get these packages, ensure in /etc/sysconfig/docker there is
-
-ADD_REGISTRY='--add-registry brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888 --add-registry registry.ops.openshift.com --add-registry registry.access.redhat.com'
-
-INSECURE_REGISTRY='--insecure-registry registry.ops.openshift.com --insecure-registry brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888'
-
-
-with packages in place, run cns-deploy as in past
+run cns-deploy as in past
 
 # cns-deploy -n namespace -g topology.json
 

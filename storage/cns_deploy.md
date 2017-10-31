@@ -6,4 +6,9 @@ Use cns-deploy to deploy CNS on OCP.
 * Previous version of the doc is [here](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/container-native_storage_for_openshift_container_platform_3.4/ch04s02).
 * [Keith Tenzer's blog](https://keithtenzer.com/2017/03/29/storage-for-containers-using-container-native-storage-part-iii/).
 
+## Installation
+
+### Install OpenShift cluster based on rhel AMIs
+1 master, 1 infra, 3 compute nodes.
+
 ## Install the pkgs

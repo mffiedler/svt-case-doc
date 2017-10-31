@@ -91,9 +91,7 @@ pods/docker-registry-1-pth6g
     mounted at /etc/secrets
   secret/registry-token-4wmf6 as registry-token-4wmf6
     mounted at /var/run/secrets/kubernetes.io/serviceaccount
-$ oc get pv -n default 
-NAME              CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM                    STORAGECLASS   REASON    AGE
-registry-volume   5Gi        RWX           Retain          Bound     default/registry-claim                            33m
+
 $ oc get pv
 NAME              CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM                    STORAGECLASS   REASON    AGE
 registry-volume   5Gi        RWX           Retain          Bound     default/registry-claim                            33m

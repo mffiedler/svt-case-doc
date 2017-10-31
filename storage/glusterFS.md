@@ -169,10 +169,7 @@ Difference on config.yml and registry.yml in [playbooks/byo/openshift-glusterfs]
 > Jose A. Rivera: config.yml will setup a GlusterFS cluster managed by heketi and (by default) create a StorageClass that will use it. registry.yml will setup a GlusterFS cluster managed by heketi without a StorageClass (by default) AND it will create a volume that is intended for use as storage for a hosted registry. registry.yml uses all the same ansible as config.yml with slightly different defaults and then adds a few more tasks on top of that.
 
 
-#### [cns-deplay](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/container-native_storage_for_openshift_container_platform_3.4/ch04s02)
-TODO
-
-https://keithtenzer.com/2017/03/29/storage-for-containers-using-container-native-storage-part-iii/
+#### [cns-deploy](cns_deploy.md)
 
 ### Heketi
 

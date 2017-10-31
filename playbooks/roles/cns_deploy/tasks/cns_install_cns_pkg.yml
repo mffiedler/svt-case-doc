@@ -1,0 +1,24 @@
+---
+- name: Install createrepo command
+  yum:
+    name: createrepo
+    state: present
+
+- name: Create local repo
+  command: createrepo .
+  args:
+    chdir: /root/local_rpm_repo/
+
+- name: Copy repo template
+  template:
+    src: local.repo.j2
+    dest: /etc/yum.repos.d/local.repo
+
+- name: Install cns-deploy and heketi-client
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - cns-deploy
+    - heketi-client
+

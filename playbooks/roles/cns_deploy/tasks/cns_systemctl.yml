@@ -1,0 +1,14 @@
+---
+# ref. https://github.com/vmware/ansible-etcd-cluster/blob/master/tasks/main.yml
+- name: Install rpcbind unit
+  shell: systemctl add-wants multi-user rpcbind.service
+  register: rpcbind_install
+  changed_when: "'Created symlink' in rpcbind_install.stdout + rpcbind_install.stderr"
+  notify:
+    - Reload systemd
+
+- name: enable service rpcbind
+  systemd:
+    name: rpcbind
+    enabled: yes
+    state: started

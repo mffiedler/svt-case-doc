@@ -1,0 +1,10 @@
+---
+- name: Load device-mapper module (on overpay2 hosts)
+  hosts: all
+  vars:
+    cns_dir: /home/hongkliu/Downloads/cns_rpm
+  remote_user: root
+
+  roles:
+    - cns_deploy
+

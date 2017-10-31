@@ -1,0 +1,6 @@
+---
+- include: tasks/cns_scp_brew_pkg.yml
+- include: tasks/cns_install_cns_pkg.yml
+- include: tasks/cns_load_modules.yml
+- include: tasks/cns_systemctl.yml
+- include: tasks/cns_iptables.yml

@@ -1,0 +1,15 @@
+---
+- name: Load device-mapper module
+  shell: modprobe "{{ item }}"
+  with_items:
+    - dm_thin_pool
+    - dm_multipath
+    - target_core_user
+
+
+- name: Copy modules templates
+  template:
+    src: "{{ item }}"
+    dest: /etc/modules-load.d/{{ item | basename | regex_replace('\.j2','') }}
+  with_fileglob:
+    - ../templates/module.conf/*.j2

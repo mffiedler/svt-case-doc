@@ -1,0 +1,6 @@
+---
+- name: Copy CNS RPMs to nodes
+  copy:
+    src: "{{ cns_dir }}"
+    dest: /root/local_rpm_repo
+    directory_mode: '0775'

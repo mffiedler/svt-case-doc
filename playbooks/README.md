@@ -23,3 +23,9 @@ TODO
 ```sh
 $ ansible-playbook -i inv.file playbooks/dm_thin_pool.yml
 ```
+
+## prepare cns-deploy tool
+
+```sh
+$ ansible-playbook -i inv.file playbooks/cns_deploy.yml
+```

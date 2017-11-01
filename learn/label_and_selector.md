@@ -32,10 +32,10 @@ metadata:
 # oc label node <nodename> key=value --overwrite
 ```
 
-### remove
+### [remove](https://stackoverflow.com/questions/34067979/how-to-delete-a-node-label-by-command-and-api)
 
 ```sh
-# oc label node <nodename> key='' --overwrite
+# oc label node <nodename> key-
 ```
 
 ## Apply to metrics

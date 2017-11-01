@@ -183,11 +183,16 @@ running inside cns pods
   WARNING: Failed to connect to lvmetad. Falling back to device scanning.
   Logical volume "brick_eb8300e8a01d091b40ebb601004de22b" successfully removed
   Logical volume "tp_eb8300e8a01d091b40ebb601004de22b" successfully removed
-  Volume group "vg_d92f9db886930808a186305565e5e62c" successfully removed
-root@ip-172-31-25-106: ~ # pvremove /dev/xvdf
+Volume group "vg_d92f9db886930808a186305565e5e62c" successfully removed
+
+###OPTIONAL:B###
+# pvremove /dev/xvdf
   /run/lvm/lvmetad.socket: connect failed: Connection refused
   WARNING: Failed to connect to lvmetad. Falling back to device scanning.
   Labels on physical volume "/dev/xvdf" successfully wiped.
+
+# pvcreate -ff /dev/xvdf
+###OPTIONAL:E###
 
 # lsblk 
 NAME                           MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT

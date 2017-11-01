@@ -1,0 +1,8 @@
+---
+- name: Clean yum cache
+  command: yum clean all
+
+- name: Remove /var/cache/yum folder
+  file:
+    path: /var/cache/yum
+    state: absent

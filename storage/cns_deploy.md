@@ -152,6 +152,9 @@ running inside cns pods
 ## Reinstall
 
 ```sh
+# oc label node ip-172-31-60-68.us-west-2.compute.internal storagenode-
+# oc label node ip-172-31-25-158.us-west-2.compute.internal storagenode-
+# oc label node ip-172-31-25-106.us-west-2.compute.internal storagenode-
 # oc delete project storage-project
 ### on each glusfterfs node
 # pvdisplay /dev/xvdf

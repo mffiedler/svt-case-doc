@@ -1,0 +1,50 @@
+{
+    "clusters": [
+        {
+            "nodes": [
+                {
+                    "node": {
+                        "hostnames": {
+                            "manage": [
+                                "{{ hostvars[groups['glusterfs'][0]]['ansible_default_ipv4']['address'] }}"
+                            ],
+                            "storage": [
+                                "{{ hostvars[groups['glusterfs'][0]]['ansible_default_ipv4']['address'] }}"
+                            ]
+                        },
+                        "zone": 1
+                    },
+                    "devices": {{glusterfs_devices}}
+                },
+                {
+                    "node": {
+                        "hostnames": {
+                            "manage": [
+                                "{{ hostvars[groups['glusterfs'][1]]['ansible_default_ipv4']['address'] }}"
+                            ],
+                            "storage": [
+                                "{{ hostvars[groups['glusterfs'][1]]['ansible_default_ipv4']['address'] }}"
+                            ]
+                        },
+                        "zone": 2
+                    },
+                    "devices": {{glusterfs_devices}}
+                },
+                {
+                    "node": {
+                        "hostnames": {
+                            "manage": [
+                                "{{ hostvars[groups['glusterfs'][2]]['ansible_default_ipv4']['address'] }}"
+                            ],
+                            "storage": [
+                                "{{ hostvars[groups['glusterfs'][2]]['ansible_default_ipv4']['address'] }}"
+                            ]
+                        },
+                        "zone": 1
+                    },
+                    "devices": {{glusterfs_devices}}
+                }
+            ]
+        }
+    ]
+}

@@ -4,3 +4,4 @@
 - include: tasks/cns_load_modules.yml
 - include: tasks/cns_systemctl.yml
 - include: tasks/cns_iptables.yml
+- include: tasks/cns_generate_topology.yml

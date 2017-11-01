@@ -1,10 +1,10 @@
 ---
-- name: Load device-mapper module (on overpay2 hosts)
+- name: Prepare cns-deploy tool and environment
   hosts: all
   vars:
     cns_dir: /home/hongkliu/Downloads/cns_rpm
+    glusterfs_devices: '["/dev/xvdf"]'
   remote_user: root
 
   roles:
     - cns_deploy
-

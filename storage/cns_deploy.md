@@ -66,25 +66,30 @@ Check images in templates:
 
 Those images have been released already on [access](https://access.redhat.com/containers/#/search/rhgs3).
 
-run cns-deploy as in past
+Then we can run a [playbook](../playbooks#prepare-cns-deploy-tool) to prepare cns-tool with inventory like this:
 
+```
+[masters]
+ec2-54-218-80-58.us-west-2.compute.amazonaws.com ansible_user=root ansible_ssh_private_key_file="/home/hongkliu/.ssh/id_rsa_perf"
+
+[others]
+ec2-54-186-95-29.us-west-2.compute.amazonaws.com ansible_user=root ansible_ssh_private_key_file="/home/hongkliu/.ssh/id_rsa_perf"
+
+[glusterfs]
+ec2-54-191-66-43.us-west-2.compute.amazonaws.com ansible_user=root ansible_ssh_private_key_file="/home/hongkliu/.ssh/id_rsa_perf"
+ec2-54-218-60-199.us-west-2.compute.amazonaws.com ansible_user=root ansible_ssh_private_key_file="/home/hongkliu/.ssh/id_rsa_perf"
+ec2-34-223-226-135.us-west-2.compute.amazonaws.com ansible_user=root ansible_ssh_private_key_file="/home/hongkliu/.ssh/id_rsa_perf"
+```
+
+```sh
+$ ansible-playbook -i inv.file playbooks/cns_deploy.yml
+```
+
+Run cns-deploy (on master):
+
+```sh
 # cns-deploy -n namespace -g topology.json
-
-
-Ensure that modules cns-deploy says to load are loaded on *all* ocp nodes - including ones hosting cns pods
-
-
-Also, ensure that ports 3260, 111, 24010 are open on all nodes, eg [1]
-
-Make sure to run below on ocp nodes where will run cns pods
-
-# systemctl add-wants multi-user rpcbind.service
-# systemctl enable rpcbind
-# systemctl start rpcbind
-
-Run cns-deploy
-
-# cns-deploy -n namespace -g topology.json
+```
 
 This will setup cns and it will be possible to create new block volumes, you will notice that there is new block provisioner pod.
 

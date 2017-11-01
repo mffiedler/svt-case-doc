@@ -90,7 +90,8 @@ Run cns-deploy (on master):
 ```sh
 # oc new-project storage-project
 # oadm policy add-scc-to-user privileged -z storage-project
-# cns-deploy -n namespace -g topology.json -y
+# # More info on --block-host
+# cns-deploy -n storage-project -g topology.json -y --block-host 60
 ...
 Deployment complete!
 
@@ -146,6 +147,56 @@ running inside cns pods
 4) check are modules loaded
 
 5) check http://post-office.corp.redhat.com/archives/rhs-containers/2017-September/msg00012.html
+
+
+## Reinstall
+
+```sh
+# oc delete project storage-project
+### on each glusfterfs node
+# pvdisplay /dev/xvdf
+  /run/lvm/lvmetad.socket: connect failed: Connection refused
+  WARNING: Failed to connect to lvmetad. Falling back to device scanning.
+  --- Physical volume ---
+  PV Name               /dev/xvdf
+  VG Name               vg_d92f9db886930808a186305565e5e62c
+  PV Size               200.00 GiB / not usable 132.00 MiB
+  Allocatable           yes 
+  PE Size               4.00 MiB
+  Total PE              51167
+  Free PE               50649
+  Allocated PE          518
+  PV UUID               6GkVH4-5Hm0-B7WR-HEEf-UZTG-2lYx-c4fpN0
+   
+# vgs
+  /run/lvm/lvmetad.socket: connect failed: Connection refused
+  WARNING: Failed to connect to lvmetad. Falling back to device scanning.
+  VG                                  #PV #LV #SN Attr   VSize   VFree   
+  docker_vg                             1   1   0 wz--n- <50.00g       0 
+  vg_d92f9db886930808a186305565e5e62c   1   2   0 wz--n- 199.87g <197.85g
+
+# vgremove -f vg_d92f9db886930808a186305565e5e62c
+  /run/lvm/lvmetad.socket: connect failed: Connection refused
+  WARNING: Failed to connect to lvmetad. Falling back to device scanning.
+  Logical volume "brick_eb8300e8a01d091b40ebb601004de22b" successfully removed
+  Logical volume "tp_eb8300e8a01d091b40ebb601004de22b" successfully removed
+  Volume group "vg_d92f9db886930808a186305565e5e62c" successfully removed
+root@ip-172-31-25-106: ~ # pvremove /dev/xvdf
+  /run/lvm/lvmetad.socket: connect failed: Connection refused
+  WARNING: Failed to connect to lvmetad. Falling back to device scanning.
+  Labels on physical volume "/dev/xvdf" successfully wiped.
+
+# lsblk 
+NAME                           MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+xvda                           202:0    0   10G  0 disk 
+├─xvda1                        202:1    0    1M  0 part 
+└─xvda2                        202:2    0   10G  0 part /
+xvdb                           202:16   0   60G  0 disk 
+└─xvdb1                        202:17   0   50G  0 part 
+  └─docker_vg-docker--root--lv 253:0    0   50G  0 lvm  /var/lib/docker
+xvdf                           202:80   0  200G  0 disk 
+
+```
 
 
 

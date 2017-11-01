@@ -157,6 +157,7 @@ running inside cns pods
 # oc label node ip-172-31-25-106.us-west-2.compute.internal storagenode-
 # oc delete project storage-project
 ### on each glusfterfs node
+# rm -rf /var/lib/heketi/
 # pvdisplay /dev/xvdf
   /run/lvm/lvmetad.socket: connect failed: Connection refused
   WARNING: Failed to connect to lvmetad. Falling back to device scanning.

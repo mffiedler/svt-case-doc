@@ -129,6 +129,7 @@ parameters:
 ```
 
 TODO: CANNOT create pvc yet!!!
+[heketi] ERROR 2017/11/01 02:26:26 /src/github.com/heketi/heketi/apps/glusterfs/app_block_volume.go:83: Failed to create block volume: No space
 
 ## Debug
 If something goes wrong, check

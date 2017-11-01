@@ -64,7 +64,7 @@ Check images in templates:
 /usr/share/heketi/templates/heketi-template.yaml:          image: rhgs3/rhgs-volmanager-rhel7:3.3.0-362
 ```
 
-Those images have been released already on [access](https://access.redhat.com/containers/#/search/rhgs3).
+Those images have been released already on [access](https://access.redhat.com/containers/#/search/rhgs3). See more informatin on [gluster block](https://github.com/gluster/gluster-block).
 
 Then we can run a [playbook](../playbooks#prepare-cns-deploy-tool) to prepare cns-tool with inventory like this:
 

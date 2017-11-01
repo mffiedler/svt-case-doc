@@ -88,26 +88,49 @@ $ ansible-playbook -i inv.file playbooks/cns_deploy.yml
 Run cns-deploy (on master):
 
 ```sh
-# cns-deploy -n namespace -g topology.json
+# oc new-project storage-project
+# oadm policy add-scc-to-user privileged -z storage-project
+# cns-deploy -n namespace -g topology.json -y
+...
+Deployment complete!
+
+#  oc get pod -n storage-project
+NAME                                  READY     STATUS    RESTARTS   AGE
+glusterblock-provisioner-dc-1-hb9w2   1/1       Running   0          4m
+glusterfs-j9qjp                       1/1       Running   0          6m
+glusterfs-ld7nk                       1/1       Running   0          6m
+glusterfs-whgvk                       1/1       Running   0          6m
+heketi-1-nzvps                        1/1       Running   0          4m
 ```
 
-This will setup cns and it will be possible to create new block volumes, you will notice that there is new block provisioner pod.
+Notice that there is new block provisioner pod <code>glusterblock-provisioner-dc-1-hb9w2</code>.
 
-an example of storage class for block volumes is
+Create storage class for block volumes:
 
+```sh
+# oc get route -n storage-project 
+NAME      HOST/PORT                                             PATH      SERVICES   PORT      TERMINATION   WILDCARD
+heketi    heketi-storage-project.apps.1031-hye.qe.rhcloud.com             heketi     <all>                   None
+
+# vi sc_glusterblock.yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: glusterblock
 provisioner: gluster.org/glusterblock
 parameters:
-  resturl: "http://heketi-cnscluster.router.default.svc.cluster.local"
+  resturl: "http://heketi-storage-project.apps.1031-hye.qe.rhcloud.com"
   restuser: "admin"
   opmode: "heketi"
   hacount: "2"
   restauthenabled: "false"
 
+# oc create -f sc_glusterblock.yaml
+```
 
+TODO: CANNOT create pvc yet!!!
+
+## Debug
 If something goes wrong, check
 
 1) are services
@@ -125,22 +148,3 @@ running inside cns pods
 
 
 
-Also, write here or at rhs/cns mailing lists
-
-Thank you
-
-Kind regards,
-
-
-
-
-[1]
-A OS_FIREWALL_ALLOW -p udp -m state --state NEW -m udp --dport 4789 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 24007 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 24008 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 2222 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m multiport --dports 49152:49251 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 3260 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 24006 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 111 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 24010 -j ACCEPT

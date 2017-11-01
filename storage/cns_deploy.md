@@ -90,7 +90,7 @@ Run cns-deploy (on master):
 ```sh
 # oc new-project storage-project
 # oadm policy add-scc-to-user privileged -z storage-project
-# # More info on --block-host
+# # More info on --block-host: http://post-office.corp.redhat.com/archives/rhs-containers/2017-September/msg00013.html
 # cns-deploy -n storage-project -g topology.json -y --block-host 60
 ...
 Deployment complete!

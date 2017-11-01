@@ -127,29 +127,18 @@ parameters:
   restauthenabled: "false"
 
 # oc create -f sc_glusterblock.yaml
+
+### Create PVC
+# oc new-project aaa
+# oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/pvc_glusterblock.yaml
+# oc get pvc
+NAME          STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS   AGE
+pvc-gluster   Bound     pvc-bbebdc99-bf18-11e7-8d96-0201cedc5658   1Gi        RWO           glusterblock   5m
+
 ```
 
-TODO: CANNOT create pvc yet!!!
-[heketi] ERROR 2017/11/01 02:26:26 /src/github.com/heketi/heketi/apps/glusterfs/app_block_volume.go:83: Failed to create block volume: No space
 
-## Debug
-If something goes wrong, check
-
-1) are services
-systemctl status glusterd gluster-blockd tcmu-runner gluster-block-target
-
-running inside cns pods
-
-2) are ports open - per cns-deploy warning message
-
-3) check does rpcbind runs
-
-4) check are modules loaded
-
-5) check http://post-office.corp.redhat.com/archives/rhs-containers/2017-September/msg00012.html
-
-
-## Reinstall
+## Clean-up before reinstallation
 
 ```sh
 # oc label node ip-172-31-60-68.us-west-2.compute.internal storagenode-

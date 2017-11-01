@@ -24,18 +24,18 @@ metadata:
 ### add
 
 ```sh
-# oc label node <nodename> “key=value”
+# oc label node <nodename> key=value
 ```
 ### update
 
 ```sh
-# oc label node <nodename> “key=value” --overwrite
+# oc label node <nodename> key=value --overwrite
 ```
 
 ### remove
 
 ```sh
-# oc label node <nodename> “key=''”
+# oc label node <nodename> key='' --overwrite
 ```
 
 ## Apply to metrics

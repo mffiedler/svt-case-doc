@@ -89,6 +89,8 @@ Run cns-deploy (on master):
 
 ```sh
 # oc new-project storage-project
+###This command looks odd but it is in the official doc: 
+###https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.3/html-single/container-native_storage_for_openshift_container_platform/#chap-Documentation-Red_Hat_Gluster_Storage_Container_Native_with_OpenShift_Platform-Setting_the_environment-Preparing_RHOE
 # oadm policy add-scc-to-user privileged -z storage-project
 ###The following commamnd has to be executed once, otherwise pods for ds of glusterfs cannot be created.
 # oadm policy add-scc-to-user privileged -z default

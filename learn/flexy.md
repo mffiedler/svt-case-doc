@@ -55,6 +55,8 @@ $ ssh -i ~/.ssh/libra.pem root@<slave_ip>
 
 ```
 ...
+    create_opts:
+      ...
       block_device_mappings:
       - device_name: /dev/sda1
         ebs:

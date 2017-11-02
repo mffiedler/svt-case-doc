@@ -4,6 +4,9 @@
   vars:
     cns_dir: /home/hongkliu/Downloads/cns_rpm
     glusterfs_devices: '["/dev/xvdf"]'
+    node_0: ip-172-31-41-123.us-west-2.compute.internal
+    node_1: ip-172-31-58-22.us-west-2.compute.internal
+    node_2: ip-172-31-32-221.us-west-2.compute.internal
   remote_user: root
 
   roles:

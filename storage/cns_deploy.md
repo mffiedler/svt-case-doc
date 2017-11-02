@@ -64,7 +64,7 @@ Check images in templates:
 /usr/share/heketi/templates/heketi-template.yaml:          image: rhgs3/rhgs-volmanager-rhel7:3.3.0-362
 ```
 
-Those images have been released already on [access](https://access.redhat.com/containers/#/search/rhgs3).
+Those images have been released already on [access](https://access.redhat.com/containers/#/search/rhgs3). See more informatin on [gluster block](https://github.com/gluster/gluster-block).
 
 Then we can run a [playbook](../playbooks#prepare-cns-deploy-tool) to prepare cns-tool with inventory like this:
 
@@ -88,59 +88,113 @@ $ ansible-playbook -i inv.file playbooks/cns_deploy.yml
 Run cns-deploy (on master):
 
 ```sh
-# cns-deploy -n namespace -g topology.json
+# oc new-project storage-project
+# oadm policy add-scc-to-user privileged -z storage-project
+# # More info on --block-host: http://post-office.corp.redhat.com/archives/rhs-containers/2017-September/msg00013.html
+# cns-deploy -n storage-project -g topology.json -y --block-host 60
+...
+Deployment complete!
+
+#  oc get pod -n storage-project
+NAME                                  READY     STATUS    RESTARTS   AGE
+glusterblock-provisioner-dc-1-hb9w2   1/1       Running   0          4m
+glusterfs-j9qjp                       1/1       Running   0          6m
+glusterfs-ld7nk                       1/1       Running   0          6m
+glusterfs-whgvk                       1/1       Running   0          6m
+heketi-1-nzvps                        1/1       Running   0          4m
 ```
 
-This will setup cns and it will be possible to create new block volumes, you will notice that there is new block provisioner pod.
+Notice that there is new block provisioner pod <code>glusterblock-provisioner-dc-1-hb9w2</code>.
 
-an example of storage class for block volumes is
+Create storage class for block volumes:
 
+```sh
+# oc get route -n storage-project 
+NAME      HOST/PORT                                             PATH      SERVICES   PORT      TERMINATION   WILDCARD
+heketi    heketi-storage-project.apps.1031-hye.qe.rhcloud.com             heketi     <all>                   None
+
+# vi sc_glusterblock.yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: glusterblock
 provisioner: gluster.org/glusterblock
 parameters:
-  resturl: "http://heketi-cnscluster.router.default.svc.cluster.local"
+  resturl: "http://heketi-storage-project.apps.1031-hye.qe.rhcloud.com"
   restuser: "admin"
   opmode: "heketi"
   hacount: "2"
   restauthenabled: "false"
 
+# oc create -f sc_glusterblock.yaml
 
-If something goes wrong, check
+### Create PVC
+# oc new-project aaa
+# oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/pvc_glusterblock.yaml
+# oc get pvc
+NAME          STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS   AGE
+pvc-gluster   Bound     pvc-bbebdc99-bf18-11e7-8d96-0201cedc5658   1Gi        RWO           glusterblock   5m
 
-1) are services
-systemctl status glusterd gluster-blockd tcmu-runner gluster-block-target
-
-running inside cns pods
-
-2) are ports open - per cns-deploy warning message
-
-3) check does rpcbind runs
-
-4) check are modules loaded
-
-5) check http://post-office.corp.redhat.com/archives/rhs-containers/2017-September/msg00012.html
+```
 
 
+## Clean-up before reinstallation
 
-Also, write here or at rhs/cns mailing lists
+```sh
+# oc label node ip-172-31-60-68.us-west-2.compute.internal storagenode-
+# oc label node ip-172-31-25-158.us-west-2.compute.internal storagenode-
+# oc label node ip-172-31-25-106.us-west-2.compute.internal storagenode-
+# oc delete project storage-project
+### on each glusfterfs node
+# rm -rf /var/lib/heketi/
+# pvdisplay /dev/xvdf
+  /run/lvm/lvmetad.socket: connect failed: Connection refused
+  WARNING: Failed to connect to lvmetad. Falling back to device scanning.
+  --- Physical volume ---
+  PV Name               /dev/xvdf
+  VG Name               vg_d92f9db886930808a186305565e5e62c
+  PV Size               200.00 GiB / not usable 132.00 MiB
+  Allocatable           yes 
+  PE Size               4.00 MiB
+  Total PE              51167
+  Free PE               50649
+  Allocated PE          518
+  PV UUID               6GkVH4-5Hm0-B7WR-HEEf-UZTG-2lYx-c4fpN0
+   
+# vgs
+  /run/lvm/lvmetad.socket: connect failed: Connection refused
+  WARNING: Failed to connect to lvmetad. Falling back to device scanning.
+  VG                                  #PV #LV #SN Attr   VSize   VFree   
+  docker_vg                             1   1   0 wz--n- <50.00g       0 
+  vg_d92f9db886930808a186305565e5e62c   1   2   0 wz--n- 199.87g <197.85g
 
-Thank you
+# vgremove -f vg_d92f9db886930808a186305565e5e62c
+  /run/lvm/lvmetad.socket: connect failed: Connection refused
+  WARNING: Failed to connect to lvmetad. Falling back to device scanning.
+  Logical volume "brick_eb8300e8a01d091b40ebb601004de22b" successfully removed
+  Logical volume "tp_eb8300e8a01d091b40ebb601004de22b" successfully removed
+Volume group "vg_d92f9db886930808a186305565e5e62c" successfully removed
 
-Kind regards,
+###OPTIONAL:B###
+# pvremove /dev/xvdf
+  /run/lvm/lvmetad.socket: connect failed: Connection refused
+  WARNING: Failed to connect to lvmetad. Falling back to device scanning.
+  Labels on physical volume "/dev/xvdf" successfully wiped.
+
+# pvcreate -ff /dev/xvdf
+###OPTIONAL:E###
+
+# lsblk 
+NAME                           MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+xvda                           202:0    0   10G  0 disk 
+├─xvda1                        202:1    0    1M  0 part 
+└─xvda2                        202:2    0   10G  0 part /
+xvdb                           202:16   0   60G  0 disk 
+└─xvdb1                        202:17   0   50G  0 part 
+  └─docker_vg-docker--root--lv 253:0    0   50G  0 lvm  /var/lib/docker
+xvdf                           202:80   0  200G  0 disk 
+
+```
 
 
 
-
-[1]
-A OS_FIREWALL_ALLOW -p udp -m state --state NEW -m udp --dport 4789 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 24007 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 24008 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 2222 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m multiport --dports 49152:49251 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 3260 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 24006 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 111 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 24010 -j ACCEPT

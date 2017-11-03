@@ -44,7 +44,10 @@ my @endpoints = ( 's3.amazonaws.com',
 
 ### Create a bucket
 $ s3curl.pl --id "personal" --createBucket -- http://gluster-s3-route-storage-project.apps.1102-nk6.qe.rhcloud.com/bkt-hk -v
-
+### List buckets
+$ s3curl.pl --id "personal"  -- http://gluster-s3-route-storage-project.apps.1103-ov3.qe.rhcloud.com/bkt-hk 
+<?xml version='1.0' encoding='UTF-8'?>
+<ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bkt-hk</Name><Prefix/><Marker/><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
 ```
 
 

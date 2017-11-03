@@ -50,4 +50,4 @@ $ s3curl.pl --id "personal"  -- http://gluster-s3-route-storage-project.apps.110
 <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bkt-hk</Name><Prefix/><Marker/><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
 ```
 
-
+More examples are [here](https://github.com/gluster/gluster-kubernetes/tree/master/docs/examples/gluster-s3-storage-template#testing).

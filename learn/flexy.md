@@ -195,3 +195,29 @@ ec2_tags: qe-hongkliu-flexy-aws
 openshift_ansible_vars:
   openshift_clusterid: qe-hongkliu-flexy-aws
 ```
+
+##### Example
+
+```sh
+image: ocp-3.7.0-0.190.0-SVT-rhel-gold
+master_etcd_instance_count: 1
+master_etcd_instance_type: m4.xlarge
+lb_instance_count: 0
+infra_instance_count: 1
+infra_instance_type: m4.xlarge
+node_instance_count: 3
+node_instance_type: m4.xlarge
+pbench_controller_count: 0
+pbench_controller_type: m4.xlarge
+containerized: false
+ec2_tags: qe-hongkliu-flexy-aws
+aos_ansible_vars:
+  qe_repo_image_versions: v3.7.0-0.190.0
+  aos_repo: https://mirror.openshift.com/enterprise/all/3.7/2017-11-02.2_v3.7.0-0.190.0/RH7-RHAOS-3.7/x86_64/os/
+openshift_ansible_vars:
+  openshift_clusterid: qe-hongkliu-flexy-aws
+  openshift_logging_install_logging: false
+  openshift_use_system_containers: false
+  system_images_registry: registry.reg-aws.openshift.com:443
+  openshift_image_tag: v3.7.0-0.190.0
+```

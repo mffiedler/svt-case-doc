@@ -18,6 +18,15 @@ Docker version 17.09.0-ce, build afdb6d4
 
 ## [Build from src](https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#building-kubernetes-with-docker)
 
+### Clone repo and set up upstream
+
+```sh
+$ git clone https://github.com/hongkailiu/kubernetes.git
+$ git remote add upstream https://github.com/kubernetes/kubernetes.git
+$ git fetch upstream
+$ git merge upstream/master
+```
+
 ### Docker
 
 

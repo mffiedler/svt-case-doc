@@ -35,33 +35,16 @@ $ vi ~/.s3curl
     },
 );
 
+$ chmod 700 s3curl.pl
+### Add 'gluster-s3-route-storage-project.apps.1103-ov3.qe.rhcloud.com' into endpoints
+$ vi s3curl.pl
+my @endpoints = ( 's3.amazonaws.com',
+                  'gluster-s3-route-storage-project.apps.1102-nk6.qe.rhcloud.com',
+                  ...
 
+### Create a bucket
 $ s3curl.pl --id "personal" --createBucket -- http://gluster-s3-route-storage-project.apps.1102-nk6.qe.rhcloud.com/bkt-hk -v
-*   Trying 54.201.47.141...
-* TCP_NODELAY set
-* Connected to gluster-s3-route-storage-project.apps.1102-nk6.qe.rhcloud.com (54.201.47.141) port 80 (#0)
-> PUT /bkt-hk HTTP/1.1
-> Host: gluster-s3-route-storage-project.apps.1102-nk6.qe.rhcloud.com
-> User-Agent: curl/7.53.1
-> Accept: */*
-> Date: Thu, 02 Nov 2017 17:57:57 +0000
-> Authorization: AWS testvolume:adminuser:iHUieFCgKdWwwn/mlgUcLkKUyuk=
-> Content-Length: 0
-> 
-< HTTP/1.1 403 Forbidden
-< x-amz-id-2: tx9a6615327f754a1b8cff7-0059fb5ca5
-< x-amz-request-id: tx9a6615327f754a1b8cff7-0059fb5ca5
-< Content-Type: application/xml
-< X-Trans-Id: tx9a6615327f754a1b8cff7-0059fb5ca5
-< Date: Thu, 02 Nov 2017 17:57:57 GMT
-< Transfer-Encoding: chunked
-< Set-Cookie: d99035b5f224fa6660b4f3d4264aaa1c=e7a41f869ca9b6435cdeb397f6f0c867; path=/; HttpOnly
-* HTTP error before end of send, stop sending
-< 
-<?xml version='1.0' encoding='UTF-8'?>
-* Closing connection 0
-<Error><Code>SignatureDoesNotMatch</Code><Message>The request signature we calculated does not match the signature you provided. Check your key and signing method.</Message><RequestId>tx9a6615327f754a1b8cff7-0059fb5ca5</RequestId></Error>
 
 ```
 
-TODO: Need to fix the authentication. 
+

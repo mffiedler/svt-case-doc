@@ -9,6 +9,9 @@ All set to 0:
 RateLimitInterval=1s
 RateLimitBurst=10000
 RateLimitIntervalSec=1s
+### Restart journald
+### https://unix.stackexchange.com/questions/253203/how-to-tell-journald-to-re-read-its-configuration
+# systemctl restart systemd-journald
 ```
 
 ## Reference

@@ -7,7 +7,7 @@ function delete_projects()
 function wait_for_project_termination()
 {
   terminating=`oc get pv | grep pvcproject0 | wc -l`
-  while [ $terminating -ne 0 ]; do
+  while [ ${terminating} -ne 0 ]; do
   sleep 5
   terminating=`oc get pv | grep pvcproject0 | wc -l`
   echo "$terminating pv are still there"

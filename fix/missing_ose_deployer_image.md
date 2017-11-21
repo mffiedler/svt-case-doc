@@ -89,5 +89,10 @@ It seems that the "-1" part does not count there.
 ## Version of components
 
 ```sh
-TBA
+# oc get pod -n default -o yaml | grep "image:"
+      image: registry.reg-aws.openshift.com:443/openshift3/ose-docker-registry:v3.7.9-1
+      image: registry.reg-aws.openshift.com:443/openshift3/registry-console:v3.7
+      image: registry.reg-aws.openshift.com:443/openshift3/ose-haproxy-router:v3.7.9-1
 ```
+
+So registry-console is not controlled by the variable.

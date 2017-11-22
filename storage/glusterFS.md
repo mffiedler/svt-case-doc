@@ -251,6 +251,9 @@ When generate jwt string, the <code>url</code> has to match the one in the url c
 
 CNS requires device-mapper. It requires <code>modprobe dm_thin_pool</code> on each glusterfs nodes ~~(maybe heketi nodes as well)~~. Otherwise, we would meet [this issue](https://github.com/openshift/openshift-ansible/issues/5108) which is reported on [this bug](https://bugzilla.redhat.com/show_bug.cgi?id=1490905). When our docker uses overlay2 (not device-mapper) as storage driver, we run into this issue. Until [PR#5720](https://github.com/openshift/openshift-ansible/pull/5720) is merged, we can run [this playbook](https://github.com/hongkailiu/svt-case-doc/tree/master/playbooks#launch-device-mapper-module) to load the missing module.
 
+### Use CNS as storage for docker registery
+See [here](../learn/docker_registry.md#glusterfs-as-docker-registery-storage) for details.
+
 ## GlusterFS
 
 ### [Installation](https://access.redhat.com/documentation/en-US/Red_Hat_Storage/3/html/Administration_Guide/part-Red_Hat_Storage_Administration_on_Public_Cloud.html)

@@ -145,9 +145,9 @@ The way to control:
     skipping: [ec2-54-149-61-170.us-west-2.compute.amazonaws.com] => {"changed": false, "skip_reason": "Conditional result was False", "skipped": true}
     ```
 
-  The 2nd task is skipped because openshift_version is defined by the 1st task (see [the task definition](https://github.com/openshift/openshift-ansible/blob/master/roles/openshift_version/tasks/set_version_rpm.yml#L2)).
+    The 2nd task is skipped because openshift_version is defined by the 1st task (see [the task definition](https://github.com/openshift/openshift-ansible/blob/master/roles/openshift_version/tasks/set_version_rpm.yml#L2)).
 
-  * By the time we run this test, tag v3.7.9 is restored
+  * By the time we run this test, tag v3.7.9 has been restored
 
     ```sh
     $ oc get is -n openshift3 ose-deployer -o yaml | grep "tag:" | cut -f2 -d":" | sort -V | tail -n 2
@@ -155,7 +155,7 @@ The way to control:
      v3.7.9-1
     ```
 
-  And the all pods are running well:
+    And the all pods are running well:
 
     ```sh
     # oc get pod -n default

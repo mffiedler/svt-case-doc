@@ -193,6 +193,8 @@ dm-14             4.92         0.17       792.94       4647   21995043
 
 pbench data collection:
 
+In case of glusterfs, 3 dedicated m2.4xlarge nodes for glusterfs and 1 m2.4xlarge node for heketi.
+
 | oc version                      | pbench version | storage   | other info                        | link                                                                                                                                                                    |
 |---------------------------------|----------------|-----------|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 3.5                             | na             | ebs       |                                   | [server](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-14-88/) and [ex-server](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-14-88/)   |

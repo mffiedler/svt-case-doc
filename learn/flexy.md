@@ -186,7 +186,7 @@ b126293639a9        registry.access.redhat.com/rhel7/etcd   "/usr/bin/etcd"     
 ```
 openshift_ansible_vars:
   openshift_use_crio: true
-  openshift_crio_systemcontainer_image_override: registry.ops.openshift.com/openshift3/cri-o:latest
+  openshift_crio_systemcontainer_image_override: registry.reg-aws.openshift.com:443/openshift3/cri-o:latest
 ```
 
 ##### openshift_clusterid

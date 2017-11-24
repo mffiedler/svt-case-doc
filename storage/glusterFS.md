@@ -9,6 +9,8 @@
     * containerized cluster, or containerized native storage (CNS): [containerized cluster](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/container-native_storage_for_openshift_container_platform_3.4/)
     * dedicated cluster
 * [heketi](https://github.com/heketi/heketi)
+* [brick-multiplexing](http://blog.gluster.org/brick-multiplexing-in-gluster-3-10/)
+* [gluster-block-provisioning](https://github.com/gluster/gluster-kubernetes/blob/master/docs/design/gluster-block-provisioning.md)
 
 ## CNS
 

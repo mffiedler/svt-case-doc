@@ -58,6 +58,7 @@ openshift_storage_glusterfs_heketi_image=registry.access.redhat.com/rhgs3/rhgs-v
 openshift_storage_glusterfs_heketi_version=latest
 openshift_hosted_registry_glusterfs_swap=true
 ##since Nov 22, 2017
+openshift_storage_glusterfs_block_deploy=False
 openshift_storage_glusterfs_block_image=registry.access.redhat.com/rhgs3/rhgs-gluster-block-prov-rhel7
 openshift_storage_glusterfs_block_version=3.3.0-362
 

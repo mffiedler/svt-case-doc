@@ -164,7 +164,7 @@ pods/web
 # oc exec web -- ls /var/jenkins_home
 ```
 
-#### [Deploy on existing gluster](https://github.com/openshift/openshift-ansible/tree/master/playbooks/byo/openshift-glusterfs)
+#### [Deploy on existing cluster](https://github.com/openshift/openshift-ansible/tree/master/playbooks/byo/openshift-glusterfs)
 
 ```sh
 # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/openshift-glusterfs/config.yml

@@ -186,7 +186,7 @@ dm-14             4.92         0.17       792.94       4647   21995043
 
 ```
 
-### pbench results
+## pbench results
 
 [example](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-34-193/)
 
@@ -206,3 +206,15 @@ In case of glusterfs, 3 dedicated m2.4xlarge nodes for glusterfs and 1 m2.4xlarg
 | 20171124 (18,19) | 3.7.9-1.git.0.7c71a2d.el7       | 0.46-78g30019c5 | glusterfs |  glusterfs=3.3.0-362 <br /> heketi=3.3.0-362 <br /> block-p=3.3.0-362 | [server](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-41-184/) and [ex-server](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-41-184/) |
 
 
+## pbench-fio parm tuning
+
+oc: 3.7.9-1.git.0.7c71a2d.el7, pbench: 0.46-78g30019c5
+
+| round | sc        | params                                | pbench data                                                         |
+|-------|-----------|---------------------------------------|---------------------------------------------------------------------|
+| a1    | gp2       | sample=1, runtime=3600                |                                                                     |
+| a2    | gp2       | sample=1, runtime=3600, ramp_time=300 |                                                                     |
+| a3    | gp2       | sample=1, runtime=3600, ramp_time=300 |                                                                     |
+| b1    | glusterfs | sample=1, runtime=3600                | http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-26-171/ |
+| b2    | glusterfs | sample=1, runtime=3600, ramp_time=300 |                                                                     |
+| b3    | glusterfs | sample=1, runtime=3600, ramp_time=300 |                                                                     |

@@ -29,7 +29,7 @@ On master:
 ```sh
 # oc process -p ROLE=receiver -f content/fio-pod-pv.json | oc create --namespace=aaa -f -
 # #Check if the pod is running:
-root@ip-172-31-6-15: ~/svt/storage # oc get pod -o wide
+root@ip-172-31-6-15: ~/svt/storage # oc get pod -o wide -n aaa
 NAME          READY     STATUS    RESTARTS   AGE       IP           NODE
 fio-1-86n8j   1/1       Running   0          7m        172.20.1.6   ip-172-31-26-174.us-west-2.compute.internal
 

@@ -208,7 +208,12 @@ In case of glusterfs, 3 dedicated m2.4xlarge nodes for glusterfs and 1 m2.4xlarg
 
 ## pbench-fio parm tuning
 
-oc: 3.7.9-1.git.0.7c71a2d.el7, pbench: 0.46-78g30019c5
+oc: 3.7.9-1.git.0.7c71a2d.el7, pbench: 0.46-78g30019c5, glusterfs: 3.3.0-362
+
+Cluster for gp2: 1 master, 1 infra, 1 compute: m4.xlarge
+
+Cluster for glusterfs: 1 master, 1 infra: m4.xlarge; 5 compute: m4.4xlarge
+
 
 | round | sc        | params                                | pbench data                                                         |
 |-------|-----------|---------------------------------------|---------------------------------------------------------------------|

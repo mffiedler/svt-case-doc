@@ -217,8 +217,8 @@ Cluster for glusterfs: 1 master, 1 infra: m4.xlarge; 5 compute: m4.4xlarge
 
 | round | sc        | params                                | pbench data                                                         |
 |-------|-----------|---------------------------------------|---------------------------------------------------------------------|
-| a1    | gp2       | sample=1, runtime=3600                |                                                                     |
-| a2    | gp2       | sample=1, runtime=3600, ramp_time=300 |                                                                     |
+| a1    | gp2       | sample=1, runtime=3600                | [ip-172-31-26-28](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-26-28/) |
+| a2    | gp2       | sample=1, runtime=3600, ramp_time=300 | [ip-172-31-30-91](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-30-91/) |
 | a3    | gp2       | sample=1, runtime=3600, ramp_time=300 |                                                                     |
 | b1    | glusterfs | sample=1, runtime=3600                | [ip-172-31-26-171](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-26-171/) |
 | b2    | glusterfs | sample=1, runtime=3600, ramp_time=300 | [ip-172-31-21-228](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-21-228/) |

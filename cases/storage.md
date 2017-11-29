@@ -210,16 +210,20 @@ In case of glusterfs, 3 dedicated m2.4xlarge nodes for glusterfs and 1 m2.4xlarg
 
 oc: 3.7.9-1.git.0.7c71a2d.el7, pbench: 0.46-78g30019c5, glusterfs: 3.3.0-362
 
-Cluster for gp2: 1 master, 1 infra, 1 compute: m4.xlarge
+a1-a3: Cluster for gp2: 1 master, 1 infra, 1 compute: m4.xlarge
+a4: Cluster for gp2: 1 master, 1 infra, 1 compute: m4.4xlarge
 
-Cluster for glusterfs: 1 master, 1 infra: m4.xlarge; 5 compute: m4.4xlarge
+b1-b4: Cluster for glusterfs: 1 master, 1 infra: m4.xlarge; 5 compute: m4.4xlarge
 
 
-| round | sc        | params                                | pbench data                                                         |
-|-------|-----------|---------------------------------------|---------------------------------------------------------------------|
-| a1    | gp2       | sample=1, runtime=3600                | [ip-172-31-26-28](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-26-28/) |
-| a2    | gp2       | sample=1, runtime=3600, ramp_time=300 | [ip-172-31-30-91](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-30-91/) |
-| a3    | gp2       | sample=1, runtime=3600, ramp_time=300 |                                                                     |
-| b1    | glusterfs | sample=1, runtime=3600                | [ip-172-31-26-171](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-26-171/) |
-| b2    | glusterfs | sample=1, runtime=3600, ramp_time=300 | [ip-172-31-21-228](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-21-228/) |
-| b3    | glusterfs | sample=1, runtime=3600, ramp_time=300 | [ip-172-31-6-247](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-6-247/) |
+| round | sc        | params                                                                                                                     | pbench data                                                                             |
+|-------|-----------|----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| a1    | gp2       | sample=1, runtime=3600                                                                                                     | [ip-172-31-26-28](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-26-28/)   |
+| a2    | gp2       | sample=1, runtime=3600, ramp_time=300                                                                                      | [ip-172-31-30-91](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-30-91/)   |
+| a3    | gp2       | sample=1, runtime=3600, ramp_time=300                                                                                      |                                                                                         |
+| a4    | gp2       | sample=1, runtime=3600, ramp_time=300,--block-sizes=4,16,64, --pre-iteration-script=root/svt/storage/scripts/drop-cache.sh |                                                                                         |
+| b1    | glusterfs | sample=1, runtime=3600                                                                                                     | [ip-172-31-26-171](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-26-171/) |
+| b2    | glusterfs | sample=1, runtime=3600, ramp_time=300                                                                                      | [ip-172-31-21-228](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-21-228/) |
+| b3    | glusterfs | sample=1, runtime=3600, ramp_time=300                                                                                      | [ip-172-31-6-247](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-6-247/)   |
+| b4    | glusterfs | sample=1, runtime=3600, ramp_time=300,--block-sizes=4,16,64, --pre-iteration-script=root/svt/storage/scripts/drop-cache.sh |                                                                                         |
+

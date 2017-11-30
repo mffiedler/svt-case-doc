@@ -1,5 +1,7 @@
 # Service Catalog
 
+"The end goal of the Service Catalog project is to provide a way for Kubernetes/OpenShift users to consume services from Brokers and easily configure their applications to use those services, without needing detailed knowledge of how those services are created or managed."
+
 ## Doc
 
 * [svc_cat@k8s](https://github.com/kubernetes-incubator/service-catalog), [api](https://github.com/kubernetes-incubator/service-catalog/blob/master/docs/v1/api.md)

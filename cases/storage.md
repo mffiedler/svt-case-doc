@@ -211,6 +211,7 @@ In case of glusterfs, 3 dedicated m2.4xlarge nodes for glusterfs and 1 m2.4xlarg
 oc: 3.7.9-1.git.0.7c71a2d.el7, pbench: 0.46-78g30019c5, glusterfs: 3.3.0-362
 
 a1-a3: Cluster for gp2: 1 master, 1 infra, 1 compute: m4.xlarge
+
 a4: Cluster for gp2: 1 master, 1 infra, 1 compute: m4.4xlarge
 
 b1-b4: Cluster for glusterfs: 1 master, 1 infra: m4.xlarge; 5 compute: m4.4xlarge
@@ -227,4 +228,4 @@ b1-b4: Cluster for glusterfs: 1 master, 1 infra: m4.xlarge; 5 compute: m4.4xlarg
 | b3    | glusterfs | sample=1, runtime=3600, ramp_time=300                                                                                      | [ip-172-31-6-247](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-6-247/)   |
 | b4    | glusterfs | sample=1, runtime=3600, ramp_time=300,--block-sizes=4,16,64, --pre-iteration-script=/root/svt/storage/scripts/drop-cache.sh | [ip-172-31-30-232](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-30-232/) |
 
-In order to keep [burst balance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html), we use 1000G gp2 devices for glusterfs and for PVC used in the fio pod.
+In order to keep [burst balance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html), we use 1000G gp2 devices for glusterfs and for PVC used in the fio pod. We did it for a3 and b4.

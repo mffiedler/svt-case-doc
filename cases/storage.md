@@ -227,3 +227,4 @@ b1-b4: Cluster for glusterfs: 1 master, 1 infra: m4.xlarge; 5 compute: m4.4xlarg
 | b3    | glusterfs | sample=1, runtime=3600, ramp_time=300                                                                                      | [ip-172-31-6-247](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-6-247/)   |
 | b4    | glusterfs | sample=1, runtime=3600, ramp_time=300,--block-sizes=4,16,64, --pre-iteration-script=/root/svt/storage/scripts/drop-cache.sh | [ip-172-31-30-232](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-30-232/) |
 
+In order to keep [burst balance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html), we use 1000G gp2 devices for glusterfs and for PVC used in the fio pod.

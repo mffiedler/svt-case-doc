@@ -6,7 +6,7 @@
 
 * [svc_cat@k8s](https://github.com/kubernetes-incubator/service-catalog), [api](https://github.com/kubernetes-incubator/service-catalog/blob/master/docs/v1/api.md)
 * [svc_cat@oc](https://docs.openshift.com/container-platform/3.6/architecture/service_catalog/index.html), [tr@3.6](https://blog.openshift.com/whats-new-openshift-3-6-service-catalog-brokers-tech-preview/), [release@3.7](https://blog.openshift.com/whats-new-in-openshift-3-7-service-catalog-and-brokers/)
-* [intro_by_paul@youtube](https://www.youtube.com/watch?v=p35hOAAsxrQ)
+* [intro_by_paul@youtube](https://www.youtube.com/watch?v=p35hOAAsxrQ), [deep dive](https://www.youtube.com/watch?time_continue=53&v=w48Och61tLg)
 * [s3_svc_cat_demo@youtube](https://www.youtube.com/watch?v=-_m9Ijw3jWc&feature=youtu.be)
 
 

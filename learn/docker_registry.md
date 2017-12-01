@@ -18,7 +18,7 @@ Note that <code>storage.s3</code> section shows that it uses aws-s3 as storage.
 Use [registry_pvc.yaml](../files/registry_pvc.yaml): 
 
 ```sh
-# oc create -f registry_pvc.yaml 
+# oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/registry_pvc.yaml
 # oc get pvc
 # oc get pv
 # oc volume deploymentconfigs/docker-registry --add --name=registry-storage -t pvc \

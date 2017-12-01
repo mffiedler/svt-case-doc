@@ -3,11 +3,17 @@
 * Push test: Run concurrent build test.
 * Pull test: Run scale up/down test.
 
-## PVC backed up by gp2 volume.
+## Case 1: PVC backed up by gp2 volume
 
 Cluster: 1 master, 1 infra, 2 compute nodes where computes are equipped with 300g IOPS (2000) docker device (/dev/sdb).
 
 Set up gp2 PVC as registery storage volume: [steps](../learn/docker_registry.md#use-filesystem-driver-for-docker-registry): the PVC size is 1000G is to ensure that we have enough burst balance for the device.
+
+## Case 2: PVC backed up by glusterfs volume: TODO
+
+Cluster: 1 master, 1 infra, 2 compute nodes where computes are equipped with 300g IOPS (2000) docker device (/dev/sdb).
+
+4 cns nodes (m2.4xlarge): 3 glusterfs, 1 heketi (block-provisioner disabled): 1000g xvdf (gp2) and 300 PVC for docker registry.
 
 ## Restrict nodes for build pods (if needed)
 
@@ -51,7 +57,7 @@ Prepare the project with cluster-loader:
 # ../../ose3_perf/scripts/build_test.py -z -n 2 -a
 ```
 
-Watching the output of the above build script.
+Watching the output of the above build script. Compare the succuss rate of builds and pbench data, eg, [IOPS on the device xvdcz](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-24-121/hk-conc-scale-a/tools-default/ip-172-31-57-74.us-west-2.compute.internal/iostat/disk.html), which is the one for docker registry.
 
 
 ## Result

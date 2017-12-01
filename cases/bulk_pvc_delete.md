@@ -1,5 +1,7 @@
 # Bulk PVC Delete Test
 
+Just (20171201) found [this](https://mojo.redhat.com/docs/DOC-1130493-container-native-storage-cns-scalability-and-perforomance) by Elko.
+
 ## Test Env.
 * 1 master, 1 infra, 1 compute: m4.xlarge
 * 3 cns, 1 heketi: m4.4xlarge

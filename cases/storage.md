@@ -229,3 +229,13 @@ b1-b4: Cluster for glusterfs: 1 master, 1 infra: m4.xlarge; 5 compute: m4.4xlarg
 | b4    | glusterfs | sample=1, runtime=3600, ramp_time=300,--block-sizes=4,16,64, --pre-iteration-script=/root/svt/storage/scripts/drop-cache.sh | [ip-172-31-30-232](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-30-232/) |
 
 In order to keep [burst balance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html), we use 1000G gp2 devices for glusterfs and for PVC used in the fio pod. We did it for a3 and b4.
+
+### Observation
+
+Based on the test so far:
+
+* Stable results: If we execute the same test on different clusters, the results are very close to one another. Proof: a1 and a2, b1, b2, and b3.
+* Before tuning (a0 vs b0), the result on glusterfs is worse (r) or not comparable (s). Our first try is to extend the test time from 30s to 3600s. This made the result more unpredictable: a1s is better while b1r is better. Notice that we got almost identical (r,w,rw) results on 4096K as block-size.
+* The 2nd try changed 2 things: bigger devices (1000G) to keep the burst balance. Smaller block size <code>bz=4,16,64</code>: 16K [is choson](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html) as benchmark in aws. 64K [is choson by Elko](http://pbench.perf.lab.eng.bos.redhat.com/results/gprfs013/fio_1_client_seq_2017.07.31T06.51.31/).
+* Extending test time on glusterfs: b1 is slightly better than b0. Same as the bigger device and smaller block size: b4 is better than b3. We cannot say it is also the case for gp2 tests because a0 and a4 are not comparable. But it (a4) improves (a1) on random IO.
+* It seems we can correctly show the overhead of CNS: a4 is better than b4.

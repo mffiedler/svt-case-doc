@@ -35,6 +35,12 @@ $ oc get projects | cut -f1 -d" " | grep -E "proj[0-9]+" | while read i; do oc d
 $ oc get builds --all-namespaces | grep Fail | grep -E "proj[0-9]+" | while read i; do awk '{system("oc delete build -n " $1 "  " $2)}'; done
 ```
 
+## Extend docker fs
+
+```sh
+# oc get nodes --no-headers | cut -f1 -d" " | while read i; do ssh -n "$i" 'xfs_growfs -d /var/lib/docker/overlay2'; done
+```
+
 ## remove a computing node from cluster
 
   - on the computing node

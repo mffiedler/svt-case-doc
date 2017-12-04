@@ -34,7 +34,7 @@ admissionConfig:
 # systemctl restart atomic-openshift-master*
 ```
 
-Verify this by trigger a round build and then
+Verify this by triggering a round of builds and then
 
 ```sh
 # oc get pod --all-namespaces -o wide | grep "\-build"

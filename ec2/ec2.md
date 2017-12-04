@@ -108,3 +108,8 @@ i-048c94c680090ce7d	ec2-54-200-204-22.us-west-2.compute.amazonaws.com
 ```
 
 See [more examples](http://docs.aws.amazon.com/cli/latest/userguide/controlling-output.html) on query.
+
+[Examples](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-volume.html#examples) of creating Volumes.
+
+
+

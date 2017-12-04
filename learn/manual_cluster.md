@@ -78,10 +78,23 @@ _Hint_: In the output of Jenkins build, search for *playbook*. The inventory fil
     ```
 
 ## Scaleup cluster
-TODO: Add [new nodes section] into <code>/tmp/2.file</code>
+
+Add [new_nodes] section into <code>/tmp/2.file</code>
 
 ```sh
-# ansible-playbook -i /tmp/3.file openshift-ansible/playbooks/byo/openshift-node/scaleup.yml 
+[OSEv3:children]
+...
+new_nodes
+...
+[new_nodes]
+ec2-54-186-104-183.us-west-2.compute.amazonaws.com ansible_user=root ansible_ssh_user=root ansible_ssh_private_key_file="/home/fedora/id_rsa_perf" openshift_public_hostname=ec2-54-186-104-183.us-west-2.compute.amazonaws.com openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
+ec2-54-191-208-77.us-west-2.compute.amazonaws.com ansible_user=root ansible_ssh_user=root ansible_ssh_private_key_file="/home/fedora/id_rsa_perf" openshift_public_hostname=ec2-54-191-208-77.us-west-2.compute.amazonaws.com openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
+ec2-54-202-79-175.us-west-2.compute.amazonaws.com ansible_user=root ansible_ssh_user=root ansible_ssh_private_key_file="/home/fedora/id_rsa_perf" openshift_public_hostname=ec2-54-202-79-175.us-west-2.compute.amazonaws.com openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
+```
+
+
+```sh
+# ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/openshift-node/scaleup.yml
 ```
 
 

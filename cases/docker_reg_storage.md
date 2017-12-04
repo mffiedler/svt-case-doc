@@ -90,6 +90,13 @@ Retrieve the results from the log file:
 2017-12-04 19:51:10,433 - build_test - MainThread - INFO - Average build time, all good builds: 205
 2017-12-04 19:51:10,433 - build_test - MainThread - INFO - Minimum build time, all good builds: 44
 2017-12-04 19:51:10,433 - build_test - MainThread - INFO - Maximum build time, all good builds: 380
+--
+2017-12-04 20:49:06,765 - build_test - MainThread - INFO - Failed builds: 86
+2017-12-04 20:49:06,766 - build_test - MainThread - INFO - Invalid builds: 15
+2017-12-04 20:49:06,766 - build_test - MainThread - INFO - Good builds included in stats: 885
+2017-12-04 20:49:06,766 - build_test - MainThread - INFO - Average build time, all good builds: 361
+2017-12-04 20:49:06,766 - build_test - MainThread - INFO - Minimum build time, all good builds: 46
+2017-12-04 20:49:06,766 - build_test - MainThread - INFO - Maximum build time, all good builds: 1123
 
 
 ```
@@ -102,7 +109,7 @@ Retrieve the results from the log file:
 | 20171201 | 2           | nodejs | 50   | 2 | gp2     | 97; 99; 98      | [ip-172-31-24-121](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-24-121/) | 3.7.9-1.git.0.7c71a2d.el7 |
 | 20171201 | 2           | nodejs | 100  | 2 | gp2     | 87; 74.5        | [ip-172-31-24-121](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-24-121/) | 3.7.9-1.git.0.7c71a2d.el7 |
 | 20171204 | 10          | nodejs | 250  | 2 | gp2     | 99.8; 99.8; 100 | [ip-172-31-23-178](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-23-178/) | 3.7.9-1.git.0.7c71a2d.el7 |
-|          |             |        |      |   |         |                 |                                                                                         |                           |
+| 20171204 | 10          | nodejs | 500  | 2 | gp2     | 99.9; 88.5      | [ip-172-31-23-178](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-23-178/) | 3.7.9-1.git.0.7c71a2d.el7 |
 |          |             |        |      |   |         |                 |                                                                                         |                           |
 
 Note 20171204 uses Vikas' modification on node-config.yaml.

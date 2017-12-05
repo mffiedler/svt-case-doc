@@ -45,6 +45,14 @@ Verify this by triggering a round of builds and then
 
 ```
 
+## Checking before running concurrent builds
+
+* Enough space on <code>xdva2</code> and <code>xdvb</code>
+* Enough space on <code>xdvf</code>, instance types for cns nodes
+* install CNS with pods running on the right nodes
+* create PVC with the right storage class and using it with docker registry
+* start pbench
+
 ## Concurrent builds
 
 [Start pbench](../learn/pbench.md#use-pbench-in-the-test)

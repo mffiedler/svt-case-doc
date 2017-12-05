@@ -13,7 +13,7 @@ Set up gp2 PVC as registery storage volume: [steps](../learn/docker_registry.md#
 
 Cluster: 1 master, 1 infra, 2 compute nodes where computes are equipped with 300g IOPS (2000) docker device (/dev/sdb).
 
-4 cns nodes (m2.4xlarge): 3 glusterfs, 1 heketi (block-provisioner disabled): 1300g xvdf (gp2) and 1000 PVC for docker registry.
+4 cns nodes (m2.4xlarge): 3 glusterfs, 1 heketi (block-provisioner disabled): 1300g xvdf (gp2) and 150g PVC for docker registry.
 
 ## Restrict nodes for build pods (if needed)
 

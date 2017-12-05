@@ -67,7 +67,7 @@ Prepare the project with cluster-loader:
 
 Watching the output of the above build script. Compare the succuss rate of builds and pbench data, eg, [IOPS on the device xvdcz](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-24-121/hk-conc-scale-a/tools-default/ip-172-31-57-74.us-west-2.compute.internal/iostat/disk.html), which is the one for docker registry.
 
-Retrieve the results from the log file:
+Retrieve the [results](docker_reg_storage_result.md) from the log file:
 
 ```sh
 # grep "Failed builds: " /tmp/build_test.log -A5          

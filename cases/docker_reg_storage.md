@@ -76,12 +76,13 @@ Retrieve the [results](docker_reg_storage_result.md) from the log file:
 
 ## Result
 
-| date     | build nodes | app    | proj | n | storage | suc%            | pbench                                                                                  | oc version                |
-|----------|-------------|--------|------|---|---------|-----------------|-----------------------------------------------------------------------------------------|---------------------------|
-| 20171201 | 2           | nodejs | 50   | 2 | gp2     | 97; 99; 98      | [ip-172-31-24-121](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-24-121/) | 3.7.9-1.git.0.7c71a2d.el7 |
-| 20171201 | 2           | nodejs | 100  | 2 | gp2     | 87; 74.5        | [ip-172-31-24-121](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-24-121/) | 3.7.9-1.git.0.7c71a2d.el7 |
-| 20171204 | 10          | nodejs | 250  | 2 | gp2     | 99.8; 99.8; 100 | [ip-172-31-23-178](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-23-178/) | 3.7.9-1.git.0.7c71a2d.el7 |
-| 20171204 | 10          | nodejs | 500  | 2 | gp2     | 99.9; 88.5      | [ip-172-31-23-178](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-23-178/) | 3.7.9-1.git.0.7c71a2d.el7 |
-|          |             |        |      |   |         |                 |                                                                                         |                           |
+| date     | build nodes | app    | proj | n | storage               | suc%                | pbench                                                                                  | oc version                |
+|----------|-------------|--------|------|---|-----------------------|---------------------|-----------------------------------------------------------------------------------------|---------------------------|
+| 20171201 | 2           | nodejs | 50   | 2 | gp2                   | 97; 99; 98          | [ip-172-31-24-121](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-24-121/) | 3.7.9-1.git.0.7c71a2d.el7 |
+| 20171201 | 2           | nodejs | 100  | 2 | gp2                   | 87; 74.5            | [ip-172-31-24-121](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-24-121/) | 3.7.9-1.git.0.7c71a2d.el7 |
+| 20171204 | 10          | nodejs | 250  | 2 | gp2                   | 99.8; 99.8; 100     | [ip-172-31-23-178](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-23-178/) | 3.7.9-1.git.0.7c71a2d.el7 |
+| 20171204 | 10          | nodejs | 500  | 2 | gp2                   | 99.9; 88.5          | [ip-172-31-23-178](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-23-178/) | 3.7.9-1.git.0.7c71a2d.el7 |
+| 20171205 | 10          | nodejs | 250  | 2 | glusterfs (3.3.0-362) | 99.8; 100; 99.8     | [ip-172-31-4-223](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-4-223/)   | 3.7.9-1.git.0.7c71a2d.el7 |
+| 20171205 | 10          | nodejs | 500  | 2 | glusterfs (3.3.0-362) | 99.9; NotReady; 100 | [ip-172-31-4-223](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-4-223/)   | 3.7.9-1.git.0.7c71a2d.el7 |
 
 Note 20171204 uses Vikas' modification on node-config.yaml.

@@ -140,4 +140,7 @@ A measure of the length of time it takes for a single I/O request to be complete
 * clat: Completion latency. It denotes the time from submission to completion of the I/O pieces.
 * slat: Submission latency. This is the time it took to submit the I/O.
 
-    
+Server and client data on pbench-fio:
+
+* server throughput: sum of all clients' throughput
+* server latency: average of all clients' latency

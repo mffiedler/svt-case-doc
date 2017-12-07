@@ -97,10 +97,6 @@ CPU, Memory, Network, ...
 
 ### [pprof](https://github.com/google/pprof)
 
-### [fio](https://linux.die.net/man/1/fio)
-
-[fio.md](fio.md)
-
 ## Run pbench for one node only
 
 After ssh to that node:
@@ -112,3 +108,39 @@ pbench-register-tool --name=pprof -- --osecomponent=node
 
 Note that the value of <code>--osecomponent</code> is either _master_ or _node_, up to the role
 of the node where we want to run pbench.
+
+
+## [pbench-fio](https://github.com/distributed-system-analysis/pbench/blob/master/agent/bench-scripts/pbench-fio.md)
+
+### [fio](https://linux.die.net/man/1/fio)
+
+[fio.md](fio.md)
+
+[parameters](https://github.com/axboe/fio/blob/master/HOWTO) in fio job configuration:
+
+* bs: The block size in bytes used for I/O units
+* size: The total size of file I/O for each thread of this job.
+* runtime: Tell fio to terminate processing after the specified period of time.
+* ramp_time: If set, fio will run the specified workload for this amount of time before logging any performance numbers.
+* sync: Use synchronous I/O for buffered writes. For the majority of I/O engines, this means using O_SYNC.
+* direct: used but not example in [fio HOWTO page](https://github.com/axboe/fio/blob/master/HOWTO), neither in [fio man page](https://linux.die.net/man/1/fio).
+
+### Understand pbench-fio data
+
+#### Thoughput
+How many units of information a system can process in a period of time.
+
+* Throughput: Size of units that IO operations process per second, eg, 160 MiB/s.
+* IOPS: Input/output operations per second, eg, 10,000.
+* IO size or block size: the unit each IO operation processes, eg, 16 KiB.
+
+So here the formula is <code>Throughput = block size * IOPS</code>. See stat of [ebs volume types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
+
+#### [latency](http://searchstorage.techtarget.com/definition/IOPS-input-output-operations-per-second)
+A measure of the length of time it takes for a single I/O request to be completed from the application's point of view. The tool fio measures 3 kinds of latency:
+
+* lat: Total latency. Same names as slat and clat, this denotes the time from when fio created the I/O unit to completion of the I/O operation.
+* clat: Completion latency. It denotes the time from submission to completion of the I/O pieces.
+* slat: Submission latency. This is the time it took to submit the I/O.
+
+    

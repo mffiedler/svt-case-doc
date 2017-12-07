@@ -112,11 +112,7 @@ of the node where we want to run pbench.
 
 ## [pbench-fio](https://github.com/distributed-system-analysis/pbench/blob/master/agent/bench-scripts/pbench-fio.md)
 
-### [fio](https://linux.die.net/man/1/fio)
-
-[fio.md](fio.md)
-
-[parameters](https://github.com/axboe/fio/blob/master/HOWTO) in fio job configuration:
+A wrapper application of [fio.md](fio.md). [parameters](https://github.com/axboe/fio/blob/master/HOWTO) in fio job configuration:
 
 * bs: The block size in bytes used for I/O units
 * size: The total size of file I/O for each thread of this job.

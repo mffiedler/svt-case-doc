@@ -10,7 +10,7 @@
     * dedicated cluster
 * [heketi](https://github.com/heketi/heketi)
 * [brick-multiplexing](http://blog.gluster.org/brick-multiplexing-in-gluster-3-10/)
-* gluster-block-provisioning: [design doc](https://github.com/gluster/gluster-kubernetes/blob/master/docs/design/gluster-block-provisioning.md), [repo][https://github.com/gluster/gluster-block/]
+* gluster-block-provisioning: [design doc](https://github.com/gluster/gluster-kubernetes/blob/master/docs/design/gluster-block-provisioning.md), [repo](https://github.com/gluster/gluster-block/)
 
 ## CNS
 

@@ -60,3 +60,4 @@ The Bigger <code>bw</code> and the smaller <code>lat</code>, the better.
 
 [1]. [fio-howto](https://github.com/axboe/fio/blob/master/HOWTO) and [pdf version](https://media.readthedocs.org/pdf/fio/latest/fio.pdf)
 
+[2]. [fio output](https://tobert.github.io/post/2014-04-17-fio-output-explained.html)

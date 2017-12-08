@@ -119,6 +119,7 @@ A wrapper application of [fio.md](fio.md). [parameters](https://github.com/axboe
 * runtime: Tell fio to terminate processing after the specified period of time.
 * ramp_time: If set, fio will run the specified workload for this amount of time before logging any performance numbers.
 * sync: Use synchronous I/O for buffered writes. For the majority of I/O engines, this means using O_SYNC.
+* iodepth: Number of I/O units to keep in flight against the file.
 * direct: used but not example in [fio HOWTO page](https://github.com/axboe/fio/blob/master/HOWTO), neither in [fio man page](https://linux.die.net/man/1/fio).
 * sync vs direct: [here](https://stackoverflow.com/questions/5055859/how-are-the-o-sync-and-o-direct-flags-in-open2-different-alike)
 

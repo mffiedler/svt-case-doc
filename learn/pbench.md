@@ -94,6 +94,8 @@ CPU, Memory, Network, ...
 # iostat  -N -t -y -x -m 10
 ```
 
+Understand [the output](https://coderwall.com/p/utc42q/understanding-iostat).
+
 
 ### [pprof](https://github.com/google/pprof)
 

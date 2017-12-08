@@ -9,6 +9,12 @@ fedora26 docker installation: follow illucent (commented on Jul 29) from [issues
 
 Or, follow Section <code>Install from a package</code> on the [installation page](https://docs.docker.com/engine/installation/linux/docker-ce/fedora/#install-from-a-package).
 
+## Install other tools
+
+```sh
+$ sudo dnf install sysstat
+```
+
 ## Run byo playbook
 
 Found when installing logging stack: Need <code>libselinux-python</code> and <code>keytool</code>.

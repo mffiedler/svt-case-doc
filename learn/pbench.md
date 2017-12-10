@@ -91,7 +91,15 @@ CPU, Memory, Network, ...
 [command examples](http://www.thegeekstuff.com/2011/07/iostat-vmstat-mpstat-examples/)
 
 ```sh
-# iostat  -N -t -y -x -m 10
+$ iostat  -N -t -x -m 10
+Linux 4.12.13-300.fc26.x86_64 (ip-172-31-33-174.us-west-2.compute.internal) 	12/10/2017 	_x86_64_	(2 CPU)
+
+12/10/2017 04:56:56 PM
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.26    0.27    0.23    0.95    0.54   97.76
+
+Device:         rrqm/s   wrqm/s     r/s     w/s    rMB/s    wMB/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util
+xvda              2.15     1.52   11.81    2.88     0.33     0.09    59.46     0.18   12.21    5.69   38.98   1.46   2.14
 ```
 
 Understand the output: [1](https://coderwall.com/p/utc42q/understanding-iostat), [2](http://www.thegeekstuff.com/2011/07/iostat-vmstat-mpstat-examples/?utm_source=feedburner).

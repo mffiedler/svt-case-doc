@@ -91,16 +91,22 @@ CPU, Memory, Network, ...
 [command examples](http://www.thegeekstuff.com/2011/07/iostat-vmstat-mpstat-examples/)
 
 ```sh
-$ iostat  -N -t -x -m 10
-Linux 4.12.13-300.fc26.x86_64 (ip-172-31-33-174.us-west-2.compute.internal) 	12/10/2017 	_x86_64_	(2 CPU)
+# iostat  -N -t -y -x -m 10
+Linux 3.10.0-774.el7.x86_64 (ip-172-31-24-121.us-west-2.compute.internal) 	12/01/17 	_x86_64_	(4 CPU)
 
-12/10/2017 04:56:56 PM
+12/01/17 17:30:16
 avg-cpu:  %user   %nice %system %iowait  %steal   %idle
-           0.26    0.27    0.23    0.95    0.54   97.76
+          14.45    0.00    2.85    0.69    0.13   81.89
 
 Device:         rrqm/s   wrqm/s     r/s     w/s    rMB/s    wMB/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util
-xvda              2.15     1.52   11.81    2.88     0.33     0.09    59.46     0.18   12.21    5.69   38.98   1.46   2.14
+xvda              0.00     0.10   47.40   54.20     3.13     0.32    69.38     0.14    1.41    0.96    1.80   0.50   5.05
+xvdb              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
 ```
+
+pbench uses iostat with <code>-x</code>, ie, extended statistics as the output. The values shows in the stats graphs are:
+
+* IOPS: <code>r/s</code> and <code>w/s</code>
+* Throughput_MB_per_sec: <code>rMB/s</code> and <code>wMB/s</code>
 
 Understand the output: [1](https://coderwall.com/p/utc42q/understanding-iostat), [2](http://www.thegeekstuff.com/2011/07/iostat-vmstat-mpstat-examples/?utm_source=feedburner).
 

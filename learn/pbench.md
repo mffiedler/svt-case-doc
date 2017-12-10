@@ -110,6 +110,24 @@ pbench uses iostat with <code>-x</code>, ie, extended statistics as the output. 
 
 Understand the output: [1](https://coderwall.com/p/utc42q/understanding-iostat), [2](http://www.thegeekstuff.com/2011/07/iostat-vmstat-mpstat-examples/?utm_source=feedburner).
 
+* avgrq-sz: The average size (in sectors) of the requests that were issued to the device. [How to find the
+sector size](https://unix.stackexchange.com/questions/2668/finding-the-sector-size-of-a-partition):
+
+```sh
+$ sudo fdisk -l
+Disk /dev/xvda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xc006e828
+
+Device     Boot Start      End  Sectors Size Id Type
+/dev/xvda1 *     2048 62914559 62912512  30G 83 Linux
+```
+
+So "Request_Size_in_512_byte_sectors" is one of titles of pbench graphs.
+
 
 ### [pprof](https://github.com/google/pprof)
 

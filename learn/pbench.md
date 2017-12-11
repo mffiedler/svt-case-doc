@@ -152,6 +152,7 @@ A wrapper application of [fio.md](fio.md). [parameters](https://github.com/axboe
 * size: The total size of file I/O for each thread of this job.
 * runtime: Tell fio to terminate processing after the specified period of time.
 * ramp_time: If set, fio will run the specified workload for this amount of time before logging any performance numbers.
+* startdelay: Delay the start of job for the specified amount of time.
 * sync: Use synchronous I/O for buffered writes. For the majority of I/O engines, this means using O_SYNC.
 * iodepth: Number of I/O units to keep in flight against the file.
 * direct: used but not example in [fio HOWTO page](https://github.com/axboe/fio/blob/master/HOWTO), neither in [fio man page](https://linux.die.net/man/1/fio).

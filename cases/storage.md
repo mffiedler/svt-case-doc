@@ -252,7 +252,7 @@ Tuning: runtime=300 vs 7200; iodepth=2 vs 4 vs 6
 
 
 The following picture compares throughput, latency from pbench-fio, 99% latency from fio, IOPS from iostat of glusterfs and gp2 with iodepth=2 vs 4 vs 6, where
-node3 is selected for iostat for glusterfs.
+node3 is selected for iostat for glusterfs. Links to original pbench data are listed in the following sections.
 
 ![](../images/glusterfs.2.png)
 

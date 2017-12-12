@@ -483,6 +483,7 @@ Observation:
 #### Conclusions
 
 * 5 min seems to be a reasonable runtime and sample=3 can be used for comparing the stability.
+* bigger iodepth did not make bigger throughput. So keep it as 2.
 
 #### TODOs
 

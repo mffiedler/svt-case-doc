@@ -422,6 +422,32 @@ Observation:
 * iostat on xdvf is stable from the beginning.
 * 99% 17.5ms from test4.
 
+##### [multi-files](https://mojo.redhat.com/docs/DOC-1149001)
+
+ ```
+ directory=/var/lib/fio
+ filename_format=test.$jobname.$jobnum.$filenum
+
+ [fio-job]
+ bs=4k
+ rw=randread
+ nrfiles=16
+ numjobs=1
+ ```
+Results
+
+| #test                                                                                                                  | nrf | thoughput | lat       | lat p99  |
+|------------------------------------------------------------------------------------------------------------------------|-----|-----------|-----------|----------|
+| [test c1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f1_2017.12.12T19.12.20/)  | 1   | 319.5133  | 3167.6872 | 6,917.40 |
+| [test c2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f2_2017.12.12T19.22.09/)  | 2   | 410.6183  | 2447.2033 | 5,162.01 |
+| [test c3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f4_2017.12.12T19.30.54/)  | 4   | 402.5083  | 2509.4176 | 4,719.66 |
+| [test c4](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f8_2017.12.12T19.45.46/)  | 8   | 401.7133  | 2509.8120 | 4,684.02 |
+| [test c5](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f16_2017.12.12T19.55.28/) | 16  | 391.3583  | 2835.5225 | 4,848.14 |
+
+
+##### multi-clients
+TODO
+
 #### Radom IO: gp2
 
 Env
@@ -480,12 +506,17 @@ Observation:
 * iostat on xvdce: [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_7200s_2017.12.11T22.00.20/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-33-193.us-west-2.compute.internal/iostat/disk.html)
 * hist.result: [client1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_7200s_2017.12.11T22.00.20/1-randrw-16KiB/sample1/clients/172.23.0.7/hist/results.html): Max value: 1299/7200
 
+
+
+
 #### Conclusions
 
 * 5 min seems to be a reasonable runtime and sample=3 can be used for comparing the stability.
 * bigger iodepth did not make bigger throughput. So keep it as 2.
 
-#### TODOs
+#### Checks
+
+[Results](http://file.rdu.redhat.com/~hongkliu/test_result/20171212.glusterfs.log) as Dec.12, 2017.
 
 * check if o_direct is set up for glusterfsd:
 
@@ -500,11 +531,3 @@ Observation:
  # gluster volume get [vol-name] all
  ```
 
-* [multi-files](https://mojo.redhat.com/docs/DOC-1149001)
-
- ```
- directory=/mnt/glustervol/${HOSTNAME}
- filename_format=f.$jobnum.$filenum
- ```
-
-* multi-clients

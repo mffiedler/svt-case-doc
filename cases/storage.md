@@ -494,16 +494,16 @@ Observation:
 
 * check glusterfs version and options
 
-```sh
-# glusterfs --version
-# gluster volume get [vol-name] all
-```
+ ```sh
+ # glusterfs --version
+ # gluster volume get [vol-name] all
+ ```
 
 * [multi-files](https://mojo.redhat.com/docs/DOC-1149001)
 
-```
-directory=/mnt/glustervol/${HOSTNAME}
-filename_format=f.$jobnum.$filenum
-```
+ ```
+ directory=/mnt/glustervol/${HOSTNAME}
+ filename_format=f.$jobnum.$filenum
+ ```
 
 * multi-clients

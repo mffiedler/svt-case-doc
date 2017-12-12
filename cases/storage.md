@@ -358,7 +358,7 @@ Observation:
 Observation: Comparing to test1 and test2, nothing changes big by longer runtime.
 * MEM usage (node/glusterfsd) is stable from the beginning.
 * iostat on xdvf is stable from the beginning.
-* 99% 6.3ms from test3, _the max value occurred at the end of the 1st hour_.
+* 99% 6.3ms from test3, _the max value occurred at the end of the 1st hour_: : Max value: 3354/7200.
 
 ##### iodepth=4
 
@@ -438,7 +438,7 @@ pvc-7b912b09-deb6-11e7-8523-02aa3e36bef6   1000Gi     RWO           Delete      
 
 Observation:
 * iostat on xvdce: gets stable after 1 min from test5 while faster stable from test6.
-* 99% 6.3ms from test6, and 2.9ms from test7, and 99% 4.3ms from test7.1. The max seems stable enough.
+* 99% 6.3ms from test6, and 3.0ms from test7, and 99% 4.3ms from test7.1. The max seems stable enough.
 * throughput and latency seems changing from test6 and test7. Add a test7.1 for more samples.
 
 ##### iodepth=4
@@ -458,8 +458,8 @@ Observation:
 
 ##### rumtime=7200
 
-[test10](): throughput: 364.9448; lat: 11029.5100.
-* iostat on xvdce: [node1]()
-* hist.result: [client1]()
+[test10](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_7200s_2017.12.11T22.00.20/): throughput: 753.338; lat: 1331.8938.
+* iostat on xvdce: [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_7200s_2017.12.11T22.00.20/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-33-193.us-west-2.compute.internal/iostat/disk.html)
+* hist.result: [client1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_7200s_2017.12.11T22.00.20/1-randrw-16KiB/sample1/clients/172.23.0.7/hist/results.html): Max value: 1299/7200
 
 

@@ -480,4 +480,30 @@ Observation:
 * iostat on xvdce: [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_7200s_2017.12.11T22.00.20/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-33-193.us-west-2.compute.internal/iostat/disk.html)
 * hist.result: [client1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_7200s_2017.12.11T22.00.20/1-randrw-16KiB/sample1/clients/172.23.0.7/hist/results.html): Max value: 1299/7200
 
+#### Conclusions
 
+* 5 min seems to be a reasonable runtime and sample=3 can be used for comparing the stability.
+
+#### TODOs
+
+* check if o_direct is set up for glusterfsd:
+
+ ```sh
+ # strace -f -e open -p $glusterfsd_pid
+ ```
+
+* check glusterfs version and options
+
+```sh
+# glusterfs --version
+# gluster volume get [vol-name] all
+```
+
+* [multi-files](https://mojo.redhat.com/docs/DOC-1149001)
+
+```
+directory=/mnt/glustervol/${HOSTNAME}
+filename_format=f.$jobnum.$filenum
+```
+
+* multi-clients

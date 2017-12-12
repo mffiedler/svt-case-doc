@@ -247,9 +247,9 @@ Based on the test so far:
 #### Radom IO: glusterfs vs gp2
 
 
-![](../images/glusterfs.fio.params.tuning.1.part.2.png)
+![](../images/glusterfs.1.png)
 
-![](../images/glusterfs.fio.params.tuning.2.part.2.png)
+![](../images/glusterfs.2.png)
 
 #### Radom IO: glusterfs
 Nodes:

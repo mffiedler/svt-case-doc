@@ -243,6 +243,15 @@ Based on the test so far:
 
 ### pbench-fio param tuning (part 2)
 
+
+#### Radom IO: glusterfs vs gp2
+
+
+![](../images/glusterfs.fio.params.tuning.1.part.2.png)
+
+![](../images/glusterfs.fio.params.tuning.2.part.2.png)
+
+#### Radom IO: glusterfs
 Nodes:
 
 ```sh
@@ -259,13 +268,6 @@ ip-172-31-9-216.us-west-2.compute.internal    Ready,SchedulingDisabled   2h     
 
 ```
 
-#### Radom IO: glusterfs vs gp2
-
-![](../images/glusterfs.fio.params.tuning.part.2.png)
-
-![](../images/glusterfs.fio.params.tuning.2.part.2.png)
-
-#### Radom IO: glusterfs
 
 ```sh
 # pbench-fio --test-types=randrw --clients=172.21.2.4 --config=RAND_IO_300s --samples=1 --max-stddev=20 --block-sizes=16 --job-file=config/random_io.job --pre-iteration-script=/root/svt/storage/scripts/drop-cache.sh

@@ -242,8 +242,10 @@ Based on the test so far:
 
 
 ### pbench-fio param tuning (part 2)
-Fix params: --test-types=randrw --block-sizes=16
-Tuning: runtime=300 vs 7200; iodepth=2 vs 4 vs 6
+We use gp2 as [the type of ebs volume](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html) to create native PV and backup the storage for glusterfs.
+
+* Fix params: --test-types=randrw --block-sizes=16
+* Tuning: runtime=300 vs 7200; iodepth=2 vs 4 vs 6
 
 #### Radom IO: glusterfs vs gp2
 
@@ -263,7 +265,7 @@ Questions:
 * pbench-fio result for [test7.1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_2017.12.11T21.52.24/result.html),
  lat client is 1445.6339 and server is 725.2616. We have only 1 client? What is the formula on those 2 numbers?
 
-#### Radom IO: glusterfs
+#### Random IO: glusterfs
 Nodes:
 
 ```sh

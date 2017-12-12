@@ -239,3 +239,227 @@ Based on the test so far:
 * The 2nd try changed 2 things: bigger devices (1000G) to keep the burst balance. Smaller block size <code>bz=4,16,64</code>: 16K [is choson](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html) as benchmark in aws. 64K [is choson by Elko](http://pbench.perf.lab.eng.bos.redhat.com/results/gprfs013/fio_1_client_seq_2017.07.31T06.51.31/).
 * Extending test time on glusterfs: b1 is slightly better than b0. Same as the bigger device and smaller block size: b4 is better than b3. We cannot say it is also the case for gp2 tests because a0 and a4 are not comparable. But it (a4) improves (a1) on random IO.
 * It seems that we can correctly show the overhead of CNS: a4 is better than b4. Needs experts to confirm if any of these makes any sense.
+
+
+### pbench-fio param tuning (part 2)
+
+Nodes:
+
+```sh
+# oc get node --show-labels
+NAME                                          STATUS                     AGE       VERSION             LABELS
+ip-172-31-19-62.us-west-2.compute.internal    Ready                      2h        v1.7.6+a08f5eeb62   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.4xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,glusterfs=storage-host,kubernetes.io/hostname=ip-172-31-19-62.us-west-2.compute.internal,region=primary,zone=default
+ip-172-31-2-122.us-west-2.compute.internal    Ready                      2h        v1.7.6+a08f5eeb62   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.4xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,glusterfs=storage-host,kubernetes.io/hostname=ip-172-31-2-122.us-west-2.compute.internal,region=primary,zone=default
+ip-172-31-28-154.us-west-2.compute.internal   Ready                      2h        v1.7.6+a08f5eeb62   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.4xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,glusterfs=storage-host,kubernetes.io/hostname=ip-172-31-28-154.us-west-2.compute.internal,region=primary,zone=default
+ip-172-31-33-193.us-west-2.compute.internal   Ready                      2h        v1.7.6+a08f5eeb62   aaa=yyy,beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.4xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,kubernetes.io/hostname=ip-172-31-33-193.us-west-2.compute.internal,region=primary,zone=default
+ip-172-31-48-195.us-west-2.compute.internal   Ready                      2h        v1.7.6+a08f5eeb62   aaa=ccc,beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.4xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,kubernetes.io/hostname=ip-172-31-48-195.us-west-2.compute.internal,region=primary,zone=default
+ip-172-31-61-99.us-west-2.compute.internal    Ready                      2h        v1.7.6+a08f5eeb62   aaa=bbb,beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.4xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,kubernetes.io/hostname=ip-172-31-61-99.us-west-2.compute.internal,region=primary,zone=default
+ip-172-31-7-100.us-west-2.compute.internal    Ready                      2h        v1.7.6+a08f5eeb62   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,kubernetes.io/hostname=ip-172-31-7-100.us-west-2.compute.internal,region=infra,zone=default
+ip-172-31-9-216.us-west-2.compute.internal    Ready,SchedulingDisabled   2h        v1.7.6+a08f5eeb62   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=m4.xlarge,beta.kubernetes.io/os=linux,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,kubernetes.io/hostname=ip-172-31-9-216.us-west-2.compute.internal,region=infra,zone=default
+
+```
+
+#### Radom IO: glusterfs vs gp2
+
+![](../images/glusterfs.fio.params.tuning.part.2.png)
+
+#### Radom IO: glusterfs
+
+```sh
+# pbench-fio --test-types=randrw --clients=172.21.2.4 --config=RAND_IO_300s --samples=1 --max-stddev=20 --block-sizes=16 --job-file=config/random_io.job --pre-iteration-script=/root/svt/storage/scripts/drop-cache.sh
+```
+
+job file:
+
+```
+[global]
+ioengine=libaio
+iodepth=2
+direct=1
+sync=1
+fsync_on_close=1
+time_based=1
+runtime=300
+clocksource=clock_gettime
+ramp_time=15
+startdelay=5
+filename=/var/lib/fio/test
+size=5g
+write_bw_log=fio
+write_iops_log=fio
+write_lat_log=fio
+write_hist_log=fio
+per_job_logs=1
+log_avg_msec=1000
+log_hist_msec=1000
+
+[fio-1]
+bs=16k
+rw=randrw
+numjobs=1
+```
+
+##### rumtime=300
+
+[test1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.31.36/): throughput: 339.4067; lat: 2955.4260.
+* Node MEM usage:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.31.36/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/sar/memory.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.31.36/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/sar/memory.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.31.36/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/sar/memory.html)
+* glusterfsd MEM usage:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.31.36/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/pidstat/memory_usage.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.31.36/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/pidstat/memory_usage.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.31.36/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/pidstat/memory_usage.html)
+* iostat on xvdf:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.31.36/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/iostat/disk.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.31.36/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/iostat/disk.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.31.36/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/iostat/disk.html)
+* hist.result: [client1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.31.36/1-randrw-16KiB/sample1/clients/172.21.2.4/hist/results.html)
+
+
+[test2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.43.42/): throughput: 329.2583; lat: 3048.6206.
+* Node MEM usage:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.43.42/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/sar/memory.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.43.42/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/sar/memory.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.43.42/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/sar/memory.html)
+* glusterfsd MEM usage:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.43.42/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/pidstat/memory_usage.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.43.42/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/pidstat/memory_usage.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.43.42/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/pidstat/memory_usage.html)
+* iostat on xvdf:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.43.42/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/iostat/disk.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.43.42/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/iostat/disk.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.43.42/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/iostat/disk.html)
+* hist.result: [client1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_2017.12.11T16.43.42/1-randrw-16KiB/sample1/clients/172.21.2.4/hist/results.html)
+
+
+Observation:
+* MEM usage (node/glusterfsd) gets stable after 2 mins. More visible in stats from test1 while stable even from the beginning from test2.
+* iostat on xdvf: gets stable after 2 mins from test1 while faster stable from test2. Read pressure happens only on one (node1) of the glusterfs node.
+* 99% 6.3ms from test1 and 6.5ms from test2. The max does not seem stable enough (Noise?). Write pressure is doubled on one node (node3).
+
+##### rumtime=7200
+
+[test3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_7200s_2017.12.11T17.05.16/): throughput: 341.5663; lat: 2968.2039.
+* Node MEM usage:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_7200s_2017.12.11T17.05.16/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/sar/memory.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_7200s_2017.12.11T17.05.16/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/sar/memory.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_7200s_2017.12.11T17.05.16/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/sar/memory.html)
+* glusterfsd MEM usage:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_7200s_2017.12.11T17.05.16/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/pidstat/memory_usage.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_7200s_2017.12.11T17.05.16/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/pidstat/memory_usage.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_7200s_2017.12.11T17.05.16/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/pidstat/memory_usage.html)
+* iostat on xvdf:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_7200s_2017.12.11T17.05.16/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/iostat/disk.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_7200s_2017.12.11T17.05.16/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/iostat/disk.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_7200s_2017.12.11T17.05.16/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/iostat/disk.html)
+* hist.result: [client1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_7200s_2017.12.11T17.05.16/1-randrw-16KiB/sample1/clients/172.21.2.4/hist/results.html)
+
+Observation: Comparing to test1 and test2, nothing changes big by longer runtime.
+* MEM usage (node/glusterfsd) is stable from the beginning.
+* iostat on xdvf is stable from the beginning.
+* 99% 6.3ms from test3, _the max value occurred at the end of the 1st hour_.
+
+##### iodepth=4
+
+[test4](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_4iod_2017.12.11T19.29.27/): throughput: 373.4900; lat: 5367.0116.
+* Node MEM usage:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_4iod_2017.12.11T19.29.27/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/sar/memory.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_4iod_2017.12.11T19.29.27/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/sar/memory.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_4iod_2017.12.11T19.29.27/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/sar/memory.html)
+* glusterfsd MEM usage:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_4iod_2017.12.11T19.29.27/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/pidstat/memory_usage.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_4iod_2017.12.11T19.29.27/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/pidstat/memory_usage.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_4iod_2017.12.11T19.29.27/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/pidstat/memory_usage.html)
+* iostat on xvdf:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_4iod_2017.12.11T19.29.27/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/iostat/disk.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_4iod_2017.12.11T19.29.27/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/iostat/disk.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_4iod_2017.12.11T19.29.27/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/iostat/disk.html)
+* hist.result: [client1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_4iod_2017.12.11T19.29.27/1-randrw-16KiB/sample1/clients/172.21.2.4/hist/results.html)
+
+Observation:
+* MEM usage (node/glusterfsd) is stable from the beginning. No MEM increased comparing to test2.
+* iostat on xdvf is stable from the beginning.
+* 99% 11.5ms from test4.
+
+##### iodepth=6
+
+[test5](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_6iod_2017.12.11T20.08.05/): throughput: throughput: 364.9448; lat: 11029.5100.
+* Node MEM usage:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_6iod_2017.12.11T20.08.05/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/sar/memory.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_6iod_2017.12.11T20.08.05/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/sar/memory.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_6iod_2017.12.11T20.08.05/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/sar/memory.html)
+* glusterfsd MEM usage:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_6iod_2017.12.11T20.08.05/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/pidstat/memory_usage.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_6iod_2017.12.11T20.08.05/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/pidstat/memory_usage.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_6iod_2017.12.11T20.08.05/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/pidstat/memory_usage.html)
+* iostat on xvdf:
+    * [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_6iod_2017.12.11T20.08.05/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-19-62.us-west-2.compute.internal/iostat/disk.html)
+    * [node2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_6iod_2017.12.11T20.08.05/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-2-122.us-west-2.compute.internal/iostat/disk.html)
+    * [node3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_6iod_2017.12.11T20.08.05/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-28-154.us-west-2.compute.internal/iostat/disk.html)
+* hist.result: [client1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_RAND_IO_300s_6iod_2017.12.11T20.08.05/1-randrw-16KiB/sample1/clients/172.21.2.4/hist/results.html)
+
+Observation:
+* MEM usage (node/glusterfsd) is stable from the beginning. No MEM increased comparing to test5.
+* iostat on xdvf is stable from the beginning.
+* 99% 17.5ms from test4.
+
+#### Radom IO: gp2
+
+Env
+
+```sh
+# oc get pod --all-namespaces -o wide | grep fio
+aaa         fio-1-ccwbj                1/1       Running   0          4h        172.21.2.4      ip-172-31-61-99.us-west-2.compute.internal
+yyy         fio-1-s59sg                1/1       Running   0          3m        172.23.0.7      ip-172-31-33-193.us-west-2.compute.internal
+oc get pv
+NAME                                       CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM     STORAGECLASS        REASON    AGE
+pvc-5c20310e-de8f-11e7-8523-02aa3e36bef6   10Gi       RWO           Delete          Bound     aaa/fio   glusterfs-storage             4h
+pvc-7b912b09-deb6-11e7-8523-02aa3e36bef6   1000Gi     RWO           Delete          Bound     yyy/fio   gp2                           18s
+```
+
+```sh
+# pbench-fio --test-types=randrw --clients=172.23.0.7 --config=gp2_RAND_IO_300s --samples=1 --max-stddev=20 --block-sizes=16 --job-file=config/random_io.job --pre-iteration-script=/root/svt/storage/scripts/drop-cache.sh
+```
+
+##### rumtime=300
+
+[test6](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_2017.12.11T21.03.45/): throughput: 654.7860; lat: 1540.1963.
+* iostat on xvdce: [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_2017.12.11T21.03.45/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-33-193.us-west-2.compute.internal/iostat/disk.html)
+* hist.result: [client1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_2017.12.11T21.03.45/1-randrw-16KiB/sample1/clients/172.23.0.7/hist/results.html)
+
+[test7](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_2017.12.11T21.22.41/): throughput: 746.2090; lat: 1343.6872.
+* iostat on xvdce: [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_2017.12.11T21.22.41/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-33-193.us-west-2.compute.internal/iostat/disk.html)
+* hist.result: [client1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_2017.12.11T21.22.41/1-randrw-16KiB/sample1/clients/172.23.0.7/hist/results.html)
+
+[test7.1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_2017.12.11T21.52.24/): throughput: 694.1717; lat: 1445.6339.
+* iostat on xvdce: [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_2017.12.11T21.52.24/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-33-193.us-west-2.compute.internal/iostat/disk.html)
+* hist.result: [client1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_2017.12.11T21.52.24/1-randrw-16KiB/sample1/clients/172.23.0.7/hist/results.html)
+
+Observation:
+* iostat on xvdce: gets stable after 1 min from test5 while faster stable from test6.
+* 99% 6.3ms from test6, and 2.9ms from test7, and 99% 4.3ms from test7.1. The max seems stable enough.
+* throughput and latency seems changing from test6 and test7. Add a test7.1 for more samples.
+
+##### iodepth=4
+
+[test8](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_4iod_2017.12.11T21.30.34/): throughput: 1097.9167; lat: 1822.3439.
+* iostat on xvdce: [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_4iod_2017.12.11T21.30.34/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-33-193.us-west-2.compute.internal/iostat/disk.html)
+* hist.result: [client1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_4iod_2017.12.11T21.30.34/1-randrw-16KiB/sample1/clients/172.23.0.7/hist/results.html)
+
+##### iodepth=6
+
+[test9](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_6iod_2017.12.11T21.38.30/): throughput: 1173.6600; lat: 2560.2425.
+* iostat on xvdce: [node1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_6iod_2017.12.11T21.38.30/1-randrw-16KiB/sample1/tools-default/FIO:ip-172-31-33-193.us-west-2.compute.internal/iostat/disk.html)
+* hist.result: [client1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-9-216/fio_gp2_RAND_IO_300s_6iod_2017.12.11T21.38.30/1-randrw-16KiB/sample1/clients/172.23.0.7/hist/results.html)
+
+Observation:
+* Max value of latency showed up later and later among test7.1, test8, and test9.
+
+##### rumtime=7200
+
+[test10](): throughput: 364.9448; lat: 11029.5100.
+* iostat on xvdce: [node1]()
+* hist.result: [client1]()
+
+

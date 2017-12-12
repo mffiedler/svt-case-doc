@@ -263,6 +263,8 @@ ip-172-31-9-216.us-west-2.compute.internal    Ready,SchedulingDisabled   2h     
 
 ![](../images/glusterfs.fio.params.tuning.part.2.png)
 
+![](../images/glusterfs.fio.params.tuning.2.part.2.png)
+
 #### Radom IO: glusterfs
 
 ```sh

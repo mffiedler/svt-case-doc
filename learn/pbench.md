@@ -108,7 +108,7 @@ pbench uses iostat with <code>-x</code>, ie, extended statistics as the output. 
 * IOPS: <code>r/s</code> and <code>w/s</code>
 * Throughput_MB_per_sec: <code>rMB/s</code> and <code>wMB/s</code>
 
-Understand the output: [1](https://coderwall.com/p/utc42q/understanding-iostat), [2](http://www.thegeekstuff.com/2011/07/iostat-vmstat-mpstat-examples/?utm_source=feedburner).
+Understand the output: [1](https://coderwall.com/p/utc42q/understanding-iostat), [2](http://www.thegeekstuff.com/2011/07/iostat-vmstat-mpstat-examples/?utm_source=feedburner), [3](https://coderwall.com/p/utc42q/understanding-iostat).
 
 * avgrq-sz: The average size (in sectors) of the requests that were issued to the device. [How to find the
 sector size](https://unix.stackexchange.com/questions/2668/finding-the-sector-size-of-a-partition):

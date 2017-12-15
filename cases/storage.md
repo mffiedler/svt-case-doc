@@ -436,13 +436,13 @@ Observation:
  ```
 Results
 
-| #test                                                                                                                  | nrf | thoughput | lat       | lat p99  |
-|------------------------------------------------------------------------------------------------------------------------|-----|-----------|-----------|----------|
-| [test c1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f1_2017.12.12T19.12.20/)  | 1   | 319.5133  | 3167.6872 | 6,917.40 |
-| [test c2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f2_2017.12.12T19.22.09/)  | 2   | 410.6183  | 2447.2033 | 5,162.01 |
-| [test c3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f4_2017.12.12T19.30.54/)  | 4   | 402.5083  | 2509.4176 | 4,719.66 |
-| [test c4](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f8_2017.12.12T19.45.46/)  | 8   | 401.7133  | 2509.8120 | 4,684.02 |
-| [test c5](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f16_2017.12.12T19.55.28/) | 16  | 391.3583  | 2835.5225 | 4,848.14 |
+| #test                                                                                                                  | nrf | thoughput | lat       | lat p99  | #nodes with read load |
+|------------------------------------------------------------------------------------------------------------------------|-----|-----------|-----------|----------|-----------------------|
+| [test c1](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f1_2017.12.12T19.12.20/)  | 1   | 319.5133  | 3167.6872 | 6,917.40 | 1                     |
+| [test c2](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f2_2017.12.12T19.22.09/)  | 2   | 410.6183  | 2447.2033 | 5,162.01 | 1                     |
+| [test c3](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f4_2017.12.12T19.30.54/)  | 4   | 402.5083  | 2509.4176 | 4,719.66 | 2                     |
+| [test c4](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f8_2017.12.12T19.45.46/)  | 8   | 401.7133  | 2509.8120 | 4,684.02 | 3                     |
+| [test c5](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-16-28/fio_RAND_IO_300s_f16_2017.12.12T19.55.28/) | 16  | 391.3583  | 2835.5225 | 4,848.14 | 3                     |
 
 
 ##### multi-clients

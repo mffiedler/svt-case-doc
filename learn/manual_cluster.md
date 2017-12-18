@@ -75,6 +75,8 @@ _Hint_: In the output of Jenkins build, search for *playbook*. The inventory fil
 
     ```sh
     # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml
+    ### 3.8
+    # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/deploy_cluster.yml
     ```
 
 ## Scaleup cluster

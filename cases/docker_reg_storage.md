@@ -9,7 +9,7 @@ Cluster: 1 master, 1 infra, 2 compute nodes where computes are equipped with 300
 
 Set up gp2 PVC as registery storage volume: [steps](../learn/docker_registry.md#use-filesystem-driver-for-docker-registry): the PVC size is 1000G is to ensure that we have enough burst balance for the device.
 
-## Case 2: PVC backed up by glusterfs volume: TODO
+## Case 2: PVC backed up by glusterfs volume
 
 Cluster: 1 master, 1 infra, 2 compute nodes where computes are equipped with 300g IOPS (2000) docker device (/dev/sdb).
 

@@ -35,6 +35,12 @@ $ oc get projects | cut -f1 -d" " | grep -E "proj[0-9]+" | while read i; do oc d
 $ oc get builds --all-namespaces | grep Fail | grep -E "proj[0-9]+" | while read i; do awk '{system("oc delete build -n " $1 "  " $2)}'; done
 ```
 
+## Clean docker images
+
+```sh
+# docker images | grep -E "proj[0-9]+" | awk '{print $3}' | while read i; do docker rmi $i; done
+```
+
 ## Extend docker fs
 
 ```sh

@@ -69,7 +69,7 @@ Prepare the project with cluster-loader:
 
 Watching the output of the above build script. Compare the succuss rate of builds and pbench data, eg, [IOPS on the device xvdcz](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-24-121/hk-conc-scale-a/tools-default/ip-172-31-57-74.us-west-2.compute.internal/iostat/disk.html), which is the one for docker registry.
 
-In the case of glusterfs PVC, we check the CPU and [MEM](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-4-223/hk-conc-scale-a/tools-default/ip-172-31-4-223/ip-172-31-35-129.us-west-2.compute.internal/pidstat/memory_usage.html) consupmtion of glusterfsd process, and [IOPS on the device xvdf](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-4-223/hk-conc-scale-a/tools-default/ip-172-31-4-223/ip-172-31-35-129.us-west-2.compute.internal/iostat/disk.html) on each glusterfs node. CPU and memory usage of heketi process should pretty stable in this text.
+In the case of glusterfs PVC, we check the CPU and [MEM](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-4-223/hk-conc-scale-a/tools-default/ip-172-31-4-223/ip-172-31-35-129.us-west-2.compute.internal/pidstat/memory_usage.html) consupmtion of glusterfsd process, and [IOPS on the device xvdf](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-4-223/hk-conc-scale-a/tools-default/ip-172-31-4-223/ip-172-31-35-129.us-west-2.compute.internal/iostat/disk.html) on each glusterfs node. CPU and memory usage of heketi process should pretty stable in this test.
 
 Retrieve the [results](docker_reg_storage_result.md) from the log file:
 

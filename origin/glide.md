@@ -9,3 +9,9 @@ $ glide --version
 glide version v0.13.1
 ```
 
+## Generate glide.yaml file
+
+```sh
+[hongkliu@hongkliu test-go]$ glide init
+
+```

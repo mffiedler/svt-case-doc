@@ -21,3 +21,13 @@ As an example, we will use [k8s client-go](https://github.com/kubernetes/client-
 Example code: [here](https://github.com/hongkailiu/test-go/tree/master/k8s).
 
 
+## Update dependency
+Use code in the new API and add the dependency into <code>glide.yaml</code> file
+
+```sh
+$ glide up -v
+### IntelliJ will reindex the code from updated dependency list.
+```
+
+## [glide vendor cleaner](https://github.com/sgotti/glide-vc)
+TODO

@@ -23,6 +23,7 @@ json-file without mux:
 [OSEv3:vars]
 ...
 openshift_logging_install_logging=true
+openshift_logging_storage_kind=dynamic
 openshift_logging_image_prefix=registry.reg-aws.openshift.com:443/openshift3/
 openshift_logging_image_version=v3.9
 

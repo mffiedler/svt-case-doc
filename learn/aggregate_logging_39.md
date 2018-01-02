@@ -66,76 +66,68 @@ Check the parameter's meaning [here](https://docs.openshift.org/latest/install_c
 # oc get all -o wide
 NAME                                                REVISION   DESIRED   CURRENT   TRIGGERED BY
 deploymentconfigs/logging-curator                   1          1         1         config
-deploymentconfigs/logging-es-data-master-39f9joda   1          1         1         config
-deploymentconfigs/logging-es-data-master-43lag4ik   1          1         1         config
-deploymentconfigs/logging-es-data-master-j763alrc   1          1         1         config
+deploymentconfigs/logging-es-data-master-hye5503q   1          1         1         
 deploymentconfigs/logging-kibana                    1          1         1         config
-deploymentconfigs/logging-mux                       1          1         1         config
 
 NAME                    HOST/PORT                             PATH      SERVICES         PORT      TERMINATION          WILDCARD
-routes/logging-kibana   kibana.apps.0922-mtp.qe.rhcloud.com             logging-kibana   <all>     reencrypt/Redirect   None
+routes/logging-kibana   kibana.apps.0102-7j8.qe.rhcloud.com             logging-kibana   <all>     reencrypt/Redirect   None
+
+NAME                 DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                AGE       CONTAINERS              IMAGES                                                               SELECTOR
+ds/logging-fluentd   4         4         4         4            4           logging-infra-fluentd=true   3m        fluentd-elasticsearch   registry.reg-aws.openshift.com:443/openshift3/logging-fluentd:v3.9   component=fluentd,provider=openshift
+ds/logging-fluentd   4         4         4         4            4           logging-infra-fluentd=true   3m        fluentd-elasticsearch   registry.reg-aws.openshift.com:443/openshift3/logging-fluentd:v3.9   component=fluentd,provider=openshift
+
+NAME                                                REVISION   DESIRED   CURRENT   TRIGGERED BY
+deploymentconfigs/logging-curator                   1          1         1         config
+deploymentconfigs/logging-es-data-master-hye5503q   1          1         1         
+deploymentconfigs/logging-kibana                    1          1         1         config
+
+NAME                    HOST/PORT                             PATH      SERVICES         PORT      TERMINATION          WILDCARD
+routes/logging-kibana   kibana.apps.0102-7j8.qe.rhcloud.com             logging-kibana   <all>     reencrypt/Redirect   None
 
 NAME                                         READY     STATUS    RESTARTS   AGE       IP            NODE
-po/logging-curator-1-xzmk3                   1/1       Running   0          4m        172.20.2.17   ip-172-31-21-185.us-west-2.compute.internal
-po/logging-es-data-master-39f9joda-1-p2qg2   1/1       Running   0          4m        172.23.0.7    ip-172-31-5-234.us-west-2.compute.internal
-po/logging-es-data-master-43lag4ik-1-z383x   1/1       Running   0          4m        172.21.0.5    ip-172-31-23-229.us-west-2.compute.internal
-po/logging-es-data-master-j763alrc-1-v1g9g   1/1       Running   0          4m        172.20.0.6    ip-172-31-10-173.us-west-2.compute.internal
-po/logging-fluentd-03nz4                     1/1       Running   0          3m        172.22.0.3    ip-172-31-5-155.us-west-2.compute.internal
-po/logging-fluentd-633f9                     1/1       Running   0          3m        172.20.2.19   ip-172-31-21-185.us-west-2.compute.internal
-po/logging-fluentd-8qk3x                     1/1       Running   0          3m        172.21.0.6    ip-172-31-23-229.us-west-2.compute.internal
-po/logging-fluentd-c9wh1                     1/1       Running   0          3m        172.23.0.8    ip-172-31-5-234.us-west-2.compute.internal
-po/logging-fluentd-v59b7                     1/1       Running   0          3m        172.20.0.7    ip-172-31-10-173.us-west-2.compute.internal
-po/logging-kibana-1-0xmzz                    2/2       Running   0          4m        172.20.2.15   ip-172-31-21-185.us-west-2.compute.internal
-po/logging-mux-1-kb1h9                       1/1       Running   0          3m        172.20.2.20   ip-172-31-21-185.us-west-2.compute.internal
+po/logging-curator-1-4f2ng                   1/1       Running   0          4m        172.21.0.9    ip-172-31-53-183.us-west-2.compute.internal
+po/logging-es-data-master-hye5503q-1-g4w27   2/2       Running   0          3m        172.21.0.11   ip-172-31-53-183.us-west-2.compute.internal
+po/logging-fluentd-56v9v                     1/1       Running   0          3m        172.20.0.7    ip-172-31-53-99.us-west-2.compute.internal
+po/logging-fluentd-btg4v                     1/1       Running   0          3m        172.22.0.7    ip-172-31-51-92.us-west-2.compute.internal
+po/logging-fluentd-d2vbl                     1/1       Running   0          3m        172.23.0.3    ip-172-31-1-162.us-west-2.compute.internal
+po/logging-fluentd-gf8rq                     1/1       Running   0          3m        172.21.0.10   ip-172-31-53-183.us-west-2.compute.internal
+po/logging-kibana-1-7pp95                    2/2       Running   0          4m        172.22.0.6    ip-172-31-51-92.us-west-2.compute.internal
 
-NAME                                   DESIRED   CURRENT   READY     AGE       CONTAINER(S)          IMAGE(S)                                                                                                                      SELECTOR
-rc/logging-curator-1                   1         1         1         4m        curator               registry.ops.openshift.com/openshift3/logging-curator:v3.7.0                                                                  component=curator,deployment=logging-curator-1,deploymentconfig=logging-curator,logging-infra=curator,provider=openshift
-rc/logging-es-data-master-39f9joda-1   1         1         1         4m        elasticsearch         registry.ops.openshift.com/openshift3/logging-elasticsearch:v3.7.0                                                            component=es,deployment=logging-es-data-master-39f9joda-1,deploymentconfig=logging-es-data-master-39f9joda,logging-infra=elasticsearch,provider=openshift
-rc/logging-es-data-master-43lag4ik-1   1         1         1         4m        elasticsearch         registry.ops.openshift.com/openshift3/logging-elasticsearch:v3.7.0                                                            component=es,deployment=logging-es-data-master-43lag4ik-1,deploymentconfig=logging-es-data-master-43lag4ik,logging-infra=elasticsearch,provider=openshift
-rc/logging-es-data-master-j763alrc-1   1         1         1         4m        elasticsearch         registry.ops.openshift.com/openshift3/logging-elasticsearch:v3.7.0                                                            component=es,deployment=logging-es-data-master-j763alrc-1,deploymentconfig=logging-es-data-master-j763alrc,logging-infra=elasticsearch,provider=openshift
-rc/logging-kibana-1                    1         1         1         4m        kibana,kibana-proxy   registry.ops.openshift.com/openshift3/logging-kibana:v3.7.0,registry.ops.openshift.com/openshift3/logging-auth-proxy:v3.7.0   component=kibana,deployment=logging-kibana-1,deploymentconfig=logging-kibana,logging-infra=kibana,provider=openshift
-rc/logging-mux-1                       1         1         1         3m        mux                   registry.ops.openshift.com/openshift3/logging-fluentd:v3.7.0                                                                  component=mux,deployment=logging-mux-1,deploymentconfig=logging-mux,logging-infra=mux,provider=openshift
+NAME                                   DESIRED   CURRENT   READY     AGE       CONTAINERS            IMAGES                                                                                                                                    SELECTOR
+rc/logging-curator-1                   1         1         1         4m        curator               registry.reg-aws.openshift.com:443/openshift3/logging-curator:v3.9                                                                        component=curator,deployment=logging-curator-1,deploymentconfig=logging-curator,logging-infra=curator,provider=openshift
+rc/logging-es-data-master-hye5503q-1   1         1         1         3m        proxy,elasticsearch   registry.reg-aws.openshift.com:443/openshift3/oauth-proxy:v3.9,registry.reg-aws.openshift.com:443/openshift3/logging-elasticsearch:v3.9   component=es,deployment=logging-es-data-master-hye5503q-1,deploymentconfig=logging-es-data-master-hye5503q,logging-infra=elasticsearch,provider=openshift
+rc/logging-kibana-1                    1         1         1         4m        kibana,kibana-proxy   registry.reg-aws.openshift.com:443/openshift3/logging-kibana:v3.9,registry.reg-aws.openshift.com:443/openshift3/logging-auth-proxy:v3.9   component=kibana,deployment=logging-kibana-1,deploymentconfig=logging-kibana,logging-infra=kibana,provider=openshift
 
-NAME                     CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE       SELECTOR
-svc/logging-es           172.24.228.83   <none>        9200/TCP    5m        component=es,provider=openshift
-svc/logging-es-cluster   172.26.91.224   <none>        9300/TCP    5m        component=es,provider=openshift
-svc/logging-kibana       172.27.70.64    <none>        443/TCP     4m        component=kibana,provider=openshift
-svc/logging-mux          172.26.41.150   <none>        24284/TCP   3m        component=mux,provider=openshift
+NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE       SELECTOR
+svc/logging-es              ClusterIP   172.25.219.160   <none>        9200/TCP   4m        component=es,provider=openshift
+svc/logging-es-cluster      ClusterIP   172.27.202.178   <none>        9300/TCP   4m        component=es,provider=openshift
+svc/logging-es-prometheus   ClusterIP   172.24.155.58    <none>        443/TCP    4m        component=es,provider=openshift
+svc/logging-kibana          ClusterIP   172.26.122.102   <none>        443/TCP    4m        component=kibana,provider=openshift
+root@ip-172-31-1-162: ~ # 
 
 
 # oc get ds
-NAME              DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR                AGE
-logging-fluentd   5         5         5         5            5           logging-infra-fluentd=true   8m
-
-# oc get ds
-NAME              DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR                AGE
-logging-fluentd   5         5         5         5            5           logging-infra-fluentd=true   8m
+NAME              DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                AGE
+logging-fluentd   4         4         4         4            4           logging-infra-fluentd=true   4m
 
 # oc get pvc
-NAME              STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS   AGE
-logging-es-0      Bound     pvc-741c716f-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           gp2            9m
-logging-es-1      Bound     pvc-7d0bc3d0-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           gp2            9m
-logging-es-2      Bound     pvc-86039fb9-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           gp2            9m
-logging-mux-pvc   Bound     pvc-9d812f54-9fa0-11e7-8793-027497ece8ac   30Gi       RWO           gp2            8m
+NAME           STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+logging-es-0   Bound     pvc-2da10146-eff1-11e7-b323-0291a6ab3956   50Gi       RWO            io1            5m
 
 # oc get pv
-NAME                                       CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM                     STORAGECLASS   REASON    AGE
-pvc-741c716f-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           Delete          Bound     logging/logging-es-0      gp2                      10m
-pvc-7d0bc3d0-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           Delete          Bound     logging/logging-es-1      gp2                      10m
-pvc-86039fb9-9fa0-11e7-8793-027497ece8ac   50Gi       RWO           Delete          Bound     logging/logging-es-2      gp2                      9m
-pvc-9d812f54-9fa0-11e7-8793-027497ece8ac   30Gi       RWO           Delete          Bound     logging/logging-mux-pvc   gp2                      9m
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS    CLAIM                  STORAGECLASS   REASON    AGE
+pvc-2da10146-eff1-11e7-b323-0291a6ab3956   50Gi       RWO            Delete           Bound     logging/logging-es-0   io1                      6m
 
-
-# POD=logging-es-data-master-39f9joda-1-p2qg2
+# POD=logging-es-data-master-hye5503q-1-g4w27
 # oc exec $POD -- curl --connect-timeout 2 -s -k --cert /etc/elasticsearch/secret/admin-cert --key /etc/elasticsearch/secret/admin-key https://logging-es:9200/_cat/indices?v
+Defaulting container name to proxy.
+Use 'oc describe pod/logging-es-data-master-hye5503q-1-g4w27 -n logging' to see all of the containers in this pod.
 health status index                                                           pri rep docs.count docs.deleted store.size pri.store.size 
-green  open   project.default.7516c4b9-9f95-11e7-ace5-027497ece8ac.2017.09.22   1   0      18099            0     17.1mb         17.1mb 
-green  open   .searchguard.logging-es-data-master-j763alrc                      1   2          5            0     91.3kb         30.4kb 
+green  open   project.logging.dc258656-eff0-11e7-b323-0291a6ab3956.2018.01.02   1   0        309            0    484.7kb        484.7kb 
+green  open   .searchguard.logging-es-data-master-hye5503q                      1   0          5            0     33.5kb         33.5kb 
 green  open   .kibana                                                           1   0          1            0      3.1kb          3.1kb 
-green  open   .searchguard.logging-es-data-master-43lag4ik                      1   2          5            0     91.3kb         30.4kb 
-green  open   .searchguard.logging-es-data-master-39f9joda                      1   2          5            0     91.3kb         30.4kb 
-green  open   project.logging.fe039967-9f9f-11e7-8793-027497ece8ac.2017.09.22   1   0        711            0    738.1kb        738.1kb 
-green  open   .operations.2017.09.22                                            1   0      25688            0       13mb           13mb 
+green  open   .operations.2018.01.02                                            1   0       2835            0      3.6mb          3.6mb 
+
 
 ```
 

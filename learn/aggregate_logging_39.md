@@ -143,7 +143,7 @@ If we need to redeplay the logging stack, we can delete logging project and recr
 
 ```sh
 # oc delete project logging
-# oadm new-project logging --node-selector=""
+# oc adm new-project logging --node-selector=""
 ```
 
 ## Search (logs in Kibana)

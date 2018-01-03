@@ -1,0 +1,14 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    storageclass.beta.kubernetes.io/is-default-class: "true"
+  creationTimestamp: null
+  name: io1
+  selfLink: /apis/storage.k8s.io/v1/storageclasses/io1
+parameters:
+  encrypted: "false"
+  type: io1
+  zone: us-west-2b
+  iopsPerGB: "50"
+provisioner: kubernetes.io/aws-ebs

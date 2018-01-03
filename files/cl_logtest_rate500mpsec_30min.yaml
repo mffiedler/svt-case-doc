@@ -1,0 +1,23 @@
+projects:
+  - num: 1
+    basename: lograte-500mpsec-
+    ifexists: delete
+    tuning: default
+    templates:
+      - num: 1
+        file: ./content/logtest/logtest-rc.json
+        parameters:
+         - REPLICAS: "1"
+
+### 500 messages per sec = 500 * 60 messages per min = 30,000
+###              Also using 1024 byte/char message
+         - INITIAL_FLAGS: "--line-length 1024 --word-length 7 --rate 30000 --time 0 --fixed-line --num-lines 900000\n"
+
+tuningsets:
+  - name: default
+    pods:
+      stepping:
+        stepsize: 5
+        pause: 0 min
+      rate_limit:
+        delay: 0 ms

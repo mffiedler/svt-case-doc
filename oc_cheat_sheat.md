@@ -41,6 +41,12 @@ $ oc get builds --all-namespaces | grep Fail | grep -E "proj[0-9]+" | while read
 # docker images | grep -E "proj[0-9]+" | awk '{print $3}' | while read i; do docker rmi $i; done
 ```
 
+## Show sha of docker images
+
+```sh
+# docker images --digests
+```
+
 ## Extend docker fs
 
 ```sh

@@ -48,6 +48,7 @@ openshift_logging_kibana_proxy_cpu_limit=100m
 ## openshift_logging_mux_memory_limit=2Gi
 openshift_logging_kibana_memory_limit=1Gi
 openshift_logging_kibana_proxy_memory_limit=256Mi
+openshift_logging_fluentd_buffer_size_limit=16m
 
 ```
 

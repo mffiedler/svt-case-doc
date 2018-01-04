@@ -65,7 +65,7 @@ Move es pod to infra:
 
 ```
 
-Set the elasticsearch threadpool bulk queue size to 200:
+Set the elasticsearch threadpool bulk queue size to 200 (Optional):
 
 ```sh
 # POD=logging-es-data-master-hye5503q-1-g4w27

@@ -105,6 +105,9 @@ i-0f6469875f9e471d3	i-048c94c680090ce7d
     --output text --query 'Reservations[*].Instances[*].{Id:InstanceId, Name:PublicDnsName}'
 i-0f6469875f9e471d3	ec2-54-186-191-136.us-west-2.compute.amazonaws.com
 i-048c94c680090ce7d	ec2-54-200-204-22.us-west-2.compute.amazonaws.com
+
+### Create volumes
+(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 create-volume --size 1000 --region us-west-2 --availability-zone us-west-2b --volume-type gp2
 ```
 
 See [more examples](http://docs.aws.amazon.com/cli/latest/userguide/controlling-output.html) on query.

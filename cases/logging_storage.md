@@ -147,7 +147,11 @@ One pod for the logging test tool:
 |          |                               |                |                | glusterfs (3.3.0-362) |           30000 |         900000 |            900000 |
 |          |                               |                |                |                       |           45000 |        1350000 |           1350000 |
 |          |                               |                |                |                       |           60000 |        1800000 | 1800000 (amazing) |
+|          |                               |                |                |                       |           60000 |        1800000 |        1206590 ^1 |
+|          |                               |                |                |                       |           60000 |        1800000 |                   |
 
+
+^1: Health of operations index is RED.
 
 From Jan 9 2017, max-size=100M instead of 10.
 

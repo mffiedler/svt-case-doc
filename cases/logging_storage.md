@@ -116,6 +116,9 @@ Compare the result in es:
 ```sh
 ### rsh to es pod
 sh-4.2$ curl --connect-timeout 2 -s -k --cert /etc/elasticsearch/secret/admin-cert --key /etc/elasticsearch/secret/admin-key https://logging-es:9200/_cat/indices?v | grep logr
+
+### for debugging
+sh-4.2$ curl -s -k --cert /etc/elasticsearch/secret/admin-cert   --key /etc/elasticsearch/secret/admin-key https://localhost:9200/_cat/thread_pool?v\&h=host,bulk.completed,bulk.rejected,bulk.queue,bulk.active,bulk.queueSize
 ```
 
 ## Result

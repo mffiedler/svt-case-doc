@@ -26,6 +26,20 @@ io1 (default)   kubernetes.io/aws-ebs   22h
 
 #### Install CNS
 
+```
+glusterfs_devices=["/dev/xvdf"]
+openshift_storage_glusterfs_wipe=true
+openshift_storage_glusterfs_image=registry.access.redhat.com/rhgs3/rhgs-server-rhel7
+openshift_storage_glusterfs_version=3.3.0-362
+openshift_storage_glusterfs_heketi_image=registry.access.redhat.com/rhgs3/rhgs-volmanager-rhel7
+openshift_storage_glusterfs_heketi_version=3.3.0-362
+openshift_hosted_registry_glusterfs_swap=true
+openshift_storage_glusterfs_block_deploy=False
+openshift_storage_glusterfs_block_image=registry.access.redhat.com/rhgs3/rhgs-gluster-block-prov-rhel7
+openshift_storage_glusterfs_block_version=3.3.0-362
+openshift_storage_glusterfs_block_host_vol_size=800
+```
+
 ## Check docker configuration
 
 ```sh

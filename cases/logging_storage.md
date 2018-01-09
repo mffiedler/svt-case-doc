@@ -150,5 +150,5 @@ More [results](https://docs.google.com/document/d/1JB8GVYHrPK4TPMQnwViZNA-fdFMpY
 ### On the compute node where pod logs are being generated
 # pidstat -C fluentd 30
 ```
-* 30000: 48%
-* 45000: 96%
+* rate 30000: CPU% 50
+* 45000: 99 (at the beginning), 74

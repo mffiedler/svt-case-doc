@@ -151,8 +151,8 @@ One pod for the logging test tool:
 |          |                               |                |                |                       |           60000 |        1800000 |                   |
 
 
-^2: From Jan 9 2017, max-size=100M instead of 10.
-^2: Health of operations index is RED.
+* ^2: From Jan 9 2017, max-size=100M instead of 10.
+* ^2: Health of operations index is RED.
 
 More [results](https://docs.google.com/document/d/1JB8GVYHrPK4TPMQnwViZNA-fdFMpYw-Upkpsa_YL2es/edit?usp=sharing) on logging rate.
 

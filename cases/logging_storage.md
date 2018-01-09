@@ -142,18 +142,17 @@ One pod for the logging test tool:
 |          |                               |                |                |                       |           30000 |         900000 |            891451 |
 |          |                               |                |                |                       |           45000 |        1350000 |           1204946 |
 |          |                               |                |                |                       |           45000 |        1350000 |           1179332 |
-| 20170109 | 3.7.9-1.git.0.7c71a2d.el7     | v3.7.22-1      | 9cf349ffb      | gp2                   |           45000 |        1350000 |           1350000 |
+| 20170109 ^1 | 3.7.9-1.git.0.7c71a2d.el7     | v3.7.22-1      | 9cf349ffb      | gp2                   |           45000 |        1350000 |           1350000 |
 |          |                               |                |                |                       |           60000 |        1800000 |           1714740 |
 |          |                               |                |                | glusterfs (3.3.0-362) |           30000 |         900000 |            900000 |
 |          |                               |                |                |                       |           45000 |        1350000 |           1350000 |
 |          |                               |                |                |                       |           60000 |        1800000 | 1800000 (amazing) |
-|          |                               |                |                |                       |           60000 |        1800000 |        1206590 ^1 |
+|          |                               |                |                |                       |           60000 |        1800000 |        1206590 ^2 |
 |          |                               |                |                |                       |           60000 |        1800000 |                   |
 
 
-^1: Health of operations index is RED.
-
-From Jan 9 2017, max-size=100M instead of 10.
+^2: From Jan 9 2017, max-size=100M instead of 10.
+^2: Health of operations index is RED.
 
 More [results](https://docs.google.com/document/d/1JB8GVYHrPK4TPMQnwViZNA-fdFMpYw-Upkpsa_YL2es/edit?usp=sharing) on logging rate.
 

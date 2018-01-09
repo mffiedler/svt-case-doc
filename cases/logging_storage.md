@@ -86,6 +86,8 @@ root@ip-172-31-1-162: ~/svt/openshift_scalability # oc get pod -n lograte-500mps
 NAME                   READY     STATUS    RESTARTS   AGE
 centos-logtest-9mgpq   1/1       Running   0          1m
 
+# oc logs --tail=1 -n lograte-500mpsec-0   centos-logtest-9mgpq
+### OR,
 # oc logs -n lograte-500mpsec-0   centos-logtest-9mgpq | tail -1
 2018-01-03 16:17:13,967 - SVTLogger - INFO - centos-logtest-9mgpq : 30000 : ...
 ```

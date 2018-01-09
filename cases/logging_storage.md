@@ -142,3 +142,13 @@ One pod for the logging test tool:
 |          |                               |                |                |                       |           45000 |        1350000 |    1204946 |
 |          |                               |                |                |                       |           45000 |        1350000 |    1179332 |
 |          |                               |                |                | glusterfs (3.3.0-362) |                 |                |            |
+
+
+More [results](https://docs.google.com/document/d/1JB8GVYHrPK4TPMQnwViZNA-fdFMpYw-Upkpsa_YL2es/edit?usp=sharing) on logging rate.
+
+```sh
+### On the compute node where pod logs are being generated
+# pidstat -C fluentd 30
+```
+* 30000: 48%
+* 45000: 96%

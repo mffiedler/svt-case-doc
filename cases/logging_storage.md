@@ -36,6 +36,7 @@ OPTIONS='--selinux-enabled --log-opt max-size=10M --log-opt max-file=3 --signatu
 ...
 
 ### Restart docker and atomic-openshift-node services if we need to modify the above file
+# systemctl restart docker.service atomic-openshift-node.service
 ```
 
 

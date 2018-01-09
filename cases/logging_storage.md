@@ -5,9 +5,11 @@
 ### IO1
 Follow [Case OCP-15841](https://polarion.engineering.redhat.com/polarion/#/project/OSE/workitem?id=OCP-15841).
 
-1 master, 1 infra and 2 computes.
+1 master, 1 infra and 2 computes. All m4.xlarge instances.
 
 ### Glusterfs
+
+1 master, 1 infra and 5 computes. All m4.xlarge instances.
 
 ## Configure default storage class
 

@@ -169,6 +169,8 @@ pods/web
 
 ```sh
 # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/openshift-glusterfs/config.yml
+### 3.9+
+# ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/openshift-glusterfs/config.yml
 ```
 
 Difference on config.yml and registry.yml in [playbooks/byo/openshift-glusterfs](https://github.com/openshift/openshift-ansible/tree/master/playbooks/byo/openshift-glusterfs), quoting Comment 8 from [bz](https://bugzilla.redhat.com/show_bug.cgi?id=1507628):

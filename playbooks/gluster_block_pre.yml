@@ -1,0 +1,7 @@
+---
+- name: gluster block prerequisites
+  hosts: all
+  remote_user: root
+
+  roles:
+    - gluster_block_pre

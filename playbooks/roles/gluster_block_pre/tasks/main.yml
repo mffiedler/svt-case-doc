@@ -1,0 +1,3 @@
+---
+- include: ../cns_deploy/tasks/cns_load_modules.yml
+- include: ../cns_deploy/tasks/cns_systemctl.yml

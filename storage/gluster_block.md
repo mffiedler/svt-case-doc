@@ -86,13 +86,13 @@ provisioner: gluster.org/glusterblock
 # oc create -f sc_glusterblock.yaml
 ```
 
-
+Then create PVC and prove it is block-volume:
 
 ```sh
 ### create PVC based on glusterblock
 # oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/pvc_glusterblock.yaml
 
-### watch heketi pod logs
+### watch heketi pod logs: keywords "Command: gluster-block create"
 # oc logs -f heketi-storage-1-xbb7m
 ...
 [kubeexec] DEBUG 2018/01/12 20:07:14 /src/github.com/heketi/heketi/executors/kubeexec/kubeexec.go:250: Host: ip-172-31-19-193.us-west-2.compute.internal Pod: glusterfs-storage-rd2qr Command: gluster-block create vol_19358103e4767c7f3363b43c8e2833c4/blockvol_7733dc8cd6244c17afb8ef3f57d9b86e  ha 3 auth enable prealloc full 172.31.19.193,172.31.27.35,172.31.46.22 2G --json

@@ -86,12 +86,17 @@ provisioner: gluster.org/glusterblock
 # oc create -f sc_glusterblock.yaml
 ```
 
-Then create PVC and prove it is block-volume:
+Then create PVC:
 
 ```sh
 ### create PVC based on glusterblock
 # oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/pvc_glusterblock.yaml
+```
 
+## Prove it is block-volume
+Logs from hekiti pod:
+
+```sh
 ### watch heketi pod logs: keywords "Command: gluster-block create"
 # oc logs -f heketi-storage-1-xbb7m
 ...
@@ -99,7 +104,11 @@ Then create PVC and prove it is block-volume:
 Result: { "IQN": "iqn.2016-12.org.gluster-block:22e7f729-51c9-4ca7-b55b-1f2e57087f8f", "USERNAME": "22e7f729-51c9-4ca7-b55b-1f2e57087f8f", "PASSWORD": "de00be08-df1e-4378-a9cd-45d7bb122839", "PORTAL(S)": [ "172.31.19.193:3260", "172.31.27.35:3260", "172.31.46.22:3260" ], "RESULT": "SUCCESS" }
 [heketi] INFO 2018/01/12 20:07:14 Created block volume 7733dc8cd6244c17afb8ef3f57d9b86e
 ...
+```
 
+PV's description:
+
+```sh
 # oc get pvc
 NAME          STATUS    VOLUME                                     CAPACITY   ACCESSMODES   STORAGECLASS   AGE
 pvc-gluster   Bound     pvc-23c8e92f-f7d4-11e7-ae9c-028542dcc35e   1Gi        RWO           glusterblock   24s
@@ -142,7 +151,11 @@ Source:
     SessionCHAPAuth:	true
     SecretRef:		&{glusterblk-22e7f729-51c9-4ca7-b55b-1f2e57087f8f-secret}
 Events:			<none>
+```
 
+Output from heketi-cli:
+
+```sh
 # oc rsh heketi-storage-1-xbb7m
 
 sh-4.2# heketi-cli --version

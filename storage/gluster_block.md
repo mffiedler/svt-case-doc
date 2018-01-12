@@ -83,6 +83,12 @@ parameters:
   restuser: admin
 provisioner: gluster.org/glusterblock
 
+# oc create -f sc_glusterblock.yaml
+```
+
+
+
+```sh
 ### create PVC based on glusterblock
 # oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/pvc_glusterblock.yaml
 
@@ -137,8 +143,12 @@ Source:
     SecretRef:		&{glusterblk-22e7f729-51c9-4ca7-b55b-1f2e57087f8f-secret}
 Events:			<none>
 
-### volume with "[block]"
 # oc rsh heketi-storage-1-xbb7m
+
+sh-4.2# heketi-cli --version
+heketi-cli 5.0.0
+
+### volume with "[block]"
 sh-4.2# heketi-cli --server http://heketi-storage-glusterfs.apps.0112-xte.qe.rhcloud.com --user admin --secret 6BjeTm0nDpXXD/Dubi076bvN4+Q6WPdL7R8SYQEK7Dg= volume list
         Id:19358103e4767c7f3363b43c8e2833c4    Cluster:4690bc83f8c06bc09d840ede8e2f3784    Name:vol_19358103e4767c7f3363b43c8e2833c4 [block]
         Id:8316417d80cfbe08edfbe3e4589a85e0    Cluster:4690bc83f8c06bc09d840ede8e2f3784    Name:heketidbstorage

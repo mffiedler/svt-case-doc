@@ -119,13 +119,15 @@ sh-4.2$ curl --connect-timeout 2 -s -k --cert /etc/elasticsearch/secret/admin-ce
 
 ### for debugging
 sh-4.2$ curl -s -k --cert /etc/elasticsearch/secret/admin-cert   --key /etc/elasticsearch/secret/admin-key https://localhost:9200/_cat/thread_pool?v\&h=host,bulk.completed,bulk.rejected,bulk.queue,bulk.active,bulk.queueSize
+
+sh-4.2$ curl --connect-timeout 2 -s -k --cert /etc/elasticsearch/secret/admin-cert --key /etc/elasticsearch/secret/admin-key https://logging-es:9200/_cat/indices?v | grep aaa001 | awk '{print $6}' | awk '{s+=$1} END {print s}'
 ```
 
 ## Result
 
 * 20170112: oc(3.7.9-1.git.0.7c71a2d.el7), logging(v3.7.22-1), gluster(3.3.0-362 with heketi 3.3.0-364):10 projoects X 2 nodes: block-volume
-     * "--line-length 1024 --word-length 7 --rate 4500 --time 0 --fixed-line --num-lines 1080000\n" (750 rate/node X 4 hours): 
-     * "--line-length 1024 --word-length 7 --rate 6000 --time 0 --fixed-line --num-lines 1440000\n" (1000 rate/node X 4 hours): no loss
+     * "--line-length 1024 --word-length 7 --rate 4500 --time 0 --fixed-line --num-lines 1080000\n" (750 rate/node X 4 hours): no loss (21600000)
+     * "--line-length 1024 --word-length 7 --rate 6000 --time 0 --fixed-line --num-lines 1440000\n" (1000 rate/node X 4 hours): no loss (28800000)
      
 
      

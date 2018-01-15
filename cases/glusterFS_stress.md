@@ -71,6 +71,12 @@ to one of the cns nodes.
       dnsPolicy: ClusterFirst
       nodeSelector:
         glusterfs: storage-host
+
+# oc edit dc/glusterblock-storage-provisioner-dc -n glusterfs
+...
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        glusterfs: storage-host
 ...
 ```
 

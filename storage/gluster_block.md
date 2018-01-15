@@ -38,8 +38,8 @@ Now we create `sc` _glusterblock_:
 # oc get sc glusterfs-storage -o yaml | grep secretName: | awk '{print $2}'
 heketi-storage-admin-secret
 
-# oc get sc glusterfs-storage -o yaml > glusterblock_secret.yaml
-### modify the name and type
+# oc get secret heketi-storage-admin-secret -o yaml > glusterblock_secret.yaml
+### modify name, selfLink and type
 # vi glusterblock_secret.yaml
 apiVersion: v1
 data:

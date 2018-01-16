@@ -125,11 +125,11 @@ sh-4.2$ curl --connect-timeout 2 -s -k --cert /etc/elasticsearch/secret/admin-ce
 
 ## Result
 
-* 20170112: oc(3.9.0-0.19.0.git.0.4b1410e.el7), logging(v3.7.22-1), gluster(3.3.0-362 with heketi 3.3.0-364):10 projoects X 2 nodes: block-volume
+* 20170112: oc(3.7.9-1.git.0.7c71a2d.el7), logging(v3.7.22-1), gluster(3.3.0-362 with heketi 3.3.0-364):10 projoects X 2 nodes: block-volume
      * "--line-length 1024 --word-length 7 --rate 4500 --time 0 --fixed-line --num-lines 1080000\n" (750 rate/node X 4 hours): no loss (21600000)
      * "--line-length 1024 --word-length 7 --rate 6000 --time 0 --fixed-line --num-lines 1440000\n" (1000 rate/node X 4 hours): no loss (28800000)
 
-* 20170115: oc(3.7.9-1.git.0.7c71a2d.el7), logging(v3.9.0-0.9.0.0), gluster(3.3.0-362 with heketi 3.3.0-364):10 projoects X 2 nodes: block-volume
+* 20170115: oc(3.9.0-0.19.0.git.0.4b1410e.el7), logging(v3.9.0-0.9.0.0), gluster(3.3.0-362 with heketi 3.3.0-364):10 projoects X 2 nodes: block-volume
      * 750 rate/node X 4 hours: 91% (19586209 / 21600000)
      * 1000 rate/node X 4 hours: 64% (18442784 / 28800000)
 

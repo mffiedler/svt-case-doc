@@ -135,7 +135,7 @@ sh-4.2$ curl --connect-timeout 2 -s -k --cert /etc/elasticsearch/secret/admin-ce
 
 * 20170116: oc(3.9.0-0.19.0.git.0.4b1410e.el7), logging(v3.9.0-0.9.0.0), gp2:10 projoects X 2 nodes:
      * 750 rate/node X 4 hours: 87% (18698762 / 21600000)
-     * 1000 rate/node X 4 hours: % ( / 28800000)
+     * 1000 rate/node X 4 hours: 67% (19244989 / 28800000)
 
      
 

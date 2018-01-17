@@ -209,3 +209,6 @@ pod, nodes' readiness might be compromised:
 | 20171026 | v3.7.0-0.181.0 | rhel    | overlay2              | 3.3.0-12  | 3.3.0-12  | no       | 1000 | [link](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-12-188/) or [link-ex](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-12-188/) |
 | 20171027 | v3.7.0-0.178.1 | rhel    | overlay2              | 3.3.0-362 | 3.3.0-362 | yes      | 1000 | [link](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-48-254/) or [link-ex](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-48-254/)                                                   |
 | 20180117 | v3.7.0-0.178.1 | rhel    | overlay2              | 3.3.0-362 | 3.3.0-364 | yes      | 1000 | [link](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-60-91/) or [link-ex](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-60-91/)                                                   |
+
+20180117: 1 master, 1 infra, 4 compute nodes, 3 glusterfs nodes, 1 heketi nodes on which gluster-block-provisioner also runs. 
+All nodes are of type m4.xlarge.

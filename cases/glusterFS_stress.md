@@ -212,6 +212,6 @@ pod, nodes' readiness might be compromised:
 
 20180117: tried with this cluster: 1 master, 1 infra, 4 compute nodes, 3 glusterfs nodes, 1 heketi nodes on which gluster-block-provisioner also runs. All nodes are of type m4.xlarge. The test struck at 783 pods. glusterfs pods had restarts. So glusterfs needs m4.4xlarge instances.
 
-20180117: reached 1445. Starting 1283 found logs like this in heketi pod:
+20180118: reached 1445. Starting 1283 found logs like this in heketi pod:
 
     > [heketi] ERROR 2018/01/18 20:29:44 /src/github.com/heketi/heketi/apps/glusterfs/app_volume.go:155: Failed to create volume: No space

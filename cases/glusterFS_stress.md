@@ -215,3 +215,17 @@ pod, nodes' readiness might be compromised:
 20180118: reached 1445. Starting 1283 found logs like this in heketi pod:
 
     > [heketi] ERROR 2018/01/18 20:29:44 /src/github.com/heketi/heketi/apps/glusterfs/app_volume.go:155: Failed to create volume: No space
+
+```
+glusterfs_devices=["/dev/xvdf", "/dev/xvdg", "/dev/xvdh"]
+openshift_storage_glusterfs_wipe=true
+openshift_storage_glusterfs_image=registry.access.redhat.com/rhgs3/rhgs-server-rhel7
+openshift_storage_glusterfs_version=3.3.0-362
+openshift_storage_glusterfs_heketi_image=registry.access.redhat.com/rhgs3/rhgs-volmanager-rhel7
+openshift_storage_glusterfs_heketi_version=3.3.0-364
+openshift_hosted_registry_glusterfs_swap=true
+openshift_storage_glusterfs_block_deploy=false
+openshift_storage_glusterfs_block_image=registry.access.redhat.com/rhgs3/rhgs-gluster-block-prov-rhel7
+openshift_storage_glusterfs_block_version=3.3.0-362
+openshift_storage_glusterfs_block_host_vol_size=2800
+```

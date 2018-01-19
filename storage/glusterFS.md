@@ -226,6 +226,8 @@ provisioner: kubernetes.io/glusterfs
 # heketi-cli --server http://heketi-storage-glusterfs.0825-0lo.qe.rhcloud.com --user admin --secret 0WTWPMxPtKWzjAoK+MUGVOPkw3RJ3TLvzBlHAJaTxqs= cluster list
 Clusters:
 6fac9ed1dd16ff1c330789c2e6494552
+
+# heketi-cli topology info
 ```
 
 Via [curl command](https://github.com/heketi/heketi/wiki/API#authentication-model-):

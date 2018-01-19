@@ -228,6 +228,7 @@ Clusters:
 6fac9ed1dd16ff1c330789c2e6494552
 
 # heketi-cli topology info
+sh-4.2# heketi-cli --server http://heketi-storage-glusterfs.apps.0119-i4t.qe.rhcloud.com --user admin --secret PWDgVBQlPLrvjEvrPnlqOnOGT3e9qTwczgG9xceUI6U= topology info | grep -E "Node Id|State"
 ```
 
 Via [curl command](https://github.com/heketi/heketi/wiki/API#authentication-model-):

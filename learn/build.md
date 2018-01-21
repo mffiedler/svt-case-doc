@@ -1,7 +1,7 @@
 # Build
 
 ## S2I
-When we <code>oc new-app</code> command, there is a way to specify the base image of the built image: Check [the doc](https://docs.openshift.com/container-platform/3.7/dev_guide/application_lifecycle/new_app.html#specifying-source-code).
+When we do <code>oc new-app</code> command, there is a way to specify the base image of the built image: Check [the doc](https://docs.openshift.com/container-platform/3.7/dev_guide/application_lifecycle/new_app.html#specifying-source-code).
 
 ```
 $ oc new-app openshift/ruby-20-centos7:latest~/home/user/code/my-ruby-app

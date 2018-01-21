@@ -45,7 +45,6 @@ The built image is based on: <code>jboss-eap64-openshift:1.7</code>.
 
 TODO: 
 
-* Can we get the hard proof of which the base image is for a build output?
 * Are they better than the frabric8 images mentioned here? https://developers.redhat.com/blog/2017/03/14/java-inside-docker/
 * How to config jave/jboss options when starting the pod?
 * What is the overhead for an app, wrapped up by a docker container?

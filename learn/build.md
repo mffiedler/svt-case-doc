@@ -38,7 +38,10 @@ registry.access.redhat.com/jboss-webserver-3/webserver30-tomcat7-openshift:1.3
 ...
 ```
 
-Those could be candidates of base image for your J2EE apps.
+Those could be candidates of base image for your J2EE apps. In the above example, the template is defined here: https://raw.githubusercontent.com/jboss-openshift/application-templates/master/eap/eap64-basic-s2i.json
+
+So in this template:
+The built image is based on: <code>jboss-eap64-openshift:1.7</code>.
 
 TODO: 
 

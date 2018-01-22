@@ -3,8 +3,27 @@ Original of Openshift
 ## Build
 See [HACKING.md](https://github.com/openshift/origin/blob/master/HACKING.md)
 
+Set up go-lang env. (check the required go-lange version [here](https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#building-kubernetes-on-a-local-osshell-environment)):
 ```sh
-[fedora@ip-172-31-40-12 openshift]$ git clone --depth 3 -b master https://github.com/openshift/origin.git
+$ wget https://dl.google.com/go/go1.9.1.linux-amd64.tar.gz
+$ tar -xzf go1.9.1.linux-amd64.tar.gz 
+$ mv go go1.9.1
+$ ln -s go1.9.1 go
+$ ln -s $(pwd)/go/bin/go ~/bin/go
+$ go version
+go version go1.9.1 linux/amd64
+
+###
+$ vi ~/.bash_profile
+...
+export GOROOT=$HOME/tool/go
+export GOPATH=$HOME/repo/go
+
+$ source ~/.bash_profile
+```
+
+```sh
+[fedora@ip-172-31-40-12 openshift]$ git clone https://github.com/openshift/origin.git
 $ docker --version 
 Docker version 17.09.0-ce, build afdb6d4
 ```

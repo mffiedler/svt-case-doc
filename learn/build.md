@@ -61,6 +61,7 @@ registry.access.redhat.com/jboss-webserver-3/webserver30-tomcat7-openshift:1.3
 
 TODO: 
 
+* How is this above base image built: buildah or Dockerfile?
 * Are they better than the frabric8 images mentioned here? https://developers.redhat.com/blog/2017/03/14/java-inside-docker/
 * How to config jave/jboss options when starting the pod?
 * What is the overhead for an app, wrapped up by a docker container?

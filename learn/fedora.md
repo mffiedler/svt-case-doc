@@ -14,7 +14,9 @@ Or, follow Section <code>Install from a package</code> on the [installation page
 ```sh
 $ sudo dnf install sysstat
 ### openshift dev. env.
-$ sudo dnf install rpm-build createrepo
+$ sudo dnf install rpm-build createrepo bsdtar krb5-devel
+### check on https://github.com/openshift/origin/blob/master/CONTRIBUTING.adoc
+$ sudo dnf install golang golang-race make gcc zip mercurial krb5-devel bsdtar bc rsync bind-utils file jq tito createrepo openssl gpgme gpgme-devel libassuan libassuan-devel
 
 ```
 

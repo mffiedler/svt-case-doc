@@ -14,7 +14,7 @@ Or, follow Section <code>Install from a package</code> on the [installation page
 ```sh
 $ sudo dnf install sysstat
 ### openshift dev. env.
-$ sudo dnf install rpm-build
+$ sudo dnf install rpm-build createrepo
 
 ```
 

@@ -29,7 +29,28 @@ Several useful information from the output of the above command:
 * Template src: https://github.com/jboss-openshift/application-templates
 * about EAP app: https://github.com/jboss-developer/jboss-eap-quickstarts
 
-So ... the docker images used by the template ... it gives clues [here](https://github.com/jboss-openshift/application-templates#common-image-repositories). Here is the idea:
+```sh
+# oc get bc -o yaml | grep "from:" -A 3
+        from:
+          kind: ImageStreamTag
+          name: jboss-eap64-openshift:1.6
+          namespace: openshift
+
+# oc get is -n openshift jboss-eap64-openshift -o yaml | grep "tag: \"1.6" -B3
+      dockerImageReference: registry.access.redhat.com/jboss-eap-6/eap64-openshift@sha256:03416282b034b93614ab2af74441ce481226bcf0b0b6c614cacd1b6f008f9792
+      generation: 2
+      image: sha256:03416282b034b93614ab2af74441ce481226bcf0b0b6c614cacd1b6f008f9792
+    tag: "1.6"
+
+```
+
+So we found it: https://access.redhat.com/containers/?tab=tags#/registry.access.redhat.com/jboss-eap-6/eap64-openshift
+
+```sh
+# docker pull registry.access.redhat.com/jboss-eap-6/eap64-openshift:1.6
+```
+
+More candidates of base image for your J2EE apps are [here](https://github.com/jboss-openshift/application-templates#common-image-repositories):
 
 ```sh
 # curl -L https://raw.githubusercontent.com/jboss-openshift/application-templates/master/jboss-image-streams.json | grep from  -A2
@@ -37,11 +58,6 @@ So ... the docker images used by the template ... it gives clues [here](https://
 registry.access.redhat.com/jboss-webserver-3/webserver30-tomcat7-openshift:1.3
 ...
 ```
-
-Those could be candidates of base image for your J2EE apps. In the above example, the template is defined here: https://raw.githubusercontent.com/jboss-openshift/application-templates/master/eap/eap64-basic-s2i.json
-
-So in this template:
-The built image is based on: <code>jboss-eap64-openshift:1.7</code>.
 
 TODO: 
 

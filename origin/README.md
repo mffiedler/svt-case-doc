@@ -135,6 +135,9 @@ $ go get github.com/onsi/gomega/...
 Run extended test against an existing cluster:
 
 ```sh
+### scp admin.kubeconfig from master node
+$ scp -i ~/.ssh/id_rsa_perf root@ec2-54-191-255-61.us-west-2.compute.amazonaws.com:/etc/origin/master/admin.kubeconfig /tmp/
+### The following command has not been tested yet
 $ KUBECONFIG=/path/to/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --ginkgo.focus=<regex>
 
 ```

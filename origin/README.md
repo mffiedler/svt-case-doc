@@ -214,3 +214,10 @@ Run extended tests with regex of `focus`:
 ### The following command has not been tested yet
 $ KUBECONFIG=/path/to/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --ginkgo.focus=<regex>
 ```
+
+
+### Cluster loader
+
+#### Config file
+
+[Here](https://github.com/openshift/origin/blob/master/test/extended/testdata/cluster/master-vert.yaml) is an example.

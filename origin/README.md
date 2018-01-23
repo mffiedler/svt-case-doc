@@ -1,7 +1,7 @@
 # Original of Openshift
 
 ## Build
-See [HACKING.md](https://github.com/openshift/origin/blob/master/HACKING.md)
+See [HACKING.md](https://github.com/openshift/origin/blob/master/HACKING.md) and [CONTRIBUTING.adoc](https://github.com/openshift/origin/blob/master/CONTRIBUTING.adoc).
 
 Set up go-lang env. (check the required go-lange version [here](https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#building-kubernetes-on-a-local-osshell-environment)):
 ```sh
@@ -31,6 +31,7 @@ $ vi ~/.bash_profile
 ...
 export GOROOT=$HOME/tool/go
 export GOPATH=$HOME/repo/go
+export PATH=$PATH:$GOPATH/bin
 
 $ source ~/.bash_profile
 ```
@@ -40,13 +41,32 @@ Install dependencies:
 ```sh
 ### check on https://github.com/openshift/origin/blob/master/CONTRIBUTING.adoc
 $ sudo dnf install golang golang-race make gcc zip mercurial krb5-devel bsdtar bc rsync bind-utils file jq tito createrepo openssl gpgme gpgme-devel libassuan libassuan-devel
+
+$ go get -u github.com/openshift/imagebuilder/cmd/imagebuilder
 ```
 
+Install docker:
+
 ```sh
-[fedora@ip-172-31-40-12 openshift]$ git clone https://github.com/openshift/origin.git
 $ docker --version 
 Docker version 17.09.0-ce, build afdb6d4
 ```
+
+Clone repo:
+
+```sh
+[fedora@ip-172-31-40-12 openshift]$ git clone https://github.com/openshift/origin.git
+```
+
+Build
+
+```sh
+$ cd origin
+$ make release
+
+```
+
+
 
 ## Extended Tests of Origin
 

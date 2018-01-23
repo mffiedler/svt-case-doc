@@ -1,6 +1,6 @@
 # Original of Openshift
 
-## Build
+## Prerequisites
 See [HACKING.md](https://github.com/openshift/origin/blob/master/HACKING.md) and [CONTRIBUTING.adoc](https://github.com/openshift/origin/blob/master/CONTRIBUTING.adoc).
 
 Set up go-lang env. (check the required go-lange version [here](https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#building-kubernetes-on-a-local-osshell-environment)):
@@ -52,22 +52,73 @@ $ docker --version
 Docker version 17.09.0-ce, build afdb6d4
 ```
 
+## Build
+
+### Build release
+
 Clone repo:
 
 ```sh
-[fedora@ip-172-31-40-12 openshift]$ git clone https://github.com/openshift/origin.git
+### using go get command to clone repo instead of git-clone command
+$ go get github.com/openshift/origin
+$ cd ~/repo/go/src/github.com/openshift/origin/
 ```
 
-Build
+Build release
 
 ```sh
 $ cd origin
 $ make release
-
+### Still not working
+[openshift/origin-service-catalog] --> Image openshift/origin-source was not found, pulling ...
+[openshift/origin-service-catalog] unable to pull image (from: openshift/origin-source, tag: latest): API error (404): {"message":"pull access denied for openshift/origin-source, repository does not exist or may require 'docker login'"}
+[ERROR] PID 8550: hack/lib/constants.sh:56: `return "${result}"` exited with status 1.
+[INFO] 		Stack Trace: 
+[INFO] 		  1: hack/lib/constants.sh:56: `return "${result}"`
+[INFO] 		  2: hack/build-images.sh:25: os::build::images
+[INFO]   Exiting with code 1.
+[openshift/origin-cluster-capacity] --> Image openshift/origin-source was not found, pulling ...
+[openshift/origin-cluster-capacity] unable to pull image (from: openshift/origin-source, tag: latest): API error (404): {"message":"pull access denied for openshift/origin-source, repository does not exist or may require 'docker login'"}
+[openshift/origin-template-service-broker] --> Image openshift/origin-source was not found, pulling ...
+[openshift/origin-template-service-broker] unable to pull image (from: openshift/origin-source, tag: latest): API error (404): {"message":"pull access denied for openshift/origin-source, repository does not exist or may require 'docker login'"}
+[openshift/origin-pod] --> Image openshift/origin-source was not found, pulling ...
+[openshift/origin-pod] unable to pull image (from: openshift/origin-source, tag: latest): API error (404): {"message":"pull access denied for openshift/origin-source, repository does not exist or may require 'docker login'"}
+[ERROR] PID 8549: hack/lib/constants.sh:56: `return "${result}"` exited with status 1.
+[INFO] 		Stack Trace: 
+[INFO] 		  1: hack/lib/constants.sh:56: `return "${result}"`
+[INFO] 		  2: hack/build-images.sh:25: os::build::images
+[INFO]   Exiting with code 1.
+[ERROR] PID 8548: hack/lib/constants.sh:56: `return "${result}"` exited with status 1.
+[ERROR] PID 8551: hack/lib/constants.sh:56: `return "${result}"` exited with status 1.
+[INFO] 		Stack Trace: 
+[INFO] 		Stack Trace: 
+[INFO] 		  1: hack/lib/constants.sh:56: `return "${result}"`
+[INFO] 		  1: hack/lib/constants.sh:56: `return "${result}"`
+[INFO] 		  2: hack/build-images.sh:25: os::build::images
+[INFO] 		  2: hack/build-images.sh:25: os::build::images
+[INFO]   Exiting with code 1.
+[INFO]   Exiting with code 1.
+[ERROR] PID 8500: hack/lib/constants.sh:361: `wait $i` exited with status 1.
+[INFO] 		Stack Trace: 
+[INFO] 		  1: hack/lib/constants.sh:361: `wait $i`
+[INFO] 		  2: hack/build-images.sh:25: os::build::images
+[INFO]   Exiting with code 1.
+[ERROR] hack/build-images.sh exited with code 1 after 00h 00m 02s
 ```
 
+### Run unit test
 
+```sh
+$ hack/test-go.sh -v
+```
 
-## Extended Tests of Origin
+### Run integration test
+TODO
+
+## Run extended Tests: ongoing
 
 See [extended_test.md](extended_test.md).
+
+```sh
+$ make build WHAT=test/extended/extended.test
+```

@@ -145,7 +145,7 @@ See [extended_test.md](extended_test.md).
 
 There are several ways to run extended tests.
 
-#### Run from released rpm: TODO
+#### Run from released rpm:
 on our master, the binary for running extended tests is already installed. It came with `atomic-openshift-tests` from `aos` repo:
 
 ```sh
@@ -166,9 +166,17 @@ Description : Origin Test Suite
 
 ```
 
+[Here](https://github.com/openshift/svt/blob/master/openshift_scalability/nodeVertical.sh#L25) shows how we run cluster-loader on master:
+
+```sh
+### scp admin.kubeconfig from master node
+$ scp -i ~/.ssh/id_rsa_perf root@ec2-54-191-255-61.us-west-2.compute.amazonaws.com:/etc/origin/master/admin.kubeconfig /tmp/
+# KUBECONFIG=/path/to/admin.kubeconfig /usr/libexec/atomic-openshift/extended.test --ginkgo.focus="Load cluster" --viper-config=$MY_CONFIG
+```
+
 #### Run from local build:
 
-Build:
+Build the binary:
 
 ```sh
 $ make build WHAT=test/extended/extended.test
@@ -176,19 +184,18 @@ $ ll _output/local/bin/linux/amd64/extended.test
 -rwxrwxr-x. 1 fedora fedora 180904704 Jan 23 01:53 _output/local/bin/linux/amd64/extended.test
 ```
 
-
-
-Run extended test against an existing cluster:
+Run cluster-loader
 
 ```sh
-### scp admin.kubeconfig from master node
-$ scp -i ~/.ssh/id_rsa_perf root@ec2-54-191-255-61.us-west-2.compute.amazonaws.com:/etc/origin/master/admin.kubeconfig /tmp/
-### The following command has not been tested yet
-$ KUBECONFIG=/path/to/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --ginkgo.focus=<regex>
-
+# KUBECONFIG=/path/to/admin.kubeconfig  _output/local/bin/linux/amd64/extended.test --ginkgo.focus="Load cluster" --viper-config=$MY_CONFIG
 ```
 
+#### Run from src
 
+```sh
+### The following command has not been tested yet
+$ KUBECONFIG=/path/to/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --ginkgo.focus=<regex>
+```
 
 Get dependencies:
 
@@ -196,8 +203,12 @@ Get dependencies:
 $ go get github.com/onsi/ginkgo/ginkgo
 $ go get github.com/onsi/gomega/...
 ```
-Run cluster-loader from src:
+Run cluster-loader:
 
 ```sh
-$ FOCUS='Load cluster' KUBECONFIG=/tmp/admin.kubeconfig TEST_ONLY=true test/extended/core.sh
+$ FOCUS='Load cluster' KUBECONFIG=/tmp/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --viper-config=$MY_CONFIG
+### or,
+$ KUBECONFIG=/tmp/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --ginkgo.focus="Load cluster" --viper-config=$MY_CONFIG
 ```
+
+

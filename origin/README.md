@@ -106,6 +106,30 @@ $ make release
 [ERROR] hack/build-images.sh exited with code 1 after 00h 00m 02s
 ```
 
+We can see that the RPMs are generated from "make-release": Probablly `origin-tests-*.rpm` contains extended test binary.
+
+```sh
+[fedora@ip-172-31-40-12 origin]$ ll _output/local/releases/rpms/
+total 203228
+-rw-rw-r--. 1 fedora fedora      191 Jan 23 15:36 local-release.repo
+-rw-rw-r--. 1 fedora fedora 71353858 Jan 23 15:34 origin-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
+-rw-rw-r--. 1 fedora fedora 34436274 Jan 23 15:35 origin-clients-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
+-rw-rw-r--. 1 fedora fedora 11297366 Jan 23 15:36 origin-cluster-capacity-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
+-rw-rw-r--. 1 fedora fedora    10346 Jan 23 15:36 origin-docker-excluder-3.9.0-0.alpha.3.121.e4baeb2.noarch.rpm
+-rw-rw-r--. 1 fedora fedora    10314 Jan 23 15:36 origin-excluder-3.9.0-0.alpha.3.121.e4baeb2.noarch.rpm
+-rw-rw-r--. 1 fedora fedora 32603242 Jan 23 15:35 origin-federation-services-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
+-rw-rw-r--. 1 fedora fedora      191 Jan 23 15:36 origin-local-release.repo
+-rw-rw-r--. 1 fedora fedora    24906 Jan 23 15:34 origin-master-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
+-rw-rw-r--. 1 fedora fedora    11434 Jan 23 15:35 origin-node-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
+-rw-rw-r--. 1 fedora fedora   400658 Jan 23 15:35 origin-pod-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
+-rw-rw-r--. 1 fedora fedora  3685274 Jan 23 15:35 origin-sdn-ovs-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
+-rw-rw-r--. 1 fedora fedora 10379094 Jan 23 15:35 origin-service-catalog-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
+-rw-rw-r--. 1 fedora fedora 14391690 Jan 23 15:35 origin-template-service-broker-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
+-rw-rw-r--. 1 fedora fedora 29463998 Jan 23 15:35 origin-tests-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
+drwxrwxr-x. 2 fedora fedora     4096 Jan 23 15:36 repodata
+
+```
+
 ### Run unit test
 
 ```sh
@@ -119,6 +143,31 @@ TODO
 
 See [extended_test.md](extended_test.md).
 
+There are several ways to run extended tests.
+
+#### Run from released rpm: TODO
+on our master, the binary for running extended tests is already installed. It came with `atomic-openshift-tests` from `aos` repo:
+
+```sh
+# yum info atomic-openshift-tests
+Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
+Installed Packages
+Name        : atomic-openshift-tests
+Arch        : x86_64
+Version     : 3.9.0
+Release     : 0.22.0.git.0.d4658fb.el7
+Size        : 182 M
+Repo        : installed
+From repo   : aos
+Summary     : Origin Test Suite
+URL         : https://github.com/openshift/origin
+License     : ASL 2.0
+Description : Origin Test Suite
+
+```
+
+#### Run from local build:
+
 Build:
 
 ```sh
@@ -127,10 +176,7 @@ $ ll _output/local/bin/linux/amd64/extended.test
 -rwxrwxr-x. 1 fedora fedora 180904704 Jan 23 01:53 _output/local/bin/linux/amd64/extended.test
 ```
 
-```sh
-$ go get github.com/onsi/ginkgo/ginkgo
-$ go get github.com/onsi/gomega/...
-```
+
 
 Run extended test against an existing cluster:
 
@@ -142,6 +188,14 @@ $ KUBECONFIG=/path/to/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --gi
 
 ```
 
+
+
+Get dependencies:
+
+```sh
+$ go get github.com/onsi/ginkgo/ginkgo
+$ go get github.com/onsi/gomega/...
+```
 Run cluster-loader from src:
 
 ```sh

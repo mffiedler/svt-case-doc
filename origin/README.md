@@ -123,18 +123,19 @@ Build:
 
 ```sh
 $ make build WHAT=test/extended/extended.test
+$ ll _output/local/bin/linux/amd64/extended.test 
+-rwxrwxr-x. 1 fedora fedora 180904704 Jan 23 01:53 _output/local/bin/linux/amd64/extended.test
 ```
 
 Run extended test against an existing cluster:
 
 ```sh
 $ KUBECONFIG=/path/to/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --ginkgo.focus=<regex>
-$ ll _output/local/bin/linux/amd64/extended.test 
--rwxrwxr-x. 1 fedora fedora 180904704 Jan 23 01:53 _output/local/bin/linux/amd64/extended.test
+
 ```
 
-Run cluster-loader:
+Run cluster-loader from src:
 
 ```sh
-$ TODO
+$ FOCUS='Load cluster' KUBECONFIG=/tmp/admin.kubeconfig TEST_ONLY=true test/extended/core.sh
 ```

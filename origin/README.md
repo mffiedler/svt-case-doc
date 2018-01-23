@@ -184,18 +184,13 @@ $ ll _output/local/bin/linux/amd64/extended.test
 -rwxrwxr-x. 1 fedora fedora 180904704 Jan 23 01:53 _output/local/bin/linux/amd64/extended.test
 ```
 
-Run cluster-loader
+Run cluster-loader (note that cluster-loader is only one of the extended tests):
 
 ```sh
 # KUBECONFIG=/path/to/admin.kubeconfig  _output/local/bin/linux/amd64/extended.test --ginkgo.focus="Load cluster" --viper-config=$MY_CONFIG
 ```
 
 #### Run from src
-
-```sh
-### The following command has not been tested yet
-$ KUBECONFIG=/path/to/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --ginkgo.focus=<regex>
-```
 
 Get dependencies:
 
@@ -211,4 +206,9 @@ $ FOCUS='Load cluster' KUBECONFIG=/tmp/admin.kubeconfig TEST_ONLY=true test/exte
 $ KUBECONFIG=/tmp/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --ginkgo.focus="Load cluster" --viper-config=$MY_CONFIG
 ```
 
+Run extended tests with regex of `focus`:
 
+```sh
+### The following command has not been tested yet
+$ KUBECONFIG=/path/to/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --ginkgo.focus=<regex>
+```

@@ -115,7 +115,7 @@ $ hack/test-go.sh -v
 ### Run integration test
 TODO
 
-## Run extended Tests: ongoing
+### Run extended Tests: ongoing
 
 See [extended_test.md](extended_test.md).
 

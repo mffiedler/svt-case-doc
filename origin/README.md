@@ -143,7 +143,9 @@ TODO
 
 See [extended_test.md](extended_test.md).
 
-There are several ways to run extended tests.
+There are several ways to run extended tests. Note that cluster-loader is only one of the extended tests. Our beloved cluster-loader has a [page](https://docs.openshift.com/container-platform/3.7/scaling_performance/using_cluster_loader.html) in openshift-doc.
+
+If you want to use extended test as a tool, instead of doing development/fixing bugs of the tool, use the released PRM is the best way. Otherwise, run it from the local build or src as described below.
 
 #### Run from released rpm
 on our master, the binary for running extended tests is already installed. It came with `atomic-openshift-tests` from `aos` repo:
@@ -184,7 +186,7 @@ $ ll _output/local/bin/linux/amd64/extended.test
 -rwxrwxr-x. 1 fedora fedora 180904704 Jan 23 01:53 _output/local/bin/linux/amd64/extended.test
 ```
 
-Run cluster-loader (note that cluster-loader is only one of the extended tests): This requires `oc` command in `${PATH}`.
+Run cluster-loader: This requires `oc` command in `${PATH}`.
 
 ```sh
 # KUBECONFIG=/tmp/admin.kubeconfig  _output/local/bin/linux/amd64/extended.test --ginkgo.focus="Load cluster" --viper-config=$MY_CONFIG

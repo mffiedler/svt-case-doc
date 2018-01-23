@@ -139,13 +139,13 @@ $ hack/test-go.sh -v
 ### Run integration test
 TODO
 
-### Run extended Tests: ongoing
+### Run extended Tests
 
 See [extended_test.md](extended_test.md).
 
 There are several ways to run extended tests.
 
-#### Run from released rpm:
+#### Run from released rpm
 on our master, the binary for running extended tests is already installed. It came with `atomic-openshift-tests` from `aos` repo:
 
 ```sh
@@ -174,7 +174,7 @@ $ scp -i ~/.ssh/id_rsa_perf root@ec2-54-191-255-61.us-west-2.compute.amazonaws.c
 # KUBECONFIG=/path/to/admin.kubeconfig /usr/libexec/atomic-openshift/extended.test --ginkgo.focus="Load cluster" --viper-config=$MY_CONFIG
 ```
 
-#### Run from local build:
+#### Run from local build
 
 Build the binary:
 

@@ -203,14 +203,8 @@ $ go get github.com/onsi/gomega/...
 Run cluster-loader: No need to install `oc` command because it will build it on the fly.
 
 ```sh
+### --viper-config not working yet
 $ FOCUS='Load cluster' KUBECONFIG=/tmp/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --viper-config=$MY_CONFIG
-```
-
-Run extended tests with regex of `focus`:
-
-```sh
-### The following command has not been tested yet
-$ KUBECONFIG=/path/to/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --ginkgo.focus=<regex>
 ```
 
 

@@ -204,8 +204,6 @@ Run cluster-loader: No need to install `oc` command because it will build it on 
 
 ```sh
 $ FOCUS='Load cluster' KUBECONFIG=/tmp/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --viper-config=$MY_CONFIG
-### or,
-$ KUBECONFIG=/tmp/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --ginkgo.focus="Load cluster" --viper-config=$MY_CONFIG
 ```
 
 Run extended tests with regex of `focus`:

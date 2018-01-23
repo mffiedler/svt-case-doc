@@ -119,6 +119,20 @@ TODO
 
 See [extended_test.md](extended_test.md).
 
+Build:
+
 ```sh
 $ make build WHAT=test/extended/extended.test
+```
+
+Run extended test against an existing cluster:
+
+```sh
+$ KUBECONFIG=/path/to/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --ginkgo.focus=<regex>
+```
+
+Run cluster-loader:
+
+```sh
+$ TODO
 ```

@@ -184,10 +184,10 @@ $ ll _output/local/bin/linux/amd64/extended.test
 -rwxrwxr-x. 1 fedora fedora 180904704 Jan 23 01:53 _output/local/bin/linux/amd64/extended.test
 ```
 
-Run cluster-loader (note that cluster-loader is only one of the extended tests):
+Run cluster-loader (note that cluster-loader is only one of the extended tests): This requires `oc` command in the path.
 
 ```sh
-# KUBECONFIG=/path/to/admin.kubeconfig  _output/local/bin/linux/amd64/extended.test --ginkgo.focus="Load cluster" --viper-config=$MY_CONFIG
+# KUBECONFIG=/tmp/admin.kubeconfig  _output/local/bin/linux/amd64/extended.test --ginkgo.focus="Load cluster" --viper-config=$MY_CONFIG
 ```
 
 #### Run from src
@@ -198,7 +198,7 @@ Get dependencies:
 $ go get github.com/onsi/ginkgo/ginkgo
 $ go get github.com/onsi/gomega/...
 ```
-Run cluster-loader:
+Run cluster-loader: No need to install `oc` command because it will build it on the fly.
 
 ```sh
 $ FOCUS='Load cluster' KUBECONFIG=/tmp/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --viper-config=$MY_CONFIG

@@ -221,3 +221,11 @@ $ KUBECONFIG=/path/to/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --gi
 #### Config file
 
 [Here](https://github.com/openshift/origin/blob/master/test/extended/testdata/cluster/master-vert.yaml) is an example.
+
+On master
+
+```
+# cd svt/openshift_scalability
+# cp /etc/origin/master/admin.kubeconfig /tmp/
+# KUBECONFIG=/tmp/admin.kubeconfig /usr/libexec/atomic-openshift/extended.test --ginkgo.focus="Load cluster" --viper-config=config/golang/pyconfigStatefulSet.yaml
+```

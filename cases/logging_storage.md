@@ -64,6 +64,7 @@ Set up buffer size limit for fluentd:
 openshift_logging_fluentd_buffer_size_limit=16m
 #in case of glusterfs
 openshift_logging_es_pvc_size=800Gi
+###The following line has be to commented out
 #openshift_logging_storage_kind=dynamic
 openshift_logging_es_pvc_dynamic=false
 ###use glusterblock; glusterfs-storage does not even work for installation of logging stack

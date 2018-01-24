@@ -177,6 +177,12 @@ $ scp -i ~/.ssh/id_rsa_perf root@ec2-54-191-255-61.us-west-2.compute.amazonaws.c
 ```
 
 #### Run from local build
+Get dependencies:
+
+```sh
+$ go get github.com/onsi/ginkgo/ginkgo
+$ go get github.com/onsi/gomega/...
+```
 
 Build the binary:
 
@@ -192,19 +198,17 @@ Run cluster-loader: This requires `oc` command in `${PATH}`.
 # KUBECONFIG=/tmp/admin.kubeconfig  _output/local/bin/linux/amd64/extended.test --ginkgo.focus="Load cluster" --viper-config=$MY_CONFIG
 ```
 
-#### Run from src
+#### Run from src: test/extended/core.sh: NOT WORKING YET
 
-Get dependencies:
 
-```sh
-$ go get github.com/onsi/ginkgo/ginkgo
-$ go get github.com/onsi/gomega/...
-```
 Run cluster-loader: No need to install `oc` command because it will build it on the fly.
 
 ```sh
 ### --viper-config not working yet
 $ FOCUS='Load cluster' KUBECONFIG=/tmp/admin.kubeconfig TEST_ONLY=true test/extended/core.sh --viper-config=$MY_CONFIG
+
+### --viper-config not working yet even with the following var:
+TEST_EXTENDED_ARGS="--viper-config=config/golang/pyconfigStatefulSet"
 ```
 
 

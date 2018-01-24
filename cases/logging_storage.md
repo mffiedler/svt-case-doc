@@ -63,8 +63,12 @@ Set up buffer size limit for fluentd:
 ```
 openshift_logging_fluentd_buffer_size_limit=16m
 #in case of glusterfs
-#openshift_logging_es_pvc_size=800Gi
-#openshift_logging_elasticsearch_pvc_storage_class_name=glusterfs-storage
+openshift_logging_es_pvc_size=800Gi
+#openshift_logging_storage_kind=dynamic
+openshift_logging_es_pvc_dynamic=false
+###use glusterblock; glusterfs-storage does not even work for installation of logging stack
+openshift_logging_elasticsearch_pvc_storage_class_name=glusterblock
+
 ```
 
 After running logging playbook, make sure only primary nodes are labeled for fluentd:

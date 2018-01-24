@@ -12,6 +12,7 @@
 * [brick-multiplexing](http://blog.gluster.org/brick-multiplexing-in-gluster-3-10/)
 * gluster-block-provisioning: [design doc](https://github.com/gluster/gluster-kubernetes/blob/master/docs/design/gluster-block-provisioning.md), [repo](https://github.com/gluster/gluster-block/)
 * [cns@rh.blog](https://redhatstorage.redhat.com/2017/10/05/container-native-storage-for-the-openshift-masses/)
+* [Good notes](https://github.com/RedHatWorkshops/openshiftv3-ops-workshop/blob/master/cns.md) sent by Elko
 
 ## CNS
 

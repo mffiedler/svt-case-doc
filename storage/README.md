@@ -8,6 +8,12 @@
 
 ## File System
 
+check fs
+
+```sh
+$ df -T
+```
+
 ## LVM
 
 ## [Storage commands on RHEL](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/s1-sysinfo-filesystems.html)

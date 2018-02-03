@@ -6,7 +6,7 @@
 
 ## Installation
 
-### [from binary]()
+### [from binary](https://golang.org/doc/install)
 
 ```sh
 $ cd ~/tool
@@ -29,6 +29,8 @@ go version go1.9.3 linux/amd64
 ### from dnf
 
 ## Cli
+
+## IDE
 
 ### Dep. Management
 

@@ -31,7 +31,7 @@ Notice that `journald` have more messages than `rsyslogd`.
 | default message store format | unstructured                            | structured, indexed binary                                                        |
 | cli to write                 | logger                                  | logger, systemd-cat                                                               |
 
-Run `logger "test msg 0001"`, then we can get log the entry from `tail -f /var/log/messsages` and `journalctl -f`.
+Run `logger "test msg 001"`, then we can get log the entry from `tail -f /var/log/messsages` and `journalctl -f` because both of them receive *Syslog messages*. Command `systemd-cat` (eg, `echo test msg 001 | systemd-cat`) writes only to `journald` and since `rsyslogd` is configured to import logs from `journald`, we can see the log entry in both too.
 
 ### rsyslog
 
@@ -99,6 +99,13 @@ The fields from `journald` look quite similar to ones from `rsyslogd`. How to us
 
 ### [Interaction between journald and rsyslogd](https://docs.fedoraproject.org/f27/system-administrators-guide/monitoring-and-automation/Viewing_and_Managing_Log_Files.html#s1-interaction_of_rsyslog_and_journal)
 
+By default, `rsyslogd` is configured to import logs from `journald`:
+
+```sh
+# grep -i journal /etc/rsyslog.conf | grep "^[^#;]"
+$ModLoad imjournal # provides access to the systemd journal
+$IMJournalStateFile imjournal.state
+```
 
 
 

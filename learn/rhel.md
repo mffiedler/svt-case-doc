@@ -3,7 +3,7 @@
 ## Logging
 logging docs on fedora: [here](https://docs.fedoraproject.org/f27/system-administrators-guide/monitoring-and-automation/Viewing_and_Managing_Log_Files.html).
 
-### Logging Services: journald, rsyslogd
+Logging Services: journald, rsyslogd
 
 ```sh
 # systemctl list-units | grep syslog
@@ -14,3 +14,6 @@ systemd-journald.service                            loaded active running   Jour
 systemd-journald.socket                             loaded active running   Journal Socket
 ```
 
+## More reading
+
+* [Syslog messages and Syslog protocol](https://blog.rapid7.com/2017/05/24/what-is-syslog/)

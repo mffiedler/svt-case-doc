@@ -75,6 +75,7 @@ Log rotation:
 
 ```
 
+### journald
 
 ## More reading
 

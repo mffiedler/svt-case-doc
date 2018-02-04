@@ -6,6 +6,31 @@
 # yum install bash-completion bash-completion-extras
 ```
 
+## man
+
+Search in man pages
+
+```sh
+$ man -k syslog
+logger (1)           - a shell command interface to the syslog(3) system log module
+rsyslog.conf (5)     - rsyslogd(8) configuration file
+rsyslogd (8)         - reliable and extended syslogd
+
+# man -k journal
+coredumpctl (1)      - Retrieve coredumps from the journal
+journal-remote.conf (5) - Journal remote service configuration files
+journal-remote.conf.d (5) - Journal remote service configuration files
+journalctl (1)       - Query the systemd journal
+journald.conf (5)    - Journal service configuration files
+journald.conf.d (5)  - Journal service configuration files
+systemd-cat (1)      - Connect a pipeline or program's output with the journal
+systemd-journal-upload (8) - Send journal messages over the network
+systemd-journald (8) - Journal service
+systemd-journald.service (8) - Journal service
+systemd-journald.socket (8) - Journal service
+systemd.journal-fields (7) - Special journal fields
+```
+
 ## Logging
 logging docs on fedora: [here](https://docs.fedoraproject.org/f27/system-administrators-guide/monitoring-and-automation/Viewing_and_Managing_Log_Files.html).
 

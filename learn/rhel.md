@@ -41,7 +41,11 @@ Add a rule for debug:
 
 ```sh
 # echo "*.debug /var/log/messages-debug" > /etc/rsyslog.d/debug.conf
-
+# systemctl restart rsyslog.service
+# logger -p user.debug "debug by me"
+# tail -f /var/log/messages
+...
+Feb  4 10:24:13 ip-172-31-21-62 ec2-user: debug by me
 ```
 
 ## More reading

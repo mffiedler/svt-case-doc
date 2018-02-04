@@ -1,5 +1,11 @@
 # RHEL
 
+## [bash-completion](https://www.cyberciti.biz/faq/fedora-redhat-scientific-linuxenable-bash-completion/)
+
+```sh
+# yum install bash-completion bash-completion-extras
+```
+
 ## Logging
 logging docs on fedora: [here](https://docs.fedoraproject.org/f27/system-administrators-guide/monitoring-and-automation/Viewing_and_Managing_Log_Files.html).
 
@@ -18,7 +24,7 @@ systemd-journald.socket                             loaded active running   Jour
 
 The conf file `/etc/rsyslog.conf` specify global directives, modules, and rules that consist of filter and action parts.
 
-```
+```sh
 ###check the following pages for log format
 ### http://www.rsyslog.com/doc/v8-stable/configuration/templates.html
 ### http://www.rsyslog.com/doc/master/configuration/properties.html
@@ -29,6 +35,13 @@ $ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
 authpriv.*                                              /var/log/secure
 # head -n 1 /var/log/secure
 Jan 29 19:22:54 ip-172-31-21-62 sshd[2197]: reverse mapping checking getaddrinfo for hn.kd.ny.adsl [125.44.139.5] failed - POSSIBLE BREAK-IN ATTEMPT!
+```
+
+Add a rule for debug:
+
+```sh
+# echo "*.debug /var/log/messages-debug" > /etc/rsyslog.d/debug.conf
+
 ```
 
 ## More reading

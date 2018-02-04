@@ -39,6 +39,10 @@ go version go1.9.3 linux/amd64
 * [sirupsen/logrus](https://github.com/sirupsen/logrus)
 * [op/go-logging](https://github.com/op/go-logging)
 
+### goroutine pool
+
+* [go-playground/pool](https://github.com/go-playground/pool)
+
 ### cli
 
 * [spf13/cobra](https://github.com/spf13/cobra)

@@ -20,6 +20,14 @@ systemd-journald.service                            loaded active running   Jour
 systemd-journald.socket                             loaded active running   Journal Socket
 ```
 
+|                       | rsyslog                                 | journal                                                                           |
+|-----------------------|-----------------------------------------|-----------------------------------------------------------------------------------|
+| content               | defined in /etc/rsyslog.conf            | Syslog messages, kernel log messages, boot messages, stdin/stderr of all services |
+| persistent by default | saved in /var/log folder with logrotate | no                                                                                |
+| message format        | *looks* structured to me                | structured, indexed binary                                                        |
+| protocol              | TCP/UDP                                 | Syslog                                                                            |
+|                       |                                         |                                                                                   |
+
 ### rsyslog
 
 The conf file `/etc/rsyslog.conf` specify global directives, modules, and rules that consist of filter and action parts.

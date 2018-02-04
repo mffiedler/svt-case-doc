@@ -132,7 +132,25 @@ $ModLoad imjournal # provides access to the systemd journal
 $IMJournalStateFile imjournal.state
 ```
 
+## NTP
 
+```sh
+### show status
+# timedatectl status
+### set timezone: temporarily
+# tzselect
+### set timezone: permanently
+# timedatectl set-timezone America/Toronto
+### set up ntp
+### check https://chrony.tuxfamily.org/manual.html for more configuration.
+# vi /etc/chrony.conf
+server <npt_server_name> iburst
+...
+# timedatectl set-ntp true
+# systemctl restart chronyd.service
+### Check ntp server in usage
+# chronyc sources -v
+```
 
 ## More reading
 

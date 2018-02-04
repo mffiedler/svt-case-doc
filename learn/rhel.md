@@ -20,13 +20,18 @@ systemd-journald.service                            loaded active running   Jour
 systemd-journald.socket                             loaded active running   Journal Socket
 ```
 
-|                              | rsyslog                                 | journal                                                                           |
+
+Notice that `journald` have more messages than `rsyslogd`.
+
+|                              | rsyslogd                                | journald                                                                          |
 |------------------------------|-----------------------------------------|-----------------------------------------------------------------------------------|
-| content                      | defined in /etc/rsyslog.conf            | Syslog messages, kernel log messages, boot messages, stdin/stderr of all services |
+| content                      | Syslog messages                         | Syslog messages, kernel log messages, boot messages, stdin/stderr of all services |
+| conf file                    | /etc/rsyslog.conf                       | /etc/rsyslog.conf                                                                 |
 | persistent by default        | saved in /var/log folder with logrotate | no                                                                                |
 | default message store format | unstructured                            | structured, indexed binary                                                        |
-| protocol                     | TCP/UDP                                 | Syslog                                                                            |
-|                              |                                         |                                                                                   |
+| cli to write                 | logger                                  | logger, systemd-cat                                                               |
+
+Run `logger "test msg 0001"`, then we can get log the entry from `tail -f /var/log/messsages` and `journalctl -f`.
 
 ### rsyslog
 
@@ -84,6 +89,18 @@ Log rotation:
 ```
 
 ### journald
+
+```sh
+# journalctl | tail -1
+Feb 04 15:10:06 ip-172-31-21-62.us-west-2.compute.internal systemd[1]: Starting Session 8 of user ec2-user.
+```
+
+The fields from `journald` look quite similar to ones from `rsyslogd`. How to use `journalctl` to filter out logs is shown [here](https://docs.fedoraproject.org/f27/system-administrators-guide/monitoring-and-automation/Viewing_and_Managing_Log_Files.html#s1-Using_the_Journal).
+
+### [Interaction between journald and rsyslogd](https://docs.fedoraproject.org/f27/system-administrators-guide/monitoring-and-automation/Viewing_and_Managing_Log_Files.html#s1-interaction_of_rsyslog_and_journal)
+
+
+
 
 ## More reading
 

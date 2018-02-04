@@ -1,5 +1,9 @@
 # Fedora
 
+## Doc
+
+[https://docs.fedoraproject.org/index.html](https://docs.fedoraproject.org/index.html)
+
 ## Launch a Fedora 26 instance on AWS
 
 Use command [here](https://github.com/hongkailiu/svt-case-doc/blob/master/ec2/ec2.md#fedora-26).

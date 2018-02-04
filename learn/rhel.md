@@ -8,7 +8,7 @@
 
 ## man
 
-Search in man pages
+Search in man pages with `man -k <keyword>`:
 
 ```sh
 $ man -k syslog

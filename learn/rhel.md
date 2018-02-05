@@ -99,7 +99,7 @@ menuentry 'Red Hat Enterprise Linux Server (0-rescue-2c0164cc85e344b6837514530c1
 # grub2-set-default 'Red Hat Enterprise Linux Server (3.10.0-514.21.2.el7.x86_64) 7.3 (Maipo)'
 ```
 
-Remove a kernel:
+Remove a kernel: Not easy to get a clean rollback!!!
 
 ```sh
 ### We can only remove kernel versions which is not the one being used.
@@ -119,6 +119,8 @@ kernel.x86_64                               3.10.0-693.17.1.el7                 
 ###
 ### NOT tried yet: https://weblog.aklmedia.nl/2014/02/limit-number-of-kernels-in-centos/
 # package-cleanup --oldkernels --count=2
+### or this might help:
+### https://wiki.gentoo.org/wiki/GRUB2_Quick_Start
 ```
 
 ## Logging

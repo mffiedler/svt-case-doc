@@ -1,5 +1,7 @@
 # RHEL
 
+[system_administrators_guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/)
+
 ## [bash-completion](https://www.cyberciti.biz/faq/fedora-redhat-scientific-linuxenable-bash-completion/)
 
 ```sh

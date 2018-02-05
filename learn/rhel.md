@@ -113,7 +113,13 @@ Available Packages
 kernel.x86_64                               3.10.0-693.17.1.el7                                rhui-REGION-rhel-server-releases
 ```
 
+`grup2` menu could have some leftovers even the unwanted versions even if the kernel versions are removed.
 
+```sh
+###
+### NOT tried yet: https://weblog.aklmedia.nl/2014/02/limit-number-of-kernels-in-centos/
+# package-cleanup --oldkernels --count=2
+```
 
 ## Logging
 logging docs on fedora: [here](https://docs.fedoraproject.org/f27/system-administrators-guide/monitoring-and-automation/Viewing_and_Managing_Log_Files.html).

@@ -31,6 +31,88 @@ systemd-journald.socket (8) - Journal service
 systemd.journal-fields (7) - Special journal fields
 ```
 
+## yum
+
+### gpgcheck
+
+```sh
+### By default, gpgcheck is enabled:
+# cat /etc/yum.conf |grep gpg
+gpgcheck=1
+
+### backup files in /etc/yum.repo.d/ folder and then delete all the files
+# yum-config-manager --add-repo="http://mirror.centos.org/centos/7/os/x86_64"
+### not working because of gpg checking
+# yum install -y telnet
+
+# man yum | grep gpg
+       --nogpgcheck
+              Configuration Option: gpgcheck
+
+# yum install -y telnet --nogpgcheck
+### or
+# vi /etc/yum.repos.d/mirror.centos.org_centos_7_os_x86_64.repo
+
+### Remember to remove the test repo file and recover the backed up ones.
+```
+
+### kernel update
+
+```sh
+### List availabe versions:
+# yum list kernel
+Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
+Installed Packages
+kernel.x86_64                               3.10.0-514.21.2.el7                                @koji-override-0/7.3            
+Available Packages
+kernel.x86_64                               3.10.0-693.17.1.el7                                rhui-REGION-rhel-server-releases
+
+### Show the current kernel info
+# uname -r
+3.10.0-514.21.2.el7.x86_64
+# yum -y update kernel
+
+# yum list kernel
+Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
+Installed Packages
+kernel.x86_64                               3.10.0-514.21.2.el7                               @koji-override-0/7.3             
+kernel.x86_64                               3.10.0-693.17.1.el7                               @rhui-REGION-rhel-server-releases
+# reboot
+
+# uname -r
+3.10.0-693.17.1.el7.x86_64
+```
+
+Set up default starting kernel
+
+```sh
+### List all kernel options
+# grep ^menuentry /etc/grub2.cfg 
+menuentry 'Red Hat Enterprise Linux Server 7.3 Rescue 8a0d989f3520475abcd4869f7dc9875b (3.10.0-693.17.1.el7.x86_64)' --class red --class gnu-linux --class gnu --class os --unrestricted $menuentry_id_option 'gnulinux-3.10.0-514.21.2.el7.x86_64-advanced-00a738da-7c2a-458c-83c0-2420aaed3b8a' {
+menuentry 'Red Hat Enterprise Linux Server (3.10.0-693.17.1.el7.x86_64) 7.3 (Maipo)' --class red --class gnu-linux --class gnu --class os --unrestricted $menuentry_id_option 'gnulinux-3.10.0-514.21.2.el7.x86_64-advanced-00a738da-7c2a-458c-83c0-2420aaed3b8a' {
+menuentry 'Red Hat Enterprise Linux Server (3.10.0-514.21.2.el7.x86_64) 7.3 (Maipo)' --class red --class gnu-linux --class gnu --class os --unrestricted $menuentry_id_option 'gnulinux-3.10.0-514.21.2.el7.x86_64-advanced-00a738da-7c2a-458c-83c0-2420aaed3b8a' {
+menuentry 'Red Hat Enterprise Linux Server (0-rescue-2c0164cc85e344b6837514530c15f0d7) 7.3 (Maipo)' --class red --class gnu-linux --class gnu --class os --unrestricted $menuentry_id_option 'gnulinux-0-rescue-2c0164cc85e344b6837514530c15f0d7-advanced-00a738da-7c2a-458c-83c0-2420aaed3b8a' {
+
+### Set up the desired one
+# grub2-set-default 'Red Hat Enterprise Linux Server (3.10.0-514.21.2.el7.x86_64) 7.3 (Maipo)'
+```
+
+Remove a kernel:
+
+```sh
+### We can only remove kernel versions which is not the one being used.
+# yum remove kernel-3.10.0-693.17.1.el7.x86_64 kernel-debug-devel-3.10.0-693.1.1.el7.x86_64 kernel-headers-3.10.0-693.1.1.el7.x86_64
+# reboot #maybe unnecessary
+# yum list kernel
+Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
+Installed Packages
+kernel.x86_64                               3.10.0-514.21.2.el7                                @koji-override-0/7.3            
+Available Packages
+kernel.x86_64                               3.10.0-693.17.1.el7                                rhui-REGION-rhel-server-releases
+```
+
+
+
 ## Logging
 logging docs on fedora: [here](https://docs.fedoraproject.org/f27/system-administrators-guide/monitoring-and-automation/Viewing_and_Managing_Log_Files.html).
 

@@ -32,15 +32,14 @@ openshift_prometheus_alertmanager_image_version=v3.9
 openshift_prometheus_alertbuffer_image_prefix=registry.reg-aws.openshift.com:443/openshift3/
 openshift_prometheus_alertbuffer_image_version=v3.9
 
-$ ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/openshift-prometheus/config.yml
+$ ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/deploy_cluster.yml
 ```
 
 * On an existing cluster:
 
 ```
 ### the inv. file contains same vars as above.
-
-$ ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/deploy_cluster.yml
+$ ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/openshift-prometheus/config.yml
 ```
 
 Example of inv. file is [here](https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_prometheus) and the meaning of inv. vars is [here](https://github.com/openshift/openshift-ansible/blob/master/inventory/hosts.example).

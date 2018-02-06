@@ -73,6 +73,7 @@ Edit rc, for example heapter and add nodeSelector:
         metrics: heapster
 ```
 
+If we have 2 kv-pairs as node selector, then the relation is *or* as described [here](https://stackoverflow.com/questions/37415617/can-we-mention-more-than-one-node-label-in-single-nodeselector-in-kubernetes).
 
 ## Link Service and pod
 

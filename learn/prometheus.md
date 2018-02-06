@@ -12,7 +12,7 @@ Tested on Fedora26:
 
 ## Prometheus@oc
 
-* [doc@origin](https://github.com/openshift/origin/tree/master/examples/prometheus)
+* [doc@origin](https://github.com/openshift/origin/tree/master/examples/prometheus): useful prometheus queries.
 * [p@oc-blog](https://blog.openshift.com/tag/prometheus/)
 * [gap-archetecture](https://blog.openshift.com/monitoring-openshift-three-tools/)
 
@@ -64,6 +64,8 @@ svc/alerts         ClusterIP   172.26.146.214   <none>        443/TCP   9m
 svc/prometheus     ClusterIP   172.26.220.29    <none>        443/TCP   9m
 
 ```
+
+Make `redhat` as a cluster admin. With browser, open `https://prometheus-openshift-metrics.apps.0206-hl6.qe.rhcloud.com` and login with `redhat`.
 
 ### Uninstallation
 

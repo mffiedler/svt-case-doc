@@ -79,6 +79,16 @@ Use Prometheus rest API:
 $ curl -k --cookie "f81241e3a913aa890fb02ba92a29f1be=a08156ec5229f6eb1fda52ff623fdbfc; _oauth_proxy=cmVkaGF0QGNsdXN0ZXIubG9jYWw=|1517942370|9TAlGQ4L1j3oI5rsgutBwDpRrUI=" "https://prometheus-openshift-metrics.apps.0206-hl6.qe.rhcloud.com/api/v1/query_range?query=openshift_build_info&start=1517943409.293&end=1518029809.293&step=345&_=1517942400799"
 ```
 
+Check the config file for Prometheus:
+
+```sh
+# oc rsh -c prometheus prometheus-0
+sh-4.2$ ps auxwww | grep prometheus | grep config
+1000130+      1  0.6  1.4 349568 229172 ?       Ssl  16:41   1:58 /bin/prometheus --storage.tsdb.retention=6h --config.file=/etc/prometheus/prometheus.yml --web.listen-address=localhost:9090
+
+sh-4.2$ cat /etc/prometheus/prometheus.yml
+```
+
 ### Uninstallation
 
 ```sh

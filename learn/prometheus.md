@@ -67,6 +67,15 @@ svc/prometheus     ClusterIP   172.26.220.29    <none>        443/TCP   9m
 
 Make `redhat` as a cluster admin. With browser, open `https://prometheus-openshift-metrics.apps.0206-hl6.qe.rhcloud.com` and login with `redhat`. Then have fun with [prometheus queries](https://github.com/hongkailiu/svt-case-doc/blob/master/learn/prometheus.md).
 
+* names of metrics: the dropdown menu besides the Execute button contains the names of metrics.
+* type of a metic: ???
+* labels of a metric: search using the name of the metric and its labels shows up as return
+
+```sh
+### Copy cookies and url from browser's developer tool.
+$ curl -k --cookie "f81241e3a913aa890fb02ba92a29f1be=a08156ec5229f6eb1fda52ff623fdbfc; _oauth_proxy=cmVkaGF0QGNsdXN0ZXIubG9jYWw=|1517942370|9TAlGQ4L1j3oI5rsgutBwDpRrUI=" "https://prometheus-openshift-metrics.apps.0206-hl6.qe.rhcloud.com/api/v1/query_range?query=openshift_build_info&start=1517943409.293&end=1518029809.293&step=345&_=1517942400799"
+```
+
 ### Uninstallation
 
 ```sh

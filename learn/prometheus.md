@@ -6,15 +6,11 @@
 * [prometheus@github](https://github.com/prometheus)
 
 
-## [Get started](https://prometheus.io/docs/introduction/getting_started/)
-
-Tested on Fedora26:
-
 ## Prometheus@oc
 
 * [doc@origin](https://github.com/openshift/origin/tree/master/examples/prometheus): useful prometheus queries.
 * [p@oc-blog](https://blog.openshift.com/tag/prometheus/)
-* [gap-archetecture](https://blog.openshift.com/monitoring-openshift-three-tools/)
+* [prometheus-architecture](https://prometheus.io/docs/introduction/overview/#architecture) and [gap-architecture](https://blog.openshift.com/monitoring-openshift-three-tools/)
 
 ## Installation
 

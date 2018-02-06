@@ -65,7 +65,7 @@ svc/prometheus     ClusterIP   172.26.220.29    <none>        443/TCP   9m
 
 ```
 
-Make `redhat` as a cluster admin. With browser, open `https://prometheus-openshift-metrics.apps.0206-hl6.qe.rhcloud.com` and login with `redhat`.
+Make `redhat` as a cluster admin. With browser, open `https://prometheus-openshift-metrics.apps.0206-hl6.qe.rhcloud.com` and login with `redhat`. Then have fun with [prometheus queries](https://github.com/hongkailiu/svt-case-doc/blob/master/learn/prometheus.md).
 
 ### Uninstallation
 

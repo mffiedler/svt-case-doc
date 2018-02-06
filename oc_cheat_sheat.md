@@ -12,7 +12,7 @@
 $ oc whoami
 $ oc login -u redhat -p <password>
 $ oc login -u system:admin
-$ oadm policy add-cluster-role-to-user cluster-admin redhat
+$ oc adm policy add-cluster-role-to-user cluster-admin redhat
 ```
 
 ## check on which node a pod runs

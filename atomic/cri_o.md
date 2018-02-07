@@ -8,6 +8,8 @@
 
 ## Configure OpenShift node to use cri-o
 
+### AH + cri-o
+
 Installation: follow the steps in [flexy.md](../learn/flexy.md).
 
 Checking:
@@ -30,3 +32,5 @@ So cri-o runs as a system container.
 TODO: no pods in default is running. BZ.
 
 Check if docker knows any pods is running.
+
+### RHEL + cri-o

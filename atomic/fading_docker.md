@@ -55,15 +55,18 @@ root@41515f4f76e1:/# exit
 ### Remove container
 # podman rm 41515f4f76e1
 
-# podman images
-REPOSITORY                 TAG   IMAGE ID       CREATED       SIZE
-docker.io/library/tomcat   8.0   7acf2bade9a1   13 days ago   0B
+### Inspect a container
+# podman inspect 4b3c7422f50a
 
 ```
 
 Do some image operations as docker does:
 
 ```sh
+# podman images
+REPOSITORY                 TAG   IMAGE ID       CREATED       SIZE
+docker.io/library/tomcat   8.0   7acf2bade9a1   13 days ago   0B
+
 # show image digests
 # podman images --digests
 
@@ -84,15 +87,50 @@ Password:
 error creating directory "/run/user/0/containers": mkdir /run/user/0/containers: no such file or directory
 
 # mkdir -p /run/user/0/containers
-# podman login docker.io -u hongkailiu
+# podman login docker.io -u <username>
 Password: 
 Login Succeeded!
 
 ### not the same syntax as docker push, but close enough
 ### https://github.com/projectatomic/libpod/blob/master/docs/podman-push.1.md
-# podman push 539197f16127 docker://docker.io/hongkailiu/testpodman:latest
+# podman push 539197f16127 docker://docker.io/<username>/testpodman:latest
+
+### Does not work for images
+# podman inspect docker://docker.io/fedora
+### but skopeo can inspect
+# dnf isntall skopeo
+# skopeo inspect docker://docker.io/fedora
+
+```
+
+SUM:
+
+* In the test, neither `crio` nor `docker` is installed. Nonetheless, containers work fine. The magic is `runc`. `crio` is the interface for `k8s` and `crio` is on top of `runc`.
+* `buildah` has its own way to build an image. TOOD
+* More `docker` commands transfer to `podman`: [here](https://github.com/projectatomic/libpod/blob/master/transfer.md).
 
 
+TODO: Tried those command on RHEL7.
+
+
+Test `crictl` on RHEL7: NOT working yet
+
+```sh
+### https://github.com/kubernetes-incubator/cri-tools/blob/master/docs/crictl.md
+# vi ~/.bashrc
+...
+PATH=$PATH:${HOME}/go/bin
+
+# source ~/.bashrc
+# go get github.com/kubernetes-incubator/cri-tools/cmd/crictl
+# which crictl 
+/root/go/bin/crictl
+
+# crictl info
+DEBU[0000] StatusRequest: &StatusRequest{Verbose:true,} 
+2018/02/07 21:57:12 grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial unix /var/run/crio.sock: connect: no such file or directory"; Reconnecting to {/var/run/crio.sock <nil>}
+DEBU[0000] StatusResponse: nil                          
+FATA[0000] getting status of runtime failed: rpc error: code = Unavailable desc = grpc: the connection is unavailable
 ```
 
 

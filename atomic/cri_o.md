@@ -41,3 +41,20 @@ Check if docker knows any pods is running.
 # systemctl status docker.service
 ### Vikas: for now, "docker build" is still via docker.service
 ```
+
+Proof of using cri-o
+
+```sh
+# docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+# atomic containers list
+   CONTAINER ID IMAGE                NAME       COMMAND    CREATED          STATE      BACKEND    RUNTIME   
+   cri-o        registry.reg-aws.ope cri-o      /usr/bin/r 2018-02-07 15:08 running    ostree     /bin/runc 
+
+### Checking node config
+# grep -rin "crio" /etc/origin/node/node-config.yaml -B1
+32-  container-runtime-endpoint:
+33:  - /var/run/crio/crio.sock
+34-  image-service-endpoint:
+35:  - /var/run/crio/crio.sock
+```

@@ -4,7 +4,7 @@
 
 * [cri-o.io](http://cri-o.io/)
 * [oci](https://www.opencontainers.org/)
-* [cri-o](https://github.com/kubernetes-incubator/cri-o)
+* [cri-o](https://github.com/kubernetes-incubator/cri-o), [cli: docker vs cri-o](https://github.com/kubernetes-incubator/cri-o/blob/master/transfer.md)
 
 ## Configure OpenShift node to use cri-o
 

@@ -54,7 +54,47 @@ root@41515f4f76e1:/# exit
 # podman stop 41515f4f76e1
 ### Remove container
 # podman rm 41515f4f76e1
+
+# podman images
+REPOSITORY                 TAG   IMAGE ID       CREATED       SIZE
+docker.io/library/tomcat   8.0   7acf2bade9a1   13 days ago   0B
+
 ```
+
+Do some image operations as docker does:
+
+```sh
+# show image digests
+# podman images --digests
+
+# podman build --file=https://raw.githubusercontent.com/hongkailiu/svt-go-docker/podman/Dockerfile
+buildah not found in PATH: exec: "buildah": executable file not found in $PATH
+
+# dnf install -y buildah
+# curl -o Dockerfile -L  https://raw.githubusercontent.com/hongkailiu/svt-go-docker/podman/Dockerfile
+
+# build image with the dockerfile
+# podman build --file=./Dockerfile -t docker.io/<username>/testpodman:latest
+
+# podman images | grep testpodman
+docker.io/<username>/testpodman   latest   539197f16127   About a minute ago   12.1MB
+
+# podman login docker.io -u <username>
+Password: 
+error creating directory "/run/user/0/containers": mkdir /run/user/0/containers: no such file or directory
+
+# mkdir -p /run/user/0/containers
+# podman login docker.io -u hongkailiu
+Password: 
+Login Succeeded!
+
+### not the same syntax as docker push, but close enough
+### https://github.com/projectatomic/libpod/blob/master/docs/podman-push.1.md
+# podman push 539197f16127 docker://docker.io/hongkailiu/testpodman:latest
+
+
+```
+
 
 
 ================================

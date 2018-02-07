@@ -1,5 +1,65 @@
 # Fading docker
 
+Tested on Fedora 27:
+
+```sh
+### Launch an ec2-instance on aws
+(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-959441ed     --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.large --key-name id_rsa_perf     --subnet subnet-4879292d --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 30}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-fedora27-test\"}]}]"
+[
+    "i-0248dd812b5f66e54"
+]
+```
+
+Run the following commands on the ec2-instance.
+
+Install `podman`: check [there](https://github.com/projectatomic/libpod/blob/master/docs/tutorials/podman_tutorial.md) for details.
+
+Build from src for the moment. I believe that `dnf` is on its way ([WIP](https://bugzilla.redhat.com/show_bug.cgi?id=1541554)?).
+
+```sh
+$ sudo -i
+# dnf install -y git runc libassuan-devel golang golang-github-cpuguy83-go-md2man glibc-static \
+                                    gpgme-devel glib2-devel device-mapper-devel libseccomp-devel \
+                                    atomic-registries iptables skopeo-containers containernetworking-cni \
+                                    conmon
+
+# git clone https://github.com/projectatomic/libpod/ ~/src/github.com/projectatomic/libpod
+# cd !$
+# make
+# make install PREFIX=/usr
+# podman -v
+podman version 0.1
+
+```
+
+Do some container operations as docker does:
+
+```sh
+### run tomcat
+# podman run -d -p 8080 docker.io/tomcat:8.0
+
+### Such better output than `runc list`
+# podman ps
+CONTAINER ID   IMAGE                  COMMAND           CREATED AT                      STATUS              PORTS                                                                                            NAMES
+41515f4f76e1   docker.io/tomcat:8.0   catalina.sh run   2018-02-07 20:27:14 +0000 UTC   Up 26 seconds ago   0.0.0.0:8080->8080/udp, 0.0.0.0:8080->8080/tcp, 0.0.0.0:8080->8080/udp, 0.0.0.0:8080->8080/tcp   tender_hopper
+
+### Check tomcat service
+# curl localhost:8080
+
+### ssh to container, as docker-exec
+# podman exec -t 41515f4f76e1 bash
+root@41515f4f76e1:/# exit
+
+### Stop container
+# podman stop 41515f4f76e1
+### Remove container
+# podman rm 41515f4f76e1
+```
+
+
+================================
+
+
 ## Original picture
 
 ![](../images/atomic.1.png)

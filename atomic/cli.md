@@ -112,7 +112,7 @@ SUM:
 * More `docker` commands transfer to `podman`: [here](https://github.com/projectatomic/libpod/blob/master/transfer.md).
 
 
-TODO: Tried those command on RHEL7.
+TODO: Try those commands on RHEL7.
 
 ## [crictl](https://github.com/kubernetes-incubator/cri-tools/blob/master/docs/crictl.md)
 

@@ -190,9 +190,23 @@ DEBU[0000] StatusResponse: &StatusResponse{Status:&RuntimeStatus{Conditions:[&Ru
   }
 }
 
+# crictl images
+...
+IMAGE                                                               TAG                 IMAGE ID            SIZE
+docker.io/kubernetes/pause                                          latest              d0a2cf2e61af8       247kB
+registry.reg-aws.openshift.com:443/openshift3/ose-service-catalog   v3.7                cb92d9837f0e1       269MB
+registry.reg-aws.openshift.com:443/openshift3/ose-web-console       v3.9                b03b102cb02cb       493MB
+
+root@ip-172-31-3-43: ~/go/bin # crictl ps
+...
+CONTAINER ID        IMAGE                                                                    CREATED             STATE               NAME                 ATTEMPT
+ed381786088dd       b03b102cb02cbd857e8800f3d01aeaddfa3cbefe4640e1cfa30d593d0ba5e6cf         7 hours ago         CONTAINER_RUNNING   webconsole           0
+1b39426dc2804       cb92d9837f0e16d1e2c8549ac63e7d65152eb82c4d014bf74089c04b6ef11ecd         7 hours ago         CONTAINER_RUNNING   controller-manager   2
+540f2bf8483da       registry.reg-aws.openshift.com:443/openshift3/ose-service-catalog:v3.7   7 hours ago         CONTAINER_RUNNING   apiserver            0
+
 ```
 
-Wondering why our node config file set it up that way. So many CLIs and so man concepts ...
+Wondering why our node config file set it up that way. So many CLIs and so man concepts ... 
 
 
 ================================

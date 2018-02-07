@@ -1,5 +1,8 @@
 # Fading docker
 
+
+## podman
+
 Tested on Fedora 27:
 
 ```sh
@@ -112,8 +115,9 @@ SUM:
 
 TODO: Tried those command on RHEL7.
 
+## [crictl](https://github.com/kubernetes-incubator/cri-tools/blob/master/docs/crictl.md)
 
-Test `crictl` on RHEL7: NOT working yet
+Test `crictl` on RHEL7:
 
 ```sh
 ### https://github.com/kubernetes-incubator/cri-tools/blob/master/docs/crictl.md
@@ -126,13 +130,69 @@ PATH=$PATH:${HOME}/go/bin
 # which crictl 
 /root/go/bin/crictl
 
+### Try 1: Not working
+# crictl info
+2018/02/07 22:30:37 grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial unix /var/run/dockershim.sock: connect: no such file or directory"; Reconnecting to {/var/run/dockershim.sock <nil>}
+FATA[0000] getting status of runtime failed: rpc error: code = Unavailable desc = grpc: the connection is unavailable 
+
+### We might need set up crio.sock???
+### Check how node service set it up
+# grep -n "crio" /etc/origin/node/node-config.yaml -B1
+32-  container-runtime-endpoint:
+33:  - /var/run/crio/crio.sock
+34-  image-service-endpoint:
+35:  - /var/run/crio/crio.sock
+
+### So ...
+# vi /tmp/crictl.yaml
+runtime-endpoint: unix:///var/run/crio/crio.sock
+image-endpoint: unix:///var/run/crio/crio.sock
+timeout: 10
+debug: true
+
+### Try 2: Not working
 # crictl info
 DEBU[0000] StatusRequest: &StatusRequest{Verbose:true,} 
 2018/02/07 21:57:12 grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial unix /var/run/crio.sock: connect: no such file or directory"; Reconnecting to {/var/run/crio.sock <nil>}
 DEBU[0000] StatusResponse: nil                          
 FATA[0000] getting status of runtime failed: rpc error: code = Unavailable desc = grpc: the connection is unavailable
+
+
+# find / -name "*.sock" | grep crio
+/run/crio/crio.sock
+
+# cat /etc/crictl.yaml 
+runtime-endpoint: unix:///run/crio/crio.sock
+image-endpoint: unix:///run/crio/crio.sock
+timeout: 10
+debug: true
+
+### Try 3: working~~~YEAH!
+# crictl info
+DEBU[0000] StatusRequest: &StatusRequest{Verbose:true,} 
+DEBU[0000] StatusResponse: &StatusResponse{Status:&RuntimeStatus{Conditions:[&RuntimeCondition{Type:RuntimeReady,Status:true,Reason:,Message:,} &RuntimeCondition{Type:NetworkReady,Status:true,Reason:,Message:,}],},Info:map[string]string{},} 
+{
+  "status": {
+    "conditions": [
+      {
+        "type": "RuntimeReady",
+        "status": true,
+        "reason": "",
+        "message": ""
+      },
+      {
+        "type": "NetworkReady",
+        "status": true,
+        "reason": "",
+        "message": ""
+      }
+    ]
+  }
+}
+
 ```
 
+Wondering why our node config file set it up that way. So many CLIs and so man concepts ...
 
 
 ================================

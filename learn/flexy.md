@@ -189,6 +189,19 @@ openshift_ansible_vars:
   openshift_crio_systemcontainer_image_override: registry.reg-aws.openshift.com:443/openshift3/cri-o:latest
 ```
 
+##### RHEL + cri-o
+
+oc v3.9
+```
+  openshift_node_kubelet_args: '{"pods-per-core": ["0"], "max-pods": ["510"], "image-gc-high-threshold": ["80"], "image-gc-low-threshold": ["70"], "cloud-config":["/etc/origin/cloudprovider/aws.conf"]}'
+  containerized: false
+  openshift_use_system_containers: false
+  openshift_use_crio: true
+  openshift_crio_systemcontainer_image_override: registry.reg-aws.openshift.com:443/openshift3/cri-o:v3.9.0
+  system_images_registry: registry.reg-aws.openshift.com:443
+
+```
+
 ##### openshift_clusterid
 
 ```sh

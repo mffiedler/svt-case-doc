@@ -34,3 +34,9 @@ TODO: no pods in default is running. BZ.
 Check if docker knows any pods is running.
 
 ### RHEL + cri-o
+
+```sh
+### Both docker and cri-o are running on the system after installation
+# systemctl status cri-o.service
+# systemctl status docker.service
+```

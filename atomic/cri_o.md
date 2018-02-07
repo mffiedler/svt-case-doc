@@ -39,4 +39,5 @@ Check if docker knows any pods is running.
 ### Both docker and cri-o are running on the system after installation
 # systemctl status cri-o.service
 # systemctl status docker.service
+### Vikas: for now, "docker build" is still via docker.service
 ```

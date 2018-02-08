@@ -1,5 +1,10 @@
 # Fedora
 
+## fedora <-> win7
+
+* Make win7 installation usb on fedora: [WoeUSB](https://github.com/slacka/WoeUSB)
+* Make fedora installation usb on win7: [MediaWriter](https://github.com/MartinBriza/MediaWriter). Tried MediaWriter 4.1.1 and Fedora 27.
+
 ## Doc
 
 [https://docs.fedoraproject.org/index.html](https://docs.fedoraproject.org/index.html)

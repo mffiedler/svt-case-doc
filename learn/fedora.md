@@ -1,10 +1,5 @@
 # Fedora
 
-## fedora <-> win7
-
-* Make win7 installation usb on fedora: [WoeUSB](https://github.com/slacka/WoeUSB)
-* Make fedora installation usb on win7: [MediaWriter](https://github.com/MartinBriza/MediaWriter). Tried MediaWriter 4.1.1 and Fedora 27.
-
 ## Doc
 
 [https://docs.fedoraproject.org/index.html](https://docs.fedoraproject.org/index.html)
@@ -68,3 +63,14 @@ $ sudo dnf install bash-completion
 $ oc completion bash > oc_completion.sh
 $ sudo mv oc_completion.sh /usr/share/bash-completion/completions/oc
 ```
+
+## fedora <-> win7
+
+* Make Windows installation usb on Fedora 27: [WoeUSB](https://github.com/slacka/WoeUSB): Tried with WoeUSB-2.2.2-1.fc27.x86_64 and Win7
+
+```sh
+$ sudo dnf install wxGTK3-devel
+$ sudo dnf install WoeUSB
+```
+
+* Make fedora installation usb on win7: [MediaWriter](https://github.com/MartinBriza/MediaWriter). Tried MediaWriter 4.1.1 and Fedora 27.

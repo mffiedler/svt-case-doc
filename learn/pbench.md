@@ -180,3 +180,85 @@ Server and client data on pbench-fio:
 
 * server throughput: sum of all clients' throughput
 * server latency: average of all clients' latency
+
+### some reverse engineering on pbench-fio
+
+```sh
+### Do our test as usual
+# pbench-fio --test-types=randrw --clients=172.21.0.10 --config=RAND_IO_300s --samples=1 --max-stddev=20 --block-sizes=16 --job-file=config/random_io.job --pre-iteration-script=/root/svt/storage/scripts/drop-cache.sh
+pbench-fio: package version is missing in config file
+### This is new to me~~!
+
+# which pbench-fio
+/opt/pbench-agent/bench-scripts/pbench-fio
+
+# grep "missing in" /opt/pbench-agent/bench-scripts/pbench-fio -n
+22:	echo "pbench-fio: package version is missing in config file" > /dev/tty
+
+$ git blame agent/bench-scripts/pbench-fio | grep 22 | grep missing
+b66608349 agent/bench-scripts/pbench-fio (Nick Dokos                 2018-02-01 15:24:22 -0500  22) 	echo "pbench-fio: package version is missing in config file" > /dev/tty
+
+$ git tag --contains b66608349
+v0.48
+
+### Get pbench version
+# rpm -qa | grep pbench-agent
+pbench-agent-0.47-164gb666083.noarch
+### So it looks like it is with version 4.7
+### Checking on release notes: http://distributed-system-analysis.github.io/pbench/doc/release-notes/RELEASE-NOTES.html
+### version 4.8: "moving some default setting from the pbench-fio script to the config file"
+### So we are with 4.7 ... should not worry about 4.8 features ... until I found out ...
+
+$ git log --oneline
+87190caa Bump the version to v0.48
+172bbcbb index-pbench: Add unit tests
+f7fe1884 index-pbench: hostname impedance matching with tools
+e2e4c9f1 index-pbench: add results mapping and convert ts values to float
+e9e9d6c7 pbench-move-unpacked: do not create spurious links
+b6660834 pbench-fio: put defaults in config file
+...
+
+$ git log show b6660834
+...
+--- a/agent/bench-scripts/samples/pbench-agent.cfg
++++ b/agent/bench-scripts/samples/pbench-agent.cfg
+@@ -1,3 +1,7 @@
+ [packages]
+ pandas-package = python2-pandas
+ 
++[pbench-fio]
++version = 3.3
++histogram_interval_msec = 10000
+
+### Add those line to the pbench-config
+# vi /opt/pbench-agent/config/pbench-agent.cfg
+...
+# pandas-package = python2-pandas
+
+[pbench-fio]
+version = 3.3
+histogram_interval_msec = 10000
+
+### Rerun the test
+# pbench-fio --test-types=randrw --clients=172.21.0.10 --config=RAND_IO_300s --samples=1 --max-stddev=20 --block-sizes=16 --job-file=config/random_io.job --pre-iteration-script=/root/svt/storage/scripts/drop-cache.sh
+[error][2018-02-08T20:15:41.353368406] [check_install_rpm] the installation of pbench-fio-3.3 failed
+
+# yum info pbench-fio
+### returns me 2.14 is the latest version
+```
+
+
+
+Looks like pbench-agent-0.47-164gb666083.noarch has the code of commit `b6660834`. Ravi makes the release tag on [pbench-release page](https://github.com/distributed-system-analysis/pbench/releases). Oh~! I know Ravi. Then this is what is in IRC:
+
+```
+hongkliu: the reason i asked this is that i feel 0.47 package has code from o.48
+ravi: yes, we pull the code from master and build an rpm on a nightly basis
+ravi: so that we have the latest fixes
+ravi: everything after o.47 - 164g is the sha
+hongkliu: have we built pbench-fio 3.3 yet? yum info tells me the latest is 2.14 ... but the installed pbench requires 3.3 ... 
+ravi: oh we haven't built a fio 3.3 for the official repo, we just did it for test
+ravi: I will quickly build one and let you know
+```
+
+After talking to Ravi, evething starts to make sense.

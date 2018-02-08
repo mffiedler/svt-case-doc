@@ -47,9 +47,18 @@ Proof of using cri-o
 ```sh
 # docker ps -a
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+# runc list
 # atomic containers list
-   CONTAINER ID IMAGE                NAME       COMMAND    CREATED          STATE      BACKEND    RUNTIME   
-   cri-o        registry.reg-aws.ope cri-o      /usr/bin/r 2018-02-07 15:08 running    ostree     /bin/runc 
+
+# oc describe node | grep Runtime
+ Container Runtime Version:         cri-o://1.9.1
+...
+
+# oc describe pod | grep "Container ID"
+    Container ID:   cri-o://0686a236d062e61da0a28dd0ebc3388faf77dcb3612825b6d0cbf0880c530704
+...
+
 
 ### Checking node config
 # grep -rin "crio" /etc/origin/node/node-config.yaml -B1

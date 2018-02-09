@@ -143,7 +143,7 @@ FATA[0000] getting status of runtime failed: rpc error: code = Unavailable desc 
 35:  - /var/run/crio/crio.sock
 
 ### So ...
-# vi /tmp/crictl.yaml
+# vi /etc/crictl.yaml
 runtime-endpoint: unix:///var/run/crio/crio.sock
 image-endpoint: unix:///var/run/crio/crio.sock
 timeout: 10

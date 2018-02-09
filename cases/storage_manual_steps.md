@@ -14,6 +14,8 @@ The image has been built and pushed to docker.io:
 # podman pull docker.io/hongkailiu/centosfio:3.6.172.0.0
 ```
 
+From Feb 09, 2018, use this image: `docker.io/hongkailiu/centosfio:3.9.0-0.41.0-crio`.
+
 Create scc on master, label the computing node, and create test project:
 
 ```sh

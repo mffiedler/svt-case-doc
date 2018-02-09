@@ -208,7 +208,7 @@ ed381786088dd       b03b102cb02cbd857e8800f3d01aeaddfa3cbefe4640e1cfa30d593d0ba5
 Wondering why our node config file set it up that way. So many CLIs and so man concepts ... 
 
 
-crictl: version control
+crictl: version control (we do this because the latest one 653cc8c6509c540b8a7c6f6b43e437c0687a93a7 does not work)
 
 `go get` a [repo with a special version](https://stackoverflow.com/questions/30188499/how-to-do-go-get-on-a-specific-tag-of-a-github-repository):
 

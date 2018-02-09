@@ -10,6 +10,8 @@ The image has been built and pushed to docker.io:
 ```sh
 # #NOT Optional, otherwise need to change the dc of the pod
 # docker pull docker.io/hongkailiu/centosfio:3.6.172.0.0
+# for crio env.:
+# podman pull docker.io/hongkailiu/centosfio:3.6.172.0.0
 ```
 
 Create scc on master, label the computing node, and create test project:

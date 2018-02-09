@@ -206,3 +206,16 @@ ed381786088dd       b03b102cb02cbd857e8800f3d01aeaddfa3cbefe4640e1cfa30d593d0ba5
 ```
 
 Wondering why our node config file set it up that way. So many CLIs and so man concepts ... 
+
+
+crictl: version control
+
+`go get` a [repo with a special version](https://stackoverflow.com/questions/30188499/how-to-do-go-get-on-a-specific-tag-of-a-github-repository):
+
+```sh
+# cd ~/go/src/github.com/kubernetes-incubator/cri-tools/
+# git reset --hard 65725c8d59cedcb41488676598c304c78f570cc9
+rm -f /root/go/bin/crictl
+# go get github.com/kubernetes-incubator/cri-tools/cmd/crictl
+### Now the binary should be based on the commit 65725c8d59cedcb41488676598c304c78f570cc9
+```

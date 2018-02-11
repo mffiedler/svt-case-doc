@@ -25,7 +25,7 @@ Create scc on master, label the computing node, and create test project:
 # oc new-project aaa
 ```
 * Scp _id_rsa.pub_ to _/root/.ssh/_ of the computing node.
-* On master: Modify _image_ and _nodeSelector_ in _content/fio-pod-pv.json_.
+* On master: Modify _image_, _nodeSelector_ and _imagePullPolicy_ in _content/fio-pod-pv.json_.
 
 
 On master:

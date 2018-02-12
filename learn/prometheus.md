@@ -102,6 +102,15 @@ $ ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/openshift-promethe
 `oc delete project openshift-metrics` should be OK for test.
 
 ### Storage related metrics
+Docs
 
 * [g-doc](https://docs.google.com/document/d/1Fh0T60T_y888LsRwC51CQHO75b2IZ3A34ZQS71s_F0g/edit#heading=h.ys6pjpbasqdu)
-* [k8s-design](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/cloud-provider/cloudprovider-storage-metrics.md)
+* k8s-design: [cloudprovider-storage-metrics](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/cloud-provider/cloudprovider-storage-metrics.md); [volume-metrics](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/volume-metrics.md)
+
+Concepts:
+
+* Metrics types: [histogram](https://prometheus.io/docs/concepts/metric_types/#histogram) and [its practice](https://prometheus.io/docs/practices/histograms/)
+* Metrics names: 
+  - cloudprovider-storage-metrics: `cloudprovider_aws_api_request_duration_seconds` and `cloudprovider_aws_api_request_errors`
+  - volume-metrics: `storage_operation_duration_seconds` and `storage_operation_errors_total`
+  

@@ -160,6 +160,10 @@ A wrapper application of [fio.md](fio.md). [parameters](https://github.com/axboe
 
 ### Understand pbench-fio data
 
+#### Time unit
+
+1 second (s) = 10^3 milliseconds (ms) = 10^6 microseconds (μs) = 10^9 nanoseconds (ns)
+
 #### Thoughput
 How many units of information a system can process in a period of time.
 

@@ -12,7 +12,7 @@
 * [p@oc-blog](https://blog.openshift.com/tag/prometheus/)
 * [prometheus-architecture](https://prometheus.io/docs/introduction/overview/#architecture) and [gap-architecture](https://blog.openshift.com/monitoring-openshift-three-tools/)
 
-## Installation
+### Installation
 
 * On a new cluster:
 
@@ -101,4 +101,7 @@ $ ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/openshift-promethe
 
 `oc delete project openshift-metrics` should be OK for test.
 
+### Storage related metrics
 
+* [g-doc](https://docs.google.com/document/d/1Fh0T60T_y888LsRwC51CQHO75b2IZ3A34ZQS71s_F0g/edit#heading=h.ys6pjpbasqdu)
+* [k8s-design](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/cloud-provider/cloudprovider-storage-metrics.md)

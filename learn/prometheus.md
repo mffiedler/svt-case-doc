@@ -12,6 +12,11 @@
 * [p@oc-blog](https://blog.openshift.com/tag/prometheus/)
 * [prometheus-architecture](https://prometheus.io/docs/introduction/overview/#architecture) and [gap-architecture](https://blog.openshift.com/monitoring-openshift-three-tools/)
 
+### Concepts
+
+* [data model](https://prometheus.io/docs/concepts/data_model/): time series, metric names, labels, [jobs and instances](https://prometheus.io/docs/concepts/jobs_instances/), samples
+* Metrics types: [histogram](https://prometheus.io/docs/concepts/metric_types/#histogram) and [its practice](https://prometheus.io/docs/practices/histograms/)
+
 ### Installation
 
 * On a new cluster:
@@ -106,10 +111,6 @@ Docs
 
 * [g-doc](https://docs.google.com/document/d/1Fh0T60T_y888LsRwC51CQHO75b2IZ3A34ZQS71s_F0g/edit#heading=h.ys6pjpbasqdu)
 * k8s-design: [cloudprovider-storage-metrics](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/cloud-provider/cloudprovider-storage-metrics.md); [volume-metrics](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/volume-metrics.md)
-
-Concepts:
-
-* Metrics types: [histogram](https://prometheus.io/docs/concepts/metric_types/#histogram) and [its practice](https://prometheus.io/docs/practices/histograms/)
 
 Test:
 

@@ -110,7 +110,11 @@ Docs
 Concepts:
 
 * Metrics types: [histogram](https://prometheus.io/docs/concepts/metric_types/#histogram) and [its practice](https://prometheus.io/docs/practices/histograms/)
-* Metrics names: 
-  - cloudprovider-storage-metrics: `cloudprovider_aws_api_request_duration_seconds` and `cloudprovider_aws_api_request_errors`
-  - volume-metrics: `storage_operation_duration_seconds` and `storage_operation_errors_total`
+
+Test:
+
+Metrics names: 
+
+* cloudprovider-storage-metrics: `cloudprovider_aws_api_request_duration_seconds` and `cloudprovider_aws_api_request_errors`
+* volume-metrics: `storage_operation_duration_seconds` and `storage_operation_errors_total`
   

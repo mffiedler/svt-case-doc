@@ -83,6 +83,13 @@ sh-4.2$ ps auxwww | grep prometheus | grep config
 1000130+      1  0.6  1.4 349568 229172 ?       Ssl  16:41   1:58 /bin/prometheus --storage.tsdb.retention=6h --config.file=/etc/prometheus/prometheus.yml --web.listen-address=localhost:9090
 
 sh-4.2$ cat /etc/prometheus/prometheus.yml
+sh-4.2$ ls /etc/prometheus/
+prometheus.rules  prometheus.yml
+
+### Those 2 files are provided by a configMap
+# oc get configMap prometheus -o yaml
+
+# curl --key /etc/origin/master/admin.key --cert /etc/origin/master/admin.crt -k https://127.0.0.1:8444/metrics
 ```
 
 ### Uninstallation

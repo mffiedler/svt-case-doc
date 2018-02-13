@@ -82,6 +82,13 @@ On master:
 # pbench-clear-results 
 ```
 
+Checking point:
+
+* throughput, latency: [example](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-42-242/fio_SEQ_IO_BEFORE_2018.02.12T15.13.05/result.html)
+* clat_ns@fio-result.txt: [example](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-42-242/fio_SEQ_IO_BEFORE_2018.02.12T15.13.05/2-read-16KiB/sample1/fio-result.txt)
+* latency percentile: [example](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-42-242/fio_SEQ_IO_BEFORE_2018.02.12T15.13.05/2-read-16KiB/sample1/clients/172.21.0.5/hist/results.html)
+* iostat on device: [example](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-42-242/fio_SEQ_IO_BEFORE_2018.02.12T15.13.05/2-read-16KiB/sample1/tools-default/FIO:ip-172-31-1-36.us-west-2.compute.internal/iostat/disk.html)
+
 TODO: run the fio command used by pbench-fio.
 
 ## pbench-fio on AH (NOT working yet)

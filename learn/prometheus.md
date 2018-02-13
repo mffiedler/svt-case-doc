@@ -119,3 +119,12 @@ Metrics names:
 * cloudprovider-storage-metrics: `cloudprovider_aws_api_request_duration_seconds` and `cloudprovider_aws_api_request_errors`
 * volume-metrics: `storage_operation_duration_seconds` and `storage_operation_errors_total`
   
+Use `storage_operation_duration_seconds` in the prometheus UI, then auto-completion show there are 3 metrics:
+
+* storage_operation_duration_seconds_count: number of values
+* storage_operation_duration_seconds_sum: sum of values
+* storage_operation_duration_seconds_bucket: number of values in the bucket
+
+Let us focus on count with this metrics `storage_operation_duration_seconds_count{instance="172.31.49.63:8444",job="kubernetes-controllers",operation_name="volume_provision",volume_plugin="kubernetes.io/aws-ebs"}`
+
+storage_operation_duration_seconds_bucket{instance="172.31.49.63:8444",job="kubernetes-controllers",operation_name="volume_provision",volume_plugin="kubernetes.io/aws-ebs"}

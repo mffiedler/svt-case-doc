@@ -187,6 +187,12 @@ Difference on config.yml and registry.yml in [playbooks/byo/openshift-glusterfs]
 
 Install:
 
+On <code>fedora 26</code>:
+
+```sh
+$ sudo dnf install heketi-client
+```
+
 On <code>gold-AMI</code>:
 
 ```sh

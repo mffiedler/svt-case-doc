@@ -46,6 +46,13 @@ Last login: Wed Aug 30 16:59:49 2017 from ip-172-20-1-1.us-west-2.compute.intern
 
 ## Register pbench
 
+```
+# vi /opt/pbench-agent/config/pbench-agent.cfg
+[pbench-fio]
+version = 3.3
+histogram_interval_msec = 10000
+```
+
 On master:
 
 ```sh

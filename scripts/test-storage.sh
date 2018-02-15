@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <client_ip>"
+  exit 1
+fi
+
 echo "001 $(date)"
 
 pbench-kill-tools
@@ -17,7 +22,7 @@ done
 
 echo "002 $(date)"
 
-readonly CLIENT_HOST=172.21.0.19
+readonly CLIENT_HOST=$1
 
 pbench-fio --test-types=read,write,rw --clients="${CLIENT_HOST}" --config=SEQ_IO --samples=1 --max-stddev=20 --block-sizes=4,16,64 --job-file=config/sequential_io.job --pre-iteration-script=/root/svt/storage/scripts/drop-cache.sh
 

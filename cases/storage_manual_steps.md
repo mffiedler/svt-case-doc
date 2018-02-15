@@ -32,6 +32,8 @@ On master:
 
 ```sh
 # oc process -p ROLE=receiver VOLUME_CAPACITY=1000Gi -f content/fio-pod-pv.json | oc create --namespace=aaa -f -
+### for gluster storage
+# oc process -p ROLE=receiver VOLUME_CAPACITY=200Gi -f content/fio-pod-pv.json | oc create --namespace=aaa -f -
 # #Check if the pod is running:
 root@ip-172-31-6-15: ~/svt/storage # oc get pod -o wide -n aaa
 NAME          READY     STATUS    RESTARTS   AGE       IP           NODE

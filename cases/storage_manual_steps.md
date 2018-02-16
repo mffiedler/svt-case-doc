@@ -24,7 +24,7 @@ Create scc on master, label the computing node, and create test project:
 # oc label node ip-172-31-26-174.us-west-2.compute.internal "aaa=bbb"
 # oc new-project aaa
 ```
-* Scp _id_rsa.pub_ to _/root/.ssh/_ of the computing node.
+* Scp _id_rsa.pub_ to _/root/.ssh/_ of the computing node: `ansible-playbook -i inv.file playbooks/storage_test_pre.yml`
 * On master: Modify _image_, _nodeSelector_, _imagePullPolicy_, and _storageClassName_ in _content/fio-pod-pv.json_.
 
 

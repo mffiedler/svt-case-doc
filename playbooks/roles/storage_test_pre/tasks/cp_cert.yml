@@ -1,0 +1,9 @@
+---
+- name: debug vars
+  debug:
+    msg: "ansible_env.HOME is {{ ansible_env.HOME }} and  cert_file_path is {{ cert_file_path }}"
+
+- name: cp cert file
+  copy:
+    src: "{{ cert_file_path }}"
+    dest: "{{ ansible_env.HOME }}/.ssh/"

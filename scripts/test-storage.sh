@@ -6,7 +6,8 @@ pbench-kill-tools
 pbench-clear-tools
 pbench-clear-results
 
-pbench-register-tool-set --label=FIO -- --osecomponent=master
+pbench-register-tool-set --label=FIO
+pbench-register-tool --name=oc
 
 readonly NODES=($(oc get node  --no-headers | grep -v master | awk '{print $1}'))
 

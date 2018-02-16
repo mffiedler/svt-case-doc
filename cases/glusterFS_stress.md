@@ -59,6 +59,8 @@ pods out of them. The Heketi pod require many compute resources so move it
 to one of the cns nodes.
 
 ```sh
+# oc patch deploymentconfigs/registry-console --patch '{"spec": {"template": {"spec": {"nodeSelector": {"region": "infra"}}}}}'
+### or
 # oc edit dc/registry-console -n default
 ...
       dnsPolicy: ClusterFirst

@@ -24,11 +24,13 @@ readonly CLIENT_HOSTS="${CLIENT_HOSTS_COMMA::-1}"
 
 echo "CLIENT_HOST ${CLIENT_HOSTS}"
 
-pbench-fio --test-types=read,write,rw --clients="${CLIENT_HOSTS}" --config=SEQ_IO --samples=1 --max-stddev=20 --block-sizes=4,16,64 --job-file=config/sequential_io.job --pre-iteration-script=/root/svt/storage/scripts/drop-cache.sh
+readonly CONFIG_SUFFIX=""
+
+pbench-fio --test-types=read,write,rw --clients="${CLIENT_HOSTS}" --config="SEQ_IO${CONFIG_SUFFIX}" --samples=1 --max-stddev=20 --block-sizes=4,16,64 --job-file=config/sequential_io.job --pre-iteration-script=/root/svt/storage/scripts/drop-cache.sh
 
 echo "003 $(date)"
 
-pbench-fio --test-types=randread,randwrite,randrw --clients="${CLIENT_HOSTS}" --config=RAND_IO --samples=1 --max-stddev=20 --block-sizes=4,16,64 --job-file=config/random_io.job --pre-iteration-script=/root/svt/storage/scripts/drop-cache.sh
+pbench-fio --test-types=randread,randwrite,randrw --clients="${CLIENT_HOSTS}" --config="RAND_IO${CONFIG_SUFFIX}" --samples=1 --max-stddev=20 --block-sizes=4,16,64 --job-file=config/random_io.job --pre-iteration-script=/root/svt/storage/scripts/drop-cache.sh
 
 echo "pbench-copy-results: $(date)"
 

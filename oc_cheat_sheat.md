@@ -114,3 +114,10 @@ KUBE_MAX_PD_VOLS=60
 # systemctl restart atomic-openshift-master-controllers
 ```
 
+## yum
+
+```
+### list all pbench-fio versions
+# yum --showduplicates list pbench-fio
+
+```

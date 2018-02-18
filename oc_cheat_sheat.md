@@ -119,5 +119,6 @@ KUBE_MAX_PD_VOLS=60
 ```
 ### list all pbench-fio versions
 # yum --showduplicates list pbench-fio
-
+### install a specific version
+yum install pbench-fio-2.14
 ```

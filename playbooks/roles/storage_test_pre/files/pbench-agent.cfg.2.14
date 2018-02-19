@@ -1,0 +1,40 @@
+[DEFAULT]
+pbench_install_dir = /opt/pbench-agent
+# CHANGE ME!
+pbench_results_redirector = perf-infra.ec2.breakage.org
+# CHANGE ME!
+pbench_web_server = perf-infra.ec2.breakage.org
+
+[pbench-agent]
+install-dir = %(pbench_install_dir)s
+pbench_user = pbench
+pbench_group = pbench
+pbench_run = /var/lib/pbench-agent
+pbench_log = %(pbench_run)s/pbench.log
+
+[results]
+user = pbench
+host_path = http://%(pbench_result_redirector)s/pbench-archive-host
+ssh_opts = -o StrictHostKeyChecking=no
+scp_opts = -o StrictHostKeyChecking=no
+webserver = %(pbench_web_server)s
+host_info_url = http://%(webserver)s/pbench-results-host-info.versioned/pbench-results-host-info.URL001
+dir = /pbench/public_html/incoming
+
+[pbench/tools]
+default-tool-set = sar, iostat, mpstat, pidstat, proc-vmstat, proc-interrupts, turbostat
+interval = 3
+
+[tools/pidstat]
+interval = 30
+
+[packages]
+# RHEL has python-pandas
+pandas-package = python-pandas
+# Fedora has python2-pandas and python3-pandas
+pandas-package = python2-pandas
+
+[config]
+path = %(pbench_install_dir)s/config
+files = pbench-agent.cfg
+

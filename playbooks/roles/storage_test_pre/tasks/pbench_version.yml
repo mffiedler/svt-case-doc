@@ -1,0 +1,24 @@
+---
+- name: debug vars
+  debug:
+    msg: "ansible_env.HOME is {{ ansible_env.HOME }} and  cert_file_path is {{ cert_file_path }}"
+
+- name: install one specific version of configtools
+  yum:
+    name: configtools-0.3.1
+    state: present
+
+- name: install one specific version of pbench-agent
+  yum:
+    name: pbench-agent-0.48-171g25cf855
+    state: present
+
+
+- name: install one specific version of pbench-fio
+  yum:
+    name: pbench-fio-3.3
+    state: present
+
+- copy:
+    src: /home/hongkliu/repo/me/svt-case-doc/pbench-agent.cfg.3.3
+    dest: /opt/pbench-agent/config/pbench-agent.cfg

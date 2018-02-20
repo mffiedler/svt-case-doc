@@ -42,10 +42,18 @@ manually. See [cns_internal.md](../storage/cns_internal.md) for details.
 ## use cns images with the following version
 
 ...
-openshift_storage_glusterfs_image=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7
-openshift_storage_glusterfs_version=3.3.0-12
-openshift_storage_glusterfs_heketi_image=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-volmanager-rhel7
-openshift_storage_glusterfs_heketi_version=3.3.0-9
+glusterfs_devices=["/dev/xvdf", "/dev/xvdg", "/dev/xvdh"]
+openshift_storage_glusterfs_wipe=true
+openshift_storage_glusterfs_image=registry.access.redhat.com/rhgs3/rhgs-server-rhel7
+openshift_storage_glusterfs_version=3.3.0-362
+openshift_storage_glusterfs_heketi_image=registry.access.redhat.com/rhgs3/rhgs-volmanager-rhel7
+openshift_storage_glusterfs_heketi_version=3.3.0-364
+openshift_hosted_registry_glusterfs_swap=true
+openshift_storage_glusterfs_block_deploy=true
+openshift_storage_glusterfs_block_image=registry.access.redhat.com/rhgs3/rhgs-gluster-block-prov-rhel7
+openshift_storage_glusterfs_block_version=3.3.0-362
+openshift_storage_glusterfs_block_host_vol_size=800
+openshift_storage_glusterfs_block_storageclass=true
 ...
 
 # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml

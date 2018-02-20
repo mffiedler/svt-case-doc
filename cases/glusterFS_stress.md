@@ -93,11 +93,11 @@ to one of the cns nodes.
 Or, label a node with `aaa=ccc` for heketi:
 
 ```
-oc patch -n default deploymentconfigs/registry-console --patch '{"spec": {"template": {"spec": {"nodeSelector": {"region": "infra"}}}}}'
+# oc patch -n default deploymentconfigs/registry-console --patch '{"spec": {"template": {"spec": {"nodeSelector": {"region": "infra"}}}}}'
 
-oc patch -n glusterfs deploymentconfigs/glusterblock-storage-provisioner-dc --patch '{"spec": {"template": {"spec": {"nodeSelector": {"aaa": "ccc"}}}}}'
+# oc patch -n glusterfs deploymentconfigs/glusterblock-storage-provisioner-dc --patch '{"spec": {"template": {"spec": {"nodeSelector": {"aaa": "ccc"}}}}}'
 
-oc patch -n glusterfs deploymentconfigs/heketi-storage --patch '{"spec": {"template": {"spec": {"nodeSelector": {"aaa": "ccc"}}}}}'
+# oc patch -n glusterfs deploymentconfigs/heketi-storage --patch '{"spec": {"template": {"spec": {"nodeSelector": {"aaa": "ccc"}}}}}'
 ```
 
 ## Enable brick-multiplex

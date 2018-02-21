@@ -122,3 +122,18 @@ KUBE_MAX_PD_VOLS=60
 ### install a specific version
 yum install pbench-fio-2.14
 ```
+
+
+## cns
+
+```sh
+# clean up pv left-overs
+# oc get pv | grep fio | awk '{print $1}' | while read i; do oc delete pv $i; done
+
+# systemctl stop lvm2-lvmetad.service 
+# systemctl stop lvm2-lvmetad.socket 
+# systemctl start lvm2-lvmetad.socket 
+# systemctl start lvm2-lvmetad.service 
+
+# rm -rf /var/lib/heketi/
+```

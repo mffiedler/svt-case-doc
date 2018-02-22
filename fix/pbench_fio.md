@@ -33,3 +33,60 @@ pbench-fio.x86_64               3.3-1             @copr-pbench
 pbench-sysstat.x86_64           11.2.0-1          @copr-pbench
 
 ```
+
+Run pbench-fio:
+
+```sh
+# cat ./test.sh 
+#!/bin/bash
+
+echo "001 $(date)"
+
+pbench-kill-tools
+pbench-clear-tools
+pbench-clear-results
+
+rm -f /var/lib/fio/*
+
+readonly KEY="_3"
+
+pbench-register-tool-set --label=FIO
+pbench-fio --test-types=read,write,rw --clients=localhost --config="SEQ_IO_${KEY}" --samples=1 --max-stddev=20 --block-sizes=16 --job-file=/root/sequential_io.job --pre-iteration-script=/root/drop-cache.sh
+
+pbench-copy-results
+
+
+# cat sequential_io.job 
+[global]
+direct=0
+sync=0
+fsync_on_close=1
+time_based=1
+runtime=300
+clocksource=clock_gettime
+ramp_time=300
+startdelay=5
+directory=/var/lib/fio
+filename_format=test.$jobname.$jobnum.$filenum
+size=5g
+write_bw_log=fio
+write_iops_log=fio
+write_lat_log=fio
+write_hist_log=fio
+per_job_logs=1
+log_avg_msec=1000
+log_hist_msec=1000
+
+[fio-1]
+bs=4k
+rw=read
+nrfiles=16
+numjobs=1
+
+
+# cat ./drop-cache.sh 
+#!/bin/bash
+
+
+sync ; echo 3 > /proc/sys/vm/drop_caches
+```

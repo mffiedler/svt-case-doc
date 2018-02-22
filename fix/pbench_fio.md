@@ -16,6 +16,7 @@ Make xfs (others are xfs) and mount to `/var/lib/fio`:
 # mkfs.xfs /dev/xvdf1
 # mkdir /var/lib/fio
 # echo "/dev/xvdf1 /var/lib/fio xfs defaults 0 0" >> /etc/fstab
+# mount -a
 # df -hT
 Filesystem     Type      Size  Used Avail Use% Mounted on
 ...

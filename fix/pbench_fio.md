@@ -56,7 +56,7 @@ pbench-fio --test-types=read,write,rw --clients=localhost --config="SEQ_IO_${KEY
 pbench-copy-results
 
 
-# cat sequential_io.job 
+# cat ./sequential_io.job 
 [global]
 direct=0
 sync=0

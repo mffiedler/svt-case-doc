@@ -28,12 +28,12 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 Check the current pbench-fio version:
 
 ```sh
-# yum install pbench-fio
+# yum install pbench-fio-2.14
 # yum list installed | grep pbench
-configtools.noarch              0.3.1-3           @copr-pbench                  
-pbench-agent.noarch             0.48-178g25cf855  @ndokos-pbench-interim        
-pbench-fio.x86_64               3.3-1             @copr-pbench                  
-pbench-sysstat.x86_64           11.2.0-1          @copr-pbench
+configtools.noarch              0.3.1-2           @copr-pbench                  
+pbench-agent.noarch             0.46-78g30019c5   @ndokos-pbench-interim        
+pbench-fio.x86_64               2.14-1            @ndokos-pbench-interim        
+pbench-sysstat.x86_64           11.2.0-1          @copr-pbench  
 
 ```
 
@@ -51,7 +51,7 @@ pbench-clear-results
 
 rm -f /var/lib/fio/*
 
-readonly KEY="_3"
+readonly KEY="_2"
 
 pbench-register-tool-set --label=FIO
 pbench-fio --test-types=read,write,rw --clients=localhost --config="SEQ_IO${KEY}" --samples=1 --max-stddev=20 --block-sizes=16 --job-file=/root/sequential_io.job --pre-iteration-script=/root/drop-cache.sh

@@ -51,7 +51,7 @@ rm -f /var/lib/fio/*
 readonly KEY="_3"
 
 pbench-register-tool-set --label=FIO
-pbench-fio --test-types=read,write,rw --clients=localhost --config="SEQ_IO_${KEY}" --samples=1 --max-stddev=20 --block-sizes=16 --job-file=/root/sequential_io.job --pre-iteration-script=/root/drop-cache.sh
+pbench-fio --test-types=read,write,rw --clients=localhost --config="SEQ_IO${KEY}" --samples=1 --max-stddev=20 --block-sizes=16 --job-file=/root/sequential_io.job --pre-iteration-script=/root/drop-cache.sh
 
 pbench-copy-results
 

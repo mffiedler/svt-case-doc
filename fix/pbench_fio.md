@@ -97,7 +97,7 @@ sync ; echo 3 > /proc/sys/vm/drop_caches
 # bash -x ./test.sh
 ```
 
-Update pbench-agent/fio version:
+Update pbench-agent/fio version (also change the pbench-config file): I have a playbook to do this.
 
 ```sh
 # yum list installed | grep pbench

@@ -12,17 +12,14 @@ pbench-agent 0.46-78g30019c5 is no longer available. So we pick up an AMI has it
 Make xfs (others are xfs) and mount to `/var/lib/fio`:
 
 ```sh
-# fdisk /dev/xvdf
-# partprobe
-# cat /proc/partitions
-# mkfs.xfs /dev/xvdf1
+# mkfs.xfs /dev/xvdf
 # mkdir /var/lib/fio
-# echo "/dev/xvdf1 /var/lib/fio xfs defaults 0 0" >> /etc/fstab
+# echo "/dev/xvdf /var/lib/fio xfs defaults 0 0" >> /etc/fstab
 # mount -a
 # df -hT
 Filesystem     Type      Size  Used Avail Use% Mounted on
 ...
-/dev/xvdf1     xfs      1000G   33M 1000G   1% /var/lib/fio
+/dev/xvdf     xfs      1000G   33M 1000G   1% /var/lib/fio
 ```
 
 Check the current pbench-fio version:
@@ -54,7 +51,7 @@ rm -f /var/lib/fio/*
 readonly KEY="_2"
 
 pbench-register-tool-set --label=FIO
-pbench-fio --test-types=read,write,rw --clients=localhost --config="SEQ_IO${KEY}" --samples=1 --max-stddev=20 --block-sizes=16 --job-file=/root/sequential_io.job --pre-iteration-script=/root/drop-cache.sh
+pbench-fio --test-types=read,write,rw --clients=localhost --config="SEQ_IO${KEY}" --samples=1 --max-stddev=20 --block-sizes=4 --job-file=/root/sequential_io.job --pre-iteration-script=/root/drop-cache.sh
 
 pbench-copy-results
 
@@ -90,8 +87,9 @@ numjobs=1
 # cat ./drop-cache.sh 
 #!/bin/bash
 
-
 sync ; echo 3 > /proc/sys/vm/drop_caches
+
+# chmod +x ./drop-cache.sh 
 ```
 
 
@@ -99,6 +97,7 @@ sync ; echo 3 > /proc/sys/vm/drop_caches
 # bash -x ./test.sh
 ```
 
+Update pbench-agent/fio version:
 
 ```sh
 # yum list installed | grep pbench
@@ -107,3 +106,15 @@ pbench-agent.noarch             0.48-171g25cf855  @ndokos-pbench-interim
 pbench-fio.x86_64               3.3-1             @copr-pbench                  
 pbench-sysstat.x86_64           11.2.0-1          @copr-pbench     
 ```
+
+Change pbench data label:
+
+```sh
+# vi ./test.sh 
+#!/bin/bash
+...
+readonly KEY="_3"
+```
+
+
+Pbench result: [here](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-63-86/).

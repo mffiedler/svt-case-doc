@@ -1,5 +1,6 @@
 # pbench-fio: 2.14 vs 3.3
 
+## Our gold AMI
 AMI ID: ocp-3.7.9-1-SVT-rhel-gold (ami-ea2efe92)
 
 pbench-agent 0.46-78g30019c5 is no longer available. So we pick up an AMI has it pre-installed.
@@ -118,3 +119,57 @@ readonly KEY="_3"
 
 
 Pbench result: [here](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-63-86/).
+
+
+### Fedora 27 AMI
+
+Fedora-Cloud-Base-27-1.6.x86_64-us-west-2-HVM-gp2-0 (ami-959441ed): Clean fedora
+
+https://copr.fedorainfracloud.org/coprs/ndokos/pbench/
+
+```sh
+(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-959441ed     --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.xlarge --key-name id_rsa_perf     --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 60, \"VolumeType\": \"gp2\"}}, {\"DeviceName\":\"/dev/sdf\", \"Ebs\":{\"VolumeSize\": 1000, \"VolumeType\": \"gp2\"}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-fio-test\"}]}]"
+
+```
+
+```sh
+# wget https://copr.fedorainfracloud.org/coprs/ndokos/pbench/repo/fedora-27/ndokos-pbench-fedora-27.repo
+# mv ndokos-pbench-fedora-27.repo /etc/yum.repos.d/
+
+### Add another ndokos repo: pbench-fio is only available there.
+# vi /etc/yum.repos.d/ndokos-pbench-interim.repo
+[ndokos-pbench-interim]
+name=Copr repo for pbench-interim owned by ndokos
+baseurl=https://copr-be.cloud.fedoraproject.org/results/ndokos/pbench-interim/epel-7-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://copr-be.cloud.fedoraproject.org/results/ndokos/pbench-interim/pubkey.gpg
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1
+
+# dnf  --showduplicates list pbench-fio
+Copr repo for pbench-interim owned by ndokos                                                  103 kB/s |  22 kB     00:00    
+Last metadata expiration check: 0:00:00 ago on Fri 23 Feb 2018 03:36:34 PM UTC.
+Available Packages
+pbench-fio.src                                            2.14-1                                         ndokos-pbench-interim
+pbench-fio.x86_64                                         2.14-1                                         ndokos-pbench-interim
+pbench-fio.src                                            3.3-1                                          ndokos-pbench        
+pbench-fio.src                                            3.3-1                                          ndokos-pbench        
+pbench-fio.x86_64                                         3.3-1                                          ndokos-pbench        
+pbench-fio.x86_64                                         3.3-1                                          ndokos-pbench  
+```
+
+```sh
+# dnf install pbench-agent pbench-fio-2.14
+# dnf list installed | grep pbench
+configtools.noarch                  0.3.1-3                    @ndokos-pbench   
+pbench-agent.noarch                 0.48-178g25cf855           @ndokos-pbench-interim
+pbench-fio.x86_64                   2.14-1                     @ndokos-pbench-interim
+```
+
+```sh
+### copy /opt/pbench-agent/config/pbench-agent.cfg and /opt/pbench-agent/id_rsa, then
+# chmod 0600 /opt/pbench-agent/id_rsa
+```

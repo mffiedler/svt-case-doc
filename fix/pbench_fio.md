@@ -162,11 +162,12 @@ pbench-fio.x86_64                                         3.3-1                 
 ```
 
 ```sh
-# dnf install pbench-agent pbench-fio-2.14
+# dnf install pbench-agent pbench-fio-2.14 pbench-sysstat
 # dnf list installed | grep pbench
 configtools.noarch                  0.3.1-3                    @ndokos-pbench   
 pbench-agent.noarch                 0.48-178g25cf855           @ndokos-pbench-interim
 pbench-fio.x86_64                   2.14-1                     @ndokos-pbench-interim
+pbench-sysstat.x86_64               11.2.0-1                   @ndokos-pbench
 ```
 
 ```sh

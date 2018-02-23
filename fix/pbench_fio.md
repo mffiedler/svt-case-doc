@@ -173,6 +173,11 @@ pbench-sysstat.x86_64               11.2.0-1                   @ndokos-pbench
 ```sh
 ### copy /opt/pbench-agent/config/pbench-agent.cfg and /opt/pbench-agent/id_rsa, then
 # chmod 0600 /opt/pbench-agent/id_rsa
+
+# vi ~/.bash_profile
+...
+PATH=/opt/pbench-agent/util-scripts:/opt/pbench-agent/bench-scripts:${PATH}
+...
 ```
 
 ```sh

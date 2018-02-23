@@ -202,3 +202,23 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 ...
 /dev/xvdf     xfs      1000G   33M 1000G   1% /var/lib/fio
 ```
+
+Update to pbench-fio-3.3
+
+```sh
+# dnf remove pbench-fio
+# dnf install pbench-fio-3.3
+# dnf list installed | grep pbench
+configtools.noarch                  0.3.1-3                       @ndokos-pbench
+pbench-agent.noarch                 0.48-178g25cf855              @ndokos-pbench-interim
+pbench-fio.x86_64                   3.3-1                         @ndokos-pbench
+pbench-sysstat.x86_64               11.2.0-1                      @ndokos-pbench
+
+
+...
+[pbench-fio]
+# version = 2.14
+version = 3.3
+...
+
+```

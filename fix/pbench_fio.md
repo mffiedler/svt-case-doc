@@ -98,3 +98,12 @@ sync ; echo 3 > /proc/sys/vm/drop_caches
 ```sh
 # bash -x ./tesh.sh
 ```
+
+
+```sh
+# yum list installed | grep pbench
+configtools.noarch              0.3.1-2           @copr-pbench                  
+pbench-agent.noarch             0.48-171g25cf855  @ndokos-pbench-interim        
+pbench-fio.x86_64               3.3-1             @copr-pbench                  
+pbench-sysstat.x86_64           11.2.0-1          @copr-pbench     
+```

@@ -233,3 +233,13 @@ Some wholes for us when transforming python config files to golang:
 * If templates are used in the config files, we need to be sure `oc create -f <template.file>` works. The go version cluster-loader uses that command to create template and then use the template name to create items in the template. The python version uses `oc proess -f <template.file> > tmp.file && oc create -f tmp.file`. The `process` command tolerates more.
   - use `kind` instead of `Kind`: lowercase k.
   - template name: no upper case allowed.
+
+
+## Dev
+
+Before commit:
+
+```sh
+### https://blog.golang.org/go-fmt-your-code
+# go fmt <any_changed_file.go>
+```

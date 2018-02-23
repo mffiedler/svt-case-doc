@@ -173,3 +173,15 @@ pbench-fio.x86_64                   2.14-1                     @ndokos-pbench-in
 ### copy /opt/pbench-agent/config/pbench-agent.cfg and /opt/pbench-agent/id_rsa, then
 # chmod 0600 /opt/pbench-agent/id_rsa
 ```
+
+```sh
+### Use ext4 in fedora
+# mkfs.ext4 /dev/xvdf
+# mkdir /var/lib/fio
+# echo "/dev/xvdf /var/lib/fio ext4 defaults 0 0" >> /etc/fstab
+# mount -a
+# df -hT
+Filesystem     Type      Size  Used Avail Use% Mounted on
+...
+/dev/xvdf     xfs      1000G   33M 1000G   1% /var/lib/fio
+```

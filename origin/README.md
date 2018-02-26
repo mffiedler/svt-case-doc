@@ -230,7 +230,7 @@ Some wholes for us when transforming python config files to golang:
 
 * In the above command, the actual config file is `config/golang/pyconfigStatefulSet.yaml`. However, no extension `.yaml` is allowed in the args of the command. This is actually in the [doc](https://docs.openshift.com/container-platform/3.7/scaling_performance/using_cluster_loader.html). I spent 3 hours figuring this out. Shame on myself.
 
-* If templates are used in the config files, we need to be sure `oc create -f <template.file>` works. The go version cluster-loader uses that command to create template and then use the template name to create items in the template. The python version uses `oc proess -f <template.file> > tmp.file && oc create -f tmp.file`. The `process` command tolerates more.
+* (Update on Feb 26 2018: This is not true any more. The logic of handling templates changed) If templates are used in the config files, we need to be sure `oc create -f <template.file>` works. The go version cluster-loader uses that command to create template and then use the template name to create items in the template. The python version uses `oc proess -f <template.file> > tmp.file && oc create -f tmp.file`. The `process` command tolerates more.
   - use `kind` instead of `Kind`: lowercase k.
   - template name: no upper case allowed.
 

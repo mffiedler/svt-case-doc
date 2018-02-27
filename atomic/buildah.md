@@ -13,3 +13,31 @@ $ sudo dnf -y install buildah
 $ buildah --version
 buildah version 0.12 (image-spec 1.0.0, runtime-spec 1.0.0)
 ```
+
+## Build an images
+
+Note that `buildah` accepts Dockerfile as input for building images. Here we practice `buildah`'s syntax.
+
+Task: do the same thing as [this Dockerfile](https://github.com/hongkailiu/svt-go-docker/blob/podman/Dockerfile):
+
+```
+FROM centos:7
+ENV svt_go_version 0.0.1
+ENV build_number travis_57
+RUN mkdir /myapp
+WORKDIR /myapp
+RUN curl -o svt-${svt_go_version}-Linux-x86_64.tar.gz "https://raw.githubusercontent.com/cduser/svt-release/${build_number}/svt-${svt_go_version}-Linux-x86_64.tar.gz" && tar -xzf "svt-${svt_go_version}-Linux-x86_64.tar.gz"
+CMD ["/myapp/svt/svt", "http"]
+```
+
+`buildah` build an image based on a sequence of `buildah` commands. So `Dockerfile` becomes a `shell` script. Let us translate the above Dockerfile:
+
+```
+FROM centos:7
+ENV svt_go_version 0.0.1
+ENV build_number travis_57
+RUN mkdir /myapp
+WORKDIR /myapp
+RUN curl -o svt-${svt_go_version}-Linux-x86_64.tar.gz "https://raw.githubusercontent.com/cduser/svt-release/${build_number}/svt-${svt_go_version}-Linux-x86_64.tar.gz" && tar -xzf "svt-${svt_go_version}-Linux-x86_64.tar.gz"
+CMD ["/myapp/svt/svt", "http"]
+```

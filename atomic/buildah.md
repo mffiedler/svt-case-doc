@@ -32,10 +32,14 @@ CMD ["/myapp/svt/svt", "http"]
 
 `buildah` build an image based on a sequence of `buildah` commands. So `Dockerfile` becomes a `shell` script. Let us translate the above Dockerfile:
 
-```
+```sh
+# vi svt-go.sh
+svt_go_version=0.0.1
+build_number=travis_57
+
 container=$(buildah from centos:7)
-buildah config --env "svt_go_version=0.0.1" ${container}
-buildah config --env "build_number=travis_57" ${container}
+buildah config --env "svt_go_version=${svt_go_version}" ${container}
+buildah config --env "build_number=${build_number}" ${container}
 buildah run ${container} -- mkdir /myapp
 buildah config ${container} --workingdir /myapp
 buildah run ${container} -- curl -o svt-${svt_go_version}-Linux-x86_64.tar.gz "https://raw.githubusercontent.com/cduser/svt-release/${build_number}/svt-${svt_go_version}-Linux-x86_64.tar.gz" && tar -xzf "svt-${svt_go_version}-Linux-x86_64.tar.gz"

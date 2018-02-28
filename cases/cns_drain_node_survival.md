@@ -1,2 +1,0 @@
-# CNS: Drain node survival
-

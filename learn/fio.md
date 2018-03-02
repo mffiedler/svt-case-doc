@@ -56,6 +56,13 @@ Disk stats (read/write):
 
 The Bigger <code>bw</code> and the smaller <code>lat</code>, the better.
 
+## Job params
+
+* [direct=bool](https://github.com/axboe/fio/blob/master/HOWTO#L968): If value is true, use non-buffered I/O. This is usually O_DIRECT. Default: false.
+* [sync=bool](https://github.com/axboe/fio/blob/master/HOWTO#L1559): Use synchronous I/O for buffered writes. For the majority of I/O engines, this means using O_SYNC. Default: false.
+* [fsync_on_close=bool](https://github.com/axboe/fio/blob/master/HOWTO#L1226): If true, fio will :manpage:`fsync(2)` a dirty file on close.  This differs from :option:`end_fsync` in that it will happen on every file close, not
+	just at the end of the job.  Default: false.
+
 ## Reference
 
 [1]. [fio-howto](https://github.com/axboe/fio/blob/master/HOWTO) and [pdf version](https://media.readthedocs.org/pdf/fio/latest/fio.pdf)

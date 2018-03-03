@@ -1,70 +1,109 @@
 # IO Benchmark: fio
 
+## Doc
+
+* [fio@github](https://github.com/axboe) and [HOWTO](https://github.com/axboe/fio/blob/master/HOWTO)
+* [IOPS, latency, and bandwidth](https://www.violin-systems.com/blog/the-fundamental-characteristics-of-storage/)
+* [I/O: Random vs Sequential](https://www.violin-systems.com/blog/understanding-io-random-vs-sequential/)
+
 ## Installation
-RHEL 7.3
+
+Tested with `Fedora 27` on EC2:
 
 ```sh
-# yum install -y fio
+$ aws ec2 run-instances --image-id ami-959441ed --security-group-ids sg-5c5ace38 \
+   --count 1 --instance-type m4.xlarge --key-name id_rsa_perf --subnet subnet-4879292d \
+   --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 60, \"VolumeType\": \"gp2\"}}, {\"DeviceName\":\"/dev/sdf\", \"Ebs\":{\"VolumeSize\": 1000, \"VolumeType\": \"gp2\"}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-fio-test\"}]}]"
+```
+
+```sh
+# dnf list fio --showduplicates
+Last metadata expiration check: 0:00:31 ago on Sat 03 Mar 2018 01:08:42 PM UTC.
+Available Packages
+fio.x86_64                                                   3.0-3.fc27                                                   fedora
+
+# dnf install -y fio
+# which fio
+/bin/fio
 # fio --version
-fio-2.2.8
+fio-3.0
 ```
-
-## [Examples](https://www.linux.com/learn/inspecting-disk-io-performance-fio)
 
 ```sh
-# cat ./random-read-test.fio 
-; random read of 128mb of data
-
-[random-read]
-rw=randread
-size=128m
-directory=/mydata
-
-
-# fio ./random-read-test.fio 
-random-read: (g=0): rw=randread, bs=4K-4K/4K-4K/4K-4K, ioengine=sync, iodepth=1
-fio-2.2.8
-Starting 1 process
-random-read: Laying out IO file(s) (1 file(s) / 128MB)
-Jobs: 1 (f=1): [r(1)] [100.0% done] [12252KB/0KB/0KB /s] [3063/0/0 iops] [eta 00m:00s]
-random-read: (groupid=0, jobs=1): err= 0: pid=2394: Tue Aug 29 17:10:13 2017
-  read : io=131072KB, bw=13499KB/s, iops=3374, runt=  9710msec
-    clat (usec): min=170, max=8729, avg=294.78, stdev=160.37
-     lat (usec): min=170, max=8729, avg=295.00, stdev=160.37
-    clat percentiles (usec):
-     |  1.00th=[  195],  5.00th=[  205], 10.00th=[  211], 20.00th=[  221],
-     | 30.00th=[  233], 40.00th=[  282], 50.00th=[  310], 60.00th=[  318],
-     | 70.00th=[  326], 80.00th=[  334], 90.00th=[  342], 95.00th=[  354],
-     | 99.00th=[  498], 99.50th=[  748], 99.90th=[ 2640], 99.95th=[ 3440],
-     | 99.99th=[ 6240]
-    bw (KB  /s): min=12208, max=17856, per=100.00%, avg=13530.53, stdev=2144.74
-    lat (usec) : 250=36.03%, 500=62.98%, 750=0.50%, 1000=0.16%
-    lat (msec) : 2=0.20%, 4=0.09%, 10=0.04%
-  cpu          : usr=0.47%, sys=4.29%, ctx=32770, majf=0, minf=32
-  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
-     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     issued    : total=r=32768/w=0/d=0, short=r=0/w=0/d=0, drop=r=0/w=0/d=0
-     latency   : target=0, window=0, percentile=100.00%, depth=1
-
-Run status group 0 (all jobs):
-   READ: io=131072KB, aggrb=13498KB/s, minb=13498KB/s, maxb=13498KB/s, mint=9710msec, maxt=9710msec
-
-Disk stats (read/write):
-  xvda: ios=32548/0, merge=0/0, ticks=9434/0, in_queue=9434, util=96.97%
+# mkfs.xfs /dev/xvdf
+# mkdir /data
+# echo "/dev/xvdf /data xfs defaults 0 0" >> /etc/fstab
+# mount -a
 ```
-
-The Bigger <code>bw</code> and the smaller <code>lat</code>, the better.
 
 ## Job params
 
-* [direct=bool](https://github.com/axboe/fio/blob/master/HOWTO#L968): If value is true, use non-buffered I/O. This is usually O_DIRECT. Default: false.
+* bs: The block size in bytes used for I/O units
+* size: The total size of file I/O for each thread of this job.
+* runtime: Tell fio to terminate processing after the specified period of time.
+* ramp_time: If set, fio will run the specified workload for this amount of time before logging any performance numbers.
+* startdelay: Delay the start of job for the specified amount of time.
+* iodepth: Number of I/O units to keep in flight against the file.
 * [sync=bool](https://github.com/axboe/fio/blob/master/HOWTO#L1559): Use synchronous I/O for buffered writes. For the majority of I/O engines, this means using O_SYNC. Default: false.
 * [fsync_on_close=bool](https://github.com/axboe/fio/blob/master/HOWTO#L1226): If true, fio will :manpage:`fsync(2)` a dirty file on close.  This differs from :option:`end_fsync` in that it will happen on every file close, not
 	just at the end of the job.  Default: false.
+* [direct=bool](https://github.com/axboe/fio/blob/master/HOWTO#L968): If value is true, use non-buffered I/O. This is usually O_DIRECT. Default: false.
+* sync vs direct: [here](https://stackoverflow.com/questions/5055859/how-are-the-o-sync-and-o-direct-flags-in-open2-different-alike)
 
-## Reference
 
-[1]. [fio-howto](https://github.com/axboe/fio/blob/master/HOWTO) and [pdf version](https://media.readthedocs.org/pdf/fio/latest/fio.pdf)
+## More understanding with tests
 
-[2]. [fio output](https://tobert.github.io/post/2014-04-17-fio-output-explained.html)
+```sh
+/bin/fio --filesize=500M --runtime=120s --ioengine=libaio --direct=1 --time_based --stonewall --filename=/data/testfile --output=fio.output  \
+        --name=sw1m@qd32 --description="Bandwidth via 1MB sequential writes @ qd=32" --iodepth=32 --bs=1m --rw=write
+```
+
+`ps -ef | grep fio` shows 2 processes (parent-child) from the above `fio` command, `top` shows that
+the parent-pocess is busier.
+
+[Understand the output](https://tobert.github.io/post/2014-04-17-fio-output-explained.html):
+
+```sh
+# cat fio.output
+sw1m@qd32: (g=0): rw=write, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=libaio, iodepth=32
+fio-3.0
+Starting 1 process
+
+sw1m@qd32: (groupid=0, jobs=1): err= 0: pid=2883: Sat Mar  3 14:50:00 2018
+  Description  : [Bandwidth via 1MB sequential writes @ qd=32]
+  write: IOPS=90, BW=90.2MiB/s (94.5MB/s)(10.6GiB/120083msec)
+    slat (usec): min=30, max=78777, avg=11080.55, stdev=1653.86
+    clat (msec): min=10, max=4261, avg=343.79, stdev=305.32
+     lat (msec): min=12, max=4273, avg=354.87, stdev=305.40
+    clat percentiles (msec):
+     |  1.00th=[   78],  5.00th=[   79], 10.00th=[   90], 20.00th=[  112],
+     | 30.00th=[  124], 40.00th=[  157], 50.00th=[  359], 60.00th=[  414],
+     | 70.00th=[  460], 80.00th=[  506], 90.00th=[  625], 95.00th=[  810],
+     | 99.00th=[ 1368], 99.50th=[ 1938], 99.90th=[ 3037], 99.95th=[ 3675],
+     | 99.99th=[ 4245]
+   bw (  KiB/s): min=87888, max=225280, per=99.76%, avg=92103.65, stdev=8701.22, samples=240
+   iops        : min=   85, max=  220, avg=89.88, stdev= 8.51, samples=240
+  lat (msec)   : 20=0.03%, 50=0.57%, 100=12.81%, 250=35.89%, 500=29.45%
+  lat (msec)   : 750=15.02%, 1000=3.95%, 2000=1.78%, >=2000=0.49%
+  cpu          : usr=0.26%, sys=0.56%, ctx=10878, majf=0, minf=9
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=99.7%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.1%, 64=0.0%, >=64=0.0%
+     issued rwt: total=0,10827,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
+
+Run status group 0 (all jobs):
+  WRITE: bw=90.2MiB/s (94.5MB/s), 90.2MiB/s-90.2MiB/s (94.5MB/s-94.5MB/s), io=10.6GiB (11.4GB), run=120083-120083msec
+
+Disk stats (read/write):
+  xvdf: ios=0/86478, merge=0/0, ticks=0/7247141, in_queue=7251676, util=99.97%
+
+```
+
+The summary line:
+
+```sh
+# grep -E "groupid|IOPS=" fio.output
+sw1m@qd32: (groupid=0, jobs=1): err= 0: pid=2883: Sat Mar  3 14:50:00 2018
+  write: IOPS=90, BW=90.2MiB/s (94.5MB/s)(10.6GiB/120083msec)
+```

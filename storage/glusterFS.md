@@ -10,9 +10,10 @@
     * dedicated cluster
 * [heketi](https://github.com/heketi/heketi)
 * [brick-multiplexing](http://blog.gluster.org/brick-multiplexing-in-gluster-3-10/)
-* gluster-block-provisioning: [design doc](https://github.com/gluster/gluster-kubernetes/blob/master/docs/design/gluster-block-provisioning.md), [repo](https://github.com/gluster/gluster-block/)
+* gluster-block: [design doc](https://github.com/gluster/gluster-kubernetes/blob/master/docs/design/gluster-block-provisioning.md), [repo](https://github.com/gluster/gluster-block/)
 * [cns@rh.blog](https://redhatstorage.redhat.com/2017/10/05/container-native-storage-for-the-openshift-masses/)
 * [Good notes](https://github.com/RedHatWorkshops/openshiftv3-ops-workshop/blob/master/cns.md) sent by Elko
+* [CNS and CRS](https://access.redhat.com/documentation/en-us/reference_architectures/2017/html/deploying_and_managing_openshift_container_platform_3.6_on_amazon_web_services/persistent_storage)
 
 ## CNS
 
@@ -289,4 +290,3 @@ See [here](../learn/docker_registry.md#glusterfs-as-docker-registery-storage) fo
 
 [2]. [CNS: Architecture and configuration guide](https://www.redhat.com/cms/managed-files/st-container-native-storage-technology-detail-inc0464300at-201611-v2-en.pdf)
 
-[3]. [CNS and CRS](https://access.redhat.com/documentation/en-us/reference_architectures/2017/html/deploying_and_managing_openshift_container_platform_3.6_on_amazon_web_services/persistent_storage)

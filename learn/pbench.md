@@ -154,23 +154,7 @@ A wrapper application of [fio.md](fio.md).
 
 1 second (s) = 10^3 milliseconds (ms) = 10^6 microseconds (μs) = 10^9 nanoseconds (ns)
 
-#### Thoughput
-How many units of information a system can process in a period of time.
-
-* Throughput: Size of units that IO operations process per second, eg, 160 MiB/s.
-* IOPS: Input/output operations per second, eg, 10,000.
-* IO size or block size: the unit each IO operation processes, eg, 16 KiB.
-
-So here the formula is <code>Throughput = block size * IOPS</code>. See stat of [ebs volume types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
-
-#### [latency](http://searchstorage.techtarget.com/definition/IOPS-input-output-operations-per-second)
-A measure of the length of time it takes for a single I/O request to be completed from the application's point of view. The tool fio measures 3 kinds of latency:
-
-* lat: Total latency. Same names as slat and clat, this denotes the time from when fio created the I/O unit to completion of the I/O operation.
-* clat: Completion latency. It denotes the time from submission to completion of the I/O pieces.
-* slat: Submission latency. This is the time it took to submit the I/O.
-
-Server and client data on pbench-fio:
+#### Server and client data on pbench-fio:
 
 * server throughput: sum of all clients' throughput
 * server latency: average of all clients' latency

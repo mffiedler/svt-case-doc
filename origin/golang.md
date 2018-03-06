@@ -50,3 +50,7 @@ go version go1.9.3 linux/amd64
 ## Libs
 
 ## CICD
+
+## Good practice
+
+* https://github.com/golang/go/wiki/CodeReviewComments

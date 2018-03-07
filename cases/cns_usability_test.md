@@ -56,3 +56,32 @@ Expected result: all logs are fine with correct content.
 
 Extra work on the case: Need to implement the logic with Mike's logging
 tool or start from scratch.
+
+### Steps
+
+```sh
+# cd svt/openshift_scalability
+# curl -o ./content/fio/fio-template3.json https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/fio-template3.json
+# 1 projects, 30 templates
+# vi content/fio/fio-parameters.yaml
+...
+        file: ./content/fio/fio-template2.json
+        parameters:
+          - STORAGE_CLASS: "glusterfs-storage" # this is name of storage class to use
+          - STORAGE_SIZE: "30Gi" # this is size of PVC mounted inside pod
+          - MOUNT_PATH: "/mnt/pvcmount"
+          - DOCKER_IMAGE: "docker.io/hongkailiu/ocp-logtest:20180307"
+          - INITIAL_FLAGS: "-o /mnt/pvcmount/test.log --line-length 1024 --word-length 7 --rate 30000 --time 0 --fixed-line --num-lines 900000\n"
+
+tuningsets:
+  - name: default
+    templates:
+      stepping:
+        stepsize: 5
+        pause: 0 ms
+      rate_limit:
+        delay: 0 ms
+...
+
+# python -u cluster-loader.py -v -f content/fio/fio-parameters.yaml -p 1
+```

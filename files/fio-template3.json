@@ -13,7 +13,7 @@
             },
             "kind": "ConfigMap",
             "metadata": {
-                "name": "logtest-config"
+                "name": "logtest-config-${IDENTIFIER}"
             }
         },
         {
@@ -65,7 +65,7 @@
                         {
                             "name": "config",
                             "configMap": {
-                                "name": "logtest-config"
+                                "name": "logtest-config-${IDENTIFIER}"
                             }
                         }
                     ],
@@ -85,10 +85,14 @@
                         "volumeMounts": [{
                             "name": "${VOL_MOUNT_NAME}",
                             "mountPath": "${MOUNT_PATH}"
-                        }],
+                        },
+                            {
+                                "name": "config",
+                                "mountPath": "/var/lib/svt"
+                            }],
                         "terminationMessagePath": "/dev/termination-log",
                         "terminationMessagePolicy": "File",
-                        "imagePullPolicy": "Always"
+                        "imagePullPolicy": "IfNotPresent"
                     }]
                 }
             }

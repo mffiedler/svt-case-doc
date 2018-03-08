@@ -29,7 +29,7 @@ latest
 
 ```
 
-## Save/Upload images
+## Save/load images
 
 ```sh
 # vi /etc/docker/daemon.json

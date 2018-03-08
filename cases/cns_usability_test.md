@@ -19,8 +19,8 @@ Install CNS with 1000g and 3 replicas.
 Label 2 nodes with `heketi=heketi`:
 
 ```sh
-oc label node ip-172-31-28-169.us-west-2.compute.internal heketi=heketi gfsbp=gfsbp
-oc label node ip-172-31-33-215.us-west-2.compute.internal heketi=heketi gfsbp=gfsbp
+# oc label node ip-172-31-28-169.us-west-2.compute.internal heketi=heketi gfsbp=gfsbp
+# oc label node ip-172-31-33-215.us-west-2.compute.internal heketi=heketi gfsbp=gfsbp
 
 # oc patch -n glusterfs deploymentconfigs/glusterblock-storage-provisioner-dc --patch '{"spec": {"template": {"spec": {"nodeSelector": {"gfsbp": "gfsbp"}}}}}'
 # oc patch -n glusterfs deploymentconfigs/heketi-storage --patch '{"spec": {"template": {"spec": {"nodeSelector": {"heketi": "heketi"}}}}}'

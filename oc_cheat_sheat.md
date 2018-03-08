@@ -136,4 +136,6 @@ yum install pbench-fio-2.14
 # systemctl start lvm2-lvmetad.service 
 
 # rm -rf /var/lib/heketi/
+
+# oc get pv --no-headers | grep -v etcd | awk '{print $1}' | while read i; do oc delete pv $i; done
 ```

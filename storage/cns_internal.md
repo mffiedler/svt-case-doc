@@ -23,6 +23,10 @@ latest
 3.3.0-12
 latest
 
+curl -s -k brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/v1/repositories/rhgs3/rhgs-gluster-block-prov-rhel7/tags | ./jq 'keys' | ./jq -r .[] | sort -V | grep latest -B1
+3.3.1-3
+latest
+
 ```
 
 ## Save/Upload images

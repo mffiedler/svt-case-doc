@@ -36,13 +36,20 @@ Before the above finished (about 30 pod are running), do the following in anther
 # oc rollout latest heketi-storage -n glusterfs
 ```
 
-Or delete the oc pod directly:
+Or delete the heketi pod directly:
 
 ```sh
 # oc delete pod -n glusterfs "$(oc get pod -n glusterfs | grep heketi | awk '{print $1}')"
 ```
 
 There should be 200 pods in Running states.
+
+delete block-provisioner pod:
+
+```sh
+# oc delete pod -n glusterfs "$(oc get pod -n glusterfs | grep "glusterblock-storage-provisioner" | awk '{print $1}')"
+```
+
 
 ## No impact on pods when one of glusterfs pods get restarted
 

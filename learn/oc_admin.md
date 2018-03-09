@@ -43,7 +43,7 @@ See [cns_internal.md](../storage/cns_internal.md) for setting up docker and chec
 # oc adm policy add-role-to-group system:image-pusher system:authenticated
 ### Add antoher user as admin and admin can push too
 # oc adm policy add-role-to-user admin <another_admin>@redhat.com -n rhgs3
-``
+```
 
 ## Pull
 

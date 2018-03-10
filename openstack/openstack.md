@@ -35,6 +35,8 @@ clouds:
 
 ## Useful commands
 
+image-id: qe-rhel-74-20180228
+
 [Cli: man](https://docs.openstack.org/python-openstackclient/latest/cli/man/openstack.html)
 
 ```sh

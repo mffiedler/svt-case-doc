@@ -2,6 +2,8 @@
 
 ## heketi/block-provisioner pod can survive of node-draining
 
+This case covers [bz-1548322](https://bugzilla.redhat.com/show_bug.cgi?id=1548322).
+
 Label 2 nodes with `heketi=heketi` and `gfsbp=gfsbp` which is the node selector for
 `dc/heketi-storage`.
 

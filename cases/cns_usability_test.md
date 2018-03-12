@@ -93,4 +93,27 @@ tuningsets:
 ...
 
 # python -u cluster-loader.py -v -f content/fio/fio-parameters.yaml -p 1
+
+# Kill the glusterfs-storage one after another but always ensure that the previous kill one is recreated and ready
+# oc get pod -n glusterfs | grep "glusterfs-storage"
+glusterfs-storage-8jpbt                       1/1       Running   0          2h
+glusterfs-storage-bl9kz                       1/1       Running   0          2h
+glusterfs-storage-dvl7c                       1/1       Running   0          2h
+
+
+root@ip-172-31-20-3: ~/svt/openshift_scalability # oc delete pod -n glusterfs glusterfs-storage-8jpbt
+pod "glusterfs-storage-8jpbt" deleted
+root@ip-172-31-20-3: ~/svt/openshift_scalability # oc delete pod -n glusterfs glusterfs-storage-bl9kz
+pod "glusterfs-storage-bl9kz" deleted
+root@ip-172-31-20-3: ~/svt/openshift_scalability # oc delete pod -n glusterfs glusterfs-storage-dvl7c
+pod "glusterfs-storage-dvl7c" deleted
+
+```
+
+Expected result: 900000 line of logs is written onto the file after 30 mins.
+
+```sh
+$ oc rsh -n fioctest0 fio-0-zpkhp
+sh-4.2$ tail /mnt/pvcmount/test.log 
+sh-4.2$ cat /mnt/pvcmount/test.log | wc -l 
 ```

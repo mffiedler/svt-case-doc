@@ -138,4 +138,6 @@ yum install pbench-fio-2.14
 # rm -rf /var/lib/heketi/
 
 # oc get pv --no-headers | grep -v etcd | awk '{print $1}' | while read i; do oc delete pv $i; done
+
+# oc get pod -n glusterfs -o yaml | grep "image:" | sort -u
 ```

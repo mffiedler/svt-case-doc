@@ -14,6 +14,7 @@
 * [cns@rh.blog](https://redhatstorage.redhat.com/2017/10/05/container-native-storage-for-the-openshift-masses/)
 * [Good notes](https://github.com/RedHatWorkshops/openshiftv3-ops-workshop/blob/master/cns.md) sent by Elko
 * [CNS and CRS](https://access.redhat.com/documentation/en-us/reference_architectures/2017/html/deploying_and_managing_openshift_container_platform_3.6_on_amazon_web_services/persistent_storage)
+* heketi troubleshooting doc: [mojo@rh](https://mojo.redhat.com/docs/DOC-1165175-cns-container-native-storage-troubleshootingdebugging-guide) and [heketi-doc@gh](https://github.com/heketi/heketi/blob/263fbb72055d71b3763a77c051e7a00cf0c4e436/docs/troubleshooting.md)
 
 ## CNS
 

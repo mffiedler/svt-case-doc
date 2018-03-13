@@ -64,6 +64,12 @@ _Hint_: In the output of Jenkins build, search for *playbook*. The inventory fil
     ```sh
     # ansible-playbook -i /tmp/1.file aos-ansible/playbooks/aws_install_prep.yml
     ```
+    
+2-pre. since 3.9
+
+    ```sh
+    # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/prerequisites.yml 
+    ```
 
 2. config
 

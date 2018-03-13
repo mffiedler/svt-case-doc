@@ -18,6 +18,8 @@ Install `podman`: check [there](https://github.com/projectatomic/libpod/blob/mas
 
 Build from src for the moment. I believe that `dnf` is on its way ([WIP](https://bugzilla.redhat.com/show_bug.cgi?id=1541554)?).
 
+20180313: `dnf install -y podman`
+
 ```sh
 $ sudo -i
 # dnf install -y git runc libassuan-devel golang golang-github-cpuguy83-go-md2man glibc-static \

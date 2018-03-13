@@ -35,7 +35,7 @@ clouds:
 
 ## Useful commands
 
-image-id: qe-rhel-74-20180228
+image-id: qe-rhel-74-20180228; Fedora-Cloud-Base-27-1.6
 
 [Cli: man](https://docs.openstack.org/python-openstackclient/latest/cli/man/openstack.html)
 

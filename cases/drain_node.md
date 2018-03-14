@@ -43,7 +43,7 @@ Move _reg-console_ pod to infra-node.
 Disable one of the computing node <code>node2</code>.
 
 ```sh
-# oadm manage-node $node2_name --schedulable=false
+# oc adm manage-node $node2_name --schedulable=false
 ```
 
 Create pods with PVCs. 1 project, 249 templates:

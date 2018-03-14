@@ -3,9 +3,9 @@
   debug:
     msg: "hostname: {{ inventory_hostname }}"
 
-- name: install the latest version of docker
+- name: install required pkgs
   dnf:
-    name: docker
+    name: docker, jq
     state: present
   become: true
 
@@ -38,4 +38,5 @@
   become: true
 
 
-### run `sudo usermod -aG docker $USER` manually on the host
+### curl -L -o check_images_cns_in_brew.sh https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/check_images_cns_in_brew.sh && bash -e ./check_images_cns_in_brew.sh
+### docker login -u <kerberos>@redhat.com -p $(oc whoami -t) registry.reg-aws.openshift.com:443

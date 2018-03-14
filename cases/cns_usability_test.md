@@ -72,14 +72,13 @@ tool or start from scratch.
 
 ```sh
 # cd svt/openshift_scalability
-# curl -o ./content/fio/fio-template3.json https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/fio-template3.json
-# 1 projects, 30 templates
+# 1 projects, 1 template
 # vi content/fio/fio-parameters.yaml
 ...
-        file: ./content/fio/fio-template2.json
+        file: ./content/fio/fio-template3.json
         parameters:
           - STORAGE_CLASS: "glusterfs-storage" # this is name of storage class to use
-          - STORAGE_SIZE: "30Gi" # this is size of PVC mounted inside pod
+          - STORAGE_SIZE: "60Gi" # this is size of PVC mounted inside pod
           - MOUNT_PATH: "/mnt/pvcmount"
           - DOCKER_IMAGE: "docker.io/hongkailiu/ocp-logtest:20180307"
           - INITIAL_FLAGS: "-o /mnt/pvcmount/test.log --line-length 1024 --word-length 7 --rate 30000 --time 0 --fixed-line --num-lines 900000\n"

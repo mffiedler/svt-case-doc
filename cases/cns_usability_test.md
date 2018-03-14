@@ -119,3 +119,5 @@ $ oc rsh -n fioctest0 fio-0-zpkhp
 sh-4.2$ tail /mnt/pvcmount/test.log 
 sh-4.2$ cat /mnt/pvcmount/test.log | wc -l 
 ```
+
+## PV resizing

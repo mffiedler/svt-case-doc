@@ -38,6 +38,7 @@ Move _reg-console_ pod to infra-node.
 ```sh
 # oc scale --replicas=0 -n openshift-ansible-service-broker deploymentconfigs/asb-etcd
 # oc delete pvc -n openshift-ansible-service-broker etcd
+# oc scale --replicas=0 -n openshift-ansible-service-broker deploymentconfigs/asb
 ```
 
 Disable one of the computing node <code>node2</code>.

@@ -53,7 +53,7 @@ delete block-provisioner pod:
 ```
 
 
-## No impact on App. pods when one of glusterfs pods get restarted
+## No impact on App. pods when glusterfs pods get restarted
 
 Similar to [bz 1555063](https://bugzilla.redhat.com/show_bug.cgi?id=1555063).
 

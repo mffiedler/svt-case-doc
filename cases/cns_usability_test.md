@@ -55,6 +55,8 @@ delete block-provisioner pod:
 
 ## No impact on pods when one of glusterfs pods get restarted
 
+Similar to [bz 1555063](https://bugzilla.redhat.com/show_bug.cgi?id=1555063).
+
 10 pods with glusterfs PVCs and the pods write logs onto files on PVCs.
 
 Restart glusterfs pod one after another with a reasonable interval: drain

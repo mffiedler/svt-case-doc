@@ -41,6 +41,7 @@ Create pods with PVCs. 1 project, 249 templates:
 
 ```sh
 # cd svt/openshift_scalability
+# curl -o ./content/fio/fio-template1.json https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/fio-template1.json
 # vi content/fio/fio-parameters.yaml
 ...
         file: ./content/fio/fio-template1.json

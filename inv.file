@@ -1,0 +1,8 @@
+[nodes:vars]
+ansible_user=root
+ansible_ssh_private_key_file="/home/hongkliu/.ssh/id_rsa_perf"
+
+[nodes]
+ec2-50-112-132-6.us-west-2.compute.amazonaws.com
+ec2-54-187-129-100.us-west-2.compute.amazonaws.com
+ec2-52-11-160-131.us-west-2.compute.amazonaws.com

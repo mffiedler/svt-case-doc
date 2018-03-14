@@ -1,0 +1,13 @@
+###
+### Before running this playbook, do the followings
+### $ ssh -i ~/.ssh/libra.pem <root|fedora>@<hostname>
+### $ sudo -i
+### # cd /usr/bin/
+### # ln -s python3 python
+
+---
+- name: Prepare for fio test
+  hosts: all
+  remote_user: root
+  roles:
+    - syn_cns_images

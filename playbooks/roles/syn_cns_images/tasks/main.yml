@@ -1,0 +1,41 @@
+---
+- name: print hostname
+  debug:
+    msg: "hostname: {{ inventory_hostname }}"
+
+- name: install the latest version of docker
+  dnf:
+    name: docker
+    state: present
+  become: true
+
+- template:
+    src: etc_docker_daemon.json.j2
+    dest: /etc/docker/daemon.json
+  become: true
+
+- name: restart service docker
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: docker
+  become: true
+
+- name: enable service docker
+  systemd:
+    name: docker
+    enabled: yes
+  become: true
+
+- name: run docker postinstall step 1
+  group:
+    name: docker
+    state: present
+  become: true
+
+- name: run docker postinstall step 2
+  command: "usermod -aG docker {{ ansible_user }}"
+  become: true
+
+
+### run `sudo usermod -aG docker $USER` manually on the host

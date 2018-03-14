@@ -12,7 +12,7 @@ I am using this pkg:
 atomic-openshift.x86_64         3.9.7-1.git.0.e1a30c3.el7
 ```
 
-How can we know the fix/pr is included in the pkg?
+How can we know whether or not the fix/pr is included in the pkg?
 
 From the above pr UI, we know its commit is `15c1c88b6bef9a437fed960822f203f0620b9074`.
 

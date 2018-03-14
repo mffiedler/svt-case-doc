@@ -67,7 +67,7 @@ Create pods with PVCs. 1 project, 249 templates:
 Enable the disabled computing node <code>node2</code>.
 
 ```sh
-# oadm manage-node $node2_name --schedulable=true
+# oc adm manage-node $node2_name --schedulable=true
 ```
 
 Drain node <code>node1</code>.

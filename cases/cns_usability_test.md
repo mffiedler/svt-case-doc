@@ -121,3 +121,4 @@ sh-4.2$ cat /mnt/pvcmount/test.log | wc -l
 ```
 
 ## PV resizing
+Doc: https://www.humblec.com/glusterfs-dynamic-provisioner-online-resizing-of-glusterfs-pvs-in-kubernetes-v-1-8/

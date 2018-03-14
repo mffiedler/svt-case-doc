@@ -73,5 +73,5 @@ Enable the disabled computing node <code>node2</code>.
 Drain node <code>node1</code>.
 
 ```sh
-# oadm drain $node1_name
+# oc adm drain $node1_name
 ```

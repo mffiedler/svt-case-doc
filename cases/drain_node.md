@@ -31,6 +31,11 @@ KUBE_MAX_PD_VOLS=260
 
 Move _reg-console_ pod to infra-node.
 
+```sh
+# oc patch -n default deploymentconfigs/registry-console --patch '{"spec": {"template": {"spec": {"nodeSelector": {"region": "infra"}}}}}'
+# oc patch -n openshift-ansible-service-broker deploymentconfigs/asb-etcd --patch '{"spec": {"template": {"spec": {"nodeSelector": {"region": "infra"}}}}}'
+```
+
 Disable one of the computing node <code>node2</code>.
 
 ```sh

@@ -17,6 +17,7 @@ The image has been built and pushed to docker.io:
 From Feb 09, 2018, use this image: `docker.io/hongkailiu/centosfio:3.9.0-0.41.0-crio`.
 
 * `docker.io/hongkailiu/centosfio:3.9.0-0.46.0`
+* `registry.reg-aws.openshift.com:443/hongkliu-test/fio:001`
 
 Create scc on master, label the computing node, and create test project:
 

@@ -31,7 +31,7 @@ function sync_image(){
   docker push "$2"
 }
 
-if [[ "$x" == "sync" ]]; then
+if [[ "$1" == "sync" ]]; then
   echo "Start to sync ..."
   sync_image "brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7:${GFS_TAG}" "registry.reg-aws.openshift.com:443/rhgs3/rhgs-server-rhel7:${GFS_TAG}"
   sync_image "brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-s3-server-rhel7:${S3_TAG}" "registry.reg-aws.openshift.com:443/rhgs3/rhgs-s3-server-rhel7:${S3_TAG}"

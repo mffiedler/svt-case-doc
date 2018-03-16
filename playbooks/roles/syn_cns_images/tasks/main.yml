@@ -33,6 +33,10 @@
     state: present
   become: true
 
+- name: print ansible_user
+  debug:
+    msg: "ansible_user: {{ ansible_user }}"
+
 - name: run docker postinstall step 2
   command: "usermod -aG docker {{ ansible_user }}"
   become: true

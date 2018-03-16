@@ -26,7 +26,7 @@ readonly HKT_TAG=3.3.1-8
 set -e
 
 function sync_image(){
-  docker docker pull "$1"
+  docker pull "$1"
   docker tag "$1" "$2"
   docker push "$2"
 }

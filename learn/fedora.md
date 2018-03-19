@@ -74,3 +74,19 @@ $ sudo dnf install WoeUSB
 ```
 
 * Make fedora installation usb on win7: [MediaWriter](https://github.com/MartinBriza/MediaWriter). Tried MediaWriter 4.1.1 and Fedora 27.
+
+
+## Fedora gnome on ec2 instance
+
+https://devopscube.com/setup-gui-for-amazon-ec2-linux/
+
+https://docs.fedoraproject.org/f26/system-administrators-guide/infrastructure-services/TigerVNC.html
+
+https://www.server-world.info/en/note?os=Fedora_27&p=desktop&f=6
+
+Test with Fedora 27:
+
+```sh
+# dnf groupinstall -y "Fedora Workstation"
+# dnf groupinstall -y tigervnc-server
+```

@@ -7,19 +7,6 @@
     tags:
       - setup
 
-  - name: cp scp the pub key file
-    copy:
-      src: "{{ pub_key_file_path }}"
-      dest: "{{ tmp_folder }}/id_rsa.pub"
-    tags:
-      - setup
-
-  - name: scp the pub key file
-    shell: scp "{{ tmp_folder }}/id_rsa.pub" "{{ item }}:~/.ssh/"
-    with_items: "{{ client_nodes }}"
-    tags:
-      - setup
-
   - name: label the compute nodes
     shell: oc label node "{{ item }}" --overwrite {{ node_selector_key }}={{ node_selector_value }}
     with_items: "{{ client_nodes }}"
@@ -36,7 +23,20 @@
   - name: copy files to remote
     copy:
       src: files
-      dest: /tmp/fio-test
+      dest: "{{ tmp_folder }}"
+    tags:
+      - setup
+
+  - name: scp the pub key file
+    copy:
+      src: "{{ pub_key_file_path }}"
+      dest: "{{ tmp_folder }}/id_rsa.pub"
+    tags:
+      - setup
+
+  - name: scp the pub key file
+    shell: scp "{{ tmp_folder }}/id_rsa.pub" "{{ item }}:~/.ssh/"
+    with_items: "{{ client_nodes }}"
     tags:
       - setup
 
@@ -87,7 +87,8 @@
         retries: 5
         delay: 10
         ignore_errors: True
-      - fail:
+      - name: fail the test if the pod is NOT running after 60s
+        fail:
           msg: "the pod is NOT running after 60s"
         when: pod_ready_result|failed
     tags:

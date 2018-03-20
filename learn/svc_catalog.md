@@ -47,7 +47,7 @@ All application templates shipped by Openshift are managed by this broker.
 143
 # oc get ClusterServiceClass --no-headers | wc -l
 143
-# oc get ClusterServiceClass --no-headers -o yaml | grep clusterServiceBrokerName | wc -l
+# oc get ClusterServiceClass --no-headers -o yaml | grep clusterServiceBrokerName | grep "template-service-broker" | wc -l
 143
 
 ```

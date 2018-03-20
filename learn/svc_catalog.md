@@ -43,9 +43,11 @@ template-service-broker   4h
 All application templates shipped by Openshift are managed by this broker.
 
 ```sh
-root@ip-172-31-47-246: ~ # oc get templates -n openshift --no-headers | wc -l
+# oc get templates -n openshift --no-headers | wc -l
 143
-root@ip-172-31-47-246: ~ # oc get ClusterServiceClass --no-headers | wc -l
+# oc get ClusterServiceClass --no-headers | wc -l
+143
+# oc get ClusterServiceClass --no-headers -o yaml | grep clusterServiceBrokerName | wc -l
 143
 
 ```

@@ -117,5 +117,9 @@ registry:
 
 Debugging doc: https://github.com/openshift/ansible-service-broker/blob/master/docs/debugging.md
 
+Interesting test cases
+
+* https://polarion.engineering.redhat.com/polarion/#/project/OSE/workitem?id=OCP-15042
+* https://polarion.engineering.redhat.com/polarion/#/project/OSE/workitem?id=OCP-15602
 
 ## [CNS-S3 as service via service catalog](https://docs.google.com/document/d/1OEmlXTpQ1F3Ni0LDVM12zA2f7B2Xs7Wdq94y8sW6ANQ/edit)

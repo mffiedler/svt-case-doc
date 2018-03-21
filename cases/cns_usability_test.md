@@ -57,6 +57,16 @@ delete block-provisioner pod:
 
 Similar to [bz 1555063](https://bugzilla.redhat.com/show_bug.cgi?id=1555063).
 
+Note that I cannot see this bz again with:
+
+```sh
+# oc get pod -n glusterfs -o yaml | grep "image:" | sort -u
+      image: registry.reg-aws.openshift.com:443/rhgs3/rhgs-gluster-block-prov-rhel7:3.3.1-7
+      image: registry.reg-aws.openshift.com:443/rhgs3/rhgs-server-rhel7:3.3.1-10
+      image: registry.reg-aws.openshift.com:443/rhgs3/rhgs-volmanager-rhel7:3.3.1-8
+
+```
+
 10 pods with glusterfs PVCs and the pods write logs onto files on PVCs.
 
 Restart glusterfs pod one after another with a reasonable interval: drain

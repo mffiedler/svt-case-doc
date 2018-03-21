@@ -57,6 +57,14 @@ delete block-provisioner pod:
 
 Similar to [bz 1555063](https://bugzilla.redhat.com/show_bug.cgi?id=1555063).
 
+To know which glusterfs pod to kill:
+
+```
+### Run it in the fio pod:
+sh-4.2$ grep gluster /proc/mounts
+172.31.3.148:vol_10cfce21dbcac9cc5620ab378d76e017 /mnt/pvcmount fuse.glusterfs rw,relatime,user_id=0,group_id=0,default_permissions,allow_other,max_read=131072 0 0
+```
+
 Note that I cannot see this bz again with deleting-pod method and:
 
 ```sh

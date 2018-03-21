@@ -65,17 +65,7 @@ sh-4.2$ grep gluster /proc/mounts
 172.31.3.148:vol_10cfce21dbcac9cc5620ab378d76e017 /mnt/pvcmount fuse.glusterfs rw,relatime,user_id=0,group_id=0,default_permissions,allow_other,max_read=131072 0 0
 ```
 
-Note that I cannot see this bz again with deleting-pod method and:
-
-```sh
-# oc get pod -n glusterfs -o yaml | grep "image:" | sort -u
-      image: registry.reg-aws.openshift.com:443/rhgs3/rhgs-gluster-block-prov-rhel7:3.3.1-7
-      image: registry.reg-aws.openshift.com:443/rhgs3/rhgs-server-rhel7:3.3.1-10
-      image: registry.reg-aws.openshift.com:443/rhgs3/rhgs-volmanager-rhel7:3.3.1-8
-
-```
-
-10 pods with glusterfs PVCs and the pods write logs onto files on PVCs.
+100 pods on 2 compute nodes with glusterfs PVCs and the pods write logs onto files on PVCs.
 
 Restart glusterfs pod one after another with a reasonable interval: drain
 node or delete pod or remove label `glusterfs=storage-host` on the

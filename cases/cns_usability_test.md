@@ -57,7 +57,7 @@ delete block-provisioner pod:
 
 Similar to [bz 1555063](https://bugzilla.redhat.com/show_bug.cgi?id=1555063).
 
-Note that I cannot see this bz again with:
+Note that I cannot see this bz again with deleting-pod method and:
 
 ```sh
 # oc get pod -n glusterfs -o yaml | grep "image:" | sort -u

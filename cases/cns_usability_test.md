@@ -124,6 +124,7 @@ Expected result: 900000 line of logs is written onto the file after 30 mins.
 ```sh
 # oc get pod --all-namespaces | grep fio | grep Running | awk '{print $2}' | while read i; do oc exec -n fioatest0 $i -- wc -l /mnt/pvcmount/test.log; done
 # oc get pod --all-namespaces | grep fio | grep Running | awk '{print $2}' | while read i; do oc exec -n fioatest0 $i -- rm -f /mnt/pvcmount/test.log; done
+ # oc get pod --all-namespaces | grep fio | awk '{print $2}' | while read i; do oc exec -n fioatest0 $i -- tail -n 1 /mnt/pvcmount/test.log ; done | awk '{print $10}'
 
 $ oc rsh -n fioctest0 fio-0-zpkhp
 sh-4.2$ tail /mnt/pvcmount/test.log 

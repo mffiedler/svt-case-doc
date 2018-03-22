@@ -117,8 +117,12 @@ pod "glusterfs-storage-bl9kz" deleted
 # oc delete pod -n glusterfs glusterfs-storage-dvl7c
 pod "glusterfs-storage-dvl7c" deleted
 
-OR
+### Or:
 # oc label node ${glusterfs_node} glusterfs-
+# oc label node ${glusterfs_node} glusterfs=storage-host
+
+### Write the logs in the way like the bz
+sh-4.2$ while true; do echo $(date) | tee -a /mnt/pvcmount/ttt.log; sleep 1; done 
 ```
 
 Expected result: 900000 line of logs is written onto the file after 30 mins.
@@ -132,6 +136,12 @@ oc delete pod -n fioatest0 --all
 $ oc rsh -n fioctest0 fio-0-zpkhp
 sh-4.2$ tail /mnt/pvcmount/test.log 
 sh-4.2$ cat /mnt/pvcmount/test.log | wc -l 
+### If client quorum is not met (2 gluster pods were killed in our setting), then we can see this:
+### ref: https://docs.gluster.org/en/latest/Administrator%20Guide/Split%20brain%20and%20ways%20to%20deal%20with%20it/
+...
+Thu Mar 22 14:58:38 UTC 2018
+tee: /mnt/pvcmount/ttt.log: Read-only file system
+
 ```
 
 ## PV resizing

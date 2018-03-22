@@ -110,13 +110,15 @@ glusterfs-storage-bl9kz                       1/1       Running   0          2h
 glusterfs-storage-dvl7c                       1/1       Running   0          2h
 
 
-root@ip-172-31-20-3: ~/svt/openshift_scalability # oc delete pod -n glusterfs glusterfs-storage-8jpbt
+# oc delete pod -n glusterfs glusterfs-storage-8jpbt
 pod "glusterfs-storage-8jpbt" deleted
-root@ip-172-31-20-3: ~/svt/openshift_scalability # oc delete pod -n glusterfs glusterfs-storage-bl9kz
+# oc delete pod -n glusterfs glusterfs-storage-bl9kz
 pod "glusterfs-storage-bl9kz" deleted
-root@ip-172-31-20-3: ~/svt/openshift_scalability # oc delete pod -n glusterfs glusterfs-storage-dvl7c
+# oc delete pod -n glusterfs glusterfs-storage-dvl7c
 pod "glusterfs-storage-dvl7c" deleted
 
+OR
+# oc label node ${glusterfs_node} glusterfs-
 ```
 
 Expected result: 900000 line of logs is written onto the file after 30 mins.

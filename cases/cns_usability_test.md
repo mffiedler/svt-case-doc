@@ -144,5 +144,10 @@ tee: /mnt/pvcmount/ttt.log: Read-only file system
 
 ```
 
+Observations:
+
+* to provision new PVCs, all 3 glusterfs pods needs to be running
+* for writing on existing PVCs, at least 2 out of 3 glusterfs pods needs to be running.
+
 ## PV resizing
 Doc: https://www.humblec.com/glusterfs-dynamic-provisioner-online-resizing-of-glusterfs-pvs-in-kubernetes-v-1-8/

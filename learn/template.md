@@ -1,6 +1,6 @@
-## [Templates](https://docs.openshift.org/latest/dev_guide/templates.html#dev-guide-templates)
+# [Templates](https://docs.openshift.org/latest/dev_guide/templates.html#dev-guide-templates)
 
-### Get objects of a project
+## Get objects of a project
 
 ```sh
 # oc get all -o yaml
@@ -8,7 +8,7 @@
 
 The output can be used as input for <code>oc create</code> command.
 
-### [Export template from project](https://docs.openshift.org/latest/dev_guide/templates.html#export-as-template)
+## [Export template from project](https://docs.openshift.org/latest/dev_guide/templates.html#export-as-template)
 
 
 ```sh
@@ -17,9 +17,9 @@ The output can be used as input for <code>oc create</code> command.
 
 See [aaa.project.template.yaml](../files/aaa.project.template.yaml).
 
-### Read the template
+## Read the template
 
-#### Object kind
+### Object kind
 
 FInd object kind and find them in K8S and OC documents.
 
@@ -46,7 +46,7 @@ All those objects above created automatically when we create a new app by one oc
 # oc new-app docker.io/library/jenkins:2.46.3
 ```
 
-#### Recreate the objects via template
+### Recreate the objects via template
 
 ```sh
 # oc process -f aaa.project.template.yaml | oc create -f -
@@ -95,7 +95,7 @@ po/jenkins-1-81636   1/1       Running   0          15m
 *Note that* rolling out dc results to creating rc and po.
 
 
-### Modify the template file
+## Modify the template file
 
 It has been shown above that we can achieve the same using <code>template</code> instead of <code>new-app</code> command.
 
@@ -112,12 +112,59 @@ However, it does *not* create rc. I guess (did fiind supporting doc) it has depe
 
 *Note that* the value docker image is _jenkins:2.46.3_. It does not work (pull image failure) if _docker.io/library/jenkins:2.46.3_. Maybe for library it has too be like that. (July 15, 2017)
 
-### Parameterized template
+## Parameterized template
 
 The last section <code>parameters</code> in [aaa.rc.template.json](../files/aaa.rc.template.json) is added manually. It gives the default value of variables in the templates. We can also use [oc command args](https://docs.openshift.org/latest/dev_guide/templates.html#templates-parameters) to override them.
 
 
-### SVT
+## SVT
 
 [SVT](https://github.com/openshift/svt), specially the cluster loader, uses every often templates to create oc objects.
 
+## Understand the templates shipped with openshift
+
+```sh
+$ oc get template -n openshift
+```
+
+For example, dig into `postgresql-persistent`:
+
+```
+### List parameters in the template:
+$ oc process --parameters -n openshift postgresql-persistent
+$ oc get template postgresql-persistent -n openshift  -o yaml | grep "image:"
+          image: ' '
+
+```
+
+What is the image used in the dc? Let's see:
+
+```sh
+$ oc new-project ttt
+$ oc new-app --template=postgresql-persistent
+$ oc get deploymentconfigs/postgresql -o json | jq '.spec.triggers[0]'
+  {
+    "imageChangeParams": {
+      "automatic": true,
+      "containerNames": [
+        "postgresql"
+      ],
+      "from": {
+        "kind": "ImageStreamTag",
+        "name": "postgresql:9.6",
+        "namespace": "openshift"
+      },
+      "lastTriggeredImage": "registry.access.redhat.com/rhscl/postgresql-96-rhel7@sha256:06b86e301a272c1861571e1c514d3f71f7a1bd0f4cbc283b352bb6c5a34b62ec"
+    },
+    "type": "ImageChange"
+  }
+```
+
+So the dc is [triggered](https://docs.openshift.com/container-platform/3.7/dev_guide/deployments/basic_deployment_operations.html#image-change-trigger) by `ImageStreamTag` named `postgresql:9.6` in `openshift`:
+
+```sh
+$ oc get ImageStreamTag -n openshift postgresql:9.6 -o json | jq '.image.dockerImageReference'
+"registry.access.redhat.com/rhscl/postgresql-96-rhel7@sha256:06b86e301a272c1861571e1c514d3f71f7a1bd0f4cbc283b352bb6c5a34b62ec"
+```
+
+They totally match!

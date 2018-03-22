@@ -122,7 +122,7 @@ pod "glusterfs-storage-dvl7c" deleted
 Expected result: 900000 line of logs is written onto the file after 30 mins.
 
 ```sh
-# oc get pod --all-namespaces | grep fio | awk '{print $2}' | while read i; do oc exec -n fioatest0 $i -- cat /mnt/pvcmount/test.log | wc -l ; done
+# oc get pod --all-namespaces | grep fio | grep Running | awk '{print $2}' | while read i; do oc exec -n fioatest0 $i -- cat /mnt/pvcmount/test.log | wc -l ; done
 
 $ oc rsh -n fioctest0 fio-0-zpkhp
 sh-4.2$ tail /mnt/pvcmount/test.log 

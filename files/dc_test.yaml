@@ -10,9 +10,6 @@ spec:
     spec:
       containers:
         - name: "helloworld"
-          image: "docker.io/hongkailiu/svt-go:http"
-          ports:
-            - containerPort: 8080
-              protocol: "TCP"
+          image: "docker.io/hongkailiu/ycsb:001"
   replicas: 1
   

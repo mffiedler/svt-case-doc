@@ -1,0 +1,18 @@
+kind: "DeploymentConfig"
+apiVersion: "v1"
+metadata:
+  name: "myapp"
+spec:
+  template: 
+    metadata:
+      labels:
+        name: "myapp"
+    spec:
+      containers:
+        - name: "helloworld"
+          image: "docker.io/hongkailiu/svt-go:http"
+          ports:
+            - containerPort: 8080
+              protocol: "TCP"
+  replicas: 1
+  

@@ -93,8 +93,6 @@ Move the pod to a node with label `aaa=bbb`
 ## Benchmark: [YCSB](https://github.com/brianfrankcooper/YCSB)
 
 ```sh
-# curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/workloada.properties
-# oc create configmap my-config --from-file=workloada.properties
 # oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/dc_ycsb.yaml
 ```
 

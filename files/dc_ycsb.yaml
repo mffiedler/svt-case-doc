@@ -1,0 +1,26 @@
+kind: "DeploymentConfig"
+apiVersion: "v1"
+metadata:
+  name: "ycsb"
+spec:
+  template:
+    metadata:
+      labels:
+        name: "ycsb"
+    spec:
+      containers:
+        - name: "helloworld"
+          image: "docker.io/hongkailiu/ycsb:002"
+          volumeMounts:
+            - name: config-volume
+              mountPath: /ycsb/workloads/workloadt
+      volumes:
+        - name: config-volume
+          configMap:
+            name: my-config
+            items:
+              - key: workloada.properties
+                path: workloadt
+  triggers:
+    - type: "ConfigChange"
+  replicas: 1

@@ -9,7 +9,7 @@ spec:
         name: "ycsb"
     spec:
       containers:
-        - name: "helloworld"
+        - name: "ycsb"
           image: "docker.io/hongkailiu/ycsb:002"
           volumeMounts:
             - name: config-volume

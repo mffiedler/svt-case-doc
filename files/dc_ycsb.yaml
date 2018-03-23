@@ -11,16 +11,6 @@ spec:
       containers:
         - name: "ycsb"
           image: "docker.io/hongkailiu/ycsb:002"
-          volumeMounts:
-            - name: config-volume
-              mountPath: /ycsb/workloads/workloadt
-      volumes:
-        - name: config-volume
-          configMap:
-            name: my-config
-            items:
-              - key: workloada.properties
-                path: workloadt
   triggers:
     - type: "ConfigChange"
   replicas: 1

@@ -43,7 +43,7 @@ Deploy `mongodb` with the template:
 
 ```sh
 # oc new-project ttt
-# oc process -f ./mongodb-persistent-template-ttt.yaml -p MEMORY_LIMIT=1024Mi -p MONGODB_USER=redhat -p MONGODB_PASSWORD=redhat -p MONGODB_DATABASE=testdb -p VOLUME_CAPACITY=10Gi -p STORAGE_CLASS_NAME=glusterfs-storage-block | oc create -f -
+# oc process -f ./mongodb-persistent-template-ttt.yaml -p MEMORY_LIMIT=2048Mi -p MONGODB_USER=redhat -p MONGODB_PASSWORD=redhat -p MONGODB_DATABASE=testdb -p VOLUME_CAPACITY=10Gi -p STORAGE_CLASS_NAME=glusterfs-storage-block | oc create -f -
 # oc get all
 NAME                        REVISION   DESIRED   CURRENT   TRIGGERED BY
 deploymentconfigs/mongodb   1          1         1         config,image(mongodb:3.2)

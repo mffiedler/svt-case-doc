@@ -1,6 +1,6 @@
 # Storage Test for MongoDB
 
-## Use template
+## Use template from openshift
 
 Modify the template `-n openshift mongodb-persistent` with storage class name as a variable:
 
@@ -31,6 +31,13 @@ MONGODB_VERSION          Version of MongoDB image to be used (2.4, 2.6, 3.2 or l
 STORAGE_CLASS_NAME       Storage Class Name of PVC.                                                                    gp2
 
 ```
+
+Or download the modified version:
+
+```sh
+# curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/mongodb-persistent-template-ttt.yaml
+```
+
 
 Deploy `mongodb` with the template:
 

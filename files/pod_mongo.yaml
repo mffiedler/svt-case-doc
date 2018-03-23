@@ -8,3 +8,5 @@ spec:
   containers:
     - name: front-end
       image: docker.io/mongo:3.2
+  nodeSelector:
+    aaa: bbb

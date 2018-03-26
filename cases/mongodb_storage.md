@@ -161,4 +161,8 @@ as input script for pbench-user-benchmark:
 
 ```sh
 # pbench-user-benchmark --config="mongo_storage_test" -- bash test-mongo.sh
+### Or,
+
+# curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test-mongo-with-pbench.sh
+# bash ./test-mongo-with-pbench.sh
 ```

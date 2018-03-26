@@ -44,13 +44,13 @@ Deploy `mongodb` with the template:
 ```sh
 # oc new-project ttt
 ### glusterfs-storage-block
-# oc process -f ./mongodb-persistent-template-ttt.yaml -p MEMORY_LIMIT=2048Mi -p MONGODB_USER=redhat -p MONGODB_PASSWORD=redhat -p MONGODB_DATABASE=testdb -p VOLUME_CAPACITY=100Gi -p STORAGE_CLASS_NAME=glusterfs-storage-block | oc create -f -
+# oc process -f ./mongodb-persistent-template-ttt.yaml -p MEMORY_LIMIT=4096Mi -p MONGODB_USER=redhat -p MONGODB_PASSWORD=redhat -p MONGODB_DATABASE=testdb -p VOLUME_CAPACITY=100Gi -p STORAGE_CLASS_NAME=glusterfs-storage-block | oc create -f -
 
 ### glusterfs-storage
-# oc process -f ./mongodb-persistent-template-ttt.yaml -p MEMORY_LIMIT=2048Mi -p MONGODB_USER=redhat -p MONGODB_PASSWORD=redhat -p MONGODB_DATABASE=testdb -p VOLUME_CAPACITY=100Gi -p STORAGE_CLASS_NAME=glusterfs-storage | oc create -f -
+# oc process -f ./mongodb-persistent-template-ttt.yaml -p MEMORY_LIMIT=4096Mi -p MONGODB_USER=redhat -p MONGODB_PASSWORD=redhat -p MONGODB_DATABASE=testdb -p VOLUME_CAPACITY=100Gi -p STORAGE_CLASS_NAME=glusterfs-storage | oc create -f -
 
 ### pg2
-# oc process -f ./mongodb-persistent-template-ttt.yaml -p MEMORY_LIMIT=2048Mi -p MONGODB_USER=redhat -p MONGODB_PASSWORD=redhat -p MONGODB_DATABASE=testdb -p VOLUME_CAPACITY=1000Gi -p STORAGE_CLASS_NAME=gp2 | oc create -f -
+# oc process -f ./mongodb-persistent-template-ttt.yaml -p MEMORY_LIMIT=4096Mi -p MONGODB_USER=redhat -p MONGODB_PASSWORD=redhat -p MONGODB_DATABASE=testdb -p VOLUME_CAPACITY=1000Gi -p STORAGE_CLASS_NAME=gp2 | oc create -f -
 
 # oc get all
 NAME                        REVISION   DESIRED   CURRENT   TRIGGERED BY

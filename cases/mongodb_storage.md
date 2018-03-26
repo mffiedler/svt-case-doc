@@ -149,9 +149,16 @@ Clean:
 
 ## Run test by script
 
+Standalone:
+
 ```sh
 # curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test-mongo.sh
 # bash test-mongo.sh >> file$(date '+%Y-%m-%d-%H-%M-%S').txt 2>&1
 # grep Throughput $(ls -t | head -n 1) | awk '{ total += $3 } END { print total/10 }'
 ```
 
+as input script for pbench-user-benchmark:
+
+```sh
+# pbench-user-benchmark --config="mongo_storage_test" -- bash test-mongo.sh
+```

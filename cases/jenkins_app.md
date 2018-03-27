@@ -1,4 +1,4 @@
-# App Test on OCPl: Jenkins
+# App Test on OCP: Jenkins
 
 ## Deploy Jenkins on OCP
 

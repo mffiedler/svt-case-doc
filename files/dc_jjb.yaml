@@ -11,6 +11,11 @@ spec:
       containers:
         - name: "jjb"
           image: "docker.io/hongkailiu/jjb:2.0.3"
+          env:
+            - name: PYTHONHTTPSVERIFY
+              value: "0"
+            - name: XDG_CACHE_HOME
+              value: "/data"
           volumeMounts:
             - name: config-volume
               mountPath: /etc/jenkins_jobs/

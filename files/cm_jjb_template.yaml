@@ -7,8 +7,6 @@ objects:
 - apiVersion: v1
   data:
     jenkins_jobs.ini: |
-      [job_builder]
-      ignore_cache=True
       [jenkins]
       user=${JENKINS_USER}
       password=${JENKINS_PASSWORD}

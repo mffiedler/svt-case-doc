@@ -14,10 +14,15 @@ spec:
           volumeMounts:
             - name: config-volume
               mountPath: /etc/jenkins_jobs/
+            - name: "pvol"
+              mountPath: "/usr/src/app"
       volumes:
         - name: config-volume
           configMap:
             name: jjb-config
+        - name: "pvol"
+          persistentVolumeClaim:
+            claimName: "jjb-pvc"
   triggers:
     - type: "ConfigChange"
   replicas: 1

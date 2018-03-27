@@ -27,7 +27,7 @@ parameters:
   name: JENKINS_PASSWORD
   required: true
   value: password
-- description: Jenkins URL
-  displayName: Jenkins URL, eg, https://jenkins-ttt.apps.0327-nbn.qe.rhcloud.com
+- description: Jenkins URL, eg, https://jenkins-ttt.apps.0327-nbn.qe.rhcloud.com
+  displayName: Jenkins URL
   name: JENKINS_URL
   required: true

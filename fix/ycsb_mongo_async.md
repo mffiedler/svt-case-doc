@@ -7,4 +7,31 @@
 ```sh
 # oc new-project ttt
 # oc new-app --template=mongodb-persistent -p MONGODB_ADMIN_PASSWORD=cool -p MEMORY_LIMIT=4096Mi -p MONGODB_USER=redhat -p MONGODB_PASSWORD=redhat -p MONGODB_DATABASE=testdb -p VOLUME_CAPACITY=100Gi
+
+# oc rsh mongodb-1-tbddb
+sh-4.2$ mongo -u admin -p cool 127.0.0.1:27017/admin
+MongoDB shell version: 3.2.10
+connecting to: 127.0.0.1:27017/admin
+...
+> db.system.users.findOne({user: "***"})
+{
+	"_id" : "testdb.***",
+	"user" : "***",
+	"db" : "testdb",
+	"credentials" : {
+		"SCRAM-SHA-1" : {
+			"iterationCount" : 10000,
+			"salt" : "***",
+			"storedKey" : "***",
+			"serverKey" : "***"
+		}
+	},
+	"roles" : [
+		{
+			"role" : "readWrite",
+			"db" : "testdb"
+		}
+	]
+}
+
 ```

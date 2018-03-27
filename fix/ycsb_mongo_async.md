@@ -35,3 +35,5 @@ connecting to: 127.0.0.1:27017/admin
 }
 
 ```
+
+Mongodb [auth mechanisms](https://docs.mongodb.com/manual/release-notes/3.0-scram/) and [how to check](https://www.mongodb.com/blog/post/improved-password-based-authentication-mongodb-30-scram-explained-part-2?jmp=docs&_ga=2.259405834.1612212702.1522154273-637184529.1521748721).

@@ -2,6 +2,7 @@
 
 ## Doc
 
+* [design@k8s](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/grow-volume-size.md)
 * [pvc_resize@rlease_note_39](https://docs.openshift.com/container-platform/3.9/release_notes/ocp_3_9_release_notes.html#ocp-39-pv-resize)
 * [demo@humble's blog](https://www.humblec.com/glusterfs-dynamic-provisioner-online-resizing-of-glusterfs-pvs-in-kubernetes-v-1-8/)
 

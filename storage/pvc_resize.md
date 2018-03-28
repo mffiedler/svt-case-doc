@@ -36,7 +36,7 @@ admissionConfig:
 # journalctl -b -u atomic-openshift-master-* | grep -i resize
 ```
 
-
+This may require on _each node_:
 `feature gate` seems like a command line flag when running k8s. What should we do in the
 context of openshift? Inspired from [this example](https://blog.openshift.com/how-to-use-gpus-in-openshift-3-6-still-alpha/):
 

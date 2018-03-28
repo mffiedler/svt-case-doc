@@ -16,7 +16,9 @@ So it seems it requires 2 things:
 * set `ExpandPersistentVolumes` feature gate to `true`
 * enable `PersistentVolumeClaimResize` admission plugin
 
-Begin with the 2nd: inspired from example [here](https://docs.openshift.com/container-platform/3.9/architecture/additional_concepts/admission_controllers.html#admission-controllers-general-admission-rules)
+Begin with the 2nd.
+
+Inspired from example [here](https://docs.openshift.com/container-platform/3.9/architecture/additional_concepts/admission_controllers.html#admission-controllers-general-admission-rules):
 
 ```sh
 vi /etc/origin/master/master-config.yaml
@@ -38,7 +40,9 @@ admissionConfig:
 
 This may require on _each node_:
 `feature gate` seems like a command line flag when running k8s. What should we do in the
-context of openshift? Inspired from [this example](https://blog.openshift.com/how-to-use-gpus-in-openshift-3-6-still-alpha/):
+context of openshift?
+
+Inspired by [this example](https://blog.openshift.com/how-to-use-gpus-in-openshift-3-6-still-alpha/):
 
 ```sh
 # vi /etc/origin/node/node-config.yaml

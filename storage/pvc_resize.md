@@ -19,14 +19,13 @@ So it seems it requires 2 things:
 Begin with the 2nd: inspired from example [here](https://docs.openshift.com/container-platform/3.9/architecture/additional_concepts/admission_controllers.html#admission-controllers-general-admission-rules)
 
 ```sh
-### I made up the kind 'PVCResizeConfig'
 vi /etc/origin/master/master-config.yaml
 admissionConfig:
   pluginConfig:
     PersistentVolumeClaimResize:
       configuration:
         apiVersion: v1
-        kind: PVCResizeConfig
+        kind: DefaultAdmissionConfig
         disable: false
     BuildDefaults:
 ...

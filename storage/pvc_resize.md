@@ -54,6 +54,13 @@ kubeletArguments:
 # journalctl -b -u atomic-openshift-node.service | grep gates
 ```
 
+This should be controlled by the following [variable in ansible-playbook](https://docs.openshift.com/enterprise/3.2/install_config/install/advanced_install.html):
+
+```
+openshift_node_kubelet_args='{"pods-per-core": ["0"], "max-pods": ["510"], "image-gc-high-threshold": ["80"], "image-gc-low-threshold": ["70"], "feature-gates": ["ExpandPersistentVolumes=true"]}'
+```
+
+
 Modify the sc:
 
 ```sh

@@ -41,6 +41,7 @@ This may require on _each node_:
 context of openshift? Inspired from [this example](https://blog.openshift.com/how-to-use-gpus-in-openshift-3-6-still-alpha/):
 
 ```sh
+# vi /etc/origin/node/node-config.yaml
 kubeletArguments:
 ...
   feature-gates:

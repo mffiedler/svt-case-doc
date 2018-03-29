@@ -18,13 +18,13 @@ objects:
         containers:
           - name: "${NAME}"
             image: "${POD_IMAGE}"
-        volumeMounts:
+            volumeMounts:
+              - name: "pvol"
+                mountPath: "/data"
+        volumes:
           - name: "pvol"
-            mountPath: "/data"
-      volumes:
-        - name: "pvol"
-          persistentVolumeClaim:
-            claimName: "${PVC_NAME}"
+            persistentVolumeClaim:
+              claimName: "${PVC_NAME}"
     triggers:
       - type: "ConfigChange"
     replicas: 1

@@ -72,6 +72,6 @@ $ curl -s -k --user admin:password https://$(oc get route -n ttt --no-headers | 
 "SUCCESS"
 
 ### Get the last build:
-$ curl -s -k --user admin:password https://jenkins-ttt.apps.0327-nbn.qe.rhcloud.com/job/test_job/lastBuild/api/json?pretty=true
+$ curl -s -k --user admin:password https://$(oc get route -n ttt --no-headers | awk '{print $2}')/job/test_job/lastBuild/api/json?pretty=true
 
 ```

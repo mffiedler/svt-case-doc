@@ -22,7 +22,8 @@ Begin with the 2nd.
 Inspired from example [here](https://docs.openshift.com/container-platform/3.9/architecture/additional_concepts/admission_controllers.html#admission-controllers-general-admission-rules):
 
 ```sh
-vi /etc/origin/master/master-config.yaml
+### On all masters:
+# vi /etc/origin/master/master-config.yaml
 admissionConfig:
   pluginConfig:
     PersistentVolumeClaimResize:
@@ -49,13 +50,13 @@ kubernetesMasterConfig:
 # journalctl -b -u atomic-openshift-master-* | grep -i resize
 ```
 
-This requires on _each node_:
 `feature gate` seems like a command line flag when running k8s. What should we do in the
 context of openshift?
 
 Inspired by [this example](https://blog.openshift.com/how-to-use-gpus-in-openshift-3-6-still-alpha/):
 
 ```sh
+### On all nodes:
 # vi /etc/origin/node/node-config.yaml
 kubeletArguments:
 ...
@@ -88,7 +89,7 @@ reclaimPolicy: Delete
 allowVolumeExpansion: true
 
 # oc create -f ./glusterfs-storage-exp.yaml 
-### Checking
+### Checking if the new entry "allowVolumeExpansion" is saved.
 # oc get sc glusterfs-storage-exp -o yaml
 allowVolumeExpansion: true
 ...

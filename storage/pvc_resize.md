@@ -113,8 +113,10 @@ Observations:
 NAME      STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS            AGE
 app-pvc   Bound     pvc-aacc23b9-337b-11e8-b207-0202afd7e94a   3Gi        RWO            glusterfs-storage-exp   1m
 
-### change spec.resources.requests.storage to 10Gi
+### Change spec.resources.requests.storage to 10Gi
 # oc edit pvc app-pvc
+### OR,
+# oc patch pvc app-pvc --patch '{"spec": {"resources": {"requests": {"storage": "10Gi"}}}}'
 
 # oc get pvc
 NAME      STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS            AGE

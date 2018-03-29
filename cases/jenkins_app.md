@@ -21,7 +21,10 @@ JENKINS_IMAGE_STREAM_TAG   Name of the ImageStreamTag to be used for the Jenkins
 
 # oc new-project ttt
 ### the default value "jenkins:2" does not work yet
-# oc new-app --template=jenkins-persistent -p ENABLE_OAUTH=false -p MEMORY_LIMIT=4096Mi -p VOLUME_CAPACITY=10Gi -p JENKINS_IMAGE_STREAM_TAG=jenkins:1
+# oc new-app --template=jenkins-persistent -p ENABLE_OAUTH=false -p MEMORY_LIMIT=4096Mi -p VOLUME_CAPACITY=1000Gi -p JENKINS_IMAGE_STREAM_TAG=jenkins:1
+### OR storage class is added in this template:
+# oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/jenkins-persistent-ttt.yaml -p ENABLE_OAUTH=false -p MEMORY_LIMIT=4096Mi -p VOLUME_CAPACITY=100Gi -p JENKINS_IMAGE_STREAM_TAG=jenkins:1 -p STORAGE_CLASS_NAME=glusterfs-storage | oc create -f -
+
 # oc get pvc
 NAME      STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 jenkins   Bound     pvc-2408e906-31d1-11e8-8ee3-02933b6e762a   10Gi       RWO            gp2            26m
@@ -40,6 +43,9 @@ jenkins   jenkins-ttt.apps.0327-nbn.qe.rhcloud.com             jenkins    <all> 
 ### brower with url: jenkins-ttt.apps.0327-nbn.qe.rhcloud.com; admin/password
 ```
 
+```sh
+# oc patch -n ttt deploymentconfigs/jenkins --patch '{"spec": {"template": {"spec": {"nodeSelector": {"aaa": "bbb"}}}}}'
+```
 
 ## Set up jobs with JJB
 

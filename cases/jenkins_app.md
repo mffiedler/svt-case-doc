@@ -58,9 +58,7 @@ See [jjb.md](../learn/jjb.md) for details.
 ### XDG_CACHE_HOME: ref. https://github.com/openstack-infra/jenkins-job-builder/blob/master/jenkins_jobs/cache.py#L80
 # oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/dc_jjb.yaml
 
-# oc exec -n ttt $(oc get pod -n ttt | grep jjb | awk '{print $1}') -- curl -L -o /data/download_job_files.sh https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/download_job_files.sh
-# oc exec -n ttt $(oc get pod -n ttt | grep jjb | awk '{print $1}') -- bash /data/download_job_files.sh
-# oc exec -n ttt $(oc get pod -n ttt | grep jjb | awk '{print $1}') -- jenkins-jobs --flush-cache  update --delete-old /data
+# oc exec -n ttt $(oc get pod -n ttt | grep jjb | awk '{print $1}') -- jenkins-jobs --flush-cache  update --delete-old jobs
 ```
 
 ## Run Jenkins jobs
@@ -82,4 +80,12 @@ $ curl -s -k --user admin:password https://$(oc get route -n ttt --no-headers | 
 ### Get the last build:
 $ curl -s -k --user admin:password https://$(oc get route -n ttt --no-headers | awk '{print $2}')/job/test_job/lastBuild/api/json?pretty=true
 
+```
+
+## SVT Jenkins test
+
+```sh
+# oc exec -n ttt $(oc get pod -n ttt | grep jjb | awk '{print $1}') -- curl -L -o /data/download_job_files.sh https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/download_job_files.sh
+# oc exec -n ttt $(oc get pod -n ttt | grep jjb | awk '{print $1}') -- bash /data/download_job_files.sh
+# oc exec -n ttt $(oc get pod -n ttt | grep jjb | awk '{print $1}') -- jenkins-jobs --flush-cache  update --delete-old /data
 ```

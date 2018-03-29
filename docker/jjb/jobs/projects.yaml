@@ -1,0 +1,8 @@
+- project:
+    name: svt-test
+    jobs:
+      - '{name}_job':
+          name: test-3
+          command: |
+            curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
+            bash -x test_jenkins.sh

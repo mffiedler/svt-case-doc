@@ -1,0 +1,6 @@
+- job-template:
+    name: '{name}_job'
+    description: 'job description'
+    project-type: freestyle
+    builders:
+      - shell: '{command}'

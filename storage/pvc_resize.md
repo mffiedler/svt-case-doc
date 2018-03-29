@@ -32,6 +32,15 @@ admissionConfig:
         disable: false
     BuildDefaults:
 ...
+kubernetesMasterConfig:
+  ...
+  apiServerArguments:
+    feature-gates:
+    - ExpandPersistentVolumes=true
+  ...
+  controllerArguments:
+    feature-gates:
+    - ExpandPersistentVolumes=true
 
 # systemctl restart atomic-openshift-master-api atomic-openshift-master-controllers
 

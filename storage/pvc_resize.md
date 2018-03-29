@@ -78,13 +78,19 @@ openshift_node_kubelet_args='{"pods-per-core": ["0"], "max-pods": ["510"], "imag
 Modify the sc:
 
 ```sh
-# oc edit sc glusterfs-storage
+# oc get sc glusterfs-storage -o yaml > glusterfs-storage-exp.yaml
+# vi glusterfs-storage-exp.yaml
+...
+  name: glusterfs-storage-exp
 ...
 reclaimPolicy: Delete
 allowVolumeExpansion: true
 
+# oc create -f ./glusterfs-storage-exp.yaml 
 ### Checking
-# oc get sc glusterfs-storage -o yaml
+# oc get sc glusterfs-storage-exp -o yaml
+allowVolumeExpansion: true
+...
 ```
 
-Hit [bz 1531509](https://bugzilla.redhat.com/show_bug.cgi?id=1531509). Also see [bz 1531513](https://bugzilla.redhat.com/show_bug.cgi?id=1531513)
+Check [bz 1531509](https://bugzilla.redhat.com/show_bug.cgi?id=1531509) for details of configuration. Also see [bz 1531513](https://bugzilla.redhat.com/show_bug.cgi?id=1531513)

@@ -133,3 +133,5 @@ sh-4.2$ df -h | grep data
 ```
 
 Pretty cool!
+
+See which [types of PVC](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/grow-volume-size.md#volume-plugin-matrix) support this feature. Note that some of the supported types, eg, ebs, need manual file system resize after the PVC is resized.

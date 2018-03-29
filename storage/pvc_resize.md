@@ -6,7 +6,7 @@
 * [pvc_resize@rlease_note_39](https://docs.openshift.com/container-platform/3.9/release_notes/ocp_3_9_release_notes.html#ocp-39-pv-resize)
 * [demo@humble's blog](https://www.humblec.com/glusterfs-dynamic-provisioner-online-resizing-of-glusterfs-pvs-in-kubernetes-v-1-8/)
 
-## Configure
+## Configuration
 
 As requested [here](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims),
 "Administrator can allow expanding persistent volume claims by setting `ExpandPersistentVolumes` feature gate to `true`.
@@ -101,3 +101,22 @@ Observations:
 * When k8s says enable some feature gate, we need to enable it in 3 places in the context of openshift: master-api, master-controllers, node. In openshift-ansibles, there are controlled by `openshift.master.api_server_args`, `openshift.master.controller_args`, and `openshift_node_kubelet_args`.
 * When openshift says enable some plugin in admission config, it means changes in the setting of master config as described above. There is no variable yet in openshift-ansible to control this. Check via `grep -irn "podpreset" .`  in openshift-ansible how it is done for other plugins.
 
+
+## Test
+
+```sh
+# oc new-project ttt
+# oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/pvc_template.yaml -p PVC_NAME=app-pvc -p STORAGE_CLASS_NAME="glusterfs-storage-exp" | oc create -f -
+# oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/dc_template.yaml -p NAME=app PVC_NAME=app-pvc | oc create -f -
+
+# oc get pvc
+NAME      STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS            AGE
+app-pvc   Bound     pvc-aacc23b9-337b-11e8-b207-0202afd7e94a   3Gi        RWO            glusterfs-storage-exp   1m
+
+### change spec.resources.requests.storage to 10Gi
+# oc edit pvc app-pvc
+
+# oc get pvc
+NAME      STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS            AGE
+app-pvc   Bound     pvc-aacc23b9-337b-11e8-b207-0202afd7e94a   10Gi       RWO            glusterfs-storage-exp   3m
+```

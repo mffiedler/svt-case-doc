@@ -119,4 +119,17 @@ app-pvc   Bound     pvc-aacc23b9-337b-11e8-b207-0202afd7e94a   3Gi        RWO   
 # oc get pvc
 NAME      STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS            AGE
 app-pvc   Bound     pvc-aacc23b9-337b-11e8-b207-0202afd7e94a   10Gi       RWO            glusterfs-storage-exp   3m
+
+# oc volumes pod app-1-xs62m
+pods/app-1-xs62m
+  pvc/app-pvc (allocated 10GiB) as pvol
+    mounted at /data
+...
+
+# oc rsh app-1-xs62m
+sh-4.2$ df -h | grep data
+172.31.32.148:vol_0b9501cc86d3d800cda5a7ed41f4b427   10G   66M   10G   1% /data
+
 ```
+
+Pretty cool!

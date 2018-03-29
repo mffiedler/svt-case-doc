@@ -32,6 +32,7 @@ admissionConfig:
         disable: false
     BuildDefaults:
 ...
+### The missing part in the first try:
 kubernetesMasterConfig:
   ...
   apiServerArguments:
@@ -48,7 +49,7 @@ kubernetesMasterConfig:
 # journalctl -b -u atomic-openshift-master-* | grep -i resize
 ```
 
-This may require on _each node_:
+This requires on _each node_:
 `feature gate` seems like a command line flag when running k8s. What should we do in the
 context of openshift?
 
@@ -75,7 +76,7 @@ openshift_node_kubelet_args='{"pods-per-core": ["0"], "max-pods": ["510"], "imag
 ```
 
 
-Modify the sc:
+Create the sc:
 
 ```sh
 # oc get sc glusterfs-storage -o yaml > glusterfs-storage-exp.yaml
@@ -94,3 +95,8 @@ allowVolumeExpansion: true
 ```
 
 Check [bz 1531509](https://bugzilla.redhat.com/show_bug.cgi?id=1531509) for details of configuration. Also see [bz 1531513](https://bugzilla.redhat.com/show_bug.cgi?id=1531513)
+
+Observations:
+* When k8s says enable some feature gate, we need to enable it in 3 places in the context of openshift: master-api, master-controllers, node. In openshift-ansibles, there are controlled by `openshift.master.api_server_args`, `openshift.master.controller_args`, and `openshift_node_kubelet_args`.
+* When openshift says enable some plugin in admission config, it means changes in the setting of master config as described above. There is no variable yet in openshift-ansible to control this. Check via `grep -irn "podpreset" .`  in openshift-ansible how it is done for other plugins.
+

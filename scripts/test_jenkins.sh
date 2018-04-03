@@ -3,6 +3,7 @@
 python -V
 
 ### Generate logs
+rm -f ocp_logtest.py
 curl -L -O https://raw.githubusercontent.com/openshift/svt/master/openshift_scalability/content/logtest/root/ocp_logtest.py
 
 python ocp_logtest.py --line-length 128 --word-length 7 --rate 3000 --time 3 --fixed-line

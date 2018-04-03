@@ -15,6 +15,10 @@ dd if=/dev/zero of=build/output.dat2  bs=1M  count=128
 
 echo "BUILD_NUMBER:${BUILD_NUMBER}."
 
-tar -cvzf "build_${BUILD_NUMBER}.tar.gz" build
+filename="build_${BUILD_NUMBER}.tar.gz"
+
+echo "filename:${filename}."
+
+tar -cvzf "${filename}" build
 
 

@@ -15,6 +15,8 @@ rm -f *.tar.gz
 dd if=/dev/zero of=build/output.dat1  bs=1M  count=128
 dd if=/dev/zero of=build/output.dat2  bs=1M  count=128
 
+sleep 10
+
 filename="build_${BUILD_TAG}_${BUILD_ID}.tar.gz"
 
 echo "filename:${filename}."

@@ -13,6 +13,6 @@ rm -rf build/*
 dd if=/dev/zero of=build/output.dat1  bs=1M  count=128
 dd if=/dev/zero of=build/output.dat2  bs=1M  count=128
 
-tar -cvzf build.tar.gz build
+tar -cvzf build_${BUILD_NUMBER}.tar.gz build
 
 

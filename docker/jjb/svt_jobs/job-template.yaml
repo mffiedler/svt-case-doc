@@ -4,3 +4,6 @@
     project-type: freestyle
     builders:
       - shell: '{command}'
+    publishers:
+      - archive:
+          artifacts: '*.tar.gz'

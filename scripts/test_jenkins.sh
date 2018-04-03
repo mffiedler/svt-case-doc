@@ -11,6 +11,7 @@ python ocp_logtest.py --line-length 128 --word-length 7 --rate 3000 --time 3 --f
 ### Generate artifacts
 mkdir -p build
 rm -rf build/*
+rm -f *.tar.gz
 dd if=/dev/zero of=build/output.dat1  bs=1M  count=128
 dd if=/dev/zero of=build/output.dat2  bs=1M  count=128
 

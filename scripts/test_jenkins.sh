@@ -14,7 +14,7 @@ rm -rf build/*
 rm -f *.tar.gz
 dd if=/dev/zero of=build/output.dat1  bs=1M  count=128
 dd if=/dev/zero of=build/output.dat2  bs=1M  count=128
-curl -o build/ideaIU-2018.1.tar.gz https://download-cf.jetbrains.com/idea/ideaIU-2018.1.tar.gz
+curl -o build/penshift-origin-server-v3.9.0-191fece-linux-64bit.tar.gz https://github.com/openshift/origin/releases/download/v3.9.0/openshift-origin-server-v3.9.0-191fece-linux-64bit.tar.gz
 
 filename="build_${BUILD_TAG}_${BUILD_ID}"
 

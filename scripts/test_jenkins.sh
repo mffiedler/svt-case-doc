@@ -21,7 +21,7 @@ filename="build_${BUILD_TAG}_${BUILD_ID}"
 
 echo "filename:${filename}."
 
-#tar -cvzf "${filename}.tar.gz" build
-zip -r "${filename}.tar.gz" build
+tar -cvzf "${filename}.tar.gz" build
+#zip -r "${filename}.tar.gz" build
 
 

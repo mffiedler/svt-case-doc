@@ -89,3 +89,7 @@ $ curl -s -k --user admin:password https://$(oc get route -n ttt --no-headers | 
 # oc exec -n ttt $(oc get pod -n ttt | grep jjb | awk '{print $1}') -- bash /data/download_job_files.sh
 # oc exec -n ttt $(oc get pod -n ttt | grep jjb | awk '{print $1}') -- jenkins-jobs --flush-cache  update --delete-old /data
 ```
+
+## [JENKINS/Kubernetes+Plugin](https://wiki.jenkins.io/display/JENKINS/Kubernetes+Plugin)
+
+Very cool Jenkins plugin which is pre-configured by ocp-template.

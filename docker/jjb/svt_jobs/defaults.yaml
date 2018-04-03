@@ -1,5 +1,6 @@
 - defaults:
     name: global
+    concurrent: true
     logrotate:
       daysToKeep: 30
       numToKeep: 30

@@ -87,6 +87,12 @@ $ curl -s -k --user admin:password https://$(oc get route -n ttt --no-headers | 
 
 ```
 
+Batch mode:
+
+```sh
+# curl -L -O
+```
+
 ## SVT Jenkins test
 
 ```sh

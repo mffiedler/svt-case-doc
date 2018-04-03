@@ -4,150 +4,180 @@
       - '{name}_job':
           name: test-0
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-1
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-2
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-3
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-4
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-5
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-6
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-7
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-8
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-9
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-10
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-11
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-12
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-13
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-14
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-15
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-16
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-17
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-18
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-19
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-20
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-21
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-22
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-23
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-24
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-25
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-26
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-27
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-28
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh
       - '{name}_job':
           name: test-29
           command: |
+            rm -f test_jenkins.sh
             curl -O -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/test_jenkins.sh
             bash -x test_jenkins.sh

@@ -90,7 +90,8 @@ $ curl -s -k --user admin:password https://$(oc get route -n ttt --no-headers | 
 Batch mode:
 
 ```sh
-# curl -L -O
+# curl -L -O https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/trigger_jenkins_jobs.sh
+# bash -x ./trigger_jenkins_jobs.sh
 ```
 
 ## SVT Jenkins test

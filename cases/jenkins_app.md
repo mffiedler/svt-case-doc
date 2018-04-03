@@ -23,7 +23,12 @@ JENKINS_IMAGE_STREAM_TAG   Name of the ImageStreamTag to be used for the Jenkins
 ### the default value "jenkins:2" does not work yet
 # oc new-app --template=jenkins-persistent -p ENABLE_OAUTH=false -p MEMORY_LIMIT=4096Mi -p VOLUME_CAPACITY=1000Gi -p JENKINS_IMAGE_STREAM_TAG=jenkins:1
 ### OR storage class is added in this template:
+### glusterfs-storage
 # oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/jenkins-persistent-ttt.yaml -p ENABLE_OAUTH=false -p MEMORY_LIMIT=4096Mi -p VOLUME_CAPACITY=100Gi -p JENKINS_IMAGE_STREAM_TAG=jenkins:1 -p STORAGE_CLASS_NAME=glusterfs-storage | oc create -f -
+### glusterfs-storage-block
+# oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/jenkins-persistent-ttt.yaml -p ENABLE_OAUTH=false -p MEMORY_LIMIT=4096Mi -p VOLUME_CAPACITY=100Gi -p JENKINS_IMAGE_STREAM_TAG=jenkins:1 -p STORAGE_CLASS_NAME=glusterfs-storage | oc create -f -
+### gp2
+# oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/jenkins-persistent-ttt.yaml -p ENABLE_OAUTH=false -p MEMORY_LIMIT=4096Mi -p VOLUME_CAPACITY=100Gi -p JENKINS_IMAGE_STREAM_TAG=jenkins:1 -p STORAGE_CLASS_NAME=gp2 | oc create -f -
 
 # oc get pvc
 NAME      STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE

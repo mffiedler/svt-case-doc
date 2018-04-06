@@ -109,4 +109,4 @@ $ oc cluster down
 $ oc cluster status
 ```
 
-Would be nice if the cluster is accessible from other hosts.
+TODO: Would be nice if the cluster is accessible from other hosts.

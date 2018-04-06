@@ -108,3 +108,5 @@ What is [nip.io](http://nip.io/). Looks so similar to xio.io. ^_^
 $ oc cluster down
 $ oc cluster status
 ```
+
+Would be nice if the cluster is accessible from other hosts.

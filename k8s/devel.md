@@ -41,7 +41,11 @@ $ tree _output/
 
 ## [Build on local shell](https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#building-kubernetes-on-a-local-osshell-environment)
 
+Install `golang` [via dnf](../origin/README.md#prerequisites).
 
+```sh
+### https://github.com/kubernetes/kubernetes#to-start-developing-kubernetes
+```
 
 
 ## Reference

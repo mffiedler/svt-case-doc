@@ -27,6 +27,7 @@ go version go1.9.3 linux/amd64
 ```
 
 ### from dnf
+Follow [those steps](README.md#prerequisites).
 
 ## Cli
 

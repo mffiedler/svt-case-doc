@@ -76,7 +76,7 @@ $ sudo dnf install WoeUSB
 * Make fedora installation usb on win7: [MediaWriter](https://github.com/MartinBriza/MediaWriter). Tried MediaWriter 4.1.1 and Fedora 27.
 
 
-## Fedora gnome on ec2 instance
+## Fedora gnome on ec2 instance (NOT working yet)
 
 https://devopscube.com/setup-gui-for-amazon-ec2-linux/
 

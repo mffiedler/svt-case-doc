@@ -45,6 +45,14 @@ Install `golang` [via dnf](../origin/README.md#prerequisites).
 
 ```sh
 ### https://github.com/kubernetes/kubernetes#to-start-developing-kubernetes
+$ go version
+go version go1.9.2 linux/amd64
+```
+
+Install `etcd`: follow [those steps](https://github.com/kubernetes/community/blob/master/contributors/devel/testing.md#install-etcd-dependency)
+
+```sh
+
 ```
 
 

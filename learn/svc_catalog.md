@@ -122,6 +122,10 @@ On master:
 ```
 
 The example did not work: https://bugzilla.redhat.com/show_bug.cgi?id=1558231
+Update on 20180410: Follow [Comment 1](https://bugzilla.redhat.com/show_bug.cgi?id=1558231#c1) there and `apb list` works:
+* docker config add local docker registry as insecure reg
+* change the whitelist in the configMap
+* `apb push --registry-route`
 
 Check config which is made up [here](https://github.com/openshift/openshift-ansible/blob/release-3.9/roles/ansible_service_broker/tasks/install.yml#L381).
 The meaning of parameters in the config is [here](https://github.com/openshift/ansible-service-broker/blob/master/docs/config.md).

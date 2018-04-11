@@ -1,4 +1,3 @@
 - defaults:
     name: global
-      number-to-keep: 30
-      days-to-keep: 30
+

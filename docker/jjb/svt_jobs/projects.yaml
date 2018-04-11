@@ -3,91 +3,91 @@
     jobs:
       - '{name}_job':
           name: test-0
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-1
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-2
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-3
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-4
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-5
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-6
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-7
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-8
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-9
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-10
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-11
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-12
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-13
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-14
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-15
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-16
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-17
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-18
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-19
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-20
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-21
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-22
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-23
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-24
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-25
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-26
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-27
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-28
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'
       - '{name}_job':
           name: test-29
-          command: 'https://github.com/hongkailiu/gs-spring-boot.git'
+          git_url: 'https://github.com/hongkailiu/gs-spring-boot.git'

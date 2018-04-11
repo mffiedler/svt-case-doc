@@ -104,3 +104,7 @@ Batch mode:
 ## [JENKINS/Kubernetes+Plugin](https://wiki.jenkins.io/display/JENKINS/Kubernetes+Plugin)
 
 Very cool Jenkins plugin which is pre-configured by ocp-template.
+
+## Pipeline
+
+* mvn tasks: https://jenkins.io/blog/2017/02/07/declarative-maven-project/

@@ -1,8 +1,4 @@
 - defaults:
     name: global
-    concurrent: true
-    logrotate:
-      daysToKeep: 30
-      numToKeep: 30
-      artifactDaysToKeep: -1
-      artifactNumToKeep: -1
+      number-to-keep: 30
+      days-to-keep: 30

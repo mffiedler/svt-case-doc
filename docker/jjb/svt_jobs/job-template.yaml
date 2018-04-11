@@ -1,7 +1,7 @@
 - job-template:
     name: '{name}_job'
     description: 'job description'
-    project-type: multibranch
+    project-type: multibranch-pipeline
     number-to-keep: 30
     days-to-keep: 30
     scm:

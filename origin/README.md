@@ -16,6 +16,7 @@ $ mkdir ~/repo/go
 $ vi ~/.bash_profile
 ...
 export GOPATH=$HOME/repo/go
+export PATH=$PATH:$GOPATH/bin
 
 ### Method2: Not working for origin build
 $ wget https://dl.google.com/go/go1.9.1.linux-amd64.tar.gz

@@ -52,16 +52,16 @@ function check_build() {
     done
     if (( ${all_success} == 1 ));
     then
-      return $(($(date +%s) - ${start_time}))
+      MY_TIME=$(($(date +%s) - ${start_time}))
     fi
     sleep ${interval}
   done
-  return -1
 }
 
+MY_TIME=-1
 readonly TIMEOUT=600
 check_build 10 ${TIMEOUT}
-MY_TIME=$?
+
 
 if (( ${MY_TIME} == -1 ));
 then

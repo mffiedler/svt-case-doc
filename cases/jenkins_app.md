@@ -86,19 +86,19 @@ $ curl -s -k --user admin:password https://$(oc get route -n ttt --no-headers | 
 
 ```
 
-Batch mode:
-
-```sh
-# curl -L -O https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/trigger_jenkins_jobs.sh
-# bash -x ./trigger_jenkins_jobs.sh
-```
-
 ## SVT Jenkins test
 
 ```sh
 # oc exec -n ttt $(oc get pod -n ttt | grep jjb | awk '{print $1}') -- curl -L -o /data/download_job_files.sh https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/download_job_files.sh
 # oc exec -n ttt $(oc get pod -n ttt | grep jjb | awk '{print $1}') -- bash /data/download_job_files.sh
 # oc exec -n ttt $(oc get pod -n ttt | grep jjb | awk '{print $1}') -- jenkins-jobs --flush-cache  update --delete-old /data
+```
+
+Batch mode:
+
+```sh
+# curl -L -O https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/trigger_jenkins_jobs.sh
+# bash -x ./trigger_jenkins_jobs.sh
 ```
 
 ## [JENKINS/Kubernetes+Plugin](https://wiki.jenkins.io/display/JENKINS/Kubernetes+Plugin)

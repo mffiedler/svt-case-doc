@@ -113,7 +113,7 @@ Very cool Jenkins plugin which is pre-configured by ocp-template.
 
 ```sh
 oc new-project ttt
-oc new-app --template=jenkins-persistent -p ENABLE_OAUTH=false -p MEMORY_LIMIT=4096Mi -p VOLUME_CAPACITY=1000Gi -p JENKINS_IMAGE_STREAM_TAG=jenkins:1
+oc new-app --template=jenkins-persistent -p ENABLE_OAUTH=false -p MEMORY_LIMIT=4096Mi -p VOLUME_CAPACITY=1000Gi -p JENKINS_IMAGE_STREAM_TAG=jenkins:2
 oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/pvc_template.yaml -p PVC_NAME=jjb-pvc -p STORAGE_CLASS_NAME=gp2 | oc create -f -
 oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/cm_jjb_template.yaml -p JENKINS_URL=https://$(oc get route -n ttt --no-headers | awk '{print $2}') | oc create -f -
 oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/dc_jjb.yaml

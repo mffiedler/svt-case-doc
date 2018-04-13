@@ -1,5 +1,9 @@
 # kubectl
 
+## Install from yum/dnf
+
+See [oc_cli.md](../origin/oc_cli.md#install-from-yumdfn).
+
 ## [Install from binary](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)
 
 ```sh
@@ -12,3 +16,4 @@ $ ln -s ../k8s/kubectl kubectl
 $ which kubectl
 ~/bin/kubectl
 ```
+

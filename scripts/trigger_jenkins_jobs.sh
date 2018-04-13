@@ -53,6 +53,7 @@ function check_build() {
     if (( ${all_success} == 1 ));
     then
       MY_TIME=$(($(date +%s) - ${start_time}))
+      break
     fi
     sleep ${interval}
   done

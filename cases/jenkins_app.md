@@ -109,7 +109,7 @@ Very cool Jenkins plugin which is pre-configured by ocp-template.
 
 * mvn tasks: https://jenkins.io/blog/2017/02/07/declarative-maven-project/
 
-## Demo
+## [Demo](https://docs.google.com/document/d/1W0RCRCcWLFJn-bWip1jaOrAh-Nex-_J0FAoi_au_p6Q/edit)
 
 ```sh
 oc new-project ttt

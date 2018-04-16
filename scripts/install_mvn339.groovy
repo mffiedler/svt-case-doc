@@ -1,3 +1,5 @@
+// ref: https://github.com/jenkinsci/jenkins-scripts/blob/master/scriptler/configMavenAutoInstaller.groovy
+
 import hudson.tasks.Maven.MavenInstallation;
 import hudson.tools.InstallSourceProperty;
 import hudson.tools.ToolProperty;

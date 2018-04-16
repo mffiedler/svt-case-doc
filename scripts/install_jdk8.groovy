@@ -9,7 +9,7 @@ def inst = Jenkins.getInstance()
 def desc = inst.getDescriptor("hudson.model.JDK")
 
 def versions = [
-  "jdk8": "jdk-8u102-oth-JPR"
+  "jdk8": "jdk-8u162-oth-JPR"
 ]
 def installations = [];
 

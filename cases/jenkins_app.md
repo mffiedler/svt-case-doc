@@ -125,3 +125,9 @@ oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/fi
 curl -L -O https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/trigger_jenkins_jobs.sh
 bash -x ./trigger_jenkins_jobs.sh
 ```
+
+Tuning MEMORY of Jenkins:
+
+```sh
+# oc patch dc/jenkins --patch '{"spec": {"template": {"spec": {"containers": [{"name": "jenkins", "resources": {"limits" : { "memory" : "4Gi"}}}]}}}}'
+```

@@ -113,7 +113,7 @@ Very cool Jenkins plugin which is pre-configured by ocp-template.
 
 ```sh
 oc new-project ttt
-oc new-app --template=jenkins-persistent -p ENABLE_OAUTH=false -p MEMORY_LIMIT=16384Mi -p VOLUME_CAPACITY=1000Gi -p JENKINS_IMAGE_STREAM_TAG=jenkins:2
+oc new-app --template=jenkins-persistent -p ENABLE_OAUTH=false -p MEMORY_LIMIT=8192Mi -p VOLUME_CAPACITY=1000Gi -p JENKINS_IMAGE_STREAM_TAG=jenkins:2
 
 ### Install tools
 ### https://github.com/hongkailiu/gs-spring-boot/blob/ttt/Jenkinsfile

@@ -129,5 +129,5 @@ bash -x ./trigger_jenkins_jobs.sh
 Tuning MEMORY of Jenkins:
 
 ```sh
-# oc patch dc/jenkins --patch '{"spec": {"template": {"spec": {"containers": [{"name": "jenkins", "resources": {"limits" : { "memory" : "4Gi"}}}]}}}}'
+# oc patch dc/jenkins --patch '{"spec": {"template": {"spec": {"containers": [{"name": "jenkins", "resources": {"limits" : { "memory" : "8Gi"}}}]}}}}'
 ```

@@ -11,7 +11,7 @@ oc exec -n ttt "${JJB_POD}" -- curl -L -o /data/download_job_files.sh https://ra
 
 oc exec -n ttt "${JJB_POD}" -- bash /data/download_job_files.sh
 
-sleep 10
+sleep 23
 
 oc exec -n ttt "${JJB_POD}" -- jenkins-jobs --flush-cache  update --delete-old /data
 

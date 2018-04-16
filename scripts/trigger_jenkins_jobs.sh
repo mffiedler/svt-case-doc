@@ -17,8 +17,8 @@ sleep 10
 readonly JENKINS_POD=$(oc get pod -n ttt | grep jenkins | awk '{print $1}')
 oc exec -n ttt "${JENKINS_POD}" -- rm -rf /var/lib/jenkins/jobs/test-*
 ### Install tools
-$ curl -k --user admin:password --data-urlencode "script=$(curl -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/install_mvn339.groovy)" -X POST "https://${url}/scriptText"
-$ curl -k --user admin:password --data-urlencode "script=$(curl -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/install_jdk8.groovy)" -X POST "https://${url}/scriptText"
+curl -k --user admin:password --data-urlencode "script=$(curl -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/install_mvn339.groovy)" -X POST "https://${url}/scriptText"
+curl -k --user admin:password --data-urlencode "script=$(curl -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/install_jdk8.groovy)" -X POST "https://${url}/scriptText"
 
 
 

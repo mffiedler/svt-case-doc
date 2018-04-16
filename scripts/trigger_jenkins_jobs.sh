@@ -3,6 +3,9 @@
 readonly JJB_POD=$(oc get pod -n ttt | grep jjb | awk '{print $1}')
 readonly JENKINS_URL=$(oc get route -n ttt --no-headers | awk '{print $2}')
 
+### clear build queue
+curl -k --user admin:password --data-urlencode "script=$(curl -L https://github.com/jenkinsci/jenkins-scripts/blob/master/scriptler/clearBuildQueue.groovy)" -X POST "https://${JENKINS_URL}/scriptText"
+### delete jobs
 for i in $(seq 0 29); do oc exec -n ttt "${JJB_POD}" -- jenkins-jobs  delete test-${i}_job; done
 
 oc exec -n ttt "${JJB_POD}" -- rm -f /data/*
@@ -19,8 +22,6 @@ oc exec -n ttt "${JENKINS_POD}" -- rm -rf /var/lib/jenkins/jobs/test-*
 ### Install tools
 curl -k --user admin:password --data-urlencode "script=$(curl -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/install_mvn339.groovy)" -X POST "https://${JENKINS_URL}/scriptText"
 curl -k --user admin:password --data-urlencode "script=$(curl -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/install_jdk8.groovy)" -X POST "https://${JENKINS_URL}/scriptText"
-
-
 
 oc exec -n ttt "${JJB_POD}" -- jenkins-jobs --flush-cache  update --delete-old /data
 

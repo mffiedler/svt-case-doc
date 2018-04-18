@@ -22,6 +22,7 @@ sleep 10
 ### Install tools
 curl -k --user admin:password --data-urlencode "script=$(curl -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/install_mvn339.groovy)" -X POST "https://${JENKINS_URL}/scriptText"
 curl -k --user admin:password --data-urlencode "script=$(curl -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/install_jdk8.groovy)" -X POST "https://${JENKINS_URL}/scriptText"
+curl -k --user admin:password --data-urlencode "script=$(curl -L https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/jenkins_setup_jdk_user.groovy)" -X POST "https://${JENKINS_URL}/scriptText"
 
 sleep 10
 

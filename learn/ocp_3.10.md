@@ -1,4 +1,6 @@
-# Mike's way of getting 3.10 OCP
+# 3.10 OCP
+
+## Mike's way of getting 3.10 OCP
 
 Use AMI:
 
@@ -76,6 +78,8 @@ openshift-template-service-broker   apiserver-hxnvj                             
 openshift-web-console               webconsole-888ff56b6-8wnc6                                       1/1       Running   0          46m       10.128.0.4      ip-172-31-10-207.us-west-2.compute.internal
 
 ```
+
+## Many things changed
 
 Verify the object kind in Xiaoli's and Clayton's email:
 

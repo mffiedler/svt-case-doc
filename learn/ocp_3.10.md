@@ -156,7 +156,7 @@ imagestream.image.openshift.io/node   docker-registry.default.svc:5000/openshift
 atomic-openshift-node.service
 ```
 
-** restart
+  * restart
 
 ```sh
 ### This one seems not working
@@ -165,7 +165,7 @@ atomic-openshift-node.service
 # oc delete pod -n kube-system master-api-ip-172-31-10-207.us-west-2.compute.internal
 ```
 
-** logs
+  * logs
 
 ```sh
 # /usr/local/bin/master-logs api api

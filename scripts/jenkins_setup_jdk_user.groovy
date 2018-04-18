@@ -5,4 +5,4 @@ import hudson.model.*
   
 def inst = Jenkins.getInstance()
 def desc = inst.getDescriptor("hudson.tools.JDKInstaller")
-println desc.doPostCredential('YourEmailAccount','YourPassword')
+println desc.doPostCredential('liutestlt@sina.com','Zaq12wsx')

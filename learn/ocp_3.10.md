@@ -159,11 +159,13 @@ atomic-openshift-node.service
   restart
 
 ```sh
-### This one seems not working
 # /usr/local/bin/master-restart api
 ### Or,
 # oc delete pod -n kube-system master-api-ip-172-31-10-207.us-west-2.compute.internal
 ```
+
+The restart can be verified by #RESTARTS of `oc get pod -n kube-system`. In `/usr/local/bin/master-restart`, it is
+the last line `exec docker stop "${container}" --time 30` which restarts the service.
 
   logs
 
@@ -172,6 +174,18 @@ atomic-openshift-node.service
 ### Or,
 # oc logs -f -n kube-system master-api-ip-172-31-10-207.us-west-2.compute.internal
 ```
+
+Nice [doc](https://docs.google.com/document/d/1VnQCKrRgj8nJCxIbgfkCeS5kqFkvq_VDPBDJ3D4Jrk0/edit) on this topic.
+
+## Bootstrapping
+
+The doc on it: [kubelet-tls-bootstrapping](https://kubernetes.io/docs/admin/kubelet-tls-bootstrapping/)
+
+```sh
+### We can see that kubelet starts with the argument as descripted
+# ps -ef | grep bootstrap
+```
+
 ## CNS installation
 
 ```sh

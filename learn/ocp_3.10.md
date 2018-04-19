@@ -159,13 +159,21 @@ atomic-openshift-node.service
   restart
 
 ```sh
+### Method 1
 # /usr/local/bin/master-restart api
 ### Or,
+### Method 2
 # oc delete pod -n kube-system master-api-ip-172-31-10-207.us-west-2.compute.internal
 ```
+In `methed 1`, the restart can be verified by #RESTARTS of `oc get pod -n kube-system`. In `/usr/local/bin/master-restart`, it is the last line `exec docker stop "${container}" --time 30` which restarts the service.
 
-The restart can be verified by #RESTARTS of `oc get pod -n kube-system`. In `/usr/local/bin/master-restart`, it is
-the last line `exec docker stop "${container}" --time 30` which restarts the service.
+Or, check by `containerID`:
+
+```sh
+# oc get pod master-api-ip-172-31-31-197.us-west-2.compute.internal -o json | jq '.status.containerStatuses[0].containerID'
+```
+
+In `methed 2`, the `STATUS` and the `AGE` of `oc get pod -n kube-system` are changed while `RESTARTS` is kept the same.
 
   logs
 

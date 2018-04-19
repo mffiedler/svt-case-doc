@@ -172,4 +172,8 @@ atomic-openshift-node.service
 ### Or,
 # oc logs -f -n kube-system master-api-ip-172-31-10-207.us-west-2.compute.internal
 ```
+## CNS installation
 
+```sh
+$ aws ec2 run-instances --image-id ami-c1ed81b9    --security-group-ids sg-5c5ace38 --count 3 --instance-type m4.xlarge --key-name id_rsa_perf     --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 60, \"VolumeType\": \"gp2\"}}, {\"DeviceName\":\"/dev/sdf\", \"Ebs\":{\"VolumeSize\": 1000, \"VolumeType\": \"gp2\"}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-310\"}, {\"Key\":\"KubernetesCluster\",\"Value\":\"hongkliu\"}]}]"
+```

@@ -5,7 +5,7 @@
 Use AMI:
 
 ```sh
-$ aws ec2 run-instances --image-id ami-c1ed81b9    --security-group-ids sg-5c5ace38 --count 3 --instance-type m4.xlarge --key-name id_rsa_perf     --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\", \"Ebs\":{\"VolumeSize\": 60, \"VolumeType\": \"gp2\"}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-310\"}, {\"Key\":\"KubernetesCluster\",\"Value\":\"hongkliu\"}]}]"
+$ aws ec2 run-instances --image-id ami-c1ed81b9    --security-group-ids sg-5c5ace38 --count 3 --instance-type m4.xlarge --key-name id_rsa_perf     --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 60, \"VolumeType\": \"gp2\"}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-310\"}, {\"Key\":\"KubernetesCluster\",\"Value\":\"hongkliu\"}]}]"
 ```
 
 Use Jianlin's openshift-ansible repo on `openshift-ansible-3.10.0-0.22.0-new_image` branch:

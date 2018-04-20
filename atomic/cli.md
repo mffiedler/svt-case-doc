@@ -1,5 +1,7 @@
 # CLI
 
+[Dan's doc](https://docs.google.com/document/d/1BwviZAw_7sfTQmOv1V5spibnNyW8iBOjJfQJWQTKJp8/edit) on this topic.
+
 ## podman
 
 Tested on Fedora 27:

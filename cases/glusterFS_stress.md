@@ -218,6 +218,12 @@ pod, nodes' readiness might be compromised:
 * Moving heketi to a dedicated 4xlarge instance eases the success of the test.
 
 ### pbench records
+| date     | os version                      | os            | docker storage driver | glusterfs             | heketi   | released | #pod                     | pbench data                                                                               |
+|----------|---------------------------------|---------------|-----------------------|-----------------------|----------|----------|--------------------------|-------------------------------------------------------------------------------------------|
+| 20180313 | 3.9.4-1.git.0.35fdfc4.el7       | rhel + docker | overlay2              | 3.3.1-7;bp: 3.3.1-3   | 3.3.1-5  | no       | 1250: did not go further | [172-31-61-1](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-37-239/)   |
+| 20180424 | 3.10.0-0.27.0.git.0.baf1ec4.el7 | rhel + docker | overlay2              | 3.3.1-13;bp: 3.3.1-10 | 3.3.1-10 | no       | 1100; max_pods=250/node  | [172-31-57-230](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-57-230/) |
+
+
 
 | date     | os version                     | os            | docker storage driver | glusterfs           | heketi    | released | #pod                             | pbench data                                                                                                                                                        |
 |----------|--------------------------------|---------------|-----------------------|---------------------|-----------|----------|----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|

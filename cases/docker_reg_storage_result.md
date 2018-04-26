@@ -75,4 +75,48 @@
 2017-12-06 01:50:00,196 - build_test - MainThread - INFO - Minimum build time, all good builds: 41
 2017-12-06 01:50:00,196 - build_test - MainThread - INFO - Maximum build time, all good builds: 442
 
+[fedora@ip-172-31-55-221 ~]$ grep "Failed builds: " /tmp/build_test.log -A5  
+2018-04-25 20:56:52,213 - build_test - MainThread - INFO - Failed builds: 0
+2018-04-25 20:56:52,213 - build_test - MainThread - INFO - Invalid builds: 0
+2018-04-25 20:56:52,213 - build_test - MainThread - INFO - Good builds included in stats: 500
+2018-04-25 20:56:52,213 - build_test - MainThread - INFO - Average build time, all good builds: 138
+2018-04-25 20:56:52,213 - build_test - MainThread - INFO - Minimum build time, all good builds: 62
+2018-04-25 20:56:52,213 - build_test - MainThread - INFO - Maximum build time, all good builds: 177
+--
+2018-04-25 21:47:28,293 - build_test - MainThread - INFO - Failed builds: 0
+2018-04-25 21:47:28,294 - build_test - MainThread - INFO - Invalid builds: 0
+2018-04-25 21:47:28,294 - build_test - MainThread - INFO - Good builds included in stats: 500
+2018-04-25 21:47:28,294 - build_test - MainThread - INFO - Average build time, all good builds: 141
+2018-04-25 21:47:28,294 - build_test - MainThread - INFO - Minimum build time, all good builds: 60
+2018-04-25 21:47:28,294 - build_test - MainThread - INFO - Maximum build time, all good builds: 191
+--
+2018-04-25 22:56:26,000 - build_test - MainThread - INFO - Failed builds: 0
+2018-04-25 22:56:26,000 - build_test - MainThread - INFO - Invalid builds: 0
+2018-04-25 22:56:26,000 - build_test - MainThread - INFO - Good builds included in stats: 500
+2018-04-25 22:56:26,000 - build_test - MainThread - INFO - Average build time, all good builds: 148
+2018-04-25 22:56:26,000 - build_test - MainThread - INFO - Minimum build time, all good builds: 71
+2018-04-25 22:56:26,001 - build_test - MainThread - INFO - Maximum build time, all good builds: 198
+--
+2018-04-26 01:39:29,175 - build_test - MainThread - INFO - Failed builds: 0
+2018-04-26 01:39:29,175 - build_test - MainThread - INFO - Invalid builds: 0
+2018-04-26 01:39:29,175 - build_test - MainThread - INFO - Good builds included in stats: 1000
+2018-04-26 01:39:29,176 - build_test - MainThread - INFO - Average build time, all good builds: 333
+2018-04-26 01:39:29,176 - build_test - MainThread - INFO - Minimum build time, all good builds: 98
+2018-04-26 01:39:29,176 - build_test - MainThread - INFO - Maximum build time, all good builds: 434
+--
+2018-04-26 02:12:35,563 - build_test - MainThread - INFO - Failed builds: 0
+2018-04-26 02:12:35,563 - build_test - MainThread - INFO - Invalid builds: 0
+2018-04-26 02:12:35,563 - build_test - MainThread - INFO - Good builds included in stats: 1000
+2018-04-26 02:12:35,563 - build_test - MainThread - INFO - Average build time, all good builds: 359
+2018-04-26 02:12:35,563 - build_test - MainThread - INFO - Minimum build time, all good builds: 123
+2018-04-26 02:12:35,563 - build_test - MainThread - INFO - Maximum build time, all good builds: 479
+--
+2018-04-26 02:50:25,950 - build_test - MainThread - INFO - Failed builds: 0
+2018-04-26 02:50:25,950 - build_test - MainThread - INFO - Invalid builds: 0
+2018-04-26 02:50:25,950 - build_test - MainThread - INFO - Good builds included in stats: 1000
+2018-04-26 02:50:25,951 - build_test - MainThread - INFO - Average build time, all good builds: 381
+2018-04-26 02:50:25,951 - build_test - MainThread - INFO - Minimum build time, all good builds: 126
+2018-04-26 02:50:25,951 - build_test - MainThread - INFO - Maximum build time, all good builds: 496
+
+
 ```

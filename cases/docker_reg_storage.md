@@ -88,6 +88,6 @@ Retrieve the [results](docker_reg_storage_result.md) from the log file:
 | 20171204 | 10          | nodejs | 500     | 2 | gp2                                     | 99.9; 88.5          | [ip-172-31-23-178](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-23-178/) | 3.7.9-1.git.0.7c71a2d.el7       |
 | 20171205 | 10          | nodejs | 250     | 2 | glusterfs (3.3.0-362)                   | 99.8; 100; 99.8     | [ip-172-31-4-223](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-4-223/)   | 3.7.9-1.git.0.7c71a2d.el7       |
 | 20171205 | 10          | nodejs | 500     | 2 | glusterfs (3.3.0-362)                   | 99.9; NotReady; 100 | [ip-172-31-4-223](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-4-223/)   | 3.7.9-1.git.0.7c71a2d.el7       |
-| 20180425 | 10          | nodejs | 250/500 | 2 | glusterfs (3.3.1-13); heketi (3.3.1-10) | 100                 | [172-31-2-125]()                                                                        | 3.10.0-0.28.0.git.0.66790cb.el7 |
+| 20180425 | 10          | nodejs | 250/500 | 2 | glusterfs (3.3.1-13); heketi (3.3.1-10) | 100                 | [172-31-2-125](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-2-125/) | 3.10.0-0.28.0.git.0.66790cb.el7 |
 
 Note 20171204 uses Vikas' modification on node-config.yaml.

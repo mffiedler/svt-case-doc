@@ -1,0 +1,19 @@
+---
+- hosts: all
+
+  sudo: yes
+  user: root
+  tasks:
+    - name: stop
+      command:  systemctl stop atomic-openshift-node docker
+    - name: remove
+      yum:
+        name: atomic-openshift
+        state: absent
+    - name: clean
+      command: rm -rf /var/lib/etcd /etc/origin /root/.kube
+    - name: Restart server
+      command: /sbin/shutdown -r +1
+      async: 0
+      poll: 0
+      ignore_errors: true

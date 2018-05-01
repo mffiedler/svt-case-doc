@@ -1,5 +1,7 @@
 # CNS with pre-release images
 
+20180430: Those pre-release images are [synced to aws-reg](https://bugzilla.redhat.com/show_bug.cgi?id=1554385).
+
 ## AtomicHost@OpenStack
 
 Login <code>QEOS10 OpenStack</code> and launch an instance based on image

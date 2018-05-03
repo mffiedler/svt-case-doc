@@ -33,6 +33,18 @@ openshift_prometheus_alertmanager_image_version=v3.9
 openshift_prometheus_alertbuffer_image_prefix=registry.reg-aws.openshift.com:443/openshift3/
 openshift_prometheus_alertbuffer_image_version=v3.9
 
+### use pvc for storage
+###https://bugzilla.redhat.com/show_bug.cgi?id=1544858
+openshift_prometheus_storage_type=pvc
+openshift_prometheus_alertmanager_storage_type=pvc
+openshift_prometheus_alertbuffer_storage_type=pvc
+openshift_prometheus_sc_name=gp2
+openshift_prometheus_alertmanager_sc_name=gp2
+openshift_prometheus_alertbuffer_sc_name=gp2
+openshift_prometheus_storage_volume_size=60Gi
+openshift_prometheus_alertmanager_storage_volume_size=60Gi
+openshift_prometheus_alertbuffer_storage_volume_size=60Gi
+
 $ ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/deploy_cluster.yml
 ```
 

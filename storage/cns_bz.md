@@ -1,5 +1,10 @@
 # CNS bz
 
+## PVC installation
+
+* crio:
+    * gfs-block: load modules [???](https://bugzilla.redhat.com/show_bug.cgi?id=???)
+
 ## PVC create
 
 * docker:

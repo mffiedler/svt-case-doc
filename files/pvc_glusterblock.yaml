@@ -1,7 +1,7 @@
 kind: "PersistentVolumeClaim"
 apiVersion: "v1"
 metadata:
-  name: "pvc-gluster"
+  name: "pvc-gluster-block"
 spec:
   accessModes:
     - "ReadWriteOnce"

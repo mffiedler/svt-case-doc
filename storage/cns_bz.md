@@ -13,7 +13,7 @@
 ## PVC delete
 
 * docker:
-    gfs-file: 1000 [1430762](https://bugzilla.redhat.com/show_bug.cgi?id=1430762); [1573304](https://bugzilla.redhat.com/show_bug.cgi?id=1573304)
-    gfs-block: NOT test yet since creation does not scale for the above bz
+    * gfs-file: 1000 [1430762](https://bugzilla.redhat.com/show_bug.cgi?id=1430762); [1573304](https://bugzilla.redhat.com/show_bug.cgi?id=1573304)
+    * gfs-block: NOT test yet since creation does not scale for the above bz
 
 * crio: NOT test yet since creation does not scale for the above bz

@@ -1,0 +1,23 @@
+# ansible-playbook -i "ec2-54-213-131-75.us-west-2.compute.amazonaws.com,ec2-35-163-127-18.us-west-2.compute.amazonaws.com,ec2-34-217-102-37.us-west-2.compute.amazonaws.com" playbooks/collect_glusterfs_logs.yaml --extra-vars "ansible_user=root ansible_ssh_private_key_file=/home/hongkliu/.ssh/id_rsa_perf"
+---
+- hosts: all
+  tasks:
+  - name: print hostname
+    debug:
+      msg: "hostname: {{ inventory_hostname }}"
+
+  - name: create temporary directory
+    tempfile:
+      state: directory
+      suffix: gfs_log
+    register: tmp_folder_result
+
+  - name: archive log folder
+    archive:
+      path: /var/log
+      dest: "{{ tmp_folder_result.path }}/log.tgz"
+
+  - name: fetch the archived log files
+    fetch:
+      src: "{{ tmp_folder_result.path }}/log.tgz"
+      dest: /tmp/fetched

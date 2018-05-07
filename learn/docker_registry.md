@@ -29,7 +29,9 @@ Use [registry_pvc.yaml](../files/registry_pvc.yaml):
 Use [registry_secret.yaml](../files/registry_secret.yaml)
 
 ```sh
-# oc secrets new dockerregistry registry_secret.yaml
+# curl -LO https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/registry_secret.yaml
+# (Command "new" is deprecated, use oc create secret) oc secrets new dockerregistry registry_secret.yaml
+# oc create secret generic dockerregistry --from-file=./registry_secret.yaml
 # oc volume dc/docker-registry --add --name=dockersecrets -m /etc/registryconfig --type=secret --secret-name=dockerregistry
 # oc env dc/docker-registry REGISTRY_CONFIGURATION_PATH=/etc/registryconfig/registry_secret.yaml
 ```

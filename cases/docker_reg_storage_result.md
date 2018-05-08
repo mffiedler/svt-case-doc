@@ -118,5 +118,20 @@
 2018-04-26 02:50:25,951 - build_test - MainThread - INFO - Minimum build time, all good builds: 126
 2018-04-26 02:50:25,951 - build_test - MainThread - INFO - Maximum build time, all good builds: 496
 
+###20180508
+$ grep "Failed builds: " /tmp/build_test.log -A5 
+2018-05-08 15:32:14,295 - build_test - MainThread - INFO - Failed builds: 0
+2018-05-08 15:32:14,295 - build_test - MainThread - INFO - Invalid builds: 0
+2018-05-08 15:32:14,295 - build_test - MainThread - INFO - Good builds included in stats: 3000
+2018-05-08 15:32:14,295 - build_test - MainThread - INFO - Average build time, all good builds: 355
+2018-05-08 15:32:14,295 - build_test - MainThread - INFO - Minimum build time, all good builds: 100
+2018-05-08 15:32:14,295 - build_test - MainThread - INFO - Maximum build time, all good builds: 594
+--
+2018-05-08 16:45:28,775 - build_test - MainThread - INFO - Failed builds: 5
+2018-05-08 16:45:28,775 - build_test - MainThread - INFO - Invalid builds: 1
+2018-05-08 16:45:28,775 - build_test - MainThread - INFO - Good builds included in stats: 2994
+2018-05-08 16:45:28,775 - build_test - MainThread - INFO - Average build time, all good builds: 377
+2018-05-08 16:45:28,775 - build_test - MainThread - INFO - Minimum build time, all good builds: 98
+2018-05-08 16:45:28,776 - build_test - MainThread - INFO - Maximum build time, all good builds: 503
 
 ```

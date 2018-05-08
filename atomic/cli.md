@@ -2,6 +2,7 @@
 
 [Dan's doc](https://docs.google.com/document/d/1BwviZAw_7sfTQmOv1V5spibnNyW8iBOjJfQJWQTKJp8/edit) on this topic.
 
+Installation via `yum`/`dnf`:
 ```sh
 ###20180408 on RHEL75:
 # yum list podman cri-tools

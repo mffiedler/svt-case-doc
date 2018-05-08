@@ -2,6 +2,21 @@
 
 [Dan's doc](https://docs.google.com/document/d/1BwviZAw_7sfTQmOv1V5spibnNyW8iBOjJfQJWQTKJp8/edit) on this topic.
 
+```sh
+###20180408 on RHEL75:
+# yum list podman cri-tools
+Loaded plugins: amazon-id, rhui-lb, search-disabled-repos
+Available Packages
+cri-tools.x86_64                                   1.0.0-3.gitf37a5a1.el7                                   aos               
+podman.x86_64                                      0.4.1-3.gitb51d327.el7                                   rhel-7-extras-next
+###20180408 on Fedora27:
+$ dnf list podman cri-tools
+Last metadata expiration check: 6 days, 9:22:01 ago on Wed 02 May 2018 03:25:36 AM UTC.
+Available Packages
+cri-tools.x86_64                                    1.0.0-2.alpha.0.git653cc8c.el7                                     aos    
+podman.x86_64                                       0.3.5-2.gitdb6bf9e.fc27                                            updates
+```
+
 ## podman
 
 Tested on Fedora 27:

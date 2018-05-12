@@ -244,6 +244,19 @@ server <npt_server_name> iburst
 # chronyc sources -v
 ```
 
+## Firewall
+
+netfilter, iptables, firewalld
+
+```
+### tested on rhel
+# yum list iptables firewalld
+# systemctl status iptables firewalld
+### probably iptables and firewalld should not work at the same time
+```
+
+[iptables](iptables.md)
+
 ## More reading
 
 * [Syslog messages and Syslog protocol](https://blog.rapid7.com/2017/05/24/what-is-syslog/)

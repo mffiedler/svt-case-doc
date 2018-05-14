@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  vars:
+    key_src: "/home/hongkliu/.ssh/libra.pem"
+    key_dest: aaa
+
+  tasks:
+  - name: get home folder
+    shell: echo ${HOME}
+    register: home_result
+  - name: show home folder
+    debug:
+      msg: "remote home is: {{ home_result.stdout }}"
+  - name: copy the libra key
+    copy:
+      src: "{{ key_src }}"
+      dest: "{{ home_result.stdout }}/.ssh/id_rsa"
+      mode: 0600

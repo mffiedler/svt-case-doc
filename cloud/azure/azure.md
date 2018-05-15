@@ -122,7 +122,8 @@ aaa1      Bound     pvc-6eb005cf-5882-11e8-8cc1-000d3a93937b   3Gi        RWO   
 bbb1      Pending                                                                        azure-file       2m
 ```
 
-[bz 1578583](https://bugzilla.redhat.com/show_bug.cgi?id=1578583)
+[bz 1578583](https://bugzilla.redhat.com/show_bug.cgi?id=1578583).
+Might need [those yum steps](https://docs.openshift.com/container-platform/3.9/install_config/persistent_storage/persistent_storage_azure_file.html#azure-file-before-you-begin).
 
 ## docker registry storage on azure
 TODO

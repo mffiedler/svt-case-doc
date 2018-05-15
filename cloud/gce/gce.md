@@ -1,7 +1,7 @@
 # Google Compute Engine
-ssh key: libra.pem
 
 ## [Flexy control](https://docs.openshift.com/container-platform/3.9/install_config/configuring_gce.html)
+ssh key: libra.pem
 
 zone:
 
@@ -133,3 +133,6 @@ $ ssh -i mykey liu@35.225.122.183
 
 Note that the above method would not work for project images, tested with `qe-rhel-74-20180228`.
 Flexy must have some magic to make it work.
+
+## docker registry storage on gce
+TODO

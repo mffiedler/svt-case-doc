@@ -4,7 +4,6 @@
   become_user: root
   vars:
     key_src: "/home/hongkliu/.ssh/libra.pem"
-    key_dest: aaa
 
   tasks:
   - name: get home folder

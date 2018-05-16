@@ -32,6 +32,13 @@ admissionConfig:
         kind: BuildDefaultsConfig
 
 # systemctl restart atomic-openshift-master*
+
+### on 3.10 with crio as docker runtime
+### restart master-[api|controllers] like this:
+### 
+### https://bugzilla.redhat.com/show_bug.cgi?id=1571338
+# crictl ps | grep controller ### get the container id
+# crictl stop <container_id>
 ```
 
 Verify this by triggering a round of builds and then

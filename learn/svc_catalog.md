@@ -24,6 +24,12 @@ template_service_broker_version=v3.9
 
 ```
 
+Or on an existing cluter, run:
+
+```sh
+$ ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/openshift-service-catalog/config.yml
+```
+
 So k8s service catalog is running under `kube-service-catalog`:
 
 ```sh

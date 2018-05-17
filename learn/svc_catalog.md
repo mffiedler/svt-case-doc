@@ -67,6 +67,12 @@ template-service-broker   4h
 
 ```
 
+Cleanup before reinstall:
+
+```sh
+# oc delete project kube-service-catalog openshift-ansible-service-broker openshift-template-service-broker
+```
+
 ## [Template service broker](https://docs.openshift.com/container-platform/3.7/architecture/service_catalog/template_service_broker.html)
 
 For the moment, all application services (the applications showing up on the web UI, service catalog page) shipped by Openshift are managed by this broker.

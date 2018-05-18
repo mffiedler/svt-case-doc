@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   name: test-template
   annotations:
-    template.openshift.io/bindable: 'false'
+    template.openshift.io/bindable: "false"
 objects:
 - apiVersion: v1
   kind: Service

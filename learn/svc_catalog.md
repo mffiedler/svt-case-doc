@@ -231,13 +231,18 @@ registry:
 ...
 ```
 
-Deploy a service instance via web console, then
+Follow [the steps in the oc-doc](https://docs.openshift.com/container-platform/3.9/apb_devel/writing/getting_started.html), then
 
-```sh
+```sh 
 # svcat get instances 
-               NAME                 NAMESPACE             CLASS              PLAN     STATUS  
++               NAME                 NAMESPACE             CLASS              PLAN     STATUS  
 +---------------------------------+-----------+---------------------------+---------+--------+
-  localregistry-my-test-apb-4697n   aaa         localregistry-my-test-apb   default   Ready  
+  localregistry-my-test-apb-4697n   aaa         localregistry-my-test-apb   default   Ready     
+  localregistry-my-pg-apb-pbwxl     ccc         localregistry-my-pg-apb     default   Ready   
+root@ip-172-31-46-120: ~ # svcat get binding
+                 NAME                   NAMESPACE             INSTANCE              STATUS  
++-------------------------------------+-----------+-------------------------------+--------+
+  localregistry-my-pg-apb-pbwxl-d7bdd   ccc         localregistry-my-pg-apb-pbwxl   Ready   
 ```
 
 Debugging doc: https://github.com/openshift/ansible-service-broker/blob/master/docs/debugging.md

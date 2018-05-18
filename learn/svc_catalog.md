@@ -4,7 +4,7 @@
 
 ## Doc
 
-* [svc_cat@k8s](https://github.com/kubernetes-incubator/service-catalog), [api](https://github.com/kubernetes-incubator/service-catalog/blob/master/docs/v1/api.md)
+* [svc_cat@k8s](https://github.com/kubernetes-incubator/service-catalog), [api](https://github.com/kubernetes-incubator/service-catalog/blob/master/docs/v1/api.md), [svc_cat@k8s.doc](https://kubernetes.io/docs/concepts/extend-kubernetes/service-catalog/)
 * [svc_cat@oc](https://docs.openshift.com/container-platform/3.6/architecture/service_catalog/index.html), [tr@3.6](https://blog.openshift.com/whats-new-openshift-3-6-service-catalog-brokers-tech-preview/), [release@3.7](https://blog.openshift.com/whats-new-in-openshift-3-7-service-catalog-and-brokers/)
 * [intro_by_paul@youtube](https://www.youtube.com/watch?v=p35hOAAsxrQ), [deep dive](https://www.youtube.com/watch?time_continue=53&v=w48Och61tLg)
 * [s3_svc_cat_demo@youtube](https://www.youtube.com/watch?v=-_m9Ijw3jWc&feature=youtu.be), [aws svc broker](https://blog.openshift.com/using-aws-openshift-together/)
@@ -113,8 +113,36 @@ ccc         jenkins-persistent-g2nvv   2m
 # oc get ServiceBinding --all-namespaces
 NAMESPACE   NAME                             AGE
 ccc         jenkins-persistent-g2nvv-9lfcx   2m
+```
+
+Add you own service class:
+
+```sh
+# oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/template_test.yaml -n openshift
+
+# svcat get class my-test-template
+        NAME               DESCRIPTION         
++------------------+--------------------------+
+  my-test-template   No description provided.  
+
+# svcat describe class my-test-template
+  Name:          my-test-template                      
+  Description:   No description provided.              
+  UUID:          c089e8b5-5ac3-11e8-973b-0215c9182176  
+  Status:        Active                                
+  Tags:                                                
+  Broker:        template-service-broker               
+
+Plans:
+   NAME     DESCRIPTION   
++---------+--------------+
+  default   Default plan  
 
 ```
+
+It seems that the added servce class will show up in web console after sometime. It is still not clear to me how to reload them manually.
+
+TODO: Understand and define and use `ClusterServicePlan`.
 
 
 ## [Ansible service broker](https://docs.openshift.com/container-platform/3.9/architecture/service_catalog/ansible_service_broker.html)

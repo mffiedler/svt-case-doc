@@ -103,7 +103,7 @@ nodejs-mongo-persistent-sz94s   4m
 
 ```
 
-* (FOR some reason, Jenkins pod is not running: bz???) create in namespace `ccc` a Jenkins `service instance` and a `service binding` and then
+* (FOR some reason, Jenkins pod is not running: [bz 1573249](https://bugzilla.redhat.com/show_bug.cgi?id=1573249)) create in namespace `ccc` a Jenkins `service instance` and a `service binding` and then
 
 ```sh
 # oc get ServiceInstance --all-namespaces

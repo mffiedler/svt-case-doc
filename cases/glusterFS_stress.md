@@ -18,22 +18,14 @@ Because the cns images have not been released yet, we have to upload them
 manually. See [cns_internal.md](../storage/cns_internal.md) for details.
 
 ```sh
-## create cns nodes with 3 1000g-volumes
-(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-6ca0ba15     --security-group-ids sg-5c5ace38 --count 3 --instance-type m4.4xlarge --key-name id_rsa_perf     --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\", \"Ebs\":{\"VolumeSize\": 60}},{\"DeviceName\":\"/dev/sdf\", \"Ebs\":{\"VolumeSize\": 1000}},{\"DeviceName\":\"/dev/sdg\", \"Ebs\":{\"VolumeSize\": 1000}},{\"DeviceName\":\"/dev/sdh\", \"Ebs\":{\"VolumeSize\": 1000}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-bbb-test-0909\"}]}]"
-[
-    "i-0165db22e3696292e",
-    "i-02d410a8be06f35e1",
-    "i-0b11cb6de89905932"
-]
-## create other nodes
-(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-6ca0ba15     --security-group-ids sg-5c5ace38 --count 5 --instance-type m4.xlarge --key-name id_rsa_perf     --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\", \"Ebs\":{\"VolumeSize\": 60}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-bbb-test-0909\"}]}]"
-[
-    "i-047060dfb0eac057d",
-    "i-011a7e89d81c5f4d0",
-    "i-06f8115f1b7b63a83",
-    "i-054aaea03b888a986",
-    "i-05be81e44b58e4b6e"
-]
+### create cns nodes with 3 1000g-volumes
+(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-b40678cc     --security-group-ids sg-5c5ace38 --count 3 --instance-type m4.4xlarge --key-name id_rsa_perf     --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 60,\"VolumeType\": \"gp2\"}},{\"DeviceName\":\"/dev/sdf\", \"Ebs\":{\"VolumeSize\": 1000,\"VolumeType\": \"gp2\"}},{\"DeviceName\":\"/dev/sdg\", \"Ebs\":{\"VolumeSize\": 1000,\"VolumeType\": \"gp2\"}},{\"DeviceName\":\"/dev/sdh\", \"Ebs\":{\"VolumeSize\": 1000,\"VolumeType\": \"gp2\"}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-docker-310\"}, {\"Key\":\"KubernetesCluster\",\"Value\":\"hongkliu-310\"}]}]"
+
+### heketi node
+$ aws ec2 run-instances --image-id ami-b40678cc     --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.4xlarge --key-name id_rsa_perf     --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 60,\"VolumeType\": \"gp2\"}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-docker-310\"}, {\"Key\":\"KubernetesCluster\",\"Value\":\"hongkliu-310\"}]}]"
+
+### others
+$ aws ec2 run-instances --image-id ami-b40678cc     --security-group-ids sg-5c5ace38 --count 6 --instance-type m4.xlarge --key-name id_rsa_perf     --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 60,\"VolumeType\": \"gp2\"}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-docker-310\"}, {\"Key\":\"KubernetesCluster\",\"Value\":\"hongkliu-310\"}]}]"
 
 ## upload the following 2 cns images to cns nodes
 ## upload the following 1 cns image (rhgs-volmanager-rhel7) to compute nodes

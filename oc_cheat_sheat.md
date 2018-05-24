@@ -141,3 +141,12 @@ yum install pbench-fio-2.14
 
 # oc get pod -n glusterfs -o yaml | grep "image:" | sort -u
 ```
+
+## Jenkins image is missing for master branch
+
+```sh
+$ oc get imagestreamtag -n openshift | grep jenkins
+$ oc get imagestream -n openshift | grep jenkins
+$ oc edit imagestream -n openshift jenkins
+$ oc import-image -n openshift jenkins
+```

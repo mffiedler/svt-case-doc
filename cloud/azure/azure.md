@@ -31,7 +31,7 @@ masterPublicURL: https://hongk-master-etcd-nfs-1.centralus.cloudapp.azure.com:84
   masterPublicURL: https://hongk-master-etcd-nfs-1.centralus.cloudapp.azure.com:8443
 ```
 
-The public url does not work: [bz 1578539](https://bugzilla.redhat.com/show_bug.cgi?id=1578539).
+The public url does not work: [bz 1578539](https://bugzilla.redhat.com/show_bug.cgi?id=1578539). Fixed in 3.10.0-0.54.0.git.0.00a8b84.el7.
 
 Storage
 

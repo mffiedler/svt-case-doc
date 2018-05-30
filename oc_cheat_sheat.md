@@ -152,3 +152,8 @@ $ oc get imagestream -n openshift | grep jenkins
 $ oc edit imagestream -n openshift jenkins
 $ oc import-image -n openshift jenkins
 ```
+## oc explain
+
+```sh
+$ oc explain DeploymentConfig.spec.template.spec
+```

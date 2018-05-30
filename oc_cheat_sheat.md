@@ -14,7 +14,7 @@ $ oc login -u redhat -p <password>
 $ oc login -u system:admin
 $ oc adm policy add-cluster-role-to-user cluster-admin redhat
 ###
-# htpasswd -b /etc/origin/master/htpasswd redhat redhat
+# htpasswd -b /etc/origin/master/htpasswd redhat <password>
 ```
 
 ## check on which node a pod runs

@@ -115,11 +115,23 @@ Understand [skuName](https://docs.microsoft.com/en-us/azure/templates/microsoft.
 and [accountType](https://msdn.microsoft.com/en-us/library/azure/hh264518.aspx).
 
 ```sh
-# oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/pvc_template.yaml -p PVC_NAME=bbb1 -p STORAGE_CLASS_NAME=azure-file
+### Following https://bugzilla.redhat.com/show_bug.cgi?id=1578583
+# oc edit ClusterRole system:controller:persistent-volume-binder
+# oc get ClusterRole system:controller:persistent-volume-binder -o yaml | grep -A 5 secrets
+  - secrets
+  verbs:
+  - create
+  - delete
+  - get
+- apiGroups:
+```
+
+```sh
+# oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/pvc_template.yaml -p PVC_NAME=bbb1 -p STORAGE_CLASS_NAME=azure-file | oc create -f -
 # oc get pvc
 NAME      STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS     AGE
 aaa1      Bound     pvc-6eb005cf-5882-11e8-8cc1-000d3a93937b   3Gi        RWO            azure-standard   1h
-bbb1      Pending                                                                        azure-file       2m
+bbb1      Bound     pvc-a5ba1252-643f-11e8-8603-000d3a968092   3Gi        RWO            azure-file       1m
 ```
 
 [bz 1578583](https://bugzilla.redhat.com/show_bug.cgi?id=1578583).

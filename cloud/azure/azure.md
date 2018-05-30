@@ -137,5 +137,15 @@ bbb1      Bound     pvc-a5ba1252-643f-11e8-8603-000d3a968092   3Gi        RWO   
 [bz 1578583](https://bugzilla.redhat.com/show_bug.cgi?id=1578583).
 Might need [those yum steps](https://docs.openshift.com/container-platform/3.9/install_config/persistent_storage/persistent_storage_azure_file.html#azure-file-before-you-begin).
 
+How to find it in azure portal
+
+```sh
+# oc get pv pvc-a5ba1252-643f-11e8-8603-000d3a968092 -o yaml | grep shareName
+    shareName: kubernetes-dynamic-pvc-a5ba1252-643f-11e8-8603-000d3a968092
+```
+
+In `Overview` of the above storage account, click `Files` in the `Services` section. Now we can
+see `kubernetes-dynamic-pvc-a5ba1252-643f-11e8-8603-000d3a968092`.
+
 ## docker registry storage on azure
 TODO

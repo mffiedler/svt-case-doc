@@ -92,7 +92,7 @@ is listed and its size matches too. BTW, its type is `Page blob`.
 We can use the same storage account to create the following sc [azure-file](https://kubernetes.io/docs/concepts/storage/storage-classes/#azure-file):
 
 ```sh
-vi sc-azure-file.yaml
+# vi sc-azure-file.yaml
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:

@@ -111,6 +111,14 @@ API version: 3.1
 
 ```
 
+## Useful commands
+
+```sh
+### https://bugzilla.redhat.com/show_bug.cgi?id=1579421
+sh-4.2# source /etc/etcd/etcd.conf
+sh-4.2# ETCDCTL_API=3 etcdctl --cert=$ETCD_PEER_CERT_FILE --key=$ETCD_PEER_KEY_FILE --cacert=$ETCD_TRUSTED_CA_FILE --endpoints=$ETCD_LISTEN_CLIENT_URLS member list
+```
+
 ## Reference
 
 [1]. https://www.consul.io/intro/vs/zookeeper.html

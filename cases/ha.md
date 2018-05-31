@@ -125,3 +125,75 @@ root@<host>: ~ # systemctl status etcd
    Loaded: loaded (/usr/lib/systemd/system/etcd.service; enabled; vendor preset: disabled)
    Active: active (running) since Wed 2017-07-05 09:03:13 EDT; 5h 43min ago
 ```
+
+## Determine which master-controller is active
+
+On 3.10 cluster:
+
+```sh
+# oc get pod -n kube-system | grep controllers
+master-controllers-ip-172-31-0-122.us-west-2.compute.internal   1/1       Running   0          2h
+master-controllers-ip-172-31-36-53.us-west-2.compute.internal   1/1       Running   0          2h
+master-controllers-ip-172-31-9-37.us-west-2.compute.internal    1/1       Running   0          2h
+```
+
+Mike's way:
+
+Open 3 terminal, each of the watches a controller's log:
+
+```sh
+# oc logs -f -n kube-system master-controllers-XXX
+```
+
+Then,
+
+```sh
+# oc new-project aaa
+# oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/pvc_template.yaml -p PVC_NAME=bbb1 -p STORAGE_CLASS_NAME=gp2 | oc create -f -
+```
+
+The relevant log showed up only in log of `master-controllers-ip-172-31-9-37.us-west-2.compute.internal`
+```
+I0531 15:11:45.196191       1 util.go:460] Creating volume for PVC "bbb1"; chose zone="us-west-2b" from zones=["us-west-2b"]
+```
+
+So the active controller is on `ip-172-31-9-37.us-west-2.compute.internal`.
+
+That coincides with
+
+```sh
+# oc describe cm kube-controller-manager
+Name:         kube-controller-manager
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  control-plane.alpha.kubernetes.io/leader={"holderIdentity":"ip-172-31-9-37.us-west-2.compute.internal_43f27faa-64d5-11e8-bf97-022d83e946d0","leaseDurationSeconds":15,"acquireTime":"2018-05-31T13:19:36...
+
+Data
+====
+Events:  <none>
+```
+
+Note that cm `kube-scheduler` and `openshift-master-controllers` stores a different node:
+
+```sh
+# oc describe cm kube-scheduler openshift-master-controllers
+Name:         kube-scheduler
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  control-plane.alpha.kubernetes.io/leader={"holderIdentity":"ip-172-31-0-122.us-west-2.compute.internal_440a1aae-64d5-11e8-9d7a-02b8a20a1d1c","leaseDurationSeconds":15,"acquireTime":"2018-05-31T13:19:4...
+
+Data
+====
+Events:  <none>
+
+
+Name:         openshift-master-controllers
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  control-plane.alpha.kubernetes.io/leader={"holderIdentity":"ip-172-31-0-122.us-west-2.compute.internal","leaseDurationSeconds":15,"acquireTime":"2018-05-31T13:19:36Z","renewTime":"2018-05-31T15:39:59Z...
+
+Data
+====
+Events:  <none>
+
+```

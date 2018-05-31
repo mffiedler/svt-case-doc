@@ -7,6 +7,7 @@
 * [installation](https://github.com/coreos/etcd/releases/)
 * [etcdctl](https://github.com/coreos/etcd/tree/master/etcdctl)
 * [official doc](https://github.com/coreos/etcd/blob/master/Documentation/docs.md)
+* [admin_guide](https://coreos.com/etcd/docs/latest/v2/admin_guide.html)
 
 ## Commands
 

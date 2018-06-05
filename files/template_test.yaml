@@ -85,12 +85,3 @@ objects:
       name: web
       weight: 100
     wildcardPolicy: None
-  status:
-    ingress:
-    - conditions:
-      - lastTransitionTime: 2018-05-18T15:18:09Z
-        status: "True"
-        type: Admitted
-      host: web-bbb.apps.0517-vc4.qe.rhcloud.com
-      routerName: router
-      wildcardPolicy: None

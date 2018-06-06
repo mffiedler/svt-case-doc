@@ -142,6 +142,8 @@ yum install pbench-fio-2.14
 # oc get pv --no-headers | grep -v etcd | awk '{print $1}' | while read i; do oc delete pv $i; done
 
 # oc get pod -n glusterfs -o yaml | grep "image:" | sort -u
+
+# oc get node | grep cns | awk '{print $1}' | while read i; do oc adm manage-node $i --schedulable=false; done
 ```
 
 ## Jenkins image is missing for master branch

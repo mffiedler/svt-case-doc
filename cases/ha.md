@@ -149,12 +149,11 @@ Then,
 
 ```sh
 # oc new-project aaa
-# oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/pvc_template.yaml -p PVC_NAME=bbb1 -p STORAGE_CLASS_NAME=gp2 | oc create -f -
 ```
 
 The relevant log showed up only in log of `master-controllers-ip-172-31-9-37.us-west-2.compute.internal`
 ```
-I0531 15:11:45.196191       1 util.go:460] Creating volume for PVC "bbb1"; chose zone="us-west-2b" from zones=["us-west-2b"]
+I0605 14:32:56.707674       1 vnids.go:114] Allocated netid 12717210 for namespace "aaa"
 ```
 
 So the active controller is on `ip-172-31-9-37.us-west-2.compute.internal`.

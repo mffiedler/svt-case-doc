@@ -143,6 +143,7 @@ yum install pbench-fio-2.14
 
 # oc get pod -n glusterfs -o yaml | grep "image:" | sort -u
 
+# oc get node --show-labels | grep gluster | awk '{print $1}' | while read i; do oc adm manage-node $i --schedulable=false; done
 # oc get node | grep cns | awk '{print $1}' | while read i; do oc adm manage-node $i --schedulable=false; done
 ```
 

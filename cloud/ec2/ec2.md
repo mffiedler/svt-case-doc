@@ -70,6 +70,13 @@ $ aws ec2 run-instances --image-id ami-ae4c0ad6 \
     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-rhel-jn\"}]}]"
 ```
 
+[SSH as root user](https://stackoverflow.com/questions/21749526/restarting-ec2-and-login-as-root?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa):
+
+```sh
+[cloud-user@ip-172-31-34-243 ~]$ sudo -i
+root@ip-172-31-34-243: ~ # cp /home/cloud-user/.ssh/authorized_keys /root/.ssh/authorized_keys
+```
+
 ### Atomic Host
 
 Fedora Atomic:

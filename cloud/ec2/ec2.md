@@ -60,6 +60,15 @@ RHEL images: 7.4 (ami-9fa343e7)
 (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 describe-images --owner 309956199498 --output text --region us-west-2 | grep "RHEL-7.4" | grep -v Beta
 ```
 
+RHEL jump node m5:
+
+```sh
+$ aws ec2 run-instances --image-id ami-ae4c0ad6 \
+    --security-group-ids sg-5c5ace38 --count 1 --instance-type m5.xlarge --key-name id_rsa_perf \
+    --subnet subnet-4879292d --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 30}}]" \
+    --query 'Instances[*].InstanceId' \
+    --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-rhel-jn\"}]}]"
+```
 
 ### Atomic Host
 

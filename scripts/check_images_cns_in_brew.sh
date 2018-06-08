@@ -18,10 +18,10 @@ check_brew_latest "rhgs3/rhgs-s3-server-rhel7"
 
 
 
-readonly GFS_TAG=3.3.1-13
-readonly S3_TAG=3.3.1-10
-readonly GFS_BP_TAG=3.3.1-10
-readonly HKT_TAG=3.3.1-10
+readonly GFS_TAG=3.3.1-18
+readonly S3_TAG=3.3.1-15
+readonly GFS_BP_TAG=3.3.1-16
+readonly HKT_TAG=3.3.1-17
 
 set -e
 

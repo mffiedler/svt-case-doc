@@ -5,6 +5,7 @@
 * [gluster-storage@redhat](https://access.redhat.com/documentation/en/red-hat-gluster-storage/)
 * [glusterFS@Wiki](https://en.wikipedia.org/wiki/GlusterFS)
 * [gluster.org](https://www.gluster.org/): [doc@gluster.org](https://docs.gluster.org/en/latest/)
+    * [replica-2-and-replica-3-volumes](https://docs.gluster.org/en/v3/Administrator%20Guide/arbiter-volumes-and-quorum/#replica-2-and-replica-3-volumes)
 * [glusterFS@oc](https://docs.openshift.com/container-platform/3.6/install_config/persistent_storage/persistent_storage_glusterfs.html)
     * containerized cluster, or containerized native storage (CNS): [containerized cluster](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/container-native_storage_for_openshift_container_platform_3.4/)
     * dedicated cluster

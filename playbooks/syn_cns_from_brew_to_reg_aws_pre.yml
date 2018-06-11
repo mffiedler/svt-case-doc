@@ -6,7 +6,7 @@
 ### # ln -s python3 python
 
 ---
-- name: Prepare for fio test
+- name: Prepare for cns images sync
   hosts: all
   remote_user: root
   roles:

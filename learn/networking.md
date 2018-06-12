@@ -99,6 +99,22 @@ Use [this rc](../files/rc_111.yaml) to create pods. Or [this one](https://raw.gi
 # oc create -f /tmp/rc_111.yaml
 ```
 
+## Verify network concepts
+
+OCP 3.10:
+```sh
+# grep "network" /etc/origin/master/master-config.yaml 
+networkConfig:
+  networkPluginName: redhat/openshift-ovs-networkpolicy
+
+# oc get ds -n  openshift-sdn
+NAME      DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+ovs       10        10        10        10           10          <none>          1d
+sdn       10        10        10        10           10          <none>          1d
+
+```
+
+
 ## Reference
 
 * [SRV record](https://en.wikipedia.org/wiki/SRV_record)

@@ -1,5 +1,9 @@
 # Grafana
 
+##
+ * [grafana.com](https://grafana.com/), [docs.grafana](http://docs.grafana.org/)
+ * [grafana@github](https://github.com/grafana/grafana)
+
 ## Installation
 
 On an existing OCP cluster:

@@ -51,7 +51,7 @@ grafana   Bound     pvc-87bf7092-6f1b-11e8-b116-021a0c012f3a   10Gi       RWO   
 # oc volumes pod -n openshift-grafana grafana-7dd7b44967-thrhh | grep pvc/grafana -A1
   pvc/grafana (allocated 10GiB) as grafana-data
     mounted at /root/go/src/github.com/grafana/grafana/data in container grafana
-``
+```
 
 ## Uninstallation
 

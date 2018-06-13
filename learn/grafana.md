@@ -27,4 +27,6 @@ route.route.openshift.io/grafana   grafana-openshift-grafana.apps.0613-ezq.qe.rh
 
 ```
 
+Parameters in the playbook: [openshift_grafana](https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_grafana) and [hosts.grafana.example](https://github.com/openshift/openshift-ansible/blob/master/inventory/hosts.grafana.example).
+
 Open `https://grafana-openshift-grafana.apps.0613-ezq.qe.rhcloud.com` with browser and loging with `grafana/grafana`.

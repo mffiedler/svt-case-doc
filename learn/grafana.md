@@ -34,3 +34,32 @@ route.route.openshift.io/grafana   grafana-openshift-grafana.apps.0613-ezq.qe.rh
 Parameters in the playbook: [openshift_grafana](https://github.com/openshift/openshift-ansible/tree/master/roles/openshift_grafana) and [hosts.grafana.example](https://github.com/openshift/openshift-ansible/blob/master/inventory/hosts.grafana.example).
 
 Open `https://grafana-openshift-grafana.apps.0613-ezq.qe.rhcloud.com` with browser and loging with `grafana/grafana`.
+
+Configure grafana to use PVC:
+
+```sh
+openshift_grafana_storage_type=pvc
+openshift_grafana_sc_name=gp2
+grafana_pvc_size=20Gi
+```
+
+```sh
+# oc get pvc -n openshift-grafana 
+NAME      STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+grafana   Bound     pvc-87bf7092-6f1b-11e8-b116-021a0c012f3a   10Gi       RWO            gp2            20m
+
+# oc volumes pod -n openshift-grafana grafana-7dd7b44967-thrhh | grep pvc/grafana -A1
+  pvc/grafana (allocated 10GiB) as grafana-data
+    mounted at /root/go/src/github.com/grafana/grafana/data in container grafana
+``
+
+## Uninstallation
+
+```sh
+$ ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/openshift-grafana/uninstall.yml
+```
+Or,
+
+```sh
+# oc delete project openshift-grafana
+```

@@ -2,6 +2,12 @@
 
 [system_administrators_guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/)
 
+## [Register and Subscribe](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/quick_registration_for_rhel/)
+
+```sh
+# subscription-manager list --available
+```
+
 ## [bash-completion](https://www.cyberciti.biz/faq/fedora-redhat-scientific-linuxenable-bash-completion/)
 
 ```sh

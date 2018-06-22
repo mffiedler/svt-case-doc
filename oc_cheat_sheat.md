@@ -145,6 +145,9 @@ yum install pbench-fio-2.14
 
 # oc get node --show-labels | grep gluster | awk '{print $1}' | while read i; do oc adm manage-node $i --schedulable=false; done
 # oc get node | grep cns | awk '{print $1}' | while read i; do oc adm manage-node $i --schedulable=false; done
+
+# oc get pod -n glusterfs | grep glusterfs-storage | awk '{print $1}' | while read line; do oc exec -n glusterfs "$line" -- systemctl status gluster-blockd.service; done | grep Active
+# oc get pod -n glusterfs | grep glusterfs-storage | awk '{print $1}' | while read line; do oc exec -n glusterfs "$line" -- systemctl status glusterd.service; done | grep Active
 ```
 
 ## Jenkins image is missing for master branch

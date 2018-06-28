@@ -4,6 +4,7 @@
 ### $ sudo -i
 ### # cd /usr/bin/
 ### # ln -s python3 python
+### or (untested) https://fedoramagazine.org/getting-ansible-working-fedora-23/
 
 ---
 - name: Prepare for cns images sync

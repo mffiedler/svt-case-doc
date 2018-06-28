@@ -1,0 +1,73 @@
+---
+- hosts: all
+  vars_files:
+    - external_vars.yaml
+  tasks:
+  - name: print hostname
+    debug:
+      msg: "hostname: {{ inventory_hostname }}"
+
+  - name: dnf pkgs
+    dnf:
+      name: "{{item}}"
+      state: present
+    with_items:
+     - docker
+     - ansible
+     - java-1.8.0-openjdk
+     - bash-completion
+     - git
+    become: true
+
+  - name: start docker
+    systemd:
+      name: docker
+      state: started
+      enabled: True
+    become: true
+
+  - name: run docker postinstall step 1
+    group:
+      name: docker
+      state: present
+    become: true
+
+  - name: print ansible_user
+    debug:
+      msg: "ansible_user: {{ ansible_user }}"
+
+  - name: run docker postinstall step 2
+    command: "usermod -aG docker {{ ansible_user }}"
+    become: true
+
+  - name: create temporary build directory
+    tempfile:
+      state: directory
+      prefix: fedora.install.
+    register: tmp_folder_result
+
+  - name: print tmp_folder_result
+    debug:
+      msg: "tmp_folder_result: {{ tmp_folder_result.path }}"
+
+  - name: extract oc
+    unarchive:
+      src: https://github.com/openshift/origin/releases/download/v3.10.0-rc.0/openshift-origin-client-tools-v3.10.0-rc.0-c20e215-linux-64bit.tar.gz
+      dest: "{{ tmp_folder_result.path }}"
+      remote_src: yes
+
+  - name: copy oc binary
+    command: cp "{{ tmp_folder_result.path }}/openshift-origin-client-tools-v3.10.0-rc.0-c20e215-linux-64bit/oc" /usr/bin/oc
+    become: true
+
+  - name: git clone svt
+    git:
+      repo: 'https://github.com/openshift/svt.git'
+      dest: "/home/{{ ansible_user }}/svt"
+      clone: yes
+
+  - name: git clone openshift-ansible
+    git:
+      repo: 'https://github.com/openshift/openshift-ansible.git'
+      dest: "/home/{{ ansible_user }}/openshift-ansible"
+      clone: yes

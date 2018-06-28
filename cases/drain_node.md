@@ -10,6 +10,11 @@ Cluster:
 | infra  | 1  |
 | computing-nodes  | 2  |
 
+## limits from the cloud provides
+
+* aws ec2: [52](https://bugzilla.redhat.com/show_bug.cgi?id=1490989)
+* gc2: [63](https://cloud.google.com/compute/docs/disks/)
+
 ## Config master
 
 ```sh
@@ -25,6 +30,17 @@ KUBE_MAX_PD_VOLS=260
 # systemctl daemon-reload
 # systemctl restart atomic-openshift-master-controllers.service
 #
+```
+
+OCP 3.10:
+
+```sh
+# vi /tmp/controller.yaml
+   image: registry.reg-aws.openshift.com:443/openshift3/ose-control-plane:v3.10
+   env:
+   - name: KUBE_MAX_PD_VOLS
+     value: "60" 
+
 ```
 
 ## Run test

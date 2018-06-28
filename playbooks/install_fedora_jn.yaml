@@ -17,6 +17,7 @@
      - java-1.8.0-openjdk
      - bash-completion
      - git
+     - python2-libselinux
     become: true
 
   - name: start docker
@@ -71,3 +72,15 @@
       repo: 'https://github.com/openshift/openshift-ansible.git'
       dest: "/home/{{ ansible_user }}/openshift-ansible"
       clone: yes
+
+  ### https://github.com/bayandin/webpagetest-private/issues/1
+  - name: copy perf key file
+    copy:
+      src: "{{ perf_private_key_file }}"
+      dest: "/home/{{ ansible_user }}/"
+      mode: 0600
+
+### TODO
+### copy script: kcfg_scp.sh
+### oc auto complete
+### pip dep. for cl and conc. build scripts

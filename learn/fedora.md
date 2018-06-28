@@ -30,6 +30,7 @@ Found when installing logging stack: Need <code>libselinux-python</code> and <co
 
 
 ```sh
+### fedora28: python3-libselinux is installed already
 [fedora@ip-172-31-33-174 ~]$ sudo dnf install libselinux-python
 # #keytool comes with jdk
 [fedora@ip-172-31-33-174 ~]$ sudo rpm -Uvh jdk-8u144-linux-x64.rpm 

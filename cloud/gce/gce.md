@@ -145,7 +145,7 @@ $ gcloud compute instances attach-disk hongkliu-310-bbb-node-3 --disk hongkliu-d
 
 ```
 
-By default, the device is called `sdb`.
+By default, the device is called `sdb`. Use `glusterfs_devices='["/dev/sdb"]'` in the inventory file.
 
 ## docker registry storage on gce
 TODO

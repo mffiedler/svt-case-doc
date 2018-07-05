@@ -134,5 +134,18 @@ $ ssh -i mykey liu@35.225.122.183
 Note that the above method would not work for project images, tested with `qe-rhel-74-20180228`.
 Flexy must have some magic to make it work.
 
+### Disk
+
+Create disks and attach them to the instances
+```sh
+$ gcloud compute disks create hongkliu-d1 hongkliu-d2 hongkliu-d3 --zone us-central1-a --size 256GB
+$ gcloud compute instances attach-disk hongkliu-310-bbb-node-1 --disk hongkliu-d1 --zone us-central1-a
+$ gcloud compute instances attach-disk hongkliu-310-bbb-node-2 --disk hongkliu-d2 --zone us-central1-a
+$ gcloud compute instances attach-disk hongkliu-310-bbb-node-3 --disk hongkliu-d3 --zone us-central1-a
+
+```
+
+By default, the device is called `sdb`.
+
 ## docker registry storage on gce
 TODO

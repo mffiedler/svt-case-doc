@@ -150,6 +150,12 @@ yum install pbench-fio-2.14
 # oc get pod -n glusterfs | grep glusterfs-storage | awk '{print $1}' | while read line; do oc exec -n glusterfs "$line" -- systemctl status glusterd.service; done | grep Active
 ```
 
+### ocp node role
+
+```sh
+$ oc label node hongkliu-310-bbb-nrr-1 node-role.kubernetes.io/infra=true
+```
+
 ## Jenkins image is missing for master branch
 
 ```sh

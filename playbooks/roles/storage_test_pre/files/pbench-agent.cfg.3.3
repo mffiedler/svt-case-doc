@@ -1,9 +1,9 @@
 [DEFAULT]
 pbench_install_dir = /opt/pbench-agent
 # CHANGE ME!
-pbench_results_redirector = perf-infra.ec2.breakage.org
+pbench_results_redirector = pbench.dev.openshift.com
 # CHANGE ME!
-pbench_web_server = perf-infra.ec2.breakage.org
+pbench_web_server = pbench.dev.openshift.com
 
 [pbench-agent]
 install-dir = %(pbench_install_dir)s
@@ -41,11 +41,11 @@ pandas-package = python-pandas
 # Fedora has python2-pandas and python3-pandas
 # pandas-package = python2-pandas
 
+[config]
+path = %(pbench_install_dir)s/config
+# BEGIN ANSIBLE MANAGED BLOCK
 [pbench-fio]
 version = 3.3
 histogram_interval_msec = 10000
-
-[config]
-path = %(pbench_install_dir)s/config
+# END ANSIBLE MANAGED BLOCK
 files = pbench-agent.cfg
-

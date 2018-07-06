@@ -1,2 +1,5 @@
 ---
-- import_tasks: tasks/cp_cert.yml
+#- import_tasks: tasks/cp_cert.yml
+###gce
+- import_tasks: tasks/ssh_between_nodes_on_gce.yaml
+- import_tasks: tasks/install_pbench.yml

@@ -1,0 +1,38 @@
+---
+- name: config pbench dep repo rhel-7-optional-next
+  copy:
+    src: rhel-7-optional-next.repo
+    dest: /etc/yum.repos.d/rhel-7-optional-next.repo
+
+- name: config pbench-fio dep repo epel
+  copy:
+    src: "{{ epel_repo }}"
+    dest: /etc/yum.repos.d/epel.repo
+
+- name: config pbench yum repo 1
+  copy:
+    src: "{{ pbench_repo_1 }}"
+    dest: /etc/yum.repos.d/ndokos-pbench-epel-7.repo
+
+- name: config pbench yum repo 2
+  copy:
+    src: "{{ pbench_repo_2 }}"
+    dest: /etc/yum.repos.d/ndokos-pbench-interim.repo
+
+- name: install pbench-agent
+  yum:
+    name: pbench-agent
+    state: latest
+
+- name: copy pbench config
+  copy:
+    src: pbench-agent.cfg.3.3
+    dest: /opt/pbench-agent/config/pbench-agent.cfg
+
+- name: copy ssh key to pbench directory
+  copy:
+    src: "{{ pbench_key }}"
+    dest: /opt/pbench-agent/id_rsa
+    owner: pbench
+    group: pbench
+    mode: 0600

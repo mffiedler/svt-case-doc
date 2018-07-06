@@ -1,0 +1,10 @@
+---
+- name: debug vars
+  debug:
+    msg: "ansible_env.HOME is {{ ansible_env.HOME }} and  private_key_file is {{ private_key_file }}"
+
+- name: copy private key file
+  copy:
+    src: "{{ private_key_file }}"
+    dest: /root/.ssh/id_rsa
+    mode: 0600

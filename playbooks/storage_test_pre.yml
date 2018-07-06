@@ -1,8 +1,14 @@
 ---
 - name: Prepare for fio test
   hosts: all
-  remote_user: root
+  #remote_user: root
   vars:
     cert_file_path: "/home/hongkliu/repo/me/svt-secret/cert/id_rsa.pub"
+    ### gce
+    private_key_file: "/home/hongkliu/.ssh/libra.pem"
+    pbench_repo_1: "/home/hongkliu/repo/openshift/svt/image_provisioner/playbooks/roles/repo-install/files/ndokos-pbench-epel-7.repo"
+    pbench_repo_2: "/home/hongkliu/repo/openshift/svt/image_provisioner/playbooks/roles/repo-install/files/ndokos-pbench-interim.repo"
+    pbench_key: "/home/hongkliu/repo/me/svt-secret/cert/pbench.id_rsa"
+    epel_repo: "/home/hongkliu/repo/openshift/svt/image_provisioner/playbooks/roles/repo-install/files/epel.repo"
   roles:
     - storage_test_pre

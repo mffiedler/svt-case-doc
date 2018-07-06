@@ -18,6 +18,7 @@
      - bash-completion
      - git
      - python2-libselinux
+     - tmux
     become: true
 
   - name: start docker

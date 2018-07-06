@@ -138,7 +138,7 @@ Flexy must have some magic to make it work.
 
 Create disks and attach them to the instances
 ```sh
-$ gcloud compute disks create hongkliu-d1 hongkliu-d2 hongkliu-d3 --zone us-central1-a --size 256GB
+$ gcloud compute disks create hongkliu-d1 hongkliu-d2 hongkliu-d3 --zone us-central1-a --size 256GB --type pd-ssd
 $ gcloud compute instances attach-disk hongkliu-310-bbb-node-1 --disk hongkliu-d1 --zone us-central1-a
 $ gcloud compute instances attach-disk hongkliu-310-bbb-node-2 --disk hongkliu-d2 --zone us-central1-a
 $ gcloud compute instances attach-disk hongkliu-310-bbb-node-3 --disk hongkliu-d3 --zone us-central1-a

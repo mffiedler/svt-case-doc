@@ -46,6 +46,7 @@ openshift_storage_glusterfs_block_image=registry.access.redhat.com/rhgs3/rhgs-gl
 openshift_storage_glusterfs_block_version=3.3.0-362
 openshift_storage_glusterfs_block_host_vol_size=800
 openshift_storage_glusterfs_block_storageclass=true
+#openshift_storage_glusterfs_timeout=900
 ...
 
 # ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/byo/config.yml

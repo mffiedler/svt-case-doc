@@ -81,6 +81,7 @@ Observe:
 
 TODO:
 
+* go-stomp is not working yet with JBoss AMQ 6.3.
 * Which version of JBoss AMQ is the testing target? 7.2 vs 6.3
 * Msg model (e2e vs pub/sub) and Protocol (many are supported, openwire,stomp ...)?
 

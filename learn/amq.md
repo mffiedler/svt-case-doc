@@ -42,7 +42,7 @@ $ ./build/stomp -server ec2-54-201-211-200.us-west-2.compute.amazonaws.com:61613
 TODO
 
 * persistent msg: https://activemq.apache.org/stomp.html
-* where are the data stored on the server?
+* where are the data stored on the server? Search for `persistenceAdapter` section in `conf/activemq.xml`.
 
 ## JBoss AMQ
 

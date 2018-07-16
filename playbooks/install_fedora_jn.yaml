@@ -82,6 +82,6 @@
       mode: 0600
 
 ### TODO
-### copy script: kcfg_scp.sh
+### copy script: kcfg_scp.sh, softlinks for Jenkins keys
 ### oc auto complete
 ### pip dep. for cl and conc. build scripts

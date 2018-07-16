@@ -28,7 +28,7 @@ LISTEN     0      128         :::1883                    :::*                   
 
 ```
 
-Open port 8161 and port 61613 for inbound traffic for the security group used for the ec2 instance.
+Open port 8161 (mng console) and port 61613 (stomp) for inbound traffic for the security group used for the ec2 instance.
 
 [Client library](http://activemq.apache.org/cross-language-clients.html): [go-stomp](https://github.com/go-stomp/stomp)
 
@@ -77,11 +77,10 @@ Observe:
 
 * JBoss AMQ is embeded in [karaf](https://karaf.apache.org/).
 * Port 8181 is the [mnt console](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/management_console_user_guide/fmcug_introduction_accessing) and login with `admin/admin` by default. The Web UI looks more advanced.
-* ActiveMQ is running with port 61616.
 
 TODO:
 
-* go-stomp is not working yet with JBoss AMQ 6.3.
+* go-stomp is not working yet with JBoss AMQ 6.3: because stomp is not enabled by default (compare `transportConnectors` section between jboss's `etc/activemq.xml` and apache's `conf/activemq.xml`).
 * Which version of JBoss AMQ is the testing target? 7.2 vs 6.3
 * Msg model (e2e vs pub/sub) and Protocol (many are supported, openwire,stomp ...)?
 * Data store engine: [depending on 6.3 or 7.2, many supported, journal, jdbc ...](https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html/migrating_to_red_hat_amq_7/message_persistence)

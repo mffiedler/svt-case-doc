@@ -51,6 +51,20 @@ TODO
 # cd jboss-a-mq-6.3.0.redhat-187/
 # vi etc/users.properties 
 # ./bin/start
+### get jboss pid
+# jps -lv | grep karaf
+
+# ss -tnlp | grep 3385
+LISTEN     0      1         ::ffff:127.0.0.1:39838                   :::*                   users:(("java",pid=3385,fd=233))
+LISTEN     0      50          :::8101                    :::*                   users:(("java",pid=3385,fd=253))
+LISTEN     0      128         :::5672                    :::*                   users:(("java",pid=3385,fd=311))
+LISTEN     0      50          :::1099                    :::*                   users:(("java",pid=3385,fd=244))
+LISTEN     0      50          :::35437                   :::*                   users:(("java",pid=3385,fd=26))
+LISTEN     0      50          :::61614                   :::*                   users:(("java",pid=3385,fd=315))
+LISTEN     0      128         :::61616                   :::*                   users:(("java",pid=3385,fd=309))
+LISTEN     0      50          :::8181                    :::*                   users:(("java",pid=3385,fd=254))
+LISTEN     0      128         :::1883                    :::*                   users:(("java",pid=3385,fd=314))
+LISTEN     0      50          :::44444                   :::*                   users:(("java",pid=3385,fd=245))
 
 ```
 

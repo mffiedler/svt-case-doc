@@ -66,9 +66,18 @@ LISTEN     0      50          :::8181                    :::*                   
 LISTEN     0      128         :::1883                    :::*                   users:(("java",pid=3385,fd=314))
 LISTEN     0      50          :::44444                   :::*                   users:(("java",pid=3385,fd=245))
 
+# grep activemq etc/system.properties 
+activemq.port = 61616
+activemq.host = localhost
+activemq.url = tcp://${activemq.host}:${activemq.port}
+
 ```
 
-[Port 8181 is the mnt console](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/management_console_user_guide/fmcug_introduction_accessing) and login with `admin/admin` by default.
+Observe:
+
+* [Port 8181 is the mnt console](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/management_console_user_guide/fmcug_introduction_accessing) and login with `admin/admin` by default. The Web UI looks more advanced.
+* ActiveMQ is running with port 61616.
+
 
 ## Template on OCP
 

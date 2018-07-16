@@ -76,7 +76,7 @@ activemq.url = tcp://${activemq.host}:${activemq.port}
 Observe:
 
 * JBoss AMQ is embeded in [karaf](https://karaf.apache.org/).
-* [Port 8181 is the mnt console](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/management_console_user_guide/fmcug_introduction_accessing) and login with `admin/admin` by default. The Web UI looks more advanced.
+* Port 8181 is the [mnt console](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/management_console_user_guide/fmcug_introduction_accessing) and login with `admin/admin` by default. The Web UI looks more advanced.
 * ActiveMQ is running with port 61616.
 
 ## Template on OCP

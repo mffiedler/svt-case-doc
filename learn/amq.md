@@ -79,6 +79,11 @@ Observe:
 * Port 8181 is the [mnt console](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/management_console_user_guide/fmcug_introduction_accessing) and login with `admin/admin` by default. The Web UI looks more advanced.
 * ActiveMQ is running with port 61616.
 
+TODO:
+
+* Which version of JBoss AMQ is the testing target? 7.2 vs 6.3
+* Msg model (e2e vs pub/sub) and Protocol (many are supported, openwire,stomp ...)?
+
 ## Template on OCP
 
 ```sh

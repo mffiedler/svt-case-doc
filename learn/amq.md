@@ -84,6 +84,7 @@ TODO:
 * go-stomp is not working yet with JBoss AMQ 6.3.
 * Which version of JBoss AMQ is the testing target? 7.2 vs 6.3
 * Msg model (e2e vs pub/sub) and Protocol (many are supported, openwire,stomp ...)?
+* Data store engine: [depending on 6.3 or 7.2, many supported, journal, jdbc ...](https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html/migrating_to_red_hat_amq_7/message_persistence)
 
 ## Template on OCP
 

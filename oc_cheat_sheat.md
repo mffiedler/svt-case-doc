@@ -131,6 +131,7 @@ yum install pbench-fio-2.14
 ```sh
 # clean up pv left-overs
 # oc get pv | grep fio | awk '{print $1}' | while read i; do oc delete pv $i; done
+# oc get pv --no-headers | grep -v etcd | awk '{print $1}' | while read i; do oc delete pv $i; done
 
 # systemctl stop lvm2-lvmetad.service 
 # systemctl stop lvm2-lvmetad.socket 
@@ -139,8 +140,6 @@ yum install pbench-fio-2.14
 
 # rm -rf /var/lib/heketi/
 # oc get node -l glusterfs=storage-host --no-headers | grep compute | awk '{print $1}' | while read line; do rm -rf /var/lib/heketi/; done
-
-# oc get pv --no-headers | grep -v etcd | awk '{print $1}' | while read i; do oc delete pv $i; done
 
 # oc get pod -n glusterfs -o yaml | grep "image:" | sort -u
 

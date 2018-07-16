@@ -77,11 +77,11 @@ Observe:
 
 * JBoss AMQ is embeded in [karaf](https://karaf.apache.org/).
 * Port 8181 is the [mnt console](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/management_console_user_guide/fmcug_introduction_accessing) and login with `admin/admin` by default. The Web UI looks more advanced.
+* go-stomp is not working yet with JBoss AMQ 6.3: because stomp is not enabled by default (compare `transportConnectors` section between jboss's `etc/activemq.xml` and apache's `conf/activemq.xml`).
 
 TODO:
 
-* go-stomp is not working yet with JBoss AMQ 6.3: because stomp is not enabled by default (compare `transportConnectors` section between jboss's `etc/activemq.xml` and apache's `conf/activemq.xml`).
-* Which version of JBoss AMQ is the testing target? 7.2 vs 6.3
+* Which version of JBoss AMQ is the testing target? 6.3 vs 7.2
 * Msg model (e2e vs pub/sub) and Protocol (many are supported, openwire,stomp ...)?
 * Data store engine: [depending on 6.3 or 7.2, many supported, journal, jdbc ...](https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html/migrating_to_red_hat_amq_7/message_persistence)
 
@@ -89,6 +89,14 @@ TODO:
 
 ```sh
 # oc get template -n openshift | grep amq
+...
+amq63-persistent
+...
+eap71-amq-persistent-s2i
+...
+
+# oc process --parameters openshift//amq63-persistent
+# oc process --parameters openshift//eap71-amq-persistent-s2i
 ```
 
 ## Benchmarks

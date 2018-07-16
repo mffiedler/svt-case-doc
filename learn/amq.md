@@ -39,7 +39,7 @@ $ go build -o build/stomp ./stomp/
 $ ./build/stomp -server ec2-54-201-211-200.us-west-2.compute.amazonaws.com:61613
 ```
 
-TODO
+Notice those:
 
 * persistent msg: https://activemq.apache.org/stomp.html
 * where are the data stored on the server? Search for `persistenceAdapter` section in `conf/activemq.xml`.
@@ -67,6 +67,8 @@ LISTEN     0      128         :::1883                    :::*                   
 LISTEN     0      50          :::44444                   :::*                   users:(("java",pid=3385,fd=245))
 
 ```
+
+[Port 8181 is the mnt console](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/management_console_user_guide/fmcug_introduction_accessing) and login with `admin/admin` by default.
 
 ## Template on OCP
 

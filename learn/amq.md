@@ -46,6 +46,14 @@ TODO
 
 ## JBoss AMQ
 
+```sh
+# unzip jboss-a-mq-6.3.0.redhat-187.zip 
+# cd jboss-a-mq-6.3.0.redhat-187/
+# vi etc/users.properties 
+# ./bin/start
+
+```
+
 ## Template on OCP
 
 ```sh

@@ -85,7 +85,7 @@ TODO:
 * Data store engine: [depending on 6.3 or 7.2, many supported, journal, jdbc ...](https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html/migrating_to_red_hat_amq_7/message_persistence)
 * Msg model (e2e vs pub/sub) and Protocol (many are supported, openwire,stomp ...)?
 
-## Template on OCP
+## JBoss AMQ on OCP
 
 ```sh
 # oc get template -n openshift | grep amq

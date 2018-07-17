@@ -93,6 +93,10 @@ oc patch -n default deploymentconfigs/registry-console --patch '{"spec": {"templ
 oc patch -n glusterfs deploymentconfigs/glusterblock-storage-provisioner-dc --patch '{"spec": {"template": {"spec": {"nodeSelector": {"aaa": "ccc"}}}}}'
 
 oc patch -n glusterfs deploymentconfigs/heketi-storage --patch '{"spec": {"template": {"spec": {"nodeSelector": {"aaa": "ccc"}}}}}'
+
+oc patch -n glusterfs deploymentconfigs/glusterblock-storage-provisioner-dc --patch '{"spec": {"template": {"spec": {"nodeSelector": {"node-role.kubernetes.io/infra": "true"}}}}}'
+
+oc patch -n glusterfs deploymentconfigs/heketi-storage --patch '{"spec": {"template": {"spec": {"nodeSelector": {"node-role.kubernetes.io/infra": "true"}}}}}'
 ```
 
 ## Enable brick-multiplex

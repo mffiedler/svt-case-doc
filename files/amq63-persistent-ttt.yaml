@@ -265,7 +265,7 @@ objects:
     name: ${APPLICATION_NAME}-amq-claim
   spec:
     accessModes:
-    - ${ACCESS_MODES}
+    - ReadWriteMany
     resources:
       requests:
         storage: ${VOLUME_CAPACITY}
@@ -346,7 +346,4 @@ parameters:
   name: STORAGE_CLASS_NAME
   required: true
   value: "gp2"
-- description: Access Modes of PVC.
-  displayName: access Modes
-  name: ACCESS_MODES
-  value: "ReadWriteOnce"
+

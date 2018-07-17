@@ -79,7 +79,7 @@ Observe:
 * Port 8181 is the [mnt console](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/management_console_user_guide/fmcug_introduction_accessing) and login with `admin/admin` by default. The Web UI looks more advanced.
 * go-stomp is not working yet with JBoss AMQ 6.3: because stomp is not enabled by default (compare `transportConnectors` section between jboss's `etc/activemq.xml` and apache's `conf/activemq.xml`).
 
-TODO:
+TBD:
 
 * Which version of JBoss AMQ is the testing target? 6.3 vs 7.2
 * Data store engine: [depending on 6.3 or 7.2, many supported, journal, jdbc ...](https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html/migrating_to_red_hat_amq_7/message_persistence)
@@ -98,6 +98,11 @@ eap71-amq-persistent-s2i
 # oc process --parameters openshift//amq63-persistent
 # oc process --parameters openshift//eap71-amq-persistent-s2i
 ```
+
+## Tests
+
+* JBoss AMQ 6.3 on OCP: default data store
+* One benchmark tool: one protocal/one msg model
 
 ## Benchmarks
 

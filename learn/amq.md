@@ -75,7 +75,7 @@ activemq.url = tcp://${activemq.host}:${activemq.port}
 
 Observe:
 
-* JBoss AMQ is embeded in [karaf](https://karaf.apache.org/).
+* JBoss AMQ is embeded in [karaf](https://karaf.apache.org/), [fuse](https://www.redhat.com/en/technologies/jboss-middleware/fuse), [fabric](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/fabric_guide/).
 * Port 8181 is the [mnt console](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/management_console_user_guide/fmcug_introduction_accessing) and login with `admin/admin` by default. The Web UI looks more advanced.
 * go-stomp is not working yet with JBoss AMQ 6.3: because stomp is not enabled by default (compare `transportConnectors` section between jboss's `etc/activemq.xml` and apache's `conf/activemq.xml`).
 

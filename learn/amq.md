@@ -39,7 +39,7 @@ $ go build -o build/stomp ./stomp/
 $ ./build/stomp -server ec2-54-201-211-200.us-west-2.compute.amazonaws.com:61613
 ```
 
-Notice those:
+Observe:
 
 * persistent msg: [`persistent:true`](https://activemq.apache.org/stomp.html)
 * data store: Search for `persistenceAdapter` section in `conf/activemq.xml`.
@@ -82,8 +82,8 @@ Observe:
 TODO:
 
 * Which version of JBoss AMQ is the testing target? 6.3 vs 7.2
-* Msg model (e2e vs pub/sub) and Protocol (many are supported, openwire,stomp ...)?
 * Data store engine: [depending on 6.3 or 7.2, many supported, journal, jdbc ...](https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html/migrating_to_red_hat_amq_7/message_persistence)
+* Msg model (e2e vs pub/sub) and Protocol (many are supported, openwire,stomp ...)?
 
 ## Template on OCP
 

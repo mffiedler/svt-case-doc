@@ -85,7 +85,7 @@ TBD:
 * Data store engine: [depending on 6.3 or 7.2, many supported, journal, jdbc ...](https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html/migrating_to_red_hat_amq_7/message_persistence)
 * Msg model (e2e vs pub/sub) and Protocol (many are supported, openwire,stomp ...)?
 
-## JBoss AMQ on OCP
+## [JBoss AMQ on OCP](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/red_hat_jboss_a-mq_for_openshift/)
 
 ```sh
 # oc get template -n openshift | grep amq
@@ -98,6 +98,20 @@ eap71-amq-persistent-s2i
 # oc process --parameters openshift//amq63-persistent
 # oc process --parameters openshift//eap71-amq-persistent-s2i
 ```
+
+```sh
+# oc new-project ttt
+# oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/amq63-persistent-ttt.yaml -p MQ_PROTOCOL=openwire,amqp,stomp,mqtt -p VOLUME_CAPACITY=10Gi -p MQ_USERNAME=redhat -p MQ_PASSWORD=redhat -p AMQ_QUEUE_MEMORY_LIMIT=1mb -p STORAGE_CLASS_NAME=glusterfs-storage | oc create -f -
+
+```
+
+Observe:
+
+* [ReadWriteMany](https://github.com/hongkailiu/svt-case-doc/blob/master/files/amq63-persistent-ttt.yaml#L268) support of PVC is required since the PVC is used by 2 DCs.
+* mng console: find it on the Web UI. See more on jolokia: [link1](https://developers.redhat.com/blog/2017/08/16/troubleshooting-java-applications-on-openshift/),
+[link2](https://developers.redhat.com/blog/2016/03/30/jolokia-jvm-monitoring-in-openshift/)
+* springboot for sending/receiving: [src](https://github.com/hongkailiu/test-springboot/tree/messaging-jms)
+* There is a reason that no route is defined. [routers support only http(s)](https://github.com/openshift/origin/issues/3415). Potential solutions: [expose_service](https://docs.openshift.com/container-platform/3.9/dev_guide/expose_service/index.html) and [port_forwarding](https://docs.openshift.org/latest/dev_guide/port_forwarding.html)
 
 ## Tests
 

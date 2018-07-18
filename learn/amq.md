@@ -6,6 +6,7 @@
 * https://access.redhat.com/documentation/en-us/red_hat_amq/6.3/
 * [installation](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/installation_guide/installingzip)
 * [MQs](https://blog.akquinet.de/2017/02/22/activemq-confusion-and-what-comes-with-your-jboss-eap-wildfly/), [AMQ7: component version](https://access.redhat.com/articles/3188232), [AMQ6: component version](https://access.redhat.com/articles/3188202)
+* [durable queue/topic](http://activemq.apache.org/how-do-durable-queues-and-topics-work.html)
 
 ## Apache ActiveMQ
 

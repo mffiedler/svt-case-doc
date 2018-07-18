@@ -115,11 +115,19 @@ Observe:
 
 ## Tests
 
+Starting with:
+
 * JBoss AMQ 6.3 on OCP: default data store
 * One benchmark tool: one protocal/one msg model
 
 ## Benchmarks
 
-* http://activemq.apache.org/performance.html
+* [activemq-perf-maven-plugin(]http://activemq.apache.org/performance.html)
 * https://github.com/romankhar/IBM-MQ-vs-ActiveMQ-peformance-test
 * https://github.com/hinunbi/a-mq-bmt
+
+### activemq-perf-maven-plugin
+
+```sh
+$ git clone https://git-wip-us.apache.org/repos/asf/activemq.git
+```

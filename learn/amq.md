@@ -111,7 +111,7 @@ Observe:
 * mng console: find it on the Web UI. See more on jolokia: [link1](https://developers.redhat.com/blog/2017/08/16/troubleshooting-java-applications-on-openshift/),
 [link2](https://developers.redhat.com/blog/2016/03/30/jolokia-jvm-monitoring-in-openshift/)
 * springboot for sending/receiving: [src](https://github.com/hongkailiu/test-springboot/tree/messaging-jms)
-* There is a reason that no route is defined. [routers support only http(s)](https://github.com/openshift/origin/issues/3415). Potential solutions: [expose_service](https://docs.openshift.com/container-platform/3.9/dev_guide/expose_service/index.html) and [port_forwarding](https://docs.openshift.org/latest/dev_guide/port_forwarding.html)
+* There is a reason that no route is defined. [routers support only http(s)](https://github.com/openshift/origin/issues/3415). Potential solutions: [expose_service](https://docs.openshift.com/container-platform/3.9/dev_guide/expose_service/index.html) and [port_forwarding](https://docs.openshift.com/container-platform/3.9/dev_guide/port_forwarding.html)
 
 ## Tests
 

@@ -148,8 +148,8 @@ $ cd activemq-perftest/
 ...
 <activemq-version>5.15.4</activemq-version>
 ...
-$ mvn -Dmaven.repo.local=/repo activemq-perf:producer -Dfactory.brokerURL=tcp://172.22.0.5:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/
-$ mvn -Dmaven.repo.local=/repo activemq-perf:consumer -Dfactory.brokerURL=tcp://172.22.0.5:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/
+$ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:producer -Dfactory.brokerURL=tcp://172.22.0.5:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/
+$ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:consumer -Dfactory.brokerURL=tcp://172.22.0.5:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/
 ###Generated report
 $ ll /data/Jms*
 -rw-r--r--. 1 root root 82822 Jul 18 17:43 JmsConsumer_numClients1_numDests1_all.xml

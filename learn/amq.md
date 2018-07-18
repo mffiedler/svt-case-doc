@@ -149,7 +149,7 @@ $ cd activemq-perftest/
 ...
 <activemq-version>5.15.4</activemq-version>
 ...
-$ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:producer -Dfactory.brokerURL=tcp://172.22.0.5:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/
+$ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:producer -Dfactory.brokerURL=tcp://172.22.0.5:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/ -Dproducer.deliveryMode=persistent
 $ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:consumer -Dfactory.brokerURL=tcp://172.22.0.5:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/
 ###Generated report
 $ ll /data/Jms*

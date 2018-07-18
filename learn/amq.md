@@ -130,5 +130,28 @@ Starting with:
 ### activemq-perf-maven-plugin
 
 ```sh
+###optional: build the plugin
 $ git clone https://git-wip-us.apache.org/repos/asf/activemq.git
+$ cd activemq
+###https://access.redhat.com/articles/3188202
+$ git checkout activemq-5.11.x
+$ git fetch origin  --tags --prune
+$ git checkout tags/activemq-5.11.4
+$ activemq-tooling
+$ mvn clean install
+###run the pbenchmark
+###yum install subversion
+$ svn co http://svn.apache.org/repos/asf/activemq/sandbox/activemq-perftest
+$ cd activemq-perftest/
+### https://mvnrepository.com/artifact/org.apache.activemq.tooling/activemq-perf-maven-plugin/5.15.4
+### vi pom.xml
+...
+<activemq-version>5.15.4</activemq-version>
+...
+$ mvn -Dmaven.repo.local=/repo activemq-perf:producer -Dfactory.brokerURL=tcp://172.22.0.5:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/
+$ mvn -Dmaven.repo.local=/repo activemq-perf:consumer -Dfactory.brokerURL=tcp://172.22.0.5:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/
+###Generated report
+$ ll /data/Jms*
+-rw-r--r--. 1 root root 82822 Jul 18 17:43 JmsConsumer_numClients1_numDests1_all.xml
+-rw-r--r--. 1 root root 83723 Jul 18 17:47 JmsProducer_numClients1_numDests1_all.xml
 ```

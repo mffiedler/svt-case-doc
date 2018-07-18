@@ -122,7 +122,7 @@ Starting with:
 
 ## Benchmarks
 
-* [activemq-perf-maven-plugin(]http://activemq.apache.org/performance.html)
+* [activemq-perf-maven-plugin](http://activemq.apache.org/performance.html)
 * https://github.com/romankhar/IBM-MQ-vs-ActiveMQ-peformance-test
 * https://github.com/hinunbi/a-mq-bmt
 

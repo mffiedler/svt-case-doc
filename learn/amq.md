@@ -5,6 +5,7 @@
 * [Apache.ActiveMQ](http://activemq.apache.org/)
 * https://access.redhat.com/documentation/en-us/red_hat_amq/6.3/
 * [installation](https://access.redhat.com/documentation/en-us/red_hat_jboss_a-mq/6.3/html/installation_guide/installingzip)
+* [MQs](https://blog.akquinet.de/2017/02/22/activemq-confusion-and-what-comes-with-your-jboss-eap-wildfly/)
 
 ## Apache ActiveMQ
 

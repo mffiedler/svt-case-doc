@@ -149,8 +149,12 @@ $ cd activemq-perftest/
 ...
 <activemq-version>5.15.4</activemq-version>
 ...
-$ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:producer -Dfactory.brokerURL=tcp://172.22.0.5:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/ -Dproducer.deliveryMode=persistent
-$ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:consumer -Dfactory.brokerURL=tcp://172.22.0.5:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/
+
+$ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:producer -Dfactory.brokerURL=tcp://172.25.151.74:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/ -Dproducer.deliveryMode=persistent -Dfactory.clientID=my-test-producer -Dproducer.destName=topic://TEST.FOO
+$ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:consumer -Dfactory.brokerURL=tcp://172.25.151.74:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/ -Dconsumer.durable=true -Dfactory.clientID=my-test-consumer -Dconsumer.destName=topic://TEST.FOO
+
+$ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:producer -Dfactory.brokerURL=tcp://172.25.151.74:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/ -Dproducer.deliveryMode=persistent -Dfactory.clientID=my-test-producer -Dproducer.destName=queue://TEST.FOO
+$ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:consumer -Dfactory.brokerURL=tcp://172.25.151.74:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/ -Dconsumer.durable=true -Dfactory.clientID=my-test-consumer -Dconsumer.destName=queue://TEST.FOO
 ###Generated report
 $ ll /data/Jms*
 -rw-r--r--. 1 root root 82822 Jul 18 17:43 JmsConsumer_numClients1_numDests1_all.xml

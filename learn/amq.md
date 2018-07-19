@@ -105,6 +105,10 @@ eap71-amq-persistent-s2i
 # oc new-project ttt
 # oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/amq63-persistent-ttt.yaml -p MQ_PROTOCOL=openwire,amqp,stomp,mqtt -p VOLUME_CAPACITY=10Gi -p MQ_USERNAME=redhat -p MQ_PASSWORD=redhat -p AMQ_QUEUE_MEMORY_LIMIT=1mb -p STORAGE_CLASS_NAME=glusterfs-storage | oc create -f -
 
+# oc get svc broker-amq-tcp
+NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE
+broker-amq-tcp   ClusterIP   172.25.151.74   <none>        61616/TCP   2h
+
 ```
 
 Observe:
@@ -149,7 +153,7 @@ $ cd activemq-perftest/
 ...
 <activemq-version>5.15.4</activemq-version>
 ...
-
+### svc ip: 172.25.151.74
 $ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:producer -Dfactory.brokerURL=tcp://172.25.151.74:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/ -Dproducer.deliveryMode=persistent -Dfactory.clientID=my-test-producer -Dproducer.destName=topic://TEST.FOO
 $ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:consumer -Dfactory.brokerURL=tcp://172.25.151.74:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/ -Dconsumer.durable=true -Dfactory.clientID=my-test-consumer -Dconsumer.destName=topic://TEST.FOO
 
@@ -159,4 +163,38 @@ $ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:cons
 $ ll /data/Jms*
 -rw-r--r--. 1 root root 82822 Jul 18 17:43 JmsConsumer_numClients1_numDests1_all.xml
 -rw-r--r--. 1 root root 83723 Jul 18 17:47 JmsProducer_numClients1_numDests1_all.xml
+```
+
+
+Problems:
+
+* `factory.clientID` seems not working. Only console it is still `Client id: JmsProducer0`.
+* `consumer.destName=queue://TEST.FOO` seems not working:
+
+```
+$ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:consumer -Dfactory.brokerURL=tcp://172.25.151.74:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/ -Dconsumer.durable=true -Dfactory.clientID=my-test-consumer -Dconsumer.destName=queue://TEST.FOO
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< org.apache.activemq:activemq-perftest >----------------
+[INFO] Building ActiveMQ :: Performance Test 5.7.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- activemq-perf-maven-plugin:5.15.4:consumer (default-cli) @ activemq-perftest ---
+[INFO] Created: org.apache.activemq.ActiveMQConnectionFactory using SPIConnectionFactory: org.apache.activemq.tool.spi.ActiveMQReflectionSPI
+[INFO] Creating queue: queue://TEST.FOO
+[INFO] Sampling duration: 300000 ms, ramp up: 0 ms, ramp down: 0 ms
+[INFO] Sampling duration: 300000 ms, ramp up: 0 ms, ramp down: 0 ms
+[INFO] Creating JMS Connection: Provider=ActiveMQ-5.15.4, JMS Spec=1.1
+[INFO] Creating durable subscriber (JmsConsumer0) to: queue://TEST.FOO
+Exception in thread "JmsConsumer0 Thread" java.lang.ClassCastException: org.apache.activemq.command.ActiveMQQueue cannot be cast to javax.jms.Topic
+	at org.apache.activemq.tool.JmsConsumerClient.createJmsConsumer(JmsConsumerClient.java:237)
+	at org.apache.activemq.tool.JmsConsumerClient.createJmsConsumer(JmsConsumerClient.java:223)
+	at org.apache.activemq.tool.JmsConsumerClient.receiveAsyncTimeBasedMessages(JmsConsumerClient.java:132)
+	at org.apache.activemq.tool.JmsConsumerClient.receiveMessages(JmsConsumerClient.java:53)
+	at org.apache.activemq.tool.JmsConsumerClient.receiveMessages(JmsConsumerClient.java:68)
+	at org.apache.activemq.tool.JmsConsumerClient.receiveMessages(JmsConsumerClient.java:73)
+	at org.apache.activemq.tool.JmsConsumerSystem.runJmsClient(JmsConsumerSystem.java:73)
+	at org.apache.activemq.tool.AbstractJmsClientSystem$1.run(AbstractJmsClientSystem.java:110)
+	at java.lang.Thread.run(Thread.java:748)
+
 ```

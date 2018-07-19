@@ -11,6 +11,7 @@ spec:
       containers:
         - name: "centos"
           image: "docker.io/centos:7"
+          command: ["/usr/sbin/init"]
           volumeMounts:
             - name: "aaa-vol"
               mountPath: "/aaa"

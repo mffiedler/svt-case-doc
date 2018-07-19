@@ -1,0 +1,26 @@
+kind: "DeploymentConfig"
+apiVersion: "v1"
+metadata:
+  name: "centos"
+spec:
+  template:
+    metadata:
+      labels:
+        name: "centos"
+    spec:
+      containers:
+        - name: "centos"
+          image: "docker.io/centos:7"
+          volumeMounts:
+            - name: "aaa-vol"
+              mountPath: "/aaa"
+            - name: "bbb-vol"
+              mountPath: "/bbb"
+      volumes:
+        - name: "aaa-vol"
+          emptyDir: {}
+        - name: "bbb-vol"
+          emptyDir: {}
+  triggers:
+    - type: "ConfigChange"
+  replicas: 1

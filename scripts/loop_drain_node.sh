@@ -1,5 +1,14 @@
 #!/bin/bash
 
+### Eg of the command: bash aaa.sh ip-172-31-35-104.us-west-2.compute.internal ip-172-31-49-226.us-west-2.compute.internal 25 50
+### # oc get node
+### NAME                                          STATUS                     ROLES     AGE       VERSION
+### ...
+### ip-172-31-35-104.us-west-2.compute.internal   Ready                      compute   10h       v1.11.0+d4cacc0
+### ip-172-31-49-226.us-west-2.compute.internal   Ready,SchedulingDisabled   compute   10h       v1.11.0+d4cacc0
+### 25: the number of fio pods which are running
+### 50: number of iterations
+
 if [ "$#" -ne 4 ]; then
     echo "Illegal number of parameters!"
     exit 1
@@ -65,7 +74,7 @@ do
   oc adm manage-node ${NODE_2} --schedulable=true
   oc adm drain ${NODE_1} --ignore-daemonsets
   MY_TIME=-1
-  wait_until_all_pods_are_ready 1 fio 180 10
+  wait_until_all_pods_are_ready ${POD_NUMBER} fio 600 10
   if (( ${MY_TIME} == -1 )); then
     echo "fio pod is not ready, time is up"
     exit 1
@@ -80,7 +89,7 @@ do
   oc adm manage-node ${NODE_1} --schedulable=true
   oc adm drain ${NODE_2} --ignore-daemonsets
   MY_TIME=-1
-  wait_until_all_pods_are_ready 1 fio 180 10
+  wait_until_all_pods_are_ready ${POD_NUMBER} fio 600 10
   if (( ${MY_TIME} == -1 )); then
     echo "fio pod is not ready, time is up"
     exit 1

@@ -12,7 +12,7 @@ Cluster:
 
 ## limits from the cloud provides
 
-* aws ec2: [52](https://bugzilla.redhat.com/show_bug.cgi?id=1490989)
+* aws ec2: [52 for m4 instances](https://bugzilla.redhat.com/show_bug.cgi?id=1490989), [25 for m5 instances](https://github.com/kubernetes/kubernetes/issues/59015)
 * gc2: [63](https://cloud.google.com/compute/docs/disks/)
 
 ## Config master

@@ -76,7 +76,7 @@ do
   echo "draining node1: ${NODE_1}"
   oc adm drain ${NODE_1} --ignore-daemonsets
   MY_TIME=-1
-  wait_until_all_pods_are_ready ${POD_NUMBER} fio 600 10
+  wait_until_all_pods_are_ready ${POD_NUMBER} fio 1200 10
   if (( ${MY_TIME} == -1 )); then
     echo "fio pod is not ready, time is up"
     exit 1
@@ -92,7 +92,7 @@ do
   echo "draining node1: ${NODE_2}"
   oc adm drain ${NODE_2} --ignore-daemonsets
   MY_TIME=-1
-  wait_until_all_pods_are_ready ${POD_NUMBER} fio 600 10
+  wait_until_all_pods_are_ready ${POD_NUMBER} fio 1200 10
   if (( ${MY_TIME} == -1 )); then
     echo "fio pod is not ready, time is up"
     exit 1

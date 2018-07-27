@@ -42,6 +42,7 @@ function wait_until_all_pods_are_ready {
   while (( ($(date +%s) - ${start_time}) < ${timeout} ));
   do
     ready_pods=$(oc get pod --all-namespaces | grep ${pod} | grep -v deploy | grep Running | grep 1/1 | wc -l)
+    echo "running pods: ${ready_pods}"
     if [[ "${ready_pods}" == ${total} ]]; then
       MY_TIME=$(($(date +%s) - ${start_time}))
       break
@@ -72,6 +73,7 @@ for i in $(seq 1 ${ITERATION});
 do
   echo "iteration: $i"
   oc adm manage-node ${NODE_2} --schedulable=true
+  echo "draining node1: ${NODE_1}"
   oc adm drain ${NODE_1} --ignore-daemonsets
   MY_TIME=-1
   wait_until_all_pods_are_ready ${POD_NUMBER} fio 600 10
@@ -85,8 +87,9 @@ do
   ssh -n "${NODE_1}" 'lsblk'
   echo "lsblk on node2 ..."
   ssh -n "${NODE_2}" 'lsblk'
-  echo "flipping"
+  echo "flipping ..."
   oc adm manage-node ${NODE_1} --schedulable=true
+  echo "draining node1: ${NODE_2}"
   oc adm drain ${NODE_2} --ignore-daemonsets
   MY_TIME=-1
   wait_until_all_pods_are_ready ${POD_NUMBER} fio 600 10

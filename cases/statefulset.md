@@ -19,6 +19,8 @@ _Note_ that there is a [limited](http://docs.aws.amazon.com/AWSEC2/latest/UserGu
 
 On test cluster, CPU resources become the bottleneck.
 
+For m5 instances, use 5 compute nodes.
+
 ### Vertical stress
 1 project and many pods: #proj 1 and #template 60
 

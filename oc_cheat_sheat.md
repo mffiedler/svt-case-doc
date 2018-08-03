@@ -169,3 +169,9 @@ $ oc import-image -n openshift jenkins
 ```sh
 $ oc explain DeploymentConfig.spec.template.spec
 ```
+
+## pbench-fio leftover
+
+```sh
+# ps -ef | grep pbench | grep fio | awk '{print $2}' | while read i; do kill "$i"; done
+```

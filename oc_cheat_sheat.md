@@ -174,4 +174,7 @@ $ oc explain DeploymentConfig.spec.template.spec
 
 ```sh
 # ps -ef | grep pbench | grep fio | awk '{print $2}' | while read i; do kill "$i"; done
+# oc get node --no-headers | awk '{print $1}' | while read line; do ssh -n "${line}" 'ps -ef | grep pbench'; done
+# oc get node --no-headers | awk '{print $1}' | while read line; do ssh -n "${line}" 'pbench-clear-results'; done
+
 ```

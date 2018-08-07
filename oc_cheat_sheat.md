@@ -139,7 +139,7 @@ yum install pbench-fio-2.14
 # systemctl start lvm2-lvmetad.service 
 
 # rm -rf /var/lib/heketi/
-# oc get node -l glusterfs=storage-host --no-headers | grep compute | awk '{print $1}' | while read line; do ssh -n "${line}" 'rm -rf /var/lib/heketi/'; done
+# oc get node -l glusterfs=storage-host --no-headers | grep compute | awk '{print $1}' | while read line; do ssh -n "${line}" 'rm -rfv /var/lib/heketi/'; done
 
 # oc get pod -n glusterfs -o yaml | grep "image:" | sort -u
 

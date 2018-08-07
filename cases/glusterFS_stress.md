@@ -101,6 +101,8 @@ oc patch -n glusterfs deploymentconfigs/heketi-storage --patch '{"spec": {"templ
 
 ## Enable brick-multiplex
 
+*NOT doing this any more since OCP 3.11 (20180807)*
+
 ```sh
 # oc rsh -n glusterfs glusterfs-storage-<change_accordingly>
 

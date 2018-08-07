@@ -118,6 +118,8 @@ onto cns nodes.
 # oc label node ip-172-31-56-64.us-west-2.compute.internal "aaa=bbb"
 # oc label node ip-172-31-44-147.us-west-2.compute.internal "aaa=bbb"
 # oc label node ip-172-31-23-200.us-west-2.compute.internal "aaa=bbb"
+### OR,
+# oc get node --no-headers  -l node-role.kubernetes.io/compute=true --show-labels | grep -v heketi | grep -v 'glusterfs=storage-host' | awk '{print $1}' | while read i; do oc label node $i aaa=bbb; done
 ```
 
 ## Run test

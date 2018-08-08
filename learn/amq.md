@@ -168,7 +168,7 @@ $ ll /data/Jms*
 
 Problems:
 
-* `factory.clientID` seems not working. Only console it is still `Client id: JmsProducer0`.
+* `factory.clientID` seems not working. On console it is still `Client id: JmsProducer0`.
 * `consumer.destName=queue://TEST.FOO` seems not working:
 
 ```

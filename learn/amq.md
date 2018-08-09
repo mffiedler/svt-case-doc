@@ -172,7 +172,7 @@ Problems:
 * `consumer.destName=queue://TEST.FOO` seems not working:
 	Found the problem in [src](https://git-wip-us.apache.org/repos/asf?p=activemq.git;a=blob;f=activemq-tooling/activemq-perf-maven-plugin/src/main/java/org/apache/activemq/tool/JmsConsumerClient.java;h=2ee01ab11b2521a7a50d4f04706ab190b148f127;hb=HEAD#l237): if durable consumer is applicable only to topic, not queue. Remove `-Dconsumer.durable=true` and then it works.
 
-* `producer.destName=queue://TEST.FOO` does not terminate after 5 minutes, message count stopped at 1.
+* `producer.destName=queue://TEST.FOO` does not terminate after 5 minutes (amq server in pod), message count stopped at 1.
 
 ```
 $ mvn -f ./activemq-perftest/pom.xml -Dmaven.repo.local=/repo activemq-perf:consumer -Dfactory.brokerURL=tcp://172.25.151.74:61616 -Dfactory.userName=redhat -Dfactory.password=redhat -DsysTest.reportDir=/data/ -Dconsumer.durable=true -Dfactory.clientID=my-test-consumer -Dconsumer.destName=queue://TEST.FOO

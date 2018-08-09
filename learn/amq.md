@@ -30,7 +30,7 @@ LISTEN     0      128         :::1883                    :::*                   
 
 ```
 
-Open port 8161 (mng console) and port 61613 (stomp) for inbound traffic for the security group used for the ec2 instance.
+Open port 8161 (mng console; admin/admin) and port 61613 (stomp) for inbound traffic for the security group used for the ec2 instance.
 
 [Client library](http://activemq.apache.org/cross-language-clients.html): [go-stomp](https://github.com/go-stomp/stomp)
 

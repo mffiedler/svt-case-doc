@@ -138,7 +138,7 @@ Starting with:
 ###optional: build the plugin
 $ git clone https://git-wip-us.apache.org/repos/asf/activemq.git
 $ cd activemq
-###https://access.redhat.com/articles/3188202
+###jboss amq: component versions: https://access.redhat.com/articles/3188202
 $ git checkout activemq-5.11.x
 $ git fetch origin  --tags --prune
 $ git checkout tags/activemq-5.11.4

@@ -8,8 +8,8 @@ echo "jump_node: ${jump_node}"
 
 if [[ ! -z "$1" ]] && [[ $(echo "$1" | awk '{print tolower($0)}') = "true" ]]; then
   #pbench-register-tool-set --label="jump_node"
-  pbench-register-tool --name=sar --label="${label}" --remote=${node} -- --interval=100
-  pbench-register-tool --name=pidstat --label="${label}" --remote=${node} -- --interval=100
+  pbench-register-tool --name=sar --label="jump_node" -- --interval=100
+  pbench-register-tool --name=pidstat --label="jump_node" -- --interval=100
 fi
 
 

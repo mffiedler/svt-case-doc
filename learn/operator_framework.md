@@ -186,6 +186,12 @@ hive-metastore-db-data               Bound     pvc-d71e7c9e-a61f-11e8-8dc1-026ce
 
 ```
 
+Uninstall:
+
+```sh
+$ ansible-playbook -i aaa/ openshift-ansible/playbooks/openshift-metering/uninstall.yml
+```
+
 
 Control the PVC size and sc:
 

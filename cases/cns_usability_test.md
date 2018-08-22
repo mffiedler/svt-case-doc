@@ -73,8 +73,14 @@ glusterfs node which is the node selector for ds/glusterfs-storage.
 
 Expected result: all logs are fine with correct content.
 
-Extra work on the case: Need to implement the logic with Mike's logging
-tool or start from scratch.
+
+20180822: Some notes on CNS availability:
+
+*Note* that the above test is for `gluster-file`, ie, `STORAGE_CLASS: "glusterfs-storage"` in the
+`external_vars.yaml` file. If `STORAGE_CLASS: "glusterfs-storage-block"` is used, we expect no loss
+of logging entries even if 2 glusterfs pods are killed at the same time.
+
+See [the discussion](http://post-office.corp.redhat.com/archives/aos-storage/2018-August/msg00035.html) in the mailing list.
 
 ### Steps
 

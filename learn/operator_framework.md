@@ -218,4 +218,3 @@ hive-metastore-db-data               Bound     pvc-dbd5f44c-a6d0-11e8-b49c-0279b
 
 ```
 
-pvc type/size for hdfs does NOT work. [bz-1620222](https://bugzilla.redhat.com/show_bug.cgi?id=1620222).

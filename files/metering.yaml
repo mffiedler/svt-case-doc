@@ -1,19 +1,20 @@
 --- 
 openshift_metering_config: 
   presto: 
-    spec: 
-      hdfs: 
-        datanode: 
-          storage: 
-            class: glusterfs-storage
-            size: 15Gi
-        namenode: 
-          storage: 
-            class: glusterfs-storage
-            size: 15Gi
-      hive: 
+    spec:
+      hive:
         metastore: 
           storage: 
             class: glusterfs-storage
             size: 15Gi
 
+  hdfs:
+    spec:
+      datanode:
+        storage:
+          class: glusterfs-storage
+          size: 15Gi
+      namenode:
+        storage:
+          class: glusterfs-storage
+          size: 15Gi

@@ -212,10 +212,10 @@ Control the PVC size and sc:
 
 # oc get pvc
 NAME                                 STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS        AGE
-hdfs-datanode-data-hdfs-datanode-0   Bound     pvc-91055d7b-a632-11e8-8dc1-026cee33ed60   5Gi        RWO            gp2                 1m
-hdfs-namenode-data-hdfs-namenode-0   Bound     pvc-9117a4f5-a632-11e8-8dc1-026cee33ed60   5Gi        RWO            gp2                 1m
-hive-metastore-db-data               Bound     pvc-90d84ea8-a632-11e8-8dc1-026cee33ed60   15Gi       RWO            glusterfs-storage   1m
+hdfs-datanode-data-hdfs-datanode-0   Bound     pvc-dc0220c1-a6d0-11e8-b49c-0279bbe13b54   15Gi       RWO            glusterfs-storage   2m
+hdfs-namenode-data-hdfs-namenode-0   Bound     pvc-dc11ccb9-a6d0-11e8-b49c-0279bbe13b54   15Gi       RWO            glusterfs-storage   2m
+hive-metastore-db-data               Bound     pvc-dbd5f44c-a6d0-11e8-b49c-0279bbe13b54   15Gi       RWO            glusterfs-storage   2m
 
 ```
 
-pvc type/size for hdfs does NOT work. [bz-1620222](https://bugzilla.redhat.com/show_bug.cgi?id=1620222)
+pvc type/size for hdfs does NOT work. [bz-1620222](https://bugzilla.redhat.com/show_bug.cgi?id=1620222).

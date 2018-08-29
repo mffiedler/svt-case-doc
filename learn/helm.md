@@ -2,6 +2,8 @@
 
 ## Installation
 
+[Helm on OCP](https://blog.openshift.com/getting-started-helm-openshift/)
+
 Client:
 
 ```sh

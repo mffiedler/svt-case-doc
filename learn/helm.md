@@ -2,8 +2,6 @@
 
 ## Installation
 
-[Helm on OCP](https://blog.openshift.com/getting-started-helm-openshift/)
-
 [Client](https://docs.helm.sh/using_helm/#installing-helm):
 
 ```sh
@@ -34,6 +32,18 @@ svc/tiller-deploy   ClusterIP   172.26.49.79   <none>        44134/TCP   41s
 $ helm version --tiller-namespace tiller
 Client: &version.Version{SemVer:"v2.9.0-rc3", GitCommit:"60abcdca41f544caaecb224acbfb92aee11e1f6e", GitTreeState:"clean"}
 Server: &version.Version{SemVer:"v2.9.0-rc3", GitCommit:"60abcdca41f544caaecb224acbfb92aee11e1f6e", GitTreeState:"clean"}
+
+```
+
+[Helm on OCP](https://blog.openshift.com/getting-started-helm-openshift/)
+
+```sh
+# export TILLER_NAMESPACE=tiller
+# oc new-project tiller
+# oc project tiller
+# curl -LO https://storage.googleapis.com/kubernetes-helm/helm-v2.10.0-linux-amd64.tar.gz
+# tar -zxvf helm-v2.10.0-linux-amd64.tar.gz 
+# cd linux-amd64/
 
 ```
 

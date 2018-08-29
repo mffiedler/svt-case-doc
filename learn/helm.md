@@ -4,7 +4,7 @@
 
 [Helm on OCP](https://blog.openshift.com/getting-started-helm-openshift/)
 
-Client:
+[Client](https://docs.helm.sh/using_helm/#installing-helm):
 
 ```sh
 $ curl -LO https://storage.googleapis.com/kubernetes-helm/helm-v2.9.0-rc3-linux-amd64.tar.gz

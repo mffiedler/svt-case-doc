@@ -201,3 +201,54 @@ Exception in thread "JmsConsumer0 Thread" java.lang.ClassCastException: org.apac
 	at java.lang.Thread.run(Thread.java:748)
 
 ```
+
+## Useful commands in the test
+
+```
+# wget -r -np -nH --cut-dirs=6 -l 1 http://pbench.perf.lab.eng.bos.redhat.com/results/ansible-host/amq_test_results/pbench-user-benchmark_amq_storage_test_50_glusterfs-storage_2018.08.30T01.19.55/1/reference-result/
+# grep -irn SystemTotalTP ./ | cut -f2 -d">" | cut -f1 -d"<"
+# oc get projects | cut -f1 -d" " | grep -E "storage-test-amq-[0-9]+" | while read i; do oc delete project $i; done
+# pbench-move-results --prefix=amq_test_results
+```
+
+```
+###depolyment issue
+# oc get pod --all-namespaces | grep -v Running
+NAMESPACE                           NAME                                               READY     STATUS      RESTARTS   AGE
+openshift-logging                   logging-curator-1535599800-6rbwl                   0/1       Completed   0          8h
+NAMESPACE                           NAME                                               READY     STATUS      RESTARTS   AGE
+NAMESPACE                           NAME                                               READY     STATUS      RESTARTS   AGE
+storage-test-amq-103                broker-amq-1-deploy                                0/1       Error       0          20m
+storage-test-amq-106                broker-amq-1-deploy                                0/1       Error       0          20m
+storage-test-amq-116                broker-amq-1-deploy                                0/1       Error       0          19m
+storage-test-amq-116                broker-drainer-1-deploy                            0/1       Error       0          19m
+storage-test-amq-133                broker-amq-1-deploy                                0/1       Error       0          19m
+storage-test-amq-133                broker-drainer-1-deploy                            0/1       Error       0          19m
+storage-test-amq-160                broker-amq-1-deploy                                0/1       Error       0          19m
+storage-test-amq-160                broker-drainer-1-deploy                            0/1       Error       0          19m
+storage-test-amq-173                broker-amq-1-deploy                                0/1       Error       0          19m
+storage-test-amq-173                broker-drainer-1-deploy                            0/1       Error       0          19m
+NAMESPACE                           NAME                                               READY     STATUS      RESTARTS   AGE
+
+
+
+###1. space issue
+###2. network exception
+# oc logs -n storage-test-amq-99 broker-amq-1-rfm2v --timestamps
+...
+2018-08-30T04:51:37.611228187Z  INFO | For help or more information please see: http://activemq.apache.org
+2018-08-30T04:51:37.614876606Z  WARN | Store limit is 102400 mb (current store usage is 0 mb). The data directory: /opt/amq/data/split-1/serverData/kahadb only has 981 mb of usable space. - resetting to maximum available disk space: 981 mb
+2018-08-30T04:51:37.618683007Z  WARN | Temporary Store limit is 51200 mb (current store usage is 0 mb). The data directory: /opt/amq/data/split-1/serverData only has 981 mb of usable space. - resetting to maximum available disk space: 981 mb
+2018-08-30T10:43:28.516213933Z  WARN | Transport Connection to: tcp://10.178.6.1:51846 failed: java.io.EOFException
+2018-08-30T10:43:28.605118472Z  WARN | Transport Connection to: tcp://10.178.6.1:51850 failed: java.io.EOFException
+2018-08-30T10:48:35.855577414Z  WARN | Transport Connection to: tcp://10.178.6.1:51882 failed: java.io.EOFException
+2018-08-30T10:48:37.547921493Z  WARN | Transport Connection to: tcp://10.178.6.1:51886 failed: java.io.EOFException
+2018-08-30T10:53:43.958442986Z  WARN | Transport Connection to: tcp://10.178.6.1:51916 failed: java.io.EOFException
+2018-08-30T10:53:44.277595429Z  WARN | Transport Connection to: tcp://10.178.6.1:51920 failed: java.io.EOFException
+2018-08-30T10:58:48.629637538Z  WARN | Transport Connection to: tcp://10.178.6.1:51952 failed: java.io.EOFException
+2018-08-30T10:58:48.744613303Z  WARN | Transport Connection to: tcp://10.178.6.1:51956 failed: java.io.EOFException
+2018-08-30T11:03:53.084936969Z  WARN | Transport Connection to: tcp://10.178.6.1:51980 failed: java.io.EOFException
+2018-08-30T11:03:53.332428517Z  WARN | Transport Connection to: tcp://10.178.6.1:51984 failed: java.io.EOFException
+2018-08-30T11:08:57.30246362Z  WARN | Transport Connection to: tcp://10.178.6.1:52014 failed: java.io.EOFException
+```
+

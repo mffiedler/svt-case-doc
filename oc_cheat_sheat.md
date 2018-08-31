@@ -183,3 +183,41 @@ $ oc explain DeploymentConfig.spec.template.spec
 # oc get node --no-headers | awk '{print $1}' | while read line; do ssh -n "${line}" 'pbench-clear-results'; done
 
 ```
+
+## Scale lab:
+
+```sh
+###access to Alderaan
+$ ec2.sh b03-h01-1029p.rdu.openstack.engineering.redhat.com
+<akrzos> is the undercloud machine
+<akrzos> root/100yard-
+<akrzos> or perf key
+<akrzos> sudo su - stack
+<akrzos> . overcloudrc
+<akrzos> openstack server list --all
+<akrzos> will show the instances
+
+###or
+$ ssh  -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa_perf stack@b03-h01-1029p.rdu.openstack.engineering.redhat.com
+
+[stack@b03-h01-1029p ~]$ ssh root@ansible-host
+```
+
+```sh
+###laptop on VPN
+$ cat /etc/hosts
+...
+### openstack server list --all
+### lb-0.scale-ci.example.com 10.12.80.37
+### infra-node-1.scale-ci.example.com 10.12.80.27
+10.12.80.37 lb-0.scale-ci.example.com
+10.12.80.27 registry-console-default.apps.scale-ci.example.com
+10.12.80.27 jenkins-storage-test-jenkins-1.apps.scale-ci.example.com
+...
+###https://lb-0.scale-ci.example.com:8443
+```
+
+```sh
+# ansible-playbook -i "ansible-host," jenkins-test.yaml --tags run
+# pbench-move-results --prefix=jenkins_test_results
+```

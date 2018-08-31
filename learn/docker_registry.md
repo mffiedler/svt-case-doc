@@ -21,9 +21,8 @@ Use [registry_pvc.yaml](../files/registry_pvc.yaml):
 # oc create -n default -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/registry_pvc.yaml
 # oc get pvc -n default
 # oc get pv
-# oc volume -n default deploymentconfigs/docker-registry --add --name=registry-storage -t pvc \
+# (DEPRECATED: This command has been moved to "oc set volume") oc volume -n default deploymentconfigs/docker-registry --add --name=registry-storage -t pvc \
     --claim-name=registry --overwrite -m /registry
-###DEPRECATED: This command has been moved to "oc set volume"
 # oc set volume -n default deploymentconfigs/docker-registry --add --name=registry-storage -t pvc --claim-name=registry --overwrite -m /registry
 ```
 
@@ -34,7 +33,8 @@ Use [registry_secret.yaml](../files/registry_secret.yaml)
 # curl -LO https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/registry_secret.yaml
 # (Command "new" is deprecated, use oc create secret) oc secrets new dockerregistry registry_secret.yaml
 # oc create secret generic dockerregistry --from-file=./registry_secret.yaml
-# oc volume -n default dc/docker-registry --add --name=dockersecrets -m /etc/registryconfig --type=secret --secret-name=dockerregistry
+# (DEPRECATED: This command has been moved to "oc set volume") oc volume -n default dc/docker-registry --add --name=dockersecrets -m /etc/registryconfig --type=secret --secret-name=dockerregistry
+# oc set volume -n default dc/docker-registry --add --name=dockersecrets -m /etc/registryconfig --type=secret --secret-name=dockerregistry
 # oc env -n default dc/docker-registry REGISTRY_CONFIGURATION_PATH=/etc/registryconfig/registry_secret.yaml
 ```
 

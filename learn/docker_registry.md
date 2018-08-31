@@ -35,7 +35,8 @@ Use [registry_secret.yaml](../files/registry_secret.yaml)
 # oc create secret generic dockerregistry --from-file=./registry_secret.yaml
 # (DEPRECATED: This command has been moved to "oc set volume") oc volume -n default dc/docker-registry --add --name=dockersecrets -m /etc/registryconfig --type=secret --secret-name=dockerregistry
 # oc set volume -n default dc/docker-registry --add --name=dockersecrets -m /etc/registryconfig --type=secret --secret-name=dockerregistry
-# oc env -n default dc/docker-registry REGISTRY_CONFIGURATION_PATH=/etc/registryconfig/registry_secret.yaml
+# (DEPRECATED: This command has been moved to "oc set env") oc env -n default dc/docker-registry REGISTRY_CONFIGURATION_PATH=/etc/registryconfig/registry_secret.yaml
+### oc set env -n default dc/docker-registry REGISTRY_CONFIGURATION_PATH=/etc/registryconfig/registry_secret.yaml
 ```
 
 ### Set filesystem threads limit (Optional)

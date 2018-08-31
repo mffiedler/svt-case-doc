@@ -23,6 +23,7 @@ Use [registry_pvc.yaml](../files/registry_pvc.yaml):
 # oc get pv
 # oc volume -n default deploymentconfigs/docker-registry --add --name=registry-storage -t pvc \
     --claim-name=registry --overwrite -m /registry
+# oc set volume -n default deploymentconfigs/docker-registry --add --name=registry-storage -t pvc --claim-name=registry --overwrite -m /registry
 ```
 
 ### Configure docker-registry to use filesystem

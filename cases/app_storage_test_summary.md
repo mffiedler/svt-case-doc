@@ -13,5 +13,5 @@ ec2: m5.xlarge instance
 | mongodb      | ?              |              |                       |
 | mysql        | ?              |              |                       |
 | postgresql   | ?              |              |                       |
-| redis        | ?              | 3            | 6: workload_template  |
+| redis        | 2              | 3            | 6: workload_template  |
 |              |                |              |                       |

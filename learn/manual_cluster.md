@@ -130,3 +130,31 @@ ec2-54-187-182-161.us-west-2.compute.amazonaws.com ansible_user=root ansible_ssh
 ...
 ```
 Then run the 2nd playbook.
+
+
+Tested with OCP 311 on 20180905:
+
+```sh
+### create an instance on ec2:
+$ aws ec2 run-instances --image-id ami-0d378d85ec2683980  --security-group-ids sg-5c5ace38 --count 1 --instance-type m5.xlarge --key-name id_rsa_perf     --subnet subnet-4879292d  --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 60,\"VolumeType\": \"gp2\"}}]"     --query 'Instances[*].InstanceId'     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"hongkliu-aaa-311-all-in-one\"}, {\"Key\":\"KubernetesCluster\",\"Value\":\"hongkliu-311\"}]}]"
+
+### vi aaa/2.file
+### also search for `infra` as node selecotr, and replace them with `master`
+[OSEv3:vars]
+openshift_master_default_subdomain=apps.54.190.39.0.xip.io
+openshift_clusterid=hongkliu-311
+...
+[nodes]
+ec2-54-190-39-0.us-west-2.compute.amazonaws.com ansible_user=root ansible_ssh_user=root openshift_public_hostname=ec2-54-190-39-0.us-west-2.compute.amazonaws.com openshift_node_group_name="node-config-all-in-one" openshift_schedulable=true
+...
+
+### export those vars before running the playbooks
+export REG_AUTH_USER="aos-qe-pull36"
+export REG_AUTH_PASSWORD="walid_has_it"
+export AWS_ACCESS_KEY_ID="mike_has_it" 
+export AWS_SECRET_ACCESS_KEY="mike_has_it"
+
+### run the playbooks
+ansible-playbook -i aaa/ openshift-ansible/playbooks/prerequisites.yml 
+ansible-playbook -i aaa/ openshift-ansible/playbooks/deploy_cluster.yml 
+```

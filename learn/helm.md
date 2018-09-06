@@ -92,7 +92,7 @@ Server: &version.Version{SemVer:"v2.10.0", GitCommit:"9ad53aac42165a5fadc6c87be0
 # helm lint stable/svt-go/
 ```
 
-Edit the above files for your chart, and we can push it into git repo.
+Edit the above files for your chart, and we can push it into git repo. See [the office charts repo](https://github.com/helm/charts).
 
 Roll out a release for an existing chart:
 

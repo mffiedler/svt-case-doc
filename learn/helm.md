@@ -128,5 +128,6 @@ root@ip-172-31-0-220: ~/charts # curl web-ttt.apps.54.190.39.0.xip.io
 ```
 
 TODO
-* helm repo: using my own repo
-* hooks
+* helm repo: [create a chart repo](https://docs.helm.sh/developing_charts/#the-chart-repository-guide), [how2](https://medium.com/@maanadev/how-set-up-a-helm-chart-repository-using-apache-web-server-670ffe0e63c7)
+* [hooks](https://docs.helm.sh/developing_charts/#charts), [dependencies](https://docs.helm.sh/developing_charts/#chart-dependencies)
+* [best practice](https://docs.helm.sh/chart_best_practices/#the-chart-best-practices-guide)

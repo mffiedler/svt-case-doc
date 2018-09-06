@@ -4,6 +4,13 @@
 
 See [oc_cli.md](../origin/oc_cli.md#install-from-yumdfn).
 
+Or
+
+```sh
+### fedora 27:
+$ sudo dnf install kubernetes-client
+```
+
 ## [Install from binary](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)
 
 ```sh

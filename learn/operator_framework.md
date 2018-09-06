@@ -1,8 +1,102 @@
 # Operator
 
-https://www.redhat.com/en/blog/introducing-operator-framework-building-apps-kubernetes?sc_cid=701f2000000tucqAAA&src=fridayfive4email
+* [operator-framework](https://github.com/operator-framework)
+* [introducing-operator-framework](https://www.redhat.com/en/blog/introducing-operator-framework-building-apps-kubernetes?sc_cid=701f2000000tucqAAA&src=fridayfive4email)
+* [Introduce OpenShift to Operators](https://thenewstack.io/coreos-says-red-hat-will-help-introduce-openshift-to-operators/)
+* [operator with helm](https://blog.openshift.com/make-a-kubernetes-operator-in-15-minutes-with-helm/)
+* [getting-started](https://github.com/operator-framework/getting-started)
 
-https://thenewstack.io/coreos-says-red-hat-will-help-introduce-openshift-to-operators/
+## operator sdk
+
+[Installation](https://github.com/operator-framework/operator-sdk#quick-start)
+
+```sh
+###prerequisites: https://github.com/operator-framework/operator-sdk#prerequisites
+$ git --version
+$ go version
+$ kubectl version
+$ docker version
+### install dep: https://golang.github.io/dep/docs/installation.html#install-from-source
+$ dep version
+
+###install operator sdk
+$ echo ${GOPATH}
+/home/fedora/repo/go
+$ operator-sdk --version
+operator-sdk version 0.0.6+git
+
+```
+
+Use operator sdk
+
+```sh
+### create operator project
+$ go get github.com/hongkailiu/operators
+$ cd $GOPATH/src/github.com/hongkailiu/operators
+$ operator-sdk new app-operator --api-version=app.example.com/v1alpha1 --kind=App --skip-git-init
+$ cd app-operator/
+###optional
+###exclude vendor folder from src
+$ echo "vendor/" >> .gitignore
+###this can be recovered by
+$ dep ensure
+### check the generated files: https://github.com/operator-framework/operator-sdk/blob/master/doc/user-guide.md
+$ git add .
+$ git status
+
+### generate deploy/operator.yaml and build `app-operator` docker image
+$ operator-sdk build docker.io/hongkailiu/app-operator
+$ docker images | grep docker.io/hongkailiu/app-operator
+docker.io/hongkailiu/app-operator            latest              c000909e37f6        About a minute ago   38.8 MB
+
+$ docker login docker.io
+$ docker push docker.io/hongkailiu/app-operator
+
+### deploy
+$ oc new-project aaa
+
+# Deploy the app-operator
+$ kubectl create -f deploy/rbac.yaml
+$ kubectl create -f deploy/crd.yaml
+$ kubectl create -f deploy/operator.yaml
+
+# By default, creating a custom resource (App) triggers the app-operator to deploy a busybox pod
+$ kubectl create -f deploy/cr.yaml
+
+$ oc get all
+NAME                                READY     STATUS    RESTARTS   AGE
+pod/app-operator-59fcd6dc8f-4vnxn   1/1       Running   0          1m
+pod/busy-box                        1/1       Running   0          40s
+
+NAME                   TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)     AGE
+service/app-operator   ClusterIP   172.24.148.144   <none>        60000/TCP   1m
+
+NAME                           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/app-operator   1         1         1            1           1m
+
+NAME                                      DESIRED   CURRENT   READY     AGE
+replicaset.apps/app-operator-59fcd6dc8f   1         1         1         1m
+
+```
+
+Observations:
+
+* the operator container: the program starts with [the main function](https://github.com/hongkailiu/operators/blob/master/app-operator/cmd/app-operator/main.go#L23) and we can check its log by
+
+```sh
+$ oc logs app-operator-59fcd6dc8f-4vnxn
+```
+
+* it handles the events of resource via [the event handler](https://github.com/hongkailiu/operators/blob/master/app-operator/pkg/stub/handler.go#L24)
+
+TODO:
+
+* define our own handler for svt-go app
+* make svt-go as stateful app: see where we can insert the stateful related changes
+
+## Operator Lifecycle Manager
+
+TODO
 
 ## Openshift monitoring
 

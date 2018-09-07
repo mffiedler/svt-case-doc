@@ -166,6 +166,8 @@ svt-go-operator-c4cbdc9cd-6rbxj   1/1       Running   0          6m
 $ oc get svtgo example -o yaml
 ```
 
+Q: App cluster need a restart to recognize the changes on the cluster members?
+
 ## Operator Lifecycle Manager
 
 TODO

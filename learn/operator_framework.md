@@ -93,6 +93,9 @@ $ oc logs app-operator-59fcd6dc8f-4vnxn
 ### Define our own handler for svt-go app
 Follow [user-guide](https://github.com/operator-framework/operator-sdk/blob/master/doc/user-guide.md)
 
+Function:
+* pod fork8s deployment can be modified as required.
+* pod name list will be stored in the CR.
 
 ```sh
 $ operator-sdk new svt-go-operator --api-version=app.example.com/v1alpha1 --kind=SVTGo

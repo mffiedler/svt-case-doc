@@ -172,6 +172,8 @@ Q: App cluster need a restart to recognize the changes on the cluster members?
 
 TODO
 
+## [Helm app operator kit](https://github.com/operator-framework/helm-app-operator-kit)
+
 ## Openshift monitoring
 
 [Installation](https://github.com/openshift/openshift-ansible/tree/master/playbooks/openshift-monitoring)

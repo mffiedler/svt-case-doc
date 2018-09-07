@@ -8,7 +8,7 @@
 
 ## operator sdk
 
-[Installation](https://github.com/operator-framework/operator-sdk#quick-start)
+### [Installation](https://github.com/operator-framework/operator-sdk#quick-start)
 
 ```sh
 ###prerequisites: https://github.com/operator-framework/operator-sdk#prerequisites
@@ -27,7 +27,8 @@ operator-sdk version 0.0.6+git
 
 ```
 
-Use operator sdk
+### Use operator sdk
+Follow [operator-sdk#quick-start](https://github.com/operator-framework/operator-sdk#quick-start)
 
 ```sh
 ### create operator project
@@ -89,10 +90,76 @@ $ oc logs app-operator-59fcd6dc8f-4vnxn
 
 * it handles the events of resource via [the event handler](https://github.com/hongkailiu/operators/blob/master/app-operator/pkg/stub/handler.go#L24)
 
-TODO:
+### Define our own handler for svt-go app
+Follow [user-guide](https://github.com/operator-framework/operator-sdk/blob/master/doc/user-guide.md)
 
-* define our own handler for svt-go app
-* make svt-go as stateful app: see where we can insert the stateful related changes
+
+```sh
+$ operator-sdk new svt-go-operator --api-version=app.example.com/v1alpha1 --kind=SVTGo
+### then edit it as the above user guide
+$ operator-sdk generate k8s ##need only once after editting `types.go`
+$ operator-sdk build docker.io/hongkailiu/svt-go-operator:a003
+$ docker push docker.io/hongkailiu/svt-go-operator:a003
+### git-push the change on `deploy/operator.yaml` back to git-repo
+```
+
+```sh
+$ cd /home/fedora/repo/go/src/github.com/hongkailiu/operators/svt-go-operator
+$ oc new-project ttt
+$ kubectl create -f deploy/crd.yaml ###need only once
+
+$ kubectl create -f deploy/rbac.yaml
+$ kubectl create -f deploy/operator.yaml
+
+$ oc get pod
+NAME                              READY     STATUS    RESTARTS   AGE
+svt-go-operator-c4cbdc9cd-6rbxj   1/1       Running   0          12s
+
+$ kubectl create -f deploy/cr.yaml
+$ oc get svtgo
+NAME      AGE
+example   29s
+
+$ oc get pod
+NAME                              READY     STATUS    RESTARTS   AGE
+example-976d9849f-6hxwg           1/1       Running   0          2m
+svt-go-operator-c4cbdc9cd-6rbxj   1/1       Running   0          6m
+
+
+$ oc get svtgo example -o yaml
+apiVersion: app.example.com/v1alpha1
+kind: SVTGo
+metadata:
+  creationTimestamp: 2018-09-07T21:10:32Z
+  generation: 1
+  name: example
+  namespace: ttt
+  resourceVersion: "61544"
+  selfLink: /apis/app.example.com/v1alpha1/namespaces/ttt/svtgos/example
+  uid: 74714fe5-b2e2-11e8-98d2-025a295eb400
+spec:
+  size: 1
+status:
+  nodes:
+  - example-976d9849f-6hxwg
+
+###modify the size
+
+vi deploy/cr.yaml
+...
+spec:
+  size: 2
+
+
+$ kubectl apply -f deploy/cr.yaml
+$ oc get pod
+NAME                              READY     STATUS    RESTARTS   AGE
+example-976d9849f-58m26           1/1       Running   0          27s
+example-976d9849f-6hxwg           1/1       Running   0          2m
+svt-go-operator-c4cbdc9cd-6rbxj   1/1       Running   0          6m
+
+$ oc get svtgo example -o yaml
+```
 
 ## Operator Lifecycle Manager
 

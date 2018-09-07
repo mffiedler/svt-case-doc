@@ -106,6 +106,8 @@ $ docker push docker.io/hongkailiu/svt-go-operator:a003
 ### git-push the change on `deploy/operator.yaml` back to git-repo
 ```
 
+Demo
+
 ```sh
 $ cd /home/fedora/repo/go/src/github.com/hongkailiu/operators/svt-go-operator
 $ oc new-project ttt

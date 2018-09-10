@@ -94,7 +94,7 @@ $ oc logs app-operator-59fcd6dc8f-4vnxn
 Follow [user-guide](https://github.com/operator-framework/operator-sdk/blob/master/doc/user-guide.md)
 
 Function:
-* pod fork8s deployment can be modified as required.
+* pod for k8s deployment can be modified as required.
 * pod name list will be stored in the CR.
 
 ```sh
@@ -105,6 +105,8 @@ $ operator-sdk build docker.io/hongkailiu/svt-go-operator:a003
 $ docker push docker.io/hongkailiu/svt-go-operator:a003
 ### git-push the change on `deploy/operator.yaml` back to git-repo
 ```
+
+Demo
 
 ```sh
 $ cd /home/fedora/repo/go/src/github.com/hongkailiu/operators/svt-go-operator
@@ -164,9 +166,13 @@ svt-go-operator-c4cbdc9cd-6rbxj   1/1       Running   0          6m
 $ oc get svtgo example -o yaml
 ```
 
+Q: App cluster need a restart to recognize the changes on the cluster members?
+
 ## Operator Lifecycle Manager
 
 TODO
+
+## [Helm app operator kit](https://github.com/operator-framework/helm-app-operator-kit)
 
 ## Openshift monitoring
 

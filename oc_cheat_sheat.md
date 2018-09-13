@@ -200,6 +200,11 @@ $ ec2.sh b03-h01-1029p.rdu.openstack.engineering.redhat.com
 ###or
 $ ssh  -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa_perf stack@b03-h01-1029p.rdu.openstack.engineering.redhat.com
 
+# cd /home/cloud-user/
+# ansible-playbook -i /tmp/gfs.file openshift-ansible/playbooks/openshift-glusterfs/uninstall.yml
+# ansible-playbook -i /tmp/gfs.file openshift-ansible/playbooks/openshift-glusterfs/config.yml 
+# kubectl patch storageclass glusterfs-storage -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+
 [stack@b03-h01-1029p ~]$ ssh root@ansible-host
 ```
 

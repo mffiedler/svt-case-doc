@@ -1,0 +1,38 @@
+[OSEv3:children]
+masters
+nodes
+glusterfs
+
+
+[OSEv3:vars]
+ansible_ssh_user=root
+openshift_deployment_type=openshift-enterprise
+oreg_url=registry.reg-aws.openshift.com:443/openshift3/ose-${component}:${version}
+oreg_auth_user={{ lookup('env','REG_AUTH_USER') }}
+oreg_auth_password={{ lookup('env','REG_AUTH_PASSWORD') }}
+
+openshift_storage_glusterfs_wipe=true
+openshift_storage_glusterfs_image=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7:3.4.0-7
+openshift_storage_glusterfs_heketi_image=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-volmanager-rhel7:3.4.0-9
+openshift_hosted_registry_glusterfs_swap=true
+openshift_storage_glusterfs_block_deploy=true
+openshift_storage_glusterfs_block_image=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-gluster-block-prov-rhel7:3.4.0-6
+openshift_storage_glusterfs_block_host_vol_size=200
+openshift_storage_glusterfs_block_storageclass=true
+openshift_storage_glusterfs_timeout=900
+
+[masters]
+master-0.scale-ci.example.com openshift_node_group_name="node-config-master"
+master-1.scale-ci.example.com openshift_node_group_name="node-config-master"
+master-2.scale-ci.example.com openshift_node_group_name="node-config-master"
+
+
+[nodes]
+cns-0.scale-ci.example.com openshift_node_group_name="node-config-compute"
+cns-1.scale-ci.example.com openshift_node_group_name="node-config-compute"
+cns-2.scale-ci.example.com openshift_node_group_name="node-config-compute"
+
+[glusterfs]
+cns-0.scale-ci.example.com glusterfs_devices='["/dev/nvme0n1"]'
+cns-1.scale-ci.example.com glusterfs_devices='["/dev/nvme0n1"]'
+cns-2.scale-ci.example.com glusterfs_devices='["/dev/nvme0n1"]'

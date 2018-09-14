@@ -151,7 +151,7 @@ The following table shows the data for 1 CNS node.
 |                          | Jenkins + block | Redis + file | Redis + block | AMQ + file | Git + block |
 |--------------------------|-----------------|--------------|---------------|------------|-------------|
 | project                  | 200             | 250          | 50            | 250        | 150         |
-| iostat (iops)            | 5000            | 2500         | 4500          | 9000       | 11000       |
+| iostat: iops             | 5000            | 2500         | 4500          | 9000       | 11000       |
 | sar: cpu (% util.)       | 600             | 200          | 120           | 800        | 800         |
 | sar: mem (usedGB)        | 5               | 61           | < 5           | 60         | 56          |
 | sar: network (Mbits/sec) | 1200            | 1800         | 1400          | 200        | 3500        |

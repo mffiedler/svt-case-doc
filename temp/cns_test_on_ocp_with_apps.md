@@ -54,11 +54,11 @@ Pod parameters: memory limit: 6G; PVC size: 3G; PVC type: gluster-block.
 
 | instance | total build | failed build | fail rate (%) |
 |----------|-------------|--------------|---------------|
-| 1        | 30          | 1            | 3             |
-| 10       | 300         | 60           | 20            |
+| 1        | 30          | 1            | 03.3          |
+| 10       | 300         | 60           | 20.0          |
 | 50       | 1500        | 304          | 20.3          |
 | 100      | 3000        | 589          | 19.6          |
-| 200      | 6000        | 1017         | 16.95         |
+| 200      | 6000        | 1017         | 17.0          |
 
 On each Jenkins instance, we trigger via Jenkins rest api 3 builds concurrently.
 Then we check the status of the builds and count the failed builds.

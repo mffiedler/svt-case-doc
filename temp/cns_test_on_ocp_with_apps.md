@@ -68,7 +68,8 @@ Each of them is Jenkins multi-branch pipeline job which checks out [a springboot
 application repo](https://github.com/hongkailiu/gs-spring-boot) and run Maven
 tasks `install` and then achieve the built jar file and junit test results.
 
-The failed builds complains about incomplete/empty jar files as Maven dependencies.
+The failed builds complains about incomplete/empty jar files. Those files are
+dependencies for the Maven build.
 We believe that cleaning up the Maven repo folder after each iteration should
 increase the successful build rate while we leave this as future work. 
 

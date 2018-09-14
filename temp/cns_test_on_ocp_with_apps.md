@@ -218,8 +218,8 @@ In this case, wait for 2 minutes and try again.
 ### CNS device volume size and `openshift_storage_glusterfs_block_host_vol_size`
 
 In our test, we have a 894G NVMe device for each CNS node. At the installation
-of CNS, `openshift_storage_glusterfs_block_host_vol_size=350` was used at the
-beginning which is decreased to `200` for better use of space on the disk.
+time of CNS, `openshift_storage_glusterfs_block_host_vol_size=350` was used at
+the beginning which is decreased to `200` for better use of space on the disk.
 
 ### Jenkins image tag and route for OCP
 

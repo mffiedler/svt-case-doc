@@ -182,7 +182,7 @@ error: update acceptor rejected jenkins-1: pods for rc 'storage-test-jenkins-160
 
 It is what happened in the test if CNS cannot provision PVCs quickly enough.
 The workaround is to give a pause (10 to 30 seconds) after each project 
-so that less concurrent requests of PVC in CNS.
+so that less concurrent requests of PVC occur in CNS.
 
 We also observe that the number of bound *glustr-block* PVCs stops increasing
 after some time.

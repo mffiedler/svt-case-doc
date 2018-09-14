@@ -162,7 +162,7 @@ The following table shows the data for 1 CNS node.
 ### PVC provisioning and deleting
 
 First of all, it has to be admitted that PVC
-provisioning and deleting on OCP 3.11 are much better than OCP 3.10 after
+provisioning and deleting on OCP 3.11 are much more effective than OCP 3.10 after
 improvement in [1600160](https://bugzilla.redhat.com/show_bug.cgi?id=1600160)
 and [1573304](https://bugzilla.redhat.com/show_bug.cgi?id=1573304). Otherwise,
 it would be even harder to achieve the number of projects above.

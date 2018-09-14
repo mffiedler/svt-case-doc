@@ -180,7 +180,7 @@ pod gives up and become `error`.
 error: update acceptor rejected jenkins-1: pods for rc 'storage-test-jenkins-160/jenkins-1' took longer than 600 seconds to become available
 ```
 
-It is what happened in the test if CNS cannot create PVCs quickly enough.
+It is what happened in the test if CNS cannot provision PVCs quickly enough.
 The workaround is to give a pause (10 to 30 seconds) after each project 
 so that less concurrent requests of PVC in CNS.
 

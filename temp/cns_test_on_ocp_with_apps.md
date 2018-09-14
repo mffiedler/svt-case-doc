@@ -212,8 +212,8 @@ an incremental way.
 Currently, the BHV will not be released even if
 all the blocks on it are released. We have to use heketi cli to delete it
 before [1625304](https://bugzilla.redhat.com/show_bug.cgi?id=1625304) gets
-implemented. However, we sometimes see `target is busy`. In this case, wait
-for 2 minutes and try again.
+implemented. However, we sometimes see `target is busy` in the heketi output.
+In this case, wait for 2 minutes and try again.
 
 ### CNS device volume size and `openshift_storage_glusterfs_block_host_vol_size`
 

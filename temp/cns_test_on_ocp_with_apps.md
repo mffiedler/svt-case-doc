@@ -133,16 +133,16 @@ Pod parameters: memory limit: not set; PVC size: 3G; PVC type: gluster-block.
 | 100     | 60.71  |
 | 150     | 117.75 |
 
-GitWorkload is not an application from OCP template but it is somehow a 
- routine workload in [openshift.io](openshift.io). It follows the same 
- testing method as other applications in this blog.
+GitWorkload is not an application from OCP template but what we test here is
+somehow a routine workload in [openshift.io](openshift.io). It follows the same 
+testing method as other applications in this blog.
  
 We use [this script](https://github.com/openshift/svt/blob/master/storage/git/files/scripts/test-git.sh)
 to generate the IO workload. It clones the [Eclipse Che repo](https://github.com/eclipse/che.git)
 (currently about 200M ) and then does `tar/untar/rm` on the repo folder and output
 the time spent on those steps.
 
-The test is not using gluster-file because of [1589359](https://bugzilla.redhat.com/show_bug.cgi?id=1589359).
+The test did not use gluster-file because of [1589359](https://bugzilla.redhat.com/show_bug.cgi?id=1589359).
 
 ### System load on CNS node
 

@@ -118,7 +118,7 @@ Pod parameters: memory limit: not set in the OCP template; PVC size: 1G; PVC typ
 is chosen for the test. It starts producer and consumer of a topic for 5 minutes
 and we take the `System Total Throughput` value from its output.
 
-The test is not using gluster-file the AMQ template requires the PVC supports the
+The test did not use gluster-file the AMQ template requires the PVC supports the
 access mode `readWriteMany`.
 
 ### GitWorkload

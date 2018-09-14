@@ -145,86 +145,93 @@ The test is not using gluster-file because of [1589359](https://bugzilla.redhat.
 
 ### System load on CNS node
 
-The data are collected from the CNS nodes by [pbench](https://github.com/distributed-system-analysis/pbench). The following shows for 1 CNS node.
+The data are collected from the CNS nodes by [pbench](https://github.com/distributed-system-analysis/pbench).
+The following table shows the data for 1 CNS node.
 
-|              | Jenkins + block | Redis + file | Redis + block | AMQ + file | Git + block |
-|--------------|-----------------|--------------|---------------|------------|-------------|
-| project      | 200             | 250          | 50            | 250        | 150         |
-| iostat       | 5000            | 2500         | 4500          | 9000       | 11000       |
-| sar: cpu     | 600             | 200          | 120           | 800        | 800         |
-| sar: mem     | 5               | 61           | < 5           | 60         | 56          |
-| sar: network | 1200            | 1800         | 1400          | 200        | 3500        |
+|                          | Jenkins + block | Redis + file | Redis + block | AMQ + file | Git + block |
+|--------------------------|-----------------|--------------|---------------|------------|-------------|
+| project                  | 200             | 250          | 50            | 250        | 150         |
+| iostat (iops)            | 5000            | 2500         | 4500          | 9000       | 11000       |
+| sar: cpu (% util.)       | 600             | 200          | 120           | 800        | 800         |
+| sar: mem (usedGB)        | 5               | 61           | <5            | 60         | 56          |
+| sar: network (Mbits/sec) | 1200            | 1800         | 1400          | 200        | 3500        |
 
 ## Issues and workaround
 
-* PVC provisioning and deleting: First of all, it has to be admitted that PVC
-    provisioning and deleting on OCP 3.11 are much better than OCP 3.10 after
-    improvement in [1600160](https://bugzilla.redhat.com/show_bug.cgi?id=1600160)
-    and [1573304](https://bugzilla.redhat.com/show_bug.cgi?id=1573304). Otherwise,
-    it would be even harder to achieve the number of projects above.
-    
-    The test create all test projects with Ansible-playbooks. 
-    In theory, we should see all pods are running and ready.
-    However, we observe that many deploy pods are in error state. The reason
-    is that k8s monitors the Application pods via a deploy pod only up to 600
-    seconds. If the Application pods are not running for any reason, the deploy
-    pod gives up and become `error`.
+### PVC provisioning and deleting
 
-    ```sh
-    # oc logs -n storage-test-jenkins-160            jenkins-1-deploy
-    --> Scaling jenkins-1 to 1
-    error: update acceptor rejected jenkins-1: pods for rc 'storage-test-jenkins-160/jenkins-1' took longer than 600 seconds to become available
-    ```
+First of all, it has to be admitted that PVC
+provisioning and deleting on OCP 3.11 are much better than OCP 3.10 after
+improvement in [1600160](https://bugzilla.redhat.com/show_bug.cgi?id=1600160)
+and [1573304](https://bugzilla.redhat.com/show_bug.cgi?id=1573304). Otherwise,
+it would be even harder to achieve the number of projects above.
 
-    It is what happened in the test if CNS cannot create PVCs quickly enough.
-    The workaround is to give a pause (10 to 30 seconds) after each project 
-    so that less concurrent requests of PVC in CNS.
-    
-    We also observe that the number of bound *glustr-block* PVCs stops increasing
-    after some time.
-    This is because we hit [1609360](https://bugzilla.redhat.com/show_bug.cgi?id=1609360).
-    Scaling down/up the block-provisioner dc helps in this case.
-    We need to act this quickly enough before the deploy pods run into error.
-    
-    When cleaning up the test projects, we need give the pause too:
-    
-    ```bash
-    $ for i in {1..200}; do oc delete project "storage-test-jenkins-$i" --wait=false; sleep 30; done
-    ``` 
-     
-    However, if deleting still stuck, then this is the rescue
-    
-    * reboot the CNS node, or
-    * un/re-install CNS if reboot does not help
-    
-    The test itself for each application runs for about 2 hours while creating/deleting
-    the test project sometimes can take much than that. *The above bugs are
-    definitely blockers for the test going beyond the present number of projects
-    and on the way of test automation.*
-    As a result, we reuse the existing projects and only create the new ones in
-    an incremental way.
+The test create all test projects with Ansible-playbooks. 
+In theory, we should see all pods are running and ready.
+However, we observe that many deploy pods are in error state. The reason
+is that k8s monitors the Application pods via a deploy pod only up to 600
+seconds. If the Application pods are not running for any reason, the deploy
+pod gives up and become `error`.
 
-* block hosting volumes (BHV): Currently, the BHV will not be released even if
-    all the blocks on it are released. We have to use heketi cli to delete it
-    before [1625304](https://bugzilla.redhat.com/show_bug.cgi?id=1625304) gets
-    implemented. However, we sometimes see `target is busy`. In this case, wait
-    for 2 minutes and try again.
+```sh
+# oc logs -n storage-test-jenkins-160            jenkins-1-deploy
+--> Scaling jenkins-1 to 1
+error: update acceptor rejected jenkins-1: pods for rc 'storage-test-jenkins-160/jenkins-1' took longer than 600 seconds to become available
+```
 
-* CNS device volume size and `openshift_storage_glusterfs_block_host_vol_size`:
-    In our test, we have a 894G NVMe device for each CNS node. At the installation
-    of CNS, `openshift_storage_glusterfs_block_host_vol_size=350` was used at the
-    beginning which is decreased to `200` for better use of space on the disk.
+It is what happened in the test if CNS cannot create PVCs quickly enough.
+The workaround is to give a pause (10 to 30 seconds) after each project 
+so that less concurrent requests of PVC in CNS.
 
-* Jenkins image tag and route for OCP: The test depends on `imageStreamTag` in 
-    `openshift` namespace.
-    For example, `jenkins:2` tag has to be available in order to run the Jenkins
-    test. If it refers to `latest` tag, edit the `imagestream` to use the `v3.10`
-    tag because the `latest` tag points to `v3.6` [1628611](https://bugzilla.redhat.com/show_bug.cgi?id=1628611)
-    intentionally.
-    
-    ```bash
-    $ oc edit -n openshift jenkins
-    ```
-    
-    The application route must work for Jenkins test because it is used in Jenkins
-    test for rest api calls.
+We also observe that the number of bound *glustr-block* PVCs stops increasing
+after some time.
+This is because we hit [1609360](https://bugzilla.redhat.com/show_bug.cgi?id=1609360).
+Scaling down/up the block-provisioner dc helps in this case.
+We need to act this quickly enough before the deploy pods run into error.
+
+When cleaning up the test projects, we need give the pause too:
+
+```bash
+$ for i in {1..200}; do oc delete project "storage-test-jenkins-$i" --wait=false; sleep 30; done
+``` 
+ 
+However, if deleting still stuck, then this is the rescue
+
+* reboot the CNS node, or
+* un/re-install CNS if reboot does not help
+
+The test itself for each application runs for about 2 hours while creating/deleting
+the test project sometimes can take much than that. *The above bugs are
+definitely blockers for the test going beyond the present number of projects
+and on the way of test automation.*
+As a result, we reuse the existing projects and only create the new ones in
+an incremental way.
+
+### block hosting volumes (BHV)
+
+Currently, the BHV will not be released even if
+all the blocks on it are released. We have to use heketi cli to delete it
+before [1625304](https://bugzilla.redhat.com/show_bug.cgi?id=1625304) gets
+implemented. However, we sometimes see `target is busy`. In this case, wait
+for 2 minutes and try again.
+
+### CNS device volume size and `openshift_storage_glusterfs_block_host_vol_size`
+
+In our test, we have a 894G NVMe device for each CNS node. At the installation
+of CNS, `openshift_storage_glusterfs_block_host_vol_size=350` was used at the
+beginning which is decreased to `200` for better use of space on the disk.
+
+### Jenkins image tag and route for OCP
+
+The test depends on `imageStreamTag` in `openshift` namespace.
+For example, `jenkins:2` tag has to be available in order to run the Jenkins
+test. If it refers to `latest` tag, edit the `imagestream` to use the `v3.10`
+tag because the `latest` tag points to `v3.6` [1628611](https://bugzilla.redhat.com/show_bug.cgi?id=1628611)
+intentionally.
+
+```bash
+$ oc edit -n openshift jenkins
+```
+
+The application route must work for Jenkins test because it is used in Jenkins
+test for rest api calls.

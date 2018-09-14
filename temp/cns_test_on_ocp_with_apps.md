@@ -189,8 +189,22 @@ The test is not using gluster-file because of [1589359](https://bugzilla.redhat.
     the test project sometimes can take much over than that. The above bugs are
     definitely blockers for the test going beyond the present number of projects.
 
-* block backing-up volumes:
+* block hosting volumes (BHV): Currently, the BHV will not be released even if
+    all the blocks on it are released. We have to use heketi cli to delete it
+    before [1625304](https://bugzilla.redhat.com/show_bug.cgi?id=1625304) gets
+    implemented. However, we sometimes see `target is busy`. In this case, wait
+    for 2 minutes, try again.
 
-* CNS device volume size and `openshift_storage_glusterfs_block_host_vol_size`
+* CNS device volume size and `openshift_storage_glusterfs_block_host_vol_size`:
+    In our test, we have a 894G NVMe device for each CNS node. At the installation
+    of CNS, `openshift_storage_glusterfs_block_host_vol_size=350` is used which
+    is decreased to `200` for better use of space on the disk.
 
-* Jenkins tag
+* Jenkins image tag and route for OCP: The test depends on `imageStreamTag` in `openshift` namespace.
+    For example, `jenkins:2` tag has to be there in order to run Jenkins test.
+    If it refers to `latest` tag, edit the `imagestream` to use the `v3.10` tag because
+    the `latest` tag points to `v3.6` [1628611](https://bugzilla.redhat.com/show_bug.cgi?id=1628611)
+    intentionally.
+    ```bash
+    $ oc edit -n openshift jenkins
+    ```

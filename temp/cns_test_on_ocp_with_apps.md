@@ -168,7 +168,7 @@ and [1573304](https://bugzilla.redhat.com/show_bug.cgi?id=1573304). Otherwise,
 it would be even harder to achieve the number of projects above.
 
 We have implemented Ansible-playbooks to create test projects. 
-In theory, we should see all pods running and ready.
+In theory, we should see all pods running and ready after executing the playbooks.
 However, we observe that many deploy pods are in error state. The reason
 is that k8s monitors the Application pods via a deploy pod only up to 600
 seconds. If the Application pods are not running for any reason, the deploy

@@ -73,7 +73,7 @@ dependencies for the Maven build.
 We believe that cleaning up the Maven repo folder after each iteration should
 increase the successful build rate while we leave this as future work. 
 
-The test is not using gluster-file because of [1588562](https://bugzilla.redhat.com/show_bug.cgi?id=1588562).
+The test did not use gluster-file because of [1588562](https://bugzilla.redhat.com/show_bug.cgi?id=1588562).
 
 ### Redis
 

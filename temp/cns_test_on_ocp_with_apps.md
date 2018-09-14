@@ -205,7 +205,7 @@ The test itself for each application runs for about 2 hours while creating/delet
 the test projects sometimes can take much longer than that. *The above bugs are
 definitely blockers for the test going beyond the present number of projects
 and stand on the way of test automation.*
-As a result, we reuse the existing projects and only create the new ones in
+As a result, we reuse the existing projects and only create new ones in
 an incremental way.
 
 ### block hosting volumes (BHV)

@@ -101,6 +101,8 @@ to load and run the data, and generate `overall throughput (ops/sec)`.
 
 _missing results_ indicates that exception occurred during the test.
 
+We could not go beyond 50 projects because of [1627962](https://bugzilla.redhat.com/show_bug.cgi?id=1627962). 
+
 ### JBossAMQ
 
 Pod parameters: memory limit: not set in the OCP template; PVC size: 1G; PVC type: gluster-file.

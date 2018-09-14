@@ -149,13 +149,13 @@ The test is not using gluster-file because of [1589359](https://bugzilla.redhat.
     provisioning and deleting on OCP 3.11 are much better than OCP 3.10 after
     improvement in [1600160](https://bugzilla.redhat.com/show_bug.cgi?id=1600160)
     and [1573304](https://bugzilla.redhat.com/show_bug.cgi?id=1573304). Otherwise,
-    it would be hard to achieve the number of projects above.
+    it would be even harder to achieve the number of projects above.
     
     The test create all test projects with Ansible-playbooks. 
     In theory, we should see all pods are running and ready.
     However, we observe that many deploy pods are in error state. The reason
     is that k8s monitors the Application pods via a deploy pod only up to 600
-    seconds. If the Application pods has not running for any reason, the deploy
+    seconds. If the Application pods are not running for any reason, the deploy
     pod gives up and become `error`.
 
     ```sh
@@ -164,9 +164,9 @@ The test is not using gluster-file because of [1589359](https://bugzilla.redhat.
     error: update acceptor rejected jenkins-1: pods for rc 'storage-test-jenkins-160/jenkins-1' took longer than 600 seconds to become available
     ```
 
-    It is what happened in the test if CNS cannot create PVCs quick enough.
-    The workaround is to give a pause (10 to 30) between each project so that less
-    concurrent requests of PVC in CNS.
+    It is what happened in the test if CNS cannot create PVCs quickly enough.
+    The workaround is to give a pause (10 to 30 seconds) after each project 
+    so that less concurrent requests of PVC in CNS.
     
     We also observe that the number of bound *glustr-block* PVCs stops increasing
     after some time.
@@ -174,37 +174,45 @@ The test is not using gluster-file because of [1589359](https://bugzilla.redhat.
     Scaling down/up the block-provisioner dc helps in this case.
     We need to act this quickly enough before the deploy pods run into error.
     
-    When cleaning up the test projects, we need also give the pause:
+    When cleaning up the test projects, we need give the pause too:
     
     ```bash
     $ for i in {1..200}; do oc delete project "storage-test-jenkins-$i" --wait=false; sleep 30; done
     ``` 
      
-    However, if the deleting still stuck, then this is the rescue
+    However, if deleting still stuck, then this is the rescue
     
-    * reboot the CNS node
-    * un/re-install CNS
+    * reboot the CNS node, or
+    * un/re-install CNS if reboot does not help
     
     The test itself for each application runs for about 2 hours while creating/deleting
-    the test project sometimes can take much over than that. The above bugs are
-    definitely blockers for the test going beyond the present number of projects.
+    the test project sometimes can take much than that. *The above bugs are
+    definitely blockers for the test going beyond the present number of projects
+    and on the way of test automation.*
+    As a result, we reuse the existing projects and only create the new ones in
+    an incremental way.
 
 * block hosting volumes (BHV): Currently, the BHV will not be released even if
     all the blocks on it are released. We have to use heketi cli to delete it
     before [1625304](https://bugzilla.redhat.com/show_bug.cgi?id=1625304) gets
     implemented. However, we sometimes see `target is busy`. In this case, wait
-    for 2 minutes, try again.
+    for 2 minutes and try again.
 
 * CNS device volume size and `openshift_storage_glusterfs_block_host_vol_size`:
     In our test, we have a 894G NVMe device for each CNS node. At the installation
-    of CNS, `openshift_storage_glusterfs_block_host_vol_size=350` is used which
-    is decreased to `200` for better use of space on the disk.
+    of CNS, `openshift_storage_glusterfs_block_host_vol_size=350` was used at the
+    beginning which is decreased to `200` for better use of space on the disk.
 
-* Jenkins image tag and route for OCP: The test depends on `imageStreamTag` in `openshift` namespace.
-    For example, `jenkins:2` tag has to be there in order to run Jenkins test.
-    If it refers to `latest` tag, edit the `imagestream` to use the `v3.10` tag because
-    the `latest` tag points to `v3.6` [1628611](https://bugzilla.redhat.com/show_bug.cgi?id=1628611)
+* Jenkins image tag and route for OCP: The test depends on `imageStreamTag` in 
+    `openshift` namespace.
+    For example, `jenkins:2` tag has to be available in order to run the Jenkins
+    test. If it refers to `latest` tag, edit the `imagestream` to use the `v3.10`
+    tag because the `latest` tag points to `v3.6` [1628611](https://bugzilla.redhat.com/show_bug.cgi?id=1628611)
     intentionally.
+    
     ```bash
     $ oc edit -n openshift jenkins
     ```
+    
+    The application route must work for Jenkins test because it is used in Jenkins
+    test for rest api calls.

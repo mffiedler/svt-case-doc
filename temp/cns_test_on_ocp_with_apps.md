@@ -25,7 +25,7 @@ CNS image version:
 
 For each application, we choose or develop a tool for benchmarking and 
 repeatedly call the tool to generate the IO workload for the application. 
-We containerize the tool if the too itself is a standalone 
+We containerize the tool if the tool itself is a standalone 
 application and it requires its own running environment.
 
 For example, we use [YCSB](https://github.com/brianfrankcooper/YCSB/wiki) to test

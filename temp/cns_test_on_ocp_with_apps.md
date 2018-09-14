@@ -152,7 +152,7 @@ The data are collected from the CNS nodes by [pbench](https://github.com/distrib
 | project      | 200             | 250          | 50            | 250        | 150         |
 | iostat       | 5000            | 2500         | 4500          | 9000       | 11000       |
 | sar: cpu     | 600             | 200          | 120           | 800        | 800         |
-| sar: mem     | 5               | 61           | <5            | 60         | 56          |
+| sar: mem     | 5               | 61           | < 5           | 60         | 56          |
 | sar: network | 1200            | 1800         | 1400          | 200        | 3500        |
 
 ## Issues and workaround

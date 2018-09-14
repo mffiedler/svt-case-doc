@@ -142,7 +142,19 @@ to generate the IO workload. It clones the [Eclipse Che repo](https://github.com
 the time spent on those steps.
 
 The test is not using gluster-file because of [1589359](https://bugzilla.redhat.com/show_bug.cgi?id=1589359).
- 
+
+### System load on CNS node
+
+The data are collected from the CNS nodes by [pbench](https://github.com/distributed-system-analysis/pbench). The following shows for 1 CNS node.
+
+|              | Jenkins + block | Redis + file | Redis + block | AMQ + file | Git + block |
+|--------------|-----------------|--------------|---------------|------------|-------------|
+| project      | 200             | 250          | 50            | 250        | 150         |
+| iostat       | 5000            | 2500         | 4500          | 9000       | 11000       |
+| sar: cpu     | 600             | 200          | 120           | 800        | 800         |
+| sar: mem     | 5               | 61           | <5            | 60         | 56          |
+| sar: network | 1200            | 1800         | 1400          | 200        | 3500        |
+
 ## Issues and workaround
 
 * PVC provisioning and deleting: First of all, it has to be admitted that PVC

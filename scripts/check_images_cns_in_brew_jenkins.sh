@@ -2,6 +2,10 @@
 
 set -e
 
+jq --version
+skopeo --version
+docker --version
+
 function check_brew_latest(){
   local image
   image=$1

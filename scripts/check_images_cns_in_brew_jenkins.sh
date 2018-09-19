@@ -2,6 +2,8 @@
 
 set -e
 
+echo "now: $(date '+%Y-%m-%d %H:%M:%S')"
+
 jq --version
 skopeo --version
 docker --version

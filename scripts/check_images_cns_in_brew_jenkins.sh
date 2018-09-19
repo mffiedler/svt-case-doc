@@ -2,7 +2,7 @@
 
 set -e
 
-echo "now: $(date '+%Y-%m-%d %H:%M:%S')"
+echo "now: $(TZ=":US/Eastern" date '+%Y-%m-%d %H:%M:%S %z')"
 
 jq --version
 skopeo --version

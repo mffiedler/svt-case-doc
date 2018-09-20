@@ -148,13 +148,12 @@ The test did not use gluster-file because of [1589359](https://bugzilla.redhat.c
 
 The data are collected from the CNS nodes by [pbench](https://github.com/distributed-system-analysis/pbench).
 The following table shows the data for 1 CNS node. The MEM usage is the sum of 6 processes related gluster.
-
-|                          | Jenkins + block | Redis + file | Redis + block | AMQ + file | Git + block |
-|--------------------------|-----------------|--------------|---------------|------------|-------------|
-| max. #project            | 200             | 250          | 50            | 250        | 150         |
-| iostat: iops (peak)      | 5000            | 2500*        | 4500          | 9000       | 11000       |
-| sar: cpu (% util.; peak) | 600             | 200          | 120           | 800        | 800         |
-| pidstat: mem (MB; avg.)  | 749             | 3405         | 306           | 2838       | 2875        |
+|                                    | Jenkins + block | Redis + file | Redis + block | AMQ + file | Git + block |
+|------------------------------------|-----------------|--------------|---------------|------------|-------------|
+| max. #project                      | 200             | 250          | 50            | 250        | 150         |
+| iostat: iops (nvme0n1-write; peak) | 5000            | 2500*        | 4500          | 9000       | 11000       |
+| sar: cpu (% util.; peak)           | 600             | 200          | 120           | 800        | 800         |
+| pidstat: mem (MB; avg.)            | 749             | 3405         | 306           | 2838       | 2875        |
 
 ## Issues and workaround
 

@@ -147,7 +147,7 @@ The test did not use gluster-file because of [1589359](https://bugzilla.redhat.c
 ### System load on CNS node
 
 The data are collected from the CNS nodes by [pbench](https://github.com/distributed-system-analysis/pbench).
-The following table shows the data for 1 CNS node. The MEM usage is the sum of 5 processes related gluster.
+The following table shows the data for 1 CNS node. The MEM usage is the sum of 6 processes related gluster.
 
 |                          | Jenkins + block | Redis + file | Redis + block | AMQ + file | Git + block |
 |--------------------------|-----------------|--------------|---------------|------------|-------------|

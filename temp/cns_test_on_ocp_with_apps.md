@@ -154,7 +154,7 @@ The following table shows the data for 1 CNS node. The MEM usage is the sum of 5
 | max. #project            | 200             | 250          | 50            | 250        | 150         |
 | iostat: iops (peak)      | 5000            | 2500*        | 4500          | 9000       | 11000       |
 | sar: cpu (% util.; peak) | 600             | 200          | 120           | 800        | 800         |
-| pidstat: mem (MB; avg)   | 749             | 3405         | 306           | 2838       | 2875        |
+| pidstat: mem (MB; avg.)  | 749             | 3405         | 306           | 2838       | 2875        |
 
 ## Issues and workaround
 

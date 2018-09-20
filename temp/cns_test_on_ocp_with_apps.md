@@ -157,7 +157,7 @@ The following table shows the data for 1 CNS node.
 | pidstat: mem (MB; avg.)            | 749             | 3405         | 306           | 2838       | 2875        |
 
 * `2500` for `Redis + file` is for `#project` 100.
-* The MEM usage is the sum of 6 processes related gluster.
+* The MEM usage is the sum of 6 processes related gluster: `tcmu-runner`, `gluster*`.
 
 ## Issues and workaround
 

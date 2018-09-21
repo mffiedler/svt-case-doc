@@ -32,6 +32,8 @@ Follow [those steps](README.md#prerequisites).
 ## Cli
 
 ## IDE
+* Intellij Ultimate Edition + go plugin
+* vscode
 
 ### Dep. Management
 
@@ -49,6 +51,20 @@ Follow [those steps](README.md#prerequisites).
 * [spf13/cobra](https://github.com/spf13/cobra)
 
 ## Libs
+
+go template:
+
+https://godoc.org/text/template#pkg-subdirectories
+https://blog.gopheracademy.com/advent-2017/using-go-templates/
+
+code-generator:
+
+https://github.com/kubernetes/code-generator
+https://kubernetes.io/docs/contribute/generate-ref-docs/kubernetes-api/
+
+swagger:
+
+https://swagger.io/docs/specification/about/
 
 ## CICD
 

@@ -301,6 +301,17 @@ prometheus-k8s-db-prometheus-k8s-1         Bound     pvc-adc373fe-a61d-11e8-8dc1
 
 ```
 
+Use grafana via browser: 20180924
+
+```sh
+# oc adm policy add-cluster-role-to-user cluster-admin redhat
+# oc get route -n openshift-monitoring  | grep grafana
+grafana             grafana-openshift-monitoring.apps.0924-cfs.qe.rhcloud.com                       grafana             https     reencrypt     None
+### Visit https://grafana-openshift-monitoring.apps.0924-cfs.qe.rhcloud.com
+### then login with redhat user (which is an admin)
+```
+
+
 ## Openshift metering
 
 [Installation](https://github.com/openshift/openshift-ansible/tree/master/playbooks/openshift-metering)

@@ -21,7 +21,7 @@ Use [registry_pvc.yaml](../files/registry_pvc.yaml):
 # oc create -n default -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/registry_pvc.yaml
 # oc get pvc -n default
 # oc get pv
-# (DEPRECATED: This command has been moved to "oc set volume") oc volume -n default deploymentconfigs/docker-registry --add --name=registry-storage -t pvc \
+### (DEPRECATED: This command has been moved to "oc set volume") oc volume -n default deploymentconfigs/docker-registry --add --name=registry-storage -t pvc \
     --claim-name=registry --overwrite -m /registry
 # oc set volume -n default deploymentconfigs/docker-registry --add --name=registry-storage -t pvc --claim-name=registry --overwrite -m /registry
 ```

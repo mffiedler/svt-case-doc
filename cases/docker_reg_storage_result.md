@@ -134,4 +134,58 @@ $ grep "Failed builds: " /tmp/build_test.log -A5
 2018-05-08 16:45:28,775 - build_test - MainThread - INFO - Minimum build time, all good builds: 98
 2018-05-08 16:45:28,776 - build_test - MainThread - INFO - Maximum build time, all good builds: 503
 
+###20180926
+#250 (n=2)
+2018-09-26 15:26:18,534 - build_test - MainThread - INFO - Failed builds: 0
+2018-09-26 15:26:18,534 - build_test - MainThread - INFO - Invalid builds: 0
+2018-09-26 15:26:18,534 - build_test - MainThread - INFO - Good builds included in stats: 500
+2018-09-26 15:26:18,534 - build_test - MainThread - INFO - Average build time, all good builds: 119
+2018-09-26 15:26:18,534 - build_test - MainThread - INFO - Minimum build time, all good builds: 55
+2018-09-26 15:26:18,534 - build_test - MainThread - INFO - Maximum build time, all good builds: 145
+2018-09-26 15:26:18,534 - build_test - MainThread - INFO - Average push time, all good builds: 9.308
+2018-09-26 15:26:18,534 - build_test - MainThread - INFO - Minimum push time, all good builds: 3.0
+2018-09-26 15:26:18,535 - build_test - MainThread - INFO - Maximum push time, all good builds: 33.0
+#250 (n=2)
+2018-09-26 15:35:23,632 - build_test - MainThread - INFO - Failed builds: 0
+2018-09-26 15:35:23,632 - build_test - MainThread - INFO - Invalid builds: 0
+2018-09-26 15:35:23,632 - build_test - MainThread - INFO - Good builds included in stats: 500
+2018-09-26 15:35:23,632 - build_test - MainThread - INFO - Average build time, all good builds: 123
+2018-09-26 15:35:23,632 - build_test - MainThread - INFO - Minimum build time, all good builds: 65
+2018-09-26 15:35:23,632 - build_test - MainThread - INFO - Maximum build time, all good builds: 150
+2018-09-26 15:35:23,632 - build_test - MainThread - INFO - Average push time, all good builds: 9.622
+2018-09-26 15:35:23,632 - build_test - MainThread - INFO - Minimum push time, all good builds: 3.0
+2018-09-26 15:35:23,632 - build_test - MainThread - INFO - Maximum push time, all good builds: 40.0
+
+#500 (n=6)
+2018-09-26 16:25:15,514 - build_test - MainThread - INFO - Failed builds: 0
+2018-09-26 16:25:15,514 - build_test - MainThread - INFO - Invalid builds: 0
+2018-09-26 16:25:15,514 - build_test - MainThread - INFO - Good builds included in stats: 3000
+2018-09-26 16:25:15,514 - build_test - MainThread - INFO - Average build time, all good builds: 240
+2018-09-26 16:25:15,514 - build_test - MainThread - INFO - Minimum build time, all good builds: 70
+2018-09-26 16:25:15,514 - build_test - MainThread - INFO - Maximum build time, all good builds: 332
+2018-09-26 16:25:15,514 - build_test - MainThread - INFO - Average push time, all good builds: 30.2643333333
+2018-09-26 16:25:15,514 - build_test - MainThread - INFO - Minimum push time, all good builds: 1.0
+2018-09-26 16:25:15,514 - build_test - MainThread - INFO - Maximum push time, all good builds: 147.0
+
+#750 (n=2)
+2018-09-26 17:01:08,710 - build_test - MainThread - INFO - Failed builds: 0
+2018-09-26 17:01:08,710 - build_test - MainThread - INFO - Invalid builds: 0
+2018-09-26 17:01:08,710 - build_test - MainThread - INFO - Good builds included in stats: 1500
+2018-09-26 17:01:08,710 - build_test - MainThread - INFO - Average build time, all good builds: 363
+2018-09-26 17:01:08,710 - build_test - MainThread - INFO - Minimum build time, all good builds: 91
+2018-09-26 17:01:08,710 - build_test - MainThread - INFO - Maximum build time, all good builds: 531
+2018-09-26 17:01:08,710 - build_test - MainThread - INFO - Average push time, all good builds: 48.046
+2018-09-26 17:01:08,710 - build_test - MainThread - INFO - Minimum push time, all good builds: 8.0
+2018-09-26 17:01:08,710 - build_test - MainThread - INFO - Maximum push time, all good builds: 216.0
+
+#750 (n=2)
+2018-09-26 17:34:48,620 - build_test - MainThread - INFO - Failed builds: 39
+2018-09-26 17:34:48,620 - build_test - MainThread - INFO - Invalid builds: 0
+2018-09-26 17:34:48,620 - build_test - MainThread - INFO - Good builds included in stats: 1461
+2018-09-26 17:34:48,620 - build_test - MainThread - INFO - Average build time, all good builds: 390
+2018-09-26 17:34:48,620 - build_test - MainThread - INFO - Minimum build time, all good builds: 61
+2018-09-26 17:34:48,620 - build_test - MainThread - INFO - Maximum build time, all good builds: 554
+2018-09-26 17:34:48,620 - build_test - MainThread - INFO - Average push time, all good builds: 57.7227926078
+2018-09-26 17:34:48,620 - build_test - MainThread - INFO - Minimum push time, all good builds: 5.0
+2018-09-26 17:34:48,620 - build_test - MainThread - INFO - Maximum push time, all good builds: 317.0
 ```

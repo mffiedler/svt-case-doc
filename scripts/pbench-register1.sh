@@ -1,4 +1,8 @@
 #!/bin/bash
+# curl -LO https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/scripts/pbench-register1.sh
+# bash -x ./pbench-register1.sh true
+# pbench-user-benchmark --config=foo -- sleep 100
+# pbench-move-results
 
 pbench-kill-tools
 pbench-clear-tools

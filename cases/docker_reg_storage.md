@@ -86,18 +86,17 @@ Retrieve the [results](docker_reg_storage_result.md) from the log file:
 
 
 ## Result
-
-| date     | build nodes | app    | proj    | n | storage                                 | suc%                | pbench                                                                                    | oc version                      |
-|----------|-------------|--------|---------|---|-----------------------------------------|---------------------|-------------------------------------------------------------------------------------------|---------------------------------|
-| 20171201 | 2           | nodejs | 50      | 2 | gp2                                     | 97; 99; 98          | [ip-172-31-24-121](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-24-121/)   | 3.7.9-1.git.0.7c71a2d.el7       |
-| 20171201 | 2           | nodejs | 100     | 2 | gp2                                     | 87; 74.5            | [ip-172-31-24-121](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-24-121/)   | 3.7.9-1.git.0.7c71a2d.el7       |
-| 20171204 | 10          | nodejs | 250     | 2 | gp2                                     | 99.8; 99.8; 100     | [ip-172-31-23-178](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-23-178/)   | 3.7.9-1.git.0.7c71a2d.el7       |
-| 20171204 | 10          | nodejs | 500     | 2 | gp2                                     | 99.9; 88.5          | [ip-172-31-23-178](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-23-178/)   | 3.7.9-1.git.0.7c71a2d.el7       |
-| 20171205 | 10          | nodejs | 250     | 2 | glusterfs (3.3.0-362)                   | 99.8; 100; 99.8     | [ip-172-31-4-223](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-4-223/)     | 3.7.9-1.git.0.7c71a2d.el7       |
-| 20171205 | 10          | nodejs | 500     | 2 | glusterfs (3.3.0-362)                   | 99.9; NotReady; 100 | [ip-172-31-4-223](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-4-223/)     | 3.7.9-1.git.0.7c71a2d.el7       |
-| 20180425 | 10          | nodejs | 250/500 | 2 | glusterfs (3.3.1-13); heketi (3.3.1-10) | 100                 | [172-31-2-125](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-2-125/)   | 3.10.0-0.28.0.git.0.66790cb.el7 |
-| 20180508 | 10          | nodejs | 500     | 6 | glusterfs (3.3.1-13); heketi (3.3.1-10) | 100; 99.8           | [172-31-39-154](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-39-154/) | 3.10.0-0.32.0.git.0.2b17fd0.el7 (with crio) |
-
+| date     | build nodes | app    | proj        | n         | storage                                 | suc%                 | pbench                                                                                                                 | oc version                                  |
+|----------|-------------|--------|-------------|-----------|-----------------------------------------|----------------------|------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|
+| 20171201 | 2           | nodejs | 50          | 2         | gp2                                     | 97; 99; 98           | [ip-172-31-24-121](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-24-121/)                                | 3.7.9-1.git.0.7c71a2d.el7                   |
+| 20171201 | 2           | nodejs | 100         | 2         | gp2                                     | 87; 74.5             | [ip-172-31-24-121](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-24-121/)                                | 3.7.9-1.git.0.7c71a2d.el7                   |
+| 20171204 | 10          | nodejs | 250         | 2         | gp2                                     | 99.8; 99.8; 100      | [ip-172-31-23-178](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-23-178/)                                | 3.7.9-1.git.0.7c71a2d.el7                   |
+| 20171204 | 10          | nodejs | 500         | 2         | gp2                                     | 99.9; 88.5           | [ip-172-31-23-178](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-23-178/)                                | 3.7.9-1.git.0.7c71a2d.el7                   |
+| 20171205 | 10          | nodejs | 250         | 2         | glusterfs (3.3.0-362)                   | 99.8; 100; 99.8      | [ip-172-31-4-223](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-4-223/)                                  | 3.7.9-1.git.0.7c71a2d.el7                   |
+| 20171205 | 10          | nodejs | 500         | 2         | glusterfs (3.3.0-362)                   | 99.9; NotReady; 100  | [ip-172-31-4-223](http://perf-infra.ec2.breakage.org/pbench/results/ip-172-31-4-223/)                                  | 3.7.9-1.git.0.7c71a2d.el7                   |
+| 20180425 | 10          | nodejs | 250/500     | 2         | glusterfs (3.3.1-13); heketi (3.3.1-10) | 100                  | [172-31-2-125](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-2-125/)                                | 3.10.0-0.28.0.git.0.66790cb.el7             |
+| 20180508 | 10          | nodejs | 500         | 6         | glusterfs (3.3.1-13); heketi (3.3.1-10) | 100; 99.8            | [172-31-39-154](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-39-154/)                              | 3.10.0-0.32.0.git.0.2b17fd0.el7 (with crio) |
+| 20180926 | 10          | nodejs | 250/500/750 | 2X2/6/2x2 | glusterfs (3.4.0-7); heketi (3.4.0-9)   | 100;100/100/100;97.4 | [172-31-0-81](http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-0-81/conc_build_2_reg_gfs_rwx_results/) | 3.11.15-1.git.0.35c71dd.el7                 |
 * Note 20171204 uses Vikas' modification on node-config.yaml.
 * 20180508: 750 (n=2): 96%; 1000 (n=2): 87.25%
 

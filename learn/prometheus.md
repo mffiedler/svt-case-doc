@@ -142,3 +142,58 @@ Let us focus on count with this metrics `storage_operation_duration_seconds_coun
 `storage_operation_duration_seconds_bucket{instance="172.31.49.63:8444",job="kubernetes-controllers",operation_name="volume_provision",volume_plugin="kubernetes.io/aws-ebs"}` means the number of values in the bucket. The lowerbound is set up by the server side. Since our only value is `0.749798528`, `storage_operation_duration_seconds_bucket{instance="172.31.49.63:8444",job="kubernetes-controllers",le="0.5",operation_name="volume_provision",volume_plugin="kubernetes.io/aws-ebs"}` has value 0 while `storage_operation_duration_seconds_bucket{instance="172.31.49.63:8444",job="kubernetes-controllers",le="0.5",operation_name="volume_provision",volume_plugin="kubernetes.io/aws-ebs"}` has value 1.
 
 Use cluster-loader to create pods with PVCs and check those numbers again. Things start to make sense.
+
+### Memory related metrics
+
+#### Container
+
+Understand `container_memory_usage_bytes`: it is of type `gauge` since its value can goes up/down and it does not hvae `<basename>_sum` metric with it.
+
+In grafana: 
+* the memory in namespace level: sum of all pods in a name space except empty container name
+
+    ```
+    sum(container_memory_usage_bytes{namespace=\"$namespace\", container_name!=\"\"}) by (pod_name)
+    ```
+
+* the memory in the pod level: sum of all containers in a pod except empty container name and `POD`
+    ```
+    sum(container_memory_usage_bytes{namespace=\"$namespace\", pod_name=\"$pod\", container_name!=\"POD\", container_name!=\"\"}) by (container_name)
+    ```
+ 
+What is empty container name?
+
+Search `container_memory_usage_bytes{namespace="test-project"}` in Promethues UI, it returns 3 metrics:
+
+* `container_memory_usage_bytes{endpoint="https-metrics", namespace="test-project",pod_name="web-1-j7s2c",...}`
+
+* `container_memory_usage_bytes{container_name="web",endpoint="https-metrics",namespace="test-project",pod_name="web-1-j7s2c",...}`
+
+* `container_memory_usage_bytes{container_name="POD",endpoint="https-metrics",namespace="test-project",pod_name="web-1-j7s2c",...}`
+
+So the empty container name is the first one where label `container_name` does not show. It actually is the sum of the 2nd and the 3rd.
+
+It also explains that
+
+* in the namespace level, it _includes_ the value of `POD` container.
+* in the pod level, it _excludes_ the value of `POD` container.
+
+How does k8s/openshift get value of `container_memory_usage_bytes`?
+
+Seth Jennings: _container_memory_usage_bytes reads the memory.usage_in_bytes from memory cgroup controller in the container cgroup that is created by the container runtime._
+
+```bash
+# docker ps -a |grep test-project
+b3c59c2002e4        docker.io/hongkailiu/svt-go@sha256:6b9d8e51c68409d58e925ef4a04b3bb5411a9cd63e360627a7a43ad82c87d691                                                     "./svt/svt http"         3 hours ago         Up 3 hours                                   k8s_web_web-1-j7s2c_test-project_09875525-c599-11e8-83cf-0247965dac80_0
+83f01546e721        registry.reg-aws.openshift.com:443/openshift3/ose-pod:v3.11.16                                                                                          "/usr/bin/pod"           3 hours ago         Up 3 hours                                   k8s_POD_web-1-j7s2c_test-project_09875525-c599-11e8-83cf-0247965dac80_0
+
+
+# docker exec b3c59c2002e4 cat /sys/fs/cgroup/memory/memory.usage_in_bytes
+1245184
+# docker exec 83f01546e721 cat /sys/fs/cgroup/memory/memory.usage_in_bytes
+598016
+
+```
+
+It seems there are some gaps. Prometheus shows `962560` and `372736` for those two containers.
+

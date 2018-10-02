@@ -136,6 +136,13 @@ $ ssh -i mykey liu@35.225.122.183
 Note that the above method would not work for project images, tested with `qe-rhel-74-20180228`.
 Flexy must have some magic to make it work.
 
+```sh
+### Create an instance with a specific version of an image:
+$ gcloud compute instances create [INSTANCE_NAME] \
+--image [IMAGE_ID] \
+--image-project [IMAGE_PROJECT]
+```
+
 ### Disk
 
 Create disks and attach them to the instances

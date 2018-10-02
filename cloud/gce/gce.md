@@ -87,6 +87,8 @@ $ cd ~/bin
 $ ln -s ../gcpcli/google-cloud-sdk/bin/gcloud ./gcloud
 $ gcloud init
 $ gcloud config list
+###
+$ ls -al ~/.config/gcloud/
 ```
 
 [How to use google cloud cli](https://cloud.google.com/sdk/gcloud/reference/).

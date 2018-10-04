@@ -6,7 +6,7 @@ echo "now: $(TZ=":US/Eastern" date '+%Y-%m-%d %H:%M:%S %z')"
 
 jq --version
 skopeo --version
-docker --version
+### docker --version
 
 function check_brew_latest(){
   local image

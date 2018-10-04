@@ -31,3 +31,23 @@ check_brew_latest "ocs/rhgs-volmanager-rhel7"
 check_brew_latest "ocs/rhgs-server-rhel7"
 check_brew_latest "ocs/rhgs-s3-server-rhel7"
 echo "==================================="
+
+function check_aws_reg_latest(){
+  local image
+  image=$1
+  local tag
+  tag=$(skopeo inspect --tls-verify=false --creds=aos-qe-pull36:${aws_reg_token} docker://registry.reg-aws.openshift.com:443/${image}:3.3 | jq .RepoTags | jq -r .[] | grep -v "candidate" | grep -v "manual" | grep -v "v" | sort -V | tail -n 1)
+  echo "registry.reg-aws.openshift.com:443/${image}:${tag}"
+}
+
+if [[ -z "${aws_reg_token}" ]]; then
+  echo "skipping aws-reg"
+  exit 0
+fi
+
+echo "======latest images================"
+check_aws_reg_latest "rhgs3/rhgs-gluster-block-prov-rhel7"
+check_aws_reg_latest "rhgs3/rhgs-volmanager-rhel7"
+check_aws_reg_latest "rhgs3/rhgs-server-rhel7"
+check_aws_reg_latest "rhgs3/rhgs-s3-server-rhel7"
+echo "==================================="

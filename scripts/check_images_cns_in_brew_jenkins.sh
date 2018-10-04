@@ -7,7 +7,6 @@ echo "now: $(TZ=":US/Eastern" date '+%Y-%m-%d %H:%M:%S %z')"
 jq --version
 skopeo --version
 ### docker --version
-skopeo inspect --tls-verify=false docker://brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7 
 
 function check_brew_latest(){
   local image
@@ -26,3 +25,9 @@ check_brew_latest "rhgs3/rhgs-server-rhel7"
 check_brew_latest "rhgs3/rhgs-s3-server-rhel7"
 echo "==================================="
 
+echo "======latest images================"
+check_brew_latest "ocs/rhgs-gluster-block-prov-rhel7"
+check_brew_latest "ocs/rhgs-volmanager-rhel7"
+check_brew_latest "ocs/rhgs-server-rhel7"
+check_brew_latest "ocs/rhgs-s3-server-rhel7"
+echo "==================================="

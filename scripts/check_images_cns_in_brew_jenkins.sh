@@ -7,6 +7,7 @@ echo "now: $(TZ=":US/Eastern" date '+%Y-%m-%d %H:%M:%S %z')"
 jq --version
 skopeo --version
 ### docker --version
+skopeo inspect --tls-verify=false docker://brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/rhgs3/rhgs-server-rhel7 | jq .RepoTags | jq -r .[] | grep -v candidate | grep -v HOTFIX | sort -V
 
 function check_brew_latest(){
   local image

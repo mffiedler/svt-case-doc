@@ -168,9 +168,67 @@ $ oc get svtgo example -o yaml
 
 Q: App cluster need a restart to recognize the changes on the cluster members?
 
-## Operator Lifecycle Manager
+## [Operator Lifecycle Manager](https://github.com/operator-framework/operator-lifecycle-manager)
 
-TODO
+OLM provides cli tool to manager operator. The UI functionality is from `Tectonic Console` which
+has been integrated to OC console, `cluster console`.
+
+[Install](https://github.com/operator-framework/operator-lifecycle-manager/blob/master/Documentation/install/install.md):
+
+```bash
+$ ansible-playbook -i build/output/flexy/inv/2.file ${ansible_repo_path}/playbooks/olm/config.yml
+
+# oc get all -n operator-lifecycle-manager
+NAME                                   READY     STATUS    RESTARTS   AGE
+pod/catalog-operator-67679484f-zrqmm   1/1       Running   0          2m
+pod/olm-operator-c849d4674-s7mvg       1/1       Running   0          2m
+
+NAME                               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/catalog-operator   1         1         1            1           2m
+deployment.apps/olm-operator       1         1         1            1           2m
+
+NAME                                         DESIRED   CURRENT   READY     AGE
+replicaset.apps/catalog-operator-67679484f   1         1         1         2m
+replicaset.apps/olm-operator-c849d4674       1         1         1         2m
+
+NAME                                                     NAME                  TYPE       PUBLISHER   AGE
+catalogsource.operators.coreos.com/certified-operators   Certified Operators   internal   Red Hat     2m
+catalogsource.operators.coreos.com/rh-operators          Red Hat Operators     internal   Red Hat     2m
+
+```
+
+Deploy an operator with OLM:
+
+```bash
+$ oc new-project ttt
+$ kubectl create -f helm-app-operator/deploy/olm-catalog/crd.yaml
+###https://github.com/operator-framework/getting-started/issues/21
+$ head -n 1 helm-app-operator/deploy/olm-catalog/csv.yaml
+apiVersion: operators.coreos.com/v1alpha1
+$ kubectl create -n ttt -f helm-app-operator/deploy/olm-catalog/csv.yaml
+$ kubectl create -n ttt -f helm-app-operator/deploy/cr.yaml
+
+### Check the Web console ... We can see SVT app there.
+
+### check the pod
+$ oc get pod
+### change the number of replicas
+$ vi helm-app-operator/deploy/cr.yaml
+$ kubectl apply -n ttt -f helm-app-operator/deploy/cr.yaml
+
+### clean up
+$ kubectl delete -n ttt -f helm-app-operator/deploy/cr.yaml
+$ kubectl delete -n ttt -f helm-app-operator/deploy/olm-catalog/csv.yaml
+
+$ oc delete project ttt
+
+$ kubectl delete -f helm-app-operator/deploy/crd.yaml
+
+```
+
+TODO: Understand [package.yaml](https://github.com/operator-framework/helm-app-operator-kit/blob/master/helm-app-operator/deploy/olm-catalog/package.yaml), [InstallPlan, CatalogSource, Subscription](https://github.com/operator-framework/operator-lifecycle-manager/blob/master/Documentation/design/philosophy.md#installplan).
+No doc about how to use them.
+
 
 ## [Helm app operator kit](https://github.com/operator-framework/helm-app-operator-kit)
 
@@ -213,7 +271,7 @@ $ git checkout svt-go
 
 $ oc new-project ttt
 $ kubectl create -f helm-app-operator/deploy/crd.yaml
-### has to be oc cli here
+### has to be oc cli here if it contains clusterRoleBinding
 $ oc create -n ttt -f helm-app-operator/deploy/rbac.yaml
 $ kubectl create -n ttt -f helm-app-operator/deploy/operator.yaml
 $ kubectl create -n ttt -f helm-app-operator/deploy/cr.yaml

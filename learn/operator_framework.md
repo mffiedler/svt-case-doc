@@ -185,9 +185,10 @@ $ # readlink ~/charts/svt-go-0.1.0.tgz  -f
 ### clone the fork 
 $ git clone https://github.com/hongkailiu/helm-app-operator-kit.git
 $ cd helm-app-operator-kit/
-### need docker 17.05 + for multi-stage:
+### need docker 17.05+ for multi-stage:
 ### https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
-### buildah is working on it: https://github.com/operator-framework/operator-sdk/pull/563
+### buildah supports it recently: https://github.com/containers/buildah/issues/440
+### WIP for operator sdk to use this feature: https://github.com/operator-framework/operator-sdk/pull/563
 ### get a centos for building the image
 ### https://docs.docker.com/install/linux/docker-ce/centos/#install-docker-ce-1
 

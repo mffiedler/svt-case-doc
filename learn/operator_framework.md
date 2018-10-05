@@ -174,6 +174,67 @@ TODO
 
 ## [Helm app operator kit](https://github.com/operator-framework/helm-app-operator-kit)
 
+```bash
+### generate the helm pkg if have not done so before
+$ git clone https://github.com/hongkailiu/charts.git
+$ cd charts
+$ helm package stable/svt-go
+$ # readlink ~/charts/svt-go-0.1.0.tgz  -f
+/root/charts/svt-go-0.1.0.tgz
+
+### clone the fork 
+$ git clone https://github.com/hongkailiu/helm-app-operator-kit.git
+$ cd helm-app-operator-kit/
+### need docker 17.05 + for multi-stage:
+### https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
+### buildah is working on it: https://github.com/operator-framework/operator-sdk/pull/563
+### get a centos for building the image
+### https://docs.docker.com/install/linux/docker-ce/centos/#install-docker-ce-1
+
+###https://github.com/operator-framework/helm-app-operator-kit/pull/28
+###Note that the command example is not updated accordingly (still using http...tar.gz file)
+$ mkdir chart tar -xzv --strip-components=1 -C ./chart ./svt-go-0.1.0.tgz
+$ docker build   --build-arg HELM_CHART=chart   --build-arg API_VERSION=app.example.com/v1alpha1   --build-arg KIND=SVTGo   -t quay.io/hongkailiu/h-svt-go-operator:v0.0.2 .
+$ docker push quay.io/hongkailiu/h-svt-go-operator:v0.0.2
+
+### modify the deploy files
+### the changes are pushed to svt-go branch
+### Note that the changes on clusterRule, clusterRuleBinding, dc, route in rbac.yaml file
+
+```
+
+Demo:
+
+```bash
+$ git clone https://github.com/hongkailiu/helm-app-operator-kit.git
+$ cd helm-app-operator-kit/
+$ git checkout svt-go
+
+$ oc new-project ttt
+$ kubectl create -f helm-app-operator/deploy/crd.yaml
+### has to be oc cli here
+$ oc create -n ttt -f helm-app-operator/deploy/rbac.yaml
+$ kubectl create -n ttt -f helm-app-operator/deploy/operator.yaml
+$ kubectl create -n ttt -f helm-app-operator/deploy/cr.yaml
+
+### check the pod
+$ oc get pod
+### change the number of replicas
+$ vi helm-app-operator/deploy/cr.yaml
+$ kubectl apply -n ttt -f helm-app-operator/deploy/cr.yaml
+
+### clean up
+$ kubectl delete -n ttt -f helm-app-operator/deploy/cr.yaml
+$ kubectl delete -n ttt -f helm-app-operator/deploy/operator.yaml
+$ oc delete -n ttt -f helm-app-operator/deploy/rbac.yaml
+
+$ oc delete project ttt
+
+$ kubectl delete -f helm-app-operator/deploy/crd.yaml
+
+
+```
+
 ## Openshift monitoring
 
 [Installation](https://github.com/openshift/openshift-ansible/tree/master/playbooks/openshift-monitoring)

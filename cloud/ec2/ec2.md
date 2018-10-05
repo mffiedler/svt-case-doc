@@ -77,6 +77,17 @@ $ aws ec2 run-instances --image-id ami-ae4c0ad6 \
 root@ip-172-31-34-243: ~ # cp /home/cloud-user/.ssh/authorized_keys /root/.ssh/authorized_keys
 ```
 
+### centos 7
+```bash
+### ami-a042f4d8
+### https://wiki.centos.org/Cloud/AWS
+$ aws ec2 run-instances --image-id ami-a042f4d8 \
+    --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.large --key-name id_rsa_perf \
+    --subnet subnet-4879292d --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 30}}]" \
+    --query 'Instances[*].InstanceId' \
+    --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-centos7-test\"}]}]"
+```
+
 ### Atomic Host
 
 Fedora Atomic:

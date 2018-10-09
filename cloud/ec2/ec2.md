@@ -54,7 +54,7 @@ List of AMIs is [here](https://alt.fedoraproject.org/cloud/).
     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-rhel73-test\"}]}]"
 ```
 
-RHEL images: 7.4 (ami-9fa343e7)
+[RHEL images](https://access.redhat.com/solutions/15356): 7.4 (ami-9fa343e7)
 
 ```sh
 (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 describe-images --owner 309956199498 --output text --region us-west-2 | grep "RHEL-7.4" | grep -v Beta

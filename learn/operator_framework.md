@@ -239,6 +239,7 @@ $ cd charts
 $ helm package stable/svt-go
 $ # readlink ~/charts/svt-go-0.1.0.tgz  -f
 /root/charts/svt-go-0.1.0.tgz
+### Or download from: https://github.com/cduser/svt-release/raw/helm_svt_go_0.1.0/svt-go-0.1.0.tgz
 
 ### clone the fork 
 $ git clone https://github.com/hongkailiu/helm-app-operator-kit.git
@@ -252,7 +253,8 @@ $ cd helm-app-operator-kit/
 
 ###https://github.com/operator-framework/helm-app-operator-kit/pull/28
 ###Note that the command example is not updated accordingly (still using http...tar.gz file)
-$ mkdir chart tar -xzv --strip-components=1 -C ./chart ./svt-go-0.1.0.tgz
+$ mkdir chart
+$ tar -xvzf ./svt-go-0.1.0.tgz --strip-components=1 -C ./chart
 $ docker build   --build-arg HELM_CHART=chart   --build-arg API_VERSION=app.example.com/v1alpha1   --build-arg KIND=SVTGo   -t quay.io/hongkailiu/h-svt-go-operator:v0.0.2 .
 $ docker push quay.io/hongkailiu/h-svt-go-operator:v0.0.2
 
@@ -260,6 +262,26 @@ $ docker push quay.io/hongkailiu/h-svt-go-operator:v0.0.2
 ### the changes are pushed to svt-go branch
 ### Note that the changes on clusterRule, clusterRuleBinding, dc, route in rbac.yaml file
 
+```
+
+Update on 20181010: `buildah` supports [multi-stage builds already from v1.0](https://github.com/containers/buildah/releases):
+
+```
+### Tested with a rhel75 ec2 instance where docker is not installed.
+# buildah --version
+buildah version 1.2 (image-spec 1.0.0, runtime-spec 1.0.0)
+# vi /etc/containers/registries.conf
+...
+[registries.search]
+registries = ['registry.access.redhat.com', 'docker.io']
+...
+# buildah bud --format=docker -f Dockerfile -t quay.io/hongkailiu/h-svt-go-operator:v0.0.3-buildah --build-arg HELM_CHART=chart --build-arg API_VERSION=app.example.com/v1alpha1 .
+# buildah images
+IMAGE ID             IMAGE NAME                                               CREATED AT             SIZE
+a4afc24299ee         docker.io/library/golang:1.10                            Sep 5, 2018 11:16      749 MB
+94627dfbdf19         docker.io/library/alpine:3.6                             Sep 11, 2018 22:19     4.29 MB
+d2d390e91a00         quay.io/hongkailiu/h-svt-go-operator:v0.0.3-buildah      Oct 10, 2018 18:33     86.2 MB
+# buildah push --creds=hongkailiu d2d390e91a00 docker://quay.io/hongkailiu/h-svt-go-operator:v0.0.3-buildah
 ```
 
 Demo:

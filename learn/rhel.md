@@ -266,3 +266,50 @@ netfilter, iptables, firewalld
 ## More reading
 
 * [Syslog messages and Syslog protocol](https://blog.rapid7.com/2017/05/24/what-is-syslog/)
+
+
+## Subscription-Manager
+
+Target: Installation `buildah` on rhel7
+
+### rhel7 host
+
+Create a RHEL7 instance on aws:
+
+```
+# yum info buildah
+Loaded plugins: amazon-id, product-id, rhui-lb, search-disabled-repos, subscription-manager
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+Error: No matching Packages to list
+
+```
+
+Following [this doc](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html/managing_containers/finding_running_and_building_containers_without_docker#installing_buildah):
+
+```
+# subscription-manager repos --enable=rhel-7-server-rpms
+Error: 'rhel-7-server-rpms' does not match a valid repository ID. Use "subscription-manager repos --list" to see valid repositories.
+# subscription-manager repos --list
+This system has no repositories available through subscriptions.
+
+```
+
+Follow [the doc](https://docs.google.com/document/d/14dj5qCPHDlJE4_hs0i0M3yZFoEOrcqguovvajv8R2iY/edit) to make subscription work:
+
+```sh
+### get username and password here: https://developers.redhat.com/
+### use u/p to do the register
+# subscription-manager register
+### get the `Pool ID` for `Red Hat Enterprise Linux Developer Suite`
+# sudo subscription-manager list --available
+# sudo subscription-manager attach --pool=<pool_id>
+
+# subscription-manager repos --enable=rhel-7-server-rpms
+Repository 'rhel-7-server-rpms' is enabled for this system.
+# subscription-manager repos --enable=rhel-7-server-extras-rpms
+# yum -y install buildah
+```
+
+
+### rhel7 container
+TODO

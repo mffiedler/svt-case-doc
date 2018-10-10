@@ -2,10 +2,60 @@
 
 [system_administrators_guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/)
 
-## [Register and Subscribe](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/quick_registration_for_rhel/)
+## [Subscription-Manager](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/quick_registration_for_rhel/)
+
+Target: Installation `buildah` on rhel7
+
+### rhel7 host
+
+Create a RHEL7 instance on aws:
+
+```
+# yum info buildah
+Loaded plugins: amazon-id, product-id, rhui-lb, search-disabled-repos, subscription-manager
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+Error: No matching Packages to list
+
+```
+
+Following [this doc](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html/managing_containers/finding_running_and_building_containers_without_docker#installing_buildah):
+
+```
+# subscription-manager repos --enable=rhel-7-server-rpms
+Error: 'rhel-7-server-rpms' does not match a valid repository ID. Use "subscription-manager repos --list" to see valid repositories.
+# subscription-manager repos --list
+This system has no repositories available through subscriptions.
+
+```
+
+Follow [the doc](https://docs.google.com/document/d/14dj5qCPHDlJE4_hs0i0M3yZFoEOrcqguovvajv8R2iY/edit) to make subscription work:
 
 ```sh
+### get username and password here: https://developers.redhat.com/
+### use u/p to do the register
+# subscription-manager register
+### get the `Pool ID` for `Red Hat Enterprise Linux Developer Suite`
 # subscription-manager list --available
+# subscription-manager attach --pool=<pool_id>
+
+# subscription-manager repos --enable=rhel-7-server-rpms
+Repository 'rhel-7-server-rpms' is enabled for this system.
+# subscription-manager repos --enable=rhel-7-server-extras-rpms
+# yum -y install buildah
+```
+
+
+### rhel7 container
+
+Run rhel containers on a rhel host with subscription:
+
+```
+### https://access.redhat.com/discussions/1405933
+# podman run --rm -it -p 8080 registry.access.redhat.com/rhel7/rhel bash
+[root@eebaf9cffc35 /]# yum-config-manager --enable rhel-7-server-rpms
+[root@eebaf9cffc35 /]# yum-config-manager --enable rhel-7-server-extras-rpms
+[root@eebaf9cffc35 /]# yum list buildah
+buildah.x86_64                                  1.2-2.gitbe87762.el7                                   rhel-7-server-extras-rpms
 ```
 
 ## [bash-completion](https://www.cyberciti.biz/faq/fedora-redhat-scientific-linuxenable-bash-completion/)
@@ -268,58 +318,4 @@ netfilter, iptables, firewalld
 * [Syslog messages and Syslog protocol](https://blog.rapid7.com/2017/05/24/what-is-syslog/)
 
 
-## Subscription-Manager
 
-Target: Installation `buildah` on rhel7
-
-### rhel7 host
-
-Create a RHEL7 instance on aws:
-
-```
-# yum info buildah
-Loaded plugins: amazon-id, product-id, rhui-lb, search-disabled-repos, subscription-manager
-This system is not registered with an entitlement server. You can use subscription-manager to register.
-Error: No matching Packages to list
-
-```
-
-Following [this doc](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html/managing_containers/finding_running_and_building_containers_without_docker#installing_buildah):
-
-```
-# subscription-manager repos --enable=rhel-7-server-rpms
-Error: 'rhel-7-server-rpms' does not match a valid repository ID. Use "subscription-manager repos --list" to see valid repositories.
-# subscription-manager repos --list
-This system has no repositories available through subscriptions.
-
-```
-
-Follow [the doc](https://docs.google.com/document/d/14dj5qCPHDlJE4_hs0i0M3yZFoEOrcqguovvajv8R2iY/edit) to make subscription work:
-
-```sh
-### get username and password here: https://developers.redhat.com/
-### use u/p to do the register
-# subscription-manager register
-### get the `Pool ID` for `Red Hat Enterprise Linux Developer Suite`
-# subscription-manager list --available
-# subscription-manager attach --pool=<pool_id>
-
-# subscription-manager repos --enable=rhel-7-server-rpms
-Repository 'rhel-7-server-rpms' is enabled for this system.
-# subscription-manager repos --enable=rhel-7-server-extras-rpms
-# yum -y install buildah
-```
-
-
-### rhel7 container
-
-Run rhel containers on a rhel host with subscription:
-
-```
-### https://access.redhat.com/discussions/1405933
-# podman run --rm -it -p 8080 registry.access.redhat.com/rhel7/rhel bash
-[root@eebaf9cffc35 /]# yum-config-manager --enable rhel-7-server-rpms
-[root@eebaf9cffc35 /]# yum-config-manager --enable rhel-7-server-extras-rpms
-[root@eebaf9cffc35 /]# yum list buildah
-buildah.x86_64                                  1.2-2.gitbe87762.el7                                   rhel-7-server-extras-rpms
-```

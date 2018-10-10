@@ -301,8 +301,8 @@ Follow [the doc](https://docs.google.com/document/d/14dj5qCPHDlJE4_hs0i0M3yZFoEO
 ### use u/p to do the register
 # subscription-manager register
 ### get the `Pool ID` for `Red Hat Enterprise Linux Developer Suite`
-# sudo subscription-manager list --available
-# sudo subscription-manager attach --pool=<pool_id>
+# subscription-manager list --available
+# subscription-manager attach --pool=<pool_id>
 
 # subscription-manager repos --enable=rhel-7-server-rpms
 Repository 'rhel-7-server-rpms' is enabled for this system.
@@ -312,4 +312,14 @@ Repository 'rhel-7-server-rpms' is enabled for this system.
 
 
 ### rhel7 container
-TODO
+
+Run rhel containers on a rhel host with subscription:
+
+```
+### https://access.redhat.com/discussions/1405933
+# podman run --rm -it -p 8080 registry.access.redhat.com/rhel7/rhel bash
+[root@eebaf9cffc35 /]# yum-config-manager --enable rhel-7-server-rpms
+[root@eebaf9cffc35 /]# yum-config-manager --enable rhel-7-server-extras-rpms
+[root@eebaf9cffc35 /]# yum list buildah
+buildah.x86_64                                  1.2-2.gitbe87762.el7                                   rhel-7-server-extras-rpms
+```

@@ -60,6 +60,8 @@ List of AMIs is [here](https://alt.fedoraproject.org/cloud/).
 (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 describe-images --owner 309956199498 --output text --region us-west-2 | grep "RHEL-7.4" | grep -v Beta
 ```
 
+RHEL75: ami-0e6bab6682ec471c0
+
 RHEL jump node m5:
 
 ```sh

@@ -1,5 +1,7 @@
 # oc cluster up
 
+doc: [cluster_up_down](https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md)
+
 ## Test environment
 Tested with Fedora 27: Install docker and oc-client
 
@@ -110,3 +112,36 @@ $ oc cluster status
 ```
 
 TODO: Would be nice if the cluster is accessible from other hosts.
+
+
+## Use latest oc
+
+Build master branch:
+
+```bash
+$ cd ${GOPATH}/src/github.com/openshift/origin
+$ git checkout master 
+$ git pull
+
+$ make build WHAT=cmd/oc
+$ ll _output/local/bin/linux/amd64/oc
+
+$ _output/local/bin/linux/amd64/oc version
+oc v4.0.0-alpha.0+181c59b-316-dirty
+kubernetes v1.11.0+d4cacc0
+features: Basic-Auth GSSAPI Kerberos SPNEGO
+
+```
+
+oc-cluster-up:
+
+```bash
+### on aws:
+### SVT gold AMI works while fedora does not: might be an docker issue
+$ metadata_endpoint="http://169.254.169.254/latest/meta-data"
+$ public_hostname="$( curl "${metadata_endpoint}/public-hostname" )"
+$ public_ip="$( curl "${metadata_endpoint}/public-ipv4" )"
+
+$ _output/local/bin/linux/amd64/oc cluster up --public-hostname="${public_hostname}"
+
+```

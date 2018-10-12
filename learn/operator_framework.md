@@ -280,7 +280,7 @@ buildah version 1.2 (image-spec 1.0.0, runtime-spec 1.0.0)
 [registries.search]
 registries = ['registry.access.redhat.com', 'docker.io']
 ...
-# buildah bud --format=docker -f Dockerfile -t quay.io/hongkailiu/h-svt-go-operator:v0.0.3-buildah --build-arg HELM_CHART=chart --build-arg API_VERSION=app.example.com/v1alpha1 .
+# buildah bud --format=docker -f Dockerfile -t quay.io/hongkailiu/h-svt-go-operator:v0.0.3-buildah --build-arg HELM_CHART=chart --build-arg API_VERSION=app.example.com/v1alpha1 --build-arg KIND=SVTGo .
 # buildah images
 IMAGE ID             IMAGE NAME                                               CREATED AT             SIZE
 a4afc24299ee         docker.io/library/golang:1.10                            Sep 5, 2018 11:16      749 MB

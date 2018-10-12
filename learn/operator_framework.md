@@ -200,6 +200,10 @@ catalogsource.operators.coreos.com/rh-operators          Red Hat Operators     i
 Deploy an operator with OLM:
 
 ```bash
+$ git clone https://github.com/hongkailiu/helm-app-operator-kit.git
+$ cd helm-app-operator-kit/
+$ git checkout svt-go
+
 $ oc new-project ttt
 $ kubectl create -f helm-app-operator/deploy/olm-catalog/crd.yaml
 ###https://github.com/operator-framework/getting-started/issues/21
@@ -241,7 +245,8 @@ $ # readlink ~/charts/svt-go-0.1.0.tgz  -f
 /root/charts/svt-go-0.1.0.tgz
 ### Or download from: https://github.com/cduser/svt-release/raw/helm_svt_go_0.1.0/svt-go-0.1.0.tgz
 
-### clone the fork 
+### clone the fork
+### Using master branch is OK
 $ git clone https://github.com/hongkailiu/helm-app-operator-kit.git
 $ cd helm-app-operator-kit/
 ### need docker 17.05+ for multi-stage:

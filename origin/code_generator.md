@@ -12,7 +12,6 @@ Example repo: [codegen](https://github.com/hongkailiu/test-go/tree/master/codege
 ```bash
 $ go get github.com/hongkailiu/test-go
 $ cd ${GOPATH}/src/github.com/hongkailiu/test-go
-### glide up -v
 
 $ make code-gen-clean
 $ make code-gen

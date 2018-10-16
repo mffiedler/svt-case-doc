@@ -43,3 +43,17 @@ cat glide.yaml
 - package: k8s.io/code-generator
   version: kubernetes-1.12.1
 ```
+
+If you hit:
+
+```bash
+# make build-code-gen
+./script/ci/build-code-gen.sh
+# github.com/hongkailiu/test-go/vendor/k8s.io/client-go/transport
+vendor/k8s.io/client-go/transport/round_trippers.go:437:9: undefined: strings.Builder
+make: *** [build-code-gen] Error 2
+
+###Make sure your go lang with 1.10+
+###https://stackoverflow.com/questions/48978414/golang-strings-builder-type-undefined
+
+```

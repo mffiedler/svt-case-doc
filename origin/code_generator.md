@@ -44,7 +44,7 @@ cat glide.yaml
   version: kubernetes-1.12.1
 ```
 
-If you hit:
+If you hit `undefined: strings.Builder`:
 
 ```bash
 # make build-code-gen

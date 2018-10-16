@@ -12,6 +12,7 @@ Example repo: [codegen](https://github.com/hongkailiu/test-go/tree/master/codege
 ```bash
 $ go get github.com/hongkailiu/test-go
 $ cd ${GOPATH}/src/github.com/hongkailiu/test-go
+### glide up -v
 
 $ make code-gen-clean
 $ make code-gen
@@ -20,7 +21,6 @@ $ oc new-project ttt
 $ oc create -f codegen/artifacts/crd.yaml
 $ oc create -n ttt -f codegen/artifacts/cr.yaml
 
-### glide up -v
 $ make build-code-gen
 
 $ ./build/example -kubeconfig ~/.kube/config

@@ -139,6 +139,9 @@ i-048c94c680090ce7d	ec2-54-200-204-22.us-west-2.compute.amazonaws.com
 
 ### Create volumes
 (awsenv) [hongkliu@hongkliu awscli]$ aws ec2 create-volume --size 1000 --region us-west-2 --availability-zone us-west-2b --volume-type gp2
+
+### attach a volume to an instance
+$ aws ec2 attach-volume --volume-id vol-08af3a4de14c8b5da --instance-id i-0fc84b5d38fa1a5ac --device /dev/sdf
 ```
 
 See [more examples](http://docs.aws.amazon.com/cli/latest/userguide/controlling-output.html) on query.

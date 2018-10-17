@@ -119,6 +119,12 @@ This local volume provisioner also supports to [provision raw block devices](htt
 
 ## External provisioner
 
+Currently it has on efs provisioner. Let us deploy it:
+
+```sh
+#
+```
+
 ## CSI
 
 ## Volume Snapshot

@@ -119,10 +119,69 @@ This local volume provisioner also supports to [provision raw block devices](htt
 
 ## External provisioner
 
-Currently it has on efs provisioner. Let us deploy it:
+Currently it has on efs provisioner. 
+Suppose we have an efs with fs-id: fs-2a886d82 (see [efs.md](cloud/ec2/efs.md) for details).
+The folder `/data/persistentvolumes` must exist on the efs.
+Let us deploy the provision on opc (see [more vars](https://github.com/openshift/openshift-ansible/tree/release-3.11/roles/openshift_provisioners)):
 
 ```sh
-#
+# ansible-playbook -v -i /tmp/2.file \
+      /root/openshift-ansible/playbooks/openshift-provisioners/config.yml \
+     -e openshift_provisioners_install_provisioners=True \
+     -e openshift_provisioners_efs=True \
+     -e openshift_provisioners_efs_fsid=fs-2a886d82 \
+     -e openshift_provisioners_efs_region=us-west-2 \
+     -e openshift_provisioners_efs_aws_access_key_id=<money> \
+     -e openshift_provisioners_efs_aws_secret_access_key=<money> \
+     -e openshift_provisioners_efs_path=/data/persistentvolumes
+
+###pod is not running
+# oc get pod -n openshift-infra
+
+###Workaround: edit dc to use reg-aws reg
+# oc get dc -n openshift-infra provisioners-efs -o yaml | grep image:
+        image: registry.reg-aws.openshift.com:443/openshift3/efs-provisioner:latest
+
+# oc get pod -n openshift-infra
+NAME                       READY     STATUS    RESTARTS   AGE
+provisioners-efs-2-sx8lg   1/1       Running   0          10m
+
+
+# oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/sc_aws_efs.yaml
+# oc get sc aws-efs 
+NAME      PROVISIONER             AGE
+aws-efs   openshift.org/aws-efs   10s
+
+
+
+```
+
+Create a PVC with the sc `aws-efs` and a pod to use the PVC:
+
+```bash
+# oc delete project ttt
+# oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/pvc_template.yaml -p STORAGE_CLASS_NAME=aws-efs -p PVC_NAME=abc | oc create -f -
+# oc get pvc
+NAME      STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+abc       Bound     pvc-98c1372a-d244-11e8-87bb-0212c16dd3de   3Gi        RWO            aws-efs        28s
+
+
+# oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/dc_centos_with_pv.yaml
+
+# oc get pod
+NAME             READY     STATUS    RESTARTS   AGE
+centos-1-hrbrw   1/1       Running   0          19s
+# oc rsh centos-1-hrbrw
+sh-4.2$ df -hT | grep efs
+fs-2a886d82.efs.us-west-2.amazonaws.com:/data/persistentvolumes/abc-pvc-98c1372a-d244-11e8-87bb-0212c16dd3de nfs4     8.0E     0  8.0E   0% /bbb
+
+```
+
+
+Uninstall:
+
+```bash
+# ansible-playbook -v -i /tmp/2.file /root/openshift-ansible/playbooks/openshift-provisioners/config.yml -e openshift_provisioners_install_provisioners=False
 ```
 
 ## CSI

@@ -15,7 +15,7 @@ File System ID: fs-ceb2a867
 ```sh
 (awsenv) [hongkliu@hongkliu awscli]$ aws efs create-file-system --region us-west-2 --creation-token $(cat /proc/sys/kernel/random/uuid)
 
-### describe
+### describe, add tag, create mount target
 $ aws efs describe-file-systems --region us-west-2 --file-system-id fs-2a886d82
 $ aws efs create-tags --file-system-id fs-2a886d82 --region us-west-2 --tags Key=Name,Value=hongkliu-test-efs-bbb
 $ aws efs create-mount-target --file-system-id fs-2a886d82 --region us-west-2 --subnet-id subnet-4879292d --security-group sg-5c5ace38

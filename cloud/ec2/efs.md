@@ -1,7 +1,7 @@
 # AWS EFS
 
-[getting-started](https://docs.aws.amazon.com/efs/latest/ug/getting-started.html)
-[install amazon-efs-utils*rpm](https://docs.aws.amazon.com/efs/latest/ug/using-amazon-efs-utils.html#installing-other-distro)
+* [getting-started](https://docs.aws.amazon.com/efs/latest/ug/getting-started.html)
+* [install amazon-efs-utils*rpm](https://docs.aws.amazon.com/efs/latest/ug/using-amazon-efs-utils.html#installing-other-distro)
 
 ## Create efs File system
 

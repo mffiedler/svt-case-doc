@@ -32,7 +32,7 @@ $ aws efs create-mount-target --file-system-id fs-2a886d82 --region us-west-2 --
 # make rpm
 # yum -y install ./build/amazon-efs-utils*rpm
 # mkdir /mnt/efs
-# mount -t efs fs-12345678:/ /mnt/efs
+# mount -t efs fs-2a886d82:/ /mnt/efs
 # df -hT | grep efs
 fs-ceb2a867.efs.us-west-2.amazonaws.com:/ nfs4      8.0E     0  8.0E   0% /mnt/efs
 

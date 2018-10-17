@@ -10,9 +10,11 @@ Get the File System ID of the created efs.
 ### efs console
 File System ID: fs-ceb2a867
 
-### cli
+### [cli](https://docs.aws.amazon.com/cli/latest/reference/efs/create-file-system.html)
 
-https://docs.aws.amazon.com/cli/latest/reference/efs/create-file-system.html
+```sh
+
+```
 
 ## Mount efs fs
 

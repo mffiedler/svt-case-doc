@@ -4,7 +4,7 @@
 
 * [epic@jira](https://jira.coreos.com/browse/PROD-597)
 * [introducing-volume-snapshot-alpha-for-kubernetes](https://kubernetes.io/blog/2018/10/09/introducing-volume-snapshot-alpha-for-kubernetes/)
-* [Flex volume](https://itnext.io/how-to-create-a-custom-persistent-volume-plugin-in-kubernetes-via-flexvolume-part-1-f6d9d966e123)
+* Flex volume: [intro](https://itnext.io/how-to-create-a-custom-persistent-volume-plugin-in-kubernetes-via-flexvolume-part-1-f6d9d966e123), [FlexVolue@oc](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/persistent_storage_flex_volume.html)
 * [kubernetes-csi/docs](https://github.com/kubernetes-csi/docs), [oc-csi](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/persistent_storage_csi.html)
 * [gluster/gluster-csi-driver](https://github.com/gluster/gluster-csi-driver) 
 * block-volume: [BV@oc](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/storage.html#block-volume-support), [BV@k8s](https://www.youtube.com/watch?v=k8_QQ9eNa-g)

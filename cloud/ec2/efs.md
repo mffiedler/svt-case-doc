@@ -13,6 +13,7 @@ File System ID: fs-ceb2a867
 ### [cli](https://docs.aws.amazon.com/cli/latest/reference/efs/create-file-system.html)
 
 ```sh
+###ref: https://docs.aws.amazon.com/efs/latest/ug/wt1-create-efs-resources.html
 (awsenv) [hongkliu@hongkliu awscli]$ aws efs create-file-system --region us-west-2 --creation-token $(cat /proc/sys/kernel/random/uuid)
 
 ### describe, add tag, create mount target

@@ -9,7 +9,7 @@
 * block-volume: [BV@oc](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/storage.html#block-volume-support), [BV@k8s](https://www.youtube.com/watch?v=k8_QQ9eNa-g)
 * [External PV Provisioners](https://docs.openshift.com/container-platform/3.11/install_config/provisioners.html), [external-storage: aws/efs](https://github.com/kubernetes-incubator/external-storage/tree/master/aws/efs)
 * sc: local: [local@k8s](https://kubernetes.io/docs/concepts/storage/storage-classes/#local); [local@oc](https://docs.openshift.com/container-platform/3.11/install_config/configuring_local.html)
-* [aws: ebs vs efs](https://n2ws.com/blog/ebs-snapshot/aws-fast-storage-efs-vs-ebs)
+* [aws: ebs vs efs](https://n2ws.com/blog/ebs-snapshot/aws-fast-storage-efs-vs-ebs), [efs.doc](https://docs.aws.amazon.com/efs/latest/ug/using-fs.html)
 
 ## PV using local storage
 

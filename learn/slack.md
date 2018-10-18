@@ -15,6 +15,10 @@ https://get.slack.help/hc/en-us/articles/208423427-Set-a-reminder#desktop-1
 /remind list
 ```
 
+## Google carlendar integration
+
+It works but I need to figure out how to prevent others abusing the settings.
+The advantage (vs remidner) of this integration is to sync automatically with Google caleanders.
 
 ## Github integrateion
 

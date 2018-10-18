@@ -143,6 +143,9 @@ Let us deploy the provision on opc (see [more vars](https://github.com/openshift
 # oc get dc -n openshift-infra provisioners-efs -o yaml | grep image:
         image: registry.reg-aws.openshift.com:443/openshift3/efs-provisioner:latest
 
+###move the pod to infra node: optional
+# oc patch dc -n openshift-infra provisioners-efs --patch '{"spec": {"template": {"spec": {"nodeSelector": {"node-role.kubernetes.io/infra": "true"}}}}}'
+
 # oc get pod -n openshift-infra
 NAME                       READY     STATUS    RESTARTS   AGE
 provisioners-efs-2-sx8lg   1/1       Running   0          10m

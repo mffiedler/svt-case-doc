@@ -160,7 +160,7 @@ aws-efs   openshift.org/aws-efs   10s
 
 ```
 
-Create a PVC with the sc `aws-efs` and a pod to use the PVC:
+Create a PVC with the sc `aws-efs` and a pod to use the PVC: Note that [efs supports RWX](https://github.com/kubernetes-incubator/external-storage/blob/master/aws/efs/deploy/claim.yaml#L8-L9).
 
 ```bash
 # oc delete project ttt

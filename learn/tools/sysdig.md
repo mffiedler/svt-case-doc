@@ -88,8 +88,8 @@ More secure solution (Many thanks to Mike):
 ## [tracer](https://github.com/draios/sysdig/wiki/Tracers)
 TODO
 
-## sysdig helm chart
-https://github.com/helm/charts/tree/master/stable/sysdig
+## [sysdig helm chart](https://github.com/helm/charts/tree/master/stable/sysdig)
+TODO
 
 ## software on top of sysdig
 

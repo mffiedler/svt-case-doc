@@ -120,7 +120,7 @@ This local volume provisioner also supports to [provision raw block devices](htt
 
 ## External provisioner
 
-Currently it has on efs provisioner. 
+Currently it has only efs provisioner. 
 Suppose we have an efs with fs-id: fs-2a886d82 (see [efs.md](../cloud/ec2/efs.md) for details).
 The folder `/data/persistentvolumes` must exist on the efs.
 Let us deploy the provision on opc (see [more vars](https://github.com/openshift/openshift-ansible/tree/release-3.11/roles/openshift_provisioners)):

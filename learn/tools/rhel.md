@@ -313,6 +313,12 @@ netfilter, iptables, firewalld
 
 [iptables](iptables.md)
 
+## top command
+
+* [top output](https://tecadmin.net/understanding-linux-top-command-results-uses/)
+* other tools like top: [Monitoring: top vs atop vs htop vs iftop vs iotop vs glances](https://www.youtube.com/watch?v=KE1fqZRX9mg)
+
+
 ## More reading
 
 * [Syslog messages and Syslog protocol](https://blog.rapid7.com/2017/05/24/what-is-syslog/)

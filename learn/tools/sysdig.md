@@ -3,8 +3,6 @@
 ## Doc
 
 * [getting started](https://github.com/draios/sysdig/wiki/Getting-Started)
-* other tools like top: [Monitoring: top vs atop vs htop vs iftop vs iotop vs glances
-](https://www.youtube.com/watch?v=KE1fqZRX9mg)
 
 ## [Install](https://github.com/draios/sysdig/wiki/How-to-Install-Sysdig-for-Linux)
 

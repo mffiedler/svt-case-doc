@@ -1,6 +1,7 @@
 # Container
 
-[what-even-is-a-container](https://jvns.ca/blog/2016/10/10/what-even-is-a-container/)
+* [what-even-is-a-container](https://jvns.ca/blog/2016/10/10/what-even-is-a-container/)
+* [Cgroups, namespaces, and beyond: what are containers made from?](https://www.youtube.com/watch?v=sK5i-N34im8)
 
 ## namespace
 

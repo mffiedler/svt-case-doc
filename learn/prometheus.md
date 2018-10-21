@@ -5,6 +5,20 @@
 * [prometheus.io](https://prometheus.io/)
 * [prometheus@github](https://github.com/prometheus)
 
+## [Get started](https://prometheus.io/docs/prometheus/latest/getting_started/)
+
+Install:
+
+```sh
+# curl -LO https://github.com/prometheus/prometheus/releases/download/v2.4.3/prometheus-2.4.3.linux-amd64.tar.gz
+# tar xvfz prometheus-2.4.3.linux-amd64.tar.gz
+# cd prometheus-2.4.3.linux-amd64/
+# ./prometheus --config.file=prometheus.yml
+
+### Then visit 9090 port: http://ec2-34-219-127-168.us-west-2.compute.amazonaws.com:9090
+
+```
+
 
 ## Prometheus@oc
 

@@ -18,6 +18,9 @@ Install:
 ### Then visit 9090 port: http://ec2-34-219-127-168.us-west-2.compute.amazonaws.com:9090
 
 ```
+## Scrape your own app
+
+src: [test-go/http](https://github.com/hongkailiu/test-go/tree/master/http).
 
 
 ## Prometheus@oc

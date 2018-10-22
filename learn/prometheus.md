@@ -4,6 +4,7 @@
 
 * [prometheus.io](https://prometheus.io/)
 * [prometheus@github](https://github.com/prometheus)
+* metric-types: [metric-types@blog](https://pierrevincent.github.io/2017/12/prometheus-blog-series-part-2-metric-types/)
 
 ## [Get started](https://prometheus.io/docs/prometheus/latest/getting_started/)
 

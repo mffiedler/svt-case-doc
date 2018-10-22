@@ -23,6 +23,13 @@ Install:
 
 src: [test-go/http](https://github.com/hongkailiu/test-go/tree/master/http).
 
+## [storage](https://prometheus.io/docs/prometheus/latest/storage/)
+
+clean up storage:
+
+```sh
+# rm data/* -rf
+```
 
 ## Prometheus@oc
 

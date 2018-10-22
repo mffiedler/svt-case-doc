@@ -31,6 +31,9 @@ clean up storage:
 # rm data/* -rf
 ```
 
+## [Querying](https://prometheus.io/docs/prometheus/latest/querying/basics/)
+TODO
+
 ## Prometheus@oc
 
 * [doc@origin](https://github.com/openshift/origin/tree/master/examples/prometheus): useful prometheus queries.

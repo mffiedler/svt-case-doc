@@ -1,6 +1,6 @@
 # Prometheus
 
-## doc
+## Doc
 
 * [prometheus.io](https://prometheus.io/)
 * [prometheus@github](https://github.com/prometheus)
@@ -23,7 +23,7 @@ Install:
 
 src: [test-go/http](https://github.com/hongkailiu/test-go/tree/master/http).
 
-## [storage](https://prometheus.io/docs/prometheus/latest/storage/)
+## [Storage](https://prometheus.io/docs/prometheus/latest/storage/)
 
 clean up storage:
 

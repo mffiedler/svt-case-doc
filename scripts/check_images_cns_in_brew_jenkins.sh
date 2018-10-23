@@ -51,3 +51,12 @@ check_aws_reg_latest "rhgs3/rhgs-volmanager-rhel7"
 check_aws_reg_latest "rhgs3/rhgs-server-rhel7"
 check_aws_reg_latest "rhgs3/rhgs-s3-server-rhel7"
 echo "==================================="
+
+if [[ -z "${push_image}" ]]; then
+  echo "skipping pushing image"
+  exit 0
+else
+  echo "sync ${src-image} to ${target_image}.manual.push with user ${username}"
+  skopeo copy docker://${src_image} docker://${target_image}.manual.push --dcreds ${username}:${password}
+fi
+

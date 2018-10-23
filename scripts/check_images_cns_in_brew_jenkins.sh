@@ -56,7 +56,7 @@ if [[ -z "${push_image}" ]]; then
   echo "skipping pushing image"
   exit 0
 else
-  echo "sync ${src-image} to ${target_image}.manual.push with user ${username}"
-  skopeo copy docker://${src_image} docker://${target_image}.manual.push --dcreds ${username}:${password}
+  echo "sync ${src_image} to ${target_image}.manual.push with user ${username}"
+  skopeo copy --tls-verify=false --dcreds ${username}:${password} docker://${src_image} docker://${target_image}.manual.push
 fi
 

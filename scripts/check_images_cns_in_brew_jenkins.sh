@@ -52,11 +52,12 @@ check_aws_reg_latest "rhgs3/rhgs-server-rhel7"
 check_aws_reg_latest "rhgs3/rhgs-s3-server-rhel7"
 echo "==================================="
 
-if [[ -z "${push_image}" ]]; then
-  echo "skipping pushing image"
-  exit 0
-else
+echo "======push_image: ${push_image}===="
+if [[ ! -z "${push_image}" ]] && [[ $(echo "${push_image}" | awk '{print tolower($0)}') = "true" ]]; then
   echo "sync ${src_image} to ${target_image}.manual.push with user ${username}"
   skopeo copy --src-tls-verify=false --dest-tls-verify=false --dcreds ${username}:${password} docker://${src_image} docker://${target_image}.manual.push
+else
+  echo "skipping pushing image"
+  exit 0
 fi
-
+echo "==================================="

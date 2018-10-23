@@ -90,6 +90,7 @@ my-service   ClusterIP   172.30.45.107   <none>        8080/TCP   8s
 
 ### dns is not configured yet
 ### https://kubernetes.io/docs/concepts/services-networking/service/#dns
+### 20181022: need to verify this again. See https://github.com/hongkailiu/svt-case-doc/blob/master/learn/networking.md#service-dns
 $ curl my-service.ttt.svc
 curl: (6) Could not resolve host: my-service.ttt.svc
 

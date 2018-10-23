@@ -114,6 +114,14 @@ sdn       10        10        10        10           10          <none>         
 
 ```
 
+## Service DNS
+
+See [networking@k8s](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services)
+and [networking@oc](https://docs.openshift.com/enterprise/3.0/architecture/additional_concepts/networking.html#openshift-dns)
+
+```bash
+my-svc.my-namespace.svc.cluster.local
+```
 
 ## Reference
 

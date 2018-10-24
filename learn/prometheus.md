@@ -31,6 +31,13 @@ clean up storage:
 # rm data/* -rf
 ```
 
+Delete time series via API: TODO
+
+## [Push metrics](https://prometheus.io/docs/instrumenting/pushing/)
+
+[When to use](https://prometheus.io/docs/practices/pushing/)
+
+
 ## [Querying](https://prometheus.io/docs/prometheus/latest/querying/basics/)
 TODO
 

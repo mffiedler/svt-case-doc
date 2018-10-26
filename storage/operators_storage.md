@@ -190,6 +190,43 @@ Uninstall:
 
 ## CSI
 
+Pre-installation:
+```bash
+# yum install -y ansible python-virtualenv
+
+```
+
+[Installation](https://github.com/gluster/gcs):
+
+```bash
+# git clone https://github.com/gluster/gcs.git
+# cd gcs/
+### modify ./deploy/prepare.sh: remove the vagrant checking and the path ./deploy/prepare.sh
+# ./deploy/prepare.sh
+# source gcs-venv/bin/activate
+
+# cd deploy/
+# vi ~/aaa/gcs.yml
+master ansible_host=ip-172-31-43-164.us-west-2.compute.internal
+
+gcs1 ansible_host=ip-172-31-47-15.us-west-2.compute.internal gcs_disks='["/dev/nvme2n1"]'
+gcs2 ansible_host=ip-172-31-59-125.us-west-2.compute.internal gcs_disks='["/dev/nvme2n1"]'
+gcs3 ansible_host=ip-172-31-60-208.us-west-2.compute.internal gcs_disks='["/dev/nvme2n1"]'
+
+[kube-master]
+master
+
+[gcs-node]
+gcs1
+gcs2
+gcs3
+
+# ansible-playbook -i ~/aaa/gcs.yml deploy-gcs.yml
+
+# 
+
+```
+
 ## Volume Snapshot
 
 ## Operators for storage

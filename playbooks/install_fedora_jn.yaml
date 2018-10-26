@@ -1,5 +1,9 @@
 ---
 - hosts: all
+  vars:
+    ###https://docs.ansible.com/ansible/latest/reference_appendices/faq.html#how-do-i-handle-python-not-having-a-python-interpreter-at-usr-bin-python-on-a-remote-machine
+    ###
+    ansible_python_interpreter: /usr/bin/python3
   vars_files:
     - external_vars.yaml
   tasks:
@@ -7,18 +11,19 @@
     debug:
       msg: "hostname: {{ inventory_hostname }}"
 
-  - name: dnf pkgs
+  - name: dnf jump node pkgs
     dnf:
-      name: "{{item}}"
+      name: "{{ packages }}"
       state: present
-    with_items:
-     - docker
-     - ansible
-     - java-1.8.0-openjdk
-     - bash-completion
-     - git
-     - python2-libselinux
-     - tmux
+    vars:
+      packages:
+        - docker
+        - ansible
+        - java-1.8.0-openjdk
+        - bash-completion
+        - git
+        #- python2-libselinux
+        - tmux
     become: true
 
   - name: start docker
@@ -80,6 +85,83 @@
       src: "{{ perf_private_key_file }}"
       dest: "/home/{{ ansible_user }}/"
       mode: 0600
+
+  - name: import golang repo key
+    rpm_key:
+      state: present
+      key: https://mirror.go-repo.io/fedora/RPM-GPG-KEY-GO-REPO
+    become: true
+
+  - name: Download go repo
+    get_url:
+      url: https://mirror.go-repo.io/fedora/go-repo.repo
+      dest: /etc/yum.repos.d/go-repo.repo
+    become: true
+
+  - name: dnf golang pkgs
+    dnf:
+      name: "{{ packages }}"
+      state: present
+    vars:
+      packages:
+      - golang
+      - golang-race
+      - make
+      - gcc
+      - zip
+      - mercurial
+      - krb5-devel
+      - bsdtar
+      - bc
+      - rsync
+      - bind-utils
+      - file
+      - jq
+      - tito
+      - createrepo
+      - openssl
+      - gpgme
+      - gpgme-devel
+      - libassuan
+      - libassuan-devel
+    become: true
+
+  - name: check golang version
+    shell: go version
+    register: go_version_result
+
+  - name: output golang version
+    debug:
+      msg: "go_version_result: {{ go_version_result }}"
+
+  - name: add go env vars into ~/.bash_profile
+    blockinfile:
+      path: "~/.bash_profile"
+      marker: "### {mark} ANSIBLE MANAGED BLOCK ###"
+      insertbefore: "export PATH"
+      content: |
+        export GOPATH=$HOME/go
+        export PATH=$PATH:$GOPATH/bin
+        export OS_OUTPUT_GOPATH=1
+
+  - name: go get openshift/origin repo
+    command: go get github.com/openshift/origin
+
+  - name: go get imagebuilder
+    command: go get -u github.com/openshift/imagebuilder/cmd/imagebuilder
+
+  - name: dnf other pkgs
+    dnf:
+      name: "{{ packages }}"
+      state: present
+    vars:
+      packages:
+      - buildah
+      - podman
+      - skopeo
+    become: true
+    tags:
+    - test
 
 ### TODO
 ### copy script: kcfg_scp.sh, softlinks for Jenkins keys

@@ -145,6 +145,8 @@ $ public_ip="$( curl "${metadata_endpoint}/public-ipv4" )"
 
 $ _output/local/bin/linux/amd64/oc cluster up --public-hostname="${public_hostname}"
 
+### 20181026: https://github.com/openshift/origin/issues/19300
+### generate binaries
 $ make
 $ ./hack/build-local-images.py
 $ _output/local/bin/linux/amd64/oc cluster up --tag=latest

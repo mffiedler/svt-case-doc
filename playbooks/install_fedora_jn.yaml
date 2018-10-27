@@ -57,14 +57,14 @@
     debug:
       msg: "tmp_folder_result: {{ tmp_folder_result.path }}"
 
-  - name: extract oc
+  - name: download and extract oc
     unarchive:
-      src: https://github.com/openshift/origin/releases/download/v3.10.0-rc.0/openshift-origin-client-tools-v3.10.0-rc.0-c20e215-linux-64bit.tar.gz
+      src: https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
       dest: "{{ tmp_folder_result.path }}"
       remote_src: yes
 
   - name: copy oc binary
-    command: cp "{{ tmp_folder_result.path }}/openshift-origin-client-tools-v3.10.0-rc.0-c20e215-linux-64bit/oc" /usr/bin/oc
+    command: cp "{{ tmp_folder_result.path }}/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit/oc" /usr/bin/oc
     become: true
 
   - name: git clone svt
@@ -150,6 +150,71 @@
   - name: go get imagebuilder
     command: go get -u github.com/openshift/imagebuilder/cmd/imagebuilder
 
+  - name: cp /etc/containers/registries.conf
+    copy:
+      src: files/registries.conf
+      dest: /etc/containers/registries.conf
+      mode: 0644
+    become: true
+
+  - name: restart docker and issue daemon-reload to pick up config changes
+    systemd:
+      state: restarted
+      daemon_reload: yes
+      name: docker
+    become: true
+
+  - name: dnf firewalld pkgs
+    dnf:
+      name: "{{ packages }}"
+      state: present
+    vars:
+      packages:
+      - firewalld
+    become: true
+
+  - name: start firewalld
+    systemd:
+      name: firewalld
+      state: started
+      enabled: True
+    become: true
+
+  - name: create firewalld zone dockerc
+    firewalld:
+      zone: dockerc
+      state: present
+      permanent: true
+    become: true
+
+  - name: firewalld reload
+    command: firewall-cmd --reload
+    become: true
+
+  - name: add source 172.17.0.0/16 to dockerc zone
+    firewalld:
+      source: 172.17.0.0/16
+      zone: dockerc
+      state: enabled
+      permanent: true
+    become: true
+
+  - name: add ports to dockerc zone
+    firewalld:
+      zone: dockerc
+      port: "{{ item }}"
+      permanent: true
+      state: enabled
+    loop:
+      - 8443/tcp
+      - 53/udp
+      - 8053/udp
+    become: true
+
+  - name: firewalld reload
+    command: firewall-cmd --reload
+    become: true
+
   - name: dnf other pkgs
     dnf:
       name: "{{ packages }}"
@@ -160,8 +225,6 @@
       - podman
       - skopeo
     become: true
-    tags:
-    - test
 
 ### TODO
 ### copy script: kcfg_scp.sh, softlinks for Jenkins keys

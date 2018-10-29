@@ -4,6 +4,7 @@
 
 * [Developer Guide](https://developers.google.com/protocol-buffers/docs/overview)
 * [Protocol Buffer Language Guide](https://developers.google.com/protocol-buffers/docs/proto)
+* [k8s api server can be communicated via pb](https://kubernetes.io/docs/concepts/overview/kubernetes-api/#openapi-and-swagger-definitions): [some .proto file in k8s repo](https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/cri/runtime/v1alpha2/api.proto)
 
 ## [golang with protocol buffer 3](https://developers.google.com/protocol-buffers/docs/gotutorial)
 
@@ -45,4 +46,7 @@ $ tree ./proto_buffer/gen/
 
 
 ## Use pb to transfer data
+TODO
+
+## How pb is used in k8s implementation
 TODO

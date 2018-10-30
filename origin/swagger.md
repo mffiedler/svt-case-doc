@@ -2,7 +2,7 @@
 
 ## Doc
 
-[k8s uses goswagger](https://goswagger.io/#who-is-using-this-project): [how swagger is used in k8s](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)? I believe (needs to be confirmed by someone here ^_^) only for [RestAPI documentation site](https://kubernetes.io/docs/reference/) based on the [swagger.json](https://github.com/kubernetes/kubernetes/blob/master/api/openapi-spec/swagger.json).
+[k8s uses goswagger](https://goswagger.io/#who-is-using-this-project): [how swagger is used in k8s](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)? I believe (needs to be confirmed by someone here ^_^) only for [RestAPI documentation site](https://kubernetes.io/docs/reference/) based on the [swagger.json](https://github.com/kubernetes/kubernetes/blob/master/api/openapi-spec/swagger.json). We can also use swagger.json via [petstore.swagger.io](http://petstore.swagger.io/).
 
 * [swagger.io](https://swagger.io/docs/specification/about/)
 * [goswagger.io](https://goswagger.io/), [go-swagger@github](https://github.com/go-swagger/go-swagger)

@@ -41,7 +41,7 @@ $ tree ./proto_buffer/gen/
     └── addressbook.pb.go
 
 ## Then see how to use the generated code in the unit tests
-
+$ make test-pb
 ```
 
 

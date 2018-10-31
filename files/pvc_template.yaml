@@ -15,6 +15,7 @@ objects:
       requests:
         storage: ${PVC_SIZE}
     storageClassName: ${STORAGE_CLASS_NAME}
+    volumeMode: ${VOLUME_MODE}
 parameters:
 - description: PVC Name
   displayName: PVC Name
@@ -33,3 +34,7 @@ parameters:
   name: STORAGE_CLASS_NAME
   required: true
   value: gp2
+- description: Volume Mode
+  displayName: Volume Mode
+  name: PVC_MODE
+  value: Filesystem

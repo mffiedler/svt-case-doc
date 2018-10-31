@@ -6,4 +6,7 @@ data:
     storageClassMap: |
         local-ssd: 
             hostDir:  /mnt/local-storage/ssd 
-            mountDir: /mnt/local-storage/ssd 
+            mountDir: /mnt/local-storage/ssd
+        block-devices:
+            hostDir:  /mnt/local-storage/block-devices
+            mountDir: /mnt/local-storage/block-devices

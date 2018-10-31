@@ -8,8 +8,11 @@ spec:
       labels:
         name: "centos"
     spec:
+      #serviceAccountName: "local-storage-admin"
       containers:
         - name: "centos"
+       #   securityContext:
+       #     privileged: true
           image: "docker.io/centos:7"
           command: ["/usr/sbin/init"]
           args: []
@@ -18,7 +21,7 @@ spec:
               mountPath: "/aaa"
           volumeDevices:
             - name: "bbb-vol"
-              devicePath: /dev/xvda
+              devicePath: /dev/xvdb
       volumes:
         - name: "aaa-vol"
           emptyDir: {}

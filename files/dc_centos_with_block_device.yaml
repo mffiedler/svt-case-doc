@@ -1,0 +1,30 @@
+kind: "DeploymentConfig"
+apiVersion: "v1"
+metadata:
+  name: "centos"
+spec:
+  template:
+    metadata:
+      labels:
+        name: "centos"
+    spec:
+      containers:
+        - name: "centos"
+          image: "docker.io/centos:7"
+          command: ["/usr/sbin/init"]
+          args: []
+          volumeMounts:
+            - name: "aaa-vol"
+              mountPath: "/aaa"
+          volumeDevices:
+            - name: "bbb-vol"
+              devicePath: /dev/xvda
+      volumes:
+        - name: "aaa-vol"
+          emptyDir: {}
+        - name: "bbb-vol"
+          persistentVolumeClaim:
+            claimName: abc
+  triggers:
+    - type: "ConfigChange"
+  replicas: 1

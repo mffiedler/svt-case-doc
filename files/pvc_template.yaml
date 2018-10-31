@@ -36,5 +36,5 @@ parameters:
   value: gp2
 - description: Volume Mode
   displayName: Volume Mode
-  name: PVC_MODE
+  name: VOLUME_MODE
   value: Filesystem

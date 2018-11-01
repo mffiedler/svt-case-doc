@@ -159,7 +159,7 @@ ansible-playbook -i aaa/ openshift-ansible/playbooks/prerequisites.yml
 ansible-playbook -i aaa/ openshift-ansible/playbooks/deploy_cluster.yml 
 ```
 
-
+### public DNS of master changes
 What if the public DNS of master changes for all-in-one? e.g, from `ec2-54-187-34-90.us-west-2.compute.amazonaws.com` to `ec2-34-221-94-18.us-west-2.compute.amazonaws.com`
 
 ```bash

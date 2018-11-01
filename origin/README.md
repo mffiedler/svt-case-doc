@@ -68,66 +68,24 @@ $ cd ~/repo/go/src/github.com/openshift/origin/
 Build release
 
 ```sh
-$ cd origin
-$ make release
-### Still not working
-[openshift/origin-service-catalog] --> Image openshift/origin-source was not found, pulling ...
-[openshift/origin-service-catalog] unable to pull image (from: openshift/origin-source, tag: latest): API error (404): {"message":"pull access denied for openshift/origin-source, repository does not exist or may require 'docker login'"}
-[ERROR] PID 8550: hack/lib/constants.sh:56: `return "${result}"` exited with status 1.
-[INFO] 		Stack Trace: 
-[INFO] 		  1: hack/lib/constants.sh:56: `return "${result}"`
-[INFO] 		  2: hack/build-images.sh:25: os::build::images
-[INFO]   Exiting with code 1.
-[openshift/origin-cluster-capacity] --> Image openshift/origin-source was not found, pulling ...
-[openshift/origin-cluster-capacity] unable to pull image (from: openshift/origin-source, tag: latest): API error (404): {"message":"pull access denied for openshift/origin-source, repository does not exist or may require 'docker login'"}
-[openshift/origin-template-service-broker] --> Image openshift/origin-source was not found, pulling ...
-[openshift/origin-template-service-broker] unable to pull image (from: openshift/origin-source, tag: latest): API error (404): {"message":"pull access denied for openshift/origin-source, repository does not exist or may require 'docker login'"}
-[openshift/origin-pod] --> Image openshift/origin-source was not found, pulling ...
-[openshift/origin-pod] unable to pull image (from: openshift/origin-source, tag: latest): API error (404): {"message":"pull access denied for openshift/origin-source, repository does not exist or may require 'docker login'"}
-[ERROR] PID 8549: hack/lib/constants.sh:56: `return "${result}"` exited with status 1.
-[INFO] 		Stack Trace: 
-[INFO] 		  1: hack/lib/constants.sh:56: `return "${result}"`
-[INFO] 		  2: hack/build-images.sh:25: os::build::images
-[INFO]   Exiting with code 1.
-[ERROR] PID 8548: hack/lib/constants.sh:56: `return "${result}"` exited with status 1.
-[ERROR] PID 8551: hack/lib/constants.sh:56: `return "${result}"` exited with status 1.
-[INFO] 		Stack Trace: 
-[INFO] 		Stack Trace: 
-[INFO] 		  1: hack/lib/constants.sh:56: `return "${result}"`
-[INFO] 		  1: hack/lib/constants.sh:56: `return "${result}"`
-[INFO] 		  2: hack/build-images.sh:25: os::build::images
-[INFO] 		  2: hack/build-images.sh:25: os::build::images
-[INFO]   Exiting with code 1.
-[INFO]   Exiting with code 1.
-[ERROR] PID 8500: hack/lib/constants.sh:361: `wait $i` exited with status 1.
-[INFO] 		Stack Trace: 
-[INFO] 		  1: hack/lib/constants.sh:361: `wait $i`
-[INFO] 		  2: hack/build-images.sh:25: os::build::images
-[INFO]   Exiting with code 1.
-[ERROR] hack/build-images.sh exited with code 1 after 00h 00m 02s
-```
+### Update on 20181101 with fedora 26
+$ go version
+go version go1.10.3 linux/amd64
 
-We can see that the RPMs are generated from "make-release": Probablly `origin-tests-*.rpm` contains extended test binary.
+master
+eb939d74d11c246fe2c12cc766ef87583c1c87b1
+make: Y
+result: $ ll _output/local/bin/linux/amd64/
 
-```sh
-[fedora@ip-172-31-40-12 origin]$ ll _output/local/releases/rpms/
-total 203228
--rw-rw-r--. 1 fedora fedora      191 Jan 23 15:36 local-release.repo
--rw-rw-r--. 1 fedora fedora 71353858 Jan 23 15:34 origin-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
--rw-rw-r--. 1 fedora fedora 34436274 Jan 23 15:35 origin-clients-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
--rw-rw-r--. 1 fedora fedora 11297366 Jan 23 15:36 origin-cluster-capacity-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
--rw-rw-r--. 1 fedora fedora    10346 Jan 23 15:36 origin-docker-excluder-3.9.0-0.alpha.3.121.e4baeb2.noarch.rpm
--rw-rw-r--. 1 fedora fedora    10314 Jan 23 15:36 origin-excluder-3.9.0-0.alpha.3.121.e4baeb2.noarch.rpm
--rw-rw-r--. 1 fedora fedora 32603242 Jan 23 15:35 origin-federation-services-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
--rw-rw-r--. 1 fedora fedora      191 Jan 23 15:36 origin-local-release.repo
--rw-rw-r--. 1 fedora fedora    24906 Jan 23 15:34 origin-master-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
--rw-rw-r--. 1 fedora fedora    11434 Jan 23 15:35 origin-node-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
--rw-rw-r--. 1 fedora fedora   400658 Jan 23 15:35 origin-pod-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
--rw-rw-r--. 1 fedora fedora  3685274 Jan 23 15:35 origin-sdn-ovs-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
--rw-rw-r--. 1 fedora fedora 10379094 Jan 23 15:35 origin-service-catalog-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
--rw-rw-r--. 1 fedora fedora 14391690 Jan 23 15:35 origin-template-service-broker-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
--rw-rw-r--. 1 fedora fedora 29463998 Jan 23 15:35 origin-tests-3.9.0-0.alpha.3.121.e4baeb2.x86_64.rpm
-drwxrwxr-x. 2 fedora fedora     4096 Jan 23 15:36 repodata
+make build-rpms: N
+sudo make build-rpms: Y
+$ ll _output/local/releases/rpms/
+
+sudo make build-images: N
+
+./hack/build-local-images.py: Yes
+
+sudo make release: N
 
 ```
 

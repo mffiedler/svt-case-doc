@@ -118,6 +118,102 @@ No resources found.
 
 This local volume provisioner also supports to [provision raw block devices](https://docs.openshift.com/container-platform/3.11/install_config/configuring_local.html#local-volume-raw-block-devices).
 
+```bash
+### tested on 20181031
+# vi oc edit cm node-config-infra -n openshift-node
+apiServerArguments:
+   feature-gates:
+   - BlockVolume=true
+...
+
+ controllerArguments:
+   feature-gates:
+   - BlockVolume=true
+...
+
+### edit the configMap which fits your cluster
+# oc get cm  -n openshift-node
+NAME                            DATA      AGE
+node-config-all-in-one          1         2h
+node-config-all-in-one-crio     1         2h
+node-config-compute             1         2h
+node-config-compute-crio        1         2h
+node-config-infra               1         2h
+node-config-infra-crio          1         2h
+node-config-master              1         2h
+node-config-master-crio         1         2h
+node-config-master-infra        1         2h
+node-config-master-infra-crio   1         2h
+
+# check which one is being used on a node (thanks to Mike)
+# grep BOOTSTRAP_CONFIG_NAME /etc/sysconfig/atomic-openshift-node 
+BOOTSTRAP_CONFIG_NAME=node-config-all-in-one
+# oc edit cm node-config-all-in-one -n openshift-node
+kubeletArguments:
+   feature-gates:
+   - RotateKubeletClientCertificate=true,RotateKubeletServerCertificate=true,BlockVolume=true
+
+
+# master-restart controllers controllers
+# master-restart api api
+### verify if the api and the controller pods get increased for `RESTARTS`
+# oc get pod -n kube-system
+
+### the doc said the node is auto-restarted after changing the CM
+### this can be verified by:
+# systemctl status atomic-openshift-node.service
+### check time in line: Active: active (running) since Wed 2018-10-31 17:54:15 UTC; 16min ago
+### get the pid (9273) and check `,BlockVolume=true` is in the command parameter
+# ps auxwww | grep 9273
+
+
+# lsblk 
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+...
+nvme2n1     259:1    0  100G  0 disk 
+nvme3n1     259:3    0  100G  0 disk 
+nvme4n1     259:6    0  100G  0 disk 
+
+# mkdir -p /mnt/local-storage/block-devices
+# ln -s /dev/nvme3n1 /mnt/local-storage/block-devices/nvme3n1
+
+# chcon -R unconfined_u:object_r:svirt_sandbox_file_t:s0 /mnt/local-storage/
+# chcon unconfined_u:object_r:svirt_sandbox_file_t:s0 /dev/nvme3n1
+
+# oc new-project local-storage
+
+# oc create serviceaccount local-storage-admin
+# oc adm policy add-scc-to-user privileged -z local-storage-admin
+
+# oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/local_volume_config_cm.yaml
+# oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/block_devices_sc.yaml
+# curl -LO https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/storage-examples/local-examples/local-storage-provisioner-template.yaml
+# vi local-storage-provisioner-template.yaml
+
+# oc create -f local-storage-provisioner-template.yaml
+
+# oc new-app -p CONFIGMAP=local-volume-config   -p SERVICE_ACCOUNT=local-storage-admin   -p NAMESPACE=local-storage   -p PROVISIONER_IMAGE=registry.reg-aws.openshift.com:443/openshift3/local-storage-provisioner:v3.11   local-storage-provisioner
+
+### create PVC: note that "-p VOLUME_MODE=Block"
+# oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/pvc_template.yaml -p STORAGE_CLASS_NAME=block-devices -p PVC_NAME=abc -p VOLUME_MODE=Block | oc create -f -
+# oc create -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/dc_centos_with_block_device.yaml
+
+# oc get pod
+NAME                             READY     STATUS    RESTARTS   AGE
+centos-1-nqqhk                   1/1       Running   0          23s
+local-volume-provisioner-8d9qb   1/1       Running   0          43m
+root@ip-172-31-16-58: ~ # oc get pv
+NAME                CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS    CLAIM               STORAGECLASS    REASON    AGE
+local-pv-fd3708f8   100Gi      RWO            Delete           Bound     local-storage/abc   block-devices             6m
+root@ip-172-31-16-58: ~ # oc get pvc
+NAME      STATUS    VOLUME              CAPACITY   ACCESS MODES   STORAGECLASS    AGE
+abc       Bound     local-pv-fd3708f8   100Gi      RWO            block-devices   2m
+
+
+```
+
+Created [12730](https://github.com/openshift/openshift-docs/issues/12730) and blocked by [12731](https://github.com/openshift/openshift-docs/issues/12730).
+
 ## External provisioner
 
 Currently it has only efs provisioner. 

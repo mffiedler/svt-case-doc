@@ -1,3 +1,4 @@
+#### oc process -f https://raw.githubusercontent.com/hongkailiu/svt-case-doc/master/files/template_test.yaml -p IMAGE=quay.io/hongkailiu/test-go:http-0.0.3 | oc create -f -
 apiVersion: v1
 kind: Template
 metadata:

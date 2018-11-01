@@ -49,7 +49,7 @@ objects:
           name: web
       spec:
         containers:
-        - image: docker.io/hongkailiu/svt-go:http
+        - image: ${IMAGE}
           imagePullPolicy: IfNotPresent
           name: web
           resources: {}
@@ -85,3 +85,9 @@ objects:
       name: web
       weight: 100
     wildcardPolicy: None
+parameters:
+- description: Image
+  displayName: Image
+  name: IMAGE
+  required: false
+  value: docker.io/hongkailiu/svt-go:http

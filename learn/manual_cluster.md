@@ -158,3 +158,29 @@ export AWS_SECRET_ACCESS_KEY="mike_has_it"
 ansible-playbook -i aaa/ openshift-ansible/playbooks/prerequisites.yml 
 ansible-playbook -i aaa/ openshift-ansible/playbooks/deploy_cluster.yml 
 ```
+
+
+What if the public DNS of master changes for all-in-one? e.g, from `ec2-54-187-34-90.us-west-2.compute.amazonaws.com` to `ec2-34-221-94-18.us-west-2.compute.amazonaws.com`
+
+```bash
+### restart master and etcd
+find /etc/origin -type f -print0 | xargs -0 sed -i 's/54-187-34-90/34-221-94-18/g'
+find /etc/origin -type f -print0 | xargs -0 sed -i 's/54\.187\.34\.90/34.221.94.18/g'
+master-restart api api
+master-restart controllers controllers
+master-restart etcd etcd
+systemctl restart docker atomic-openshift-node.service
+
+### reinstall web console: there should be a better way
+find /tmp/2.file -type f -print0 | xargs -0 sed -i 's/54-187-34-90/34-221-94-18/g'
+find /tmp/2.file -type f -print0 | xargs -0 sed -i 's/54\.187\.34\.90/34.221.94.18/g'
+ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/openshift-web-console/config.yml -e "openshift_web_console_install=false"
+ansible-playbook -i /tmp/2.file openshift-ansible/playbooks/openshift-web-console/config.yml -e "openshift_web_console_install=true"
+
+### update routes
+oc get route --all-namespaces -o yaml > routes.yaml
+find ./routes.yaml -type f -print0 | xargs -0 sed -i 's/54\.187\.34\.90/34.221.94.18/g'
+oc apply -f ./routes.yaml
+
+```
+

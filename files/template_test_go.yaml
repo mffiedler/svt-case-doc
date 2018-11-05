@@ -1,0 +1,140 @@
+apiVersion: v1
+kind: Template
+metadata:
+  creationTimestamp: null
+  name: my-test-template
+  annotations:
+    template.openshift.io/bindable: "false"
+objects:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: null
+    name: web
+  spec:
+    ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      name: web
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    creationTimestamp: null
+    generation: 1
+    name: web
+  spec:
+    replicas: 1
+    selector:
+      name: web
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          name: web
+      spec:
+        containers:
+        - image: ${IMAGE}
+          command: ["/http"]
+          args: ["start", "-v"]
+          env:
+          - name: GIN_MODE
+            value: release
+          - name: gh_client_id
+            value: ${gh_client_id}
+          - name: gh_client_secret
+            value: ${gh_client_secret}
+          - name: gg_client_id
+            value: ${gg_client_id}
+          - name: gg_client_secret
+            value: ${gg_client_secret}
+          - name: gg_redirect_url
+            value: ${gg_redirect_url}
+          - name: session_key
+            value: ${session_key}
+          imagePullPolicy: IfNotPresent
+          name: web
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+    - type: ConfigChange
+  status:
+    availableReplicas: 0
+    latestVersion: 0
+    observedGeneration: 0
+    replicas: 0
+    unavailableReplicas: 0
+    updatedReplicas: 0
+- apiVersion: v1
+  kind: Route
+  metadata:
+    annotations:
+      openshift.io/host.generated: "true"
+    creationTimestamp: null
+    name: web
+  spec:
+    port:
+      targetPort: 8080
+    to:
+      kind: Service
+      name: web
+      weight: 100
+    wildcardPolicy: None
+parameters:
+- description: Image
+  displayName: Image
+  name: IMAGE
+  required: false
+  value: quay.io/hongkailiu/test-go:http-0.0.10
+- description: gh_client_id
+  displayName: gh_client_id
+  name: gh_client_id
+  required: false
+  value: gh_client_id
+- description: gh_client_secret
+  displayName: gh_client_secret
+  name: gh_client_secret
+  required: false
+  value: gh_client_secret
+- description: gg_client_id
+  displayName: gg_client_id
+  name: gg_client_id
+  required: false
+  value: gg_client_id
+- description: gg_client_secret
+  displayName: gg_client_secret
+  name: gg_client_secret
+  required: false
+  value: gg_client_secret
+- description: gg_redirect_url
+  displayName: gg_redirect_url
+  name: gg_redirect_url
+  required: false
+  value: gg_redirect_url
+- description: session_key
+  displayName: session_key
+  name: session_key
+  required: false
+  value: session_key

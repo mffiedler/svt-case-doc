@@ -89,6 +89,11 @@ $ gcloud init
 $ gcloud config list
 ###
 $ ls -al ~/.config/gcloud/
+###ref. https://www.the-swamp.info/blog/configuring-gcloud-multiple-projects/
+$  gcloud config configurations list
+NAME     IS_ACTIVE  ACCOUNT              PROJECT              DEFAULT_ZONE  DEFAULT_REGION
+default  True       hongkliu@redhat.com  openshift-gce-devel
+
 ```
 
 [How to use google cloud cli](https://cloud.google.com/sdk/gcloud/reference/).

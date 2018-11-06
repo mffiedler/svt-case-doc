@@ -319,6 +319,11 @@ netfilter, iptables, firewalld
 * other tools like top: [Monitoring: top vs atop vs htop vs iftop vs iotop vs glances](https://www.youtube.com/watch?v=KE1fqZRX9mg)
 
 
+## [Virtual Machine Manager](https://virt-manager.org/)
+
+* [libvirt](https://libvirt.org/) and [virsh](https://libvirt.org/virshcmdref.html)
+
+
 ## More reading
 
 * [Syslog messages and Syslog protocol](https://blog.rapid7.com/2017/05/24/what-is-syslog/)

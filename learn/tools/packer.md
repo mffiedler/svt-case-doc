@@ -17,13 +17,6 @@ $ packer.io --version
 [Template](https://www.packer.io/docs/templates/index.html)
 
 ```bash
-$ cat variables.json 
-{
-  "aws_access_key": "secret",
-  "aws_secret_key": "secret",
-  "aws_ssh_private_key_file": "/home/fedora/id_rsa_perf"
-}
-
 ### Files: https://github.com/hongkailiu/svt-case-doc/tree/master/files/packer/hello
 ### validate
 $ packer.io validate -var-file=variables.json hello-packer.json

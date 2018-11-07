@@ -87,4 +87,4 @@ $ gpg2 --export --armor hongkailiu@users.noreply.github.com
 
 ```
 
-More reading: [gpg tutorials](https://futureboy.us/pgp.html#PublicKeyCrypto)
+More reading: [gpg tutorials](https://futureboy.us/pgp.html#PublicKeyCrypto), [how-to-encrypt-and-decrypt](https://linuxconfig.org/how-to-encrypt-and-decrypt-individual-files-with-gpg)

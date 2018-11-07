@@ -29,20 +29,22 @@ us-west-2: ami-0499f362a0a2049b2
 
 ```
 
-* [builder: amazon-ebs](https://www.packer.io/docs/builders/amazon-ebs.html)
-* [provisioner: ansible](https://www.packer.io/docs/provisioners/ansible.html)
+* [builder: amazon-ebs](https://www.packer.io/docs/builders/amazon-ebs.html): Basically it does task `launch temporary instance` in 
+the [image provisoner playbook](https://github.com/openshift/svt/blob/master/image_provisioner/playbooks/build_ami.yaml#L11).
+
+* [provisioner: ansible](https://www.packer.io/docs/provisioners/ansible.html): Run the specified playbook for setting up the AMI.
 
 Verification
 
 ```bash
-aws ec2 run-instances --image-id ami-0499f362a0a2049b2 \
+$ aws ec2 run-instances --image-id ami-0499f362a0a2049b2 \
     --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.large --key-name id_rsa_perf \
     --subnet subnet-4879292d \
     --query 'Instances[*].InstanceId' \
     --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-packer-test\"}]}]"
 
+### one task in the ansible playbook is `touch file /etc/foo.conf` 
 $ rhel.sh ec2-34-209-84-227.us-west-2.compute.amazonaws.com
-Warning: Permanently added 'ec2-34-209-84-227.us-west-2.compute.amazonaws.com,34.209.84.227' (ECDSA) to the list of known hosts.
 [ec2-user@ip-172-31-32-71 ~]$ ll /etc/f
 filesystems  firewalld/   foo.conf     fstab        
 [ec2-user@ip-172-31-32-71 ~]$ ll /etc/foo.conf 

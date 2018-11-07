@@ -24,7 +24,7 @@ $ cat variables.json
   "aws_ssh_private_key_file": "/home/fedora/id_rsa_perf"
 }
 
-### TODO hello-packer.json
+### Files: https://github.com/hongkailiu/svt-case-doc/tree/master/files/packer/hello
 ### validate
 $ packer.io validate -var-file=variables.json hello-packer.json
 ### build

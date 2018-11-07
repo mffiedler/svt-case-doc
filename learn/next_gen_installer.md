@@ -1,5 +1,7 @@
 # Next-Gen Installer for OCP 4.0
 
+[repo](https://github.com/openshift/installer)
+
 ## Doc
 
 * [gdoc@oc-dev](https://docs.google.com/document/d/1j7bhLXT_cIAjpMh_x2jeegtpE7495Mj5A-EcQsgZEDo/edit)

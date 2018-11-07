@@ -1,0 +1,66 @@
+# [packer](https://github.com/hashicorp/packer)
+
+[Installation](https://www.packer.io/intro/getting-started/install.html#precompiled-binaries)
+
+```bash
+$ curl -LO https://releases.hashicorp.com/packer/1.3.2/packer_1.3.2_linux_amd64.zip
+$ unzip packer_1.3.2_linux_amd64.zip
+$ cd ~/bin
+###https://www.packer.io/intro/getting-started/install.html#troubleshooting
+###https://github.com/cracklib/cracklib/issues/7
+$ ln -s ../packer_1.3.2/packer packer.io
+$ packer.io --version
+1.3.2
+
+```
+
+[Template](https://www.packer.io/docs/templates/index.html)
+
+```bash
+$ cat variables.json 
+{
+  "aws_access_key": "secret",
+  "aws_secret_key": "secret",
+  "aws_ssh_private_key_file": "/home/fedora/id_rsa_perf"
+}
+
+### TODO hello-packer.json
+### validate
+$ packer.io validate -var-file=variables.json hello-packer.json
+### build
+$ packer.io build -var-file=variables.json hello-packer.json
+...
+==> Builds finished. The artifacts of successful builds are:
+--> amazon-ebs: AMIs were created:
+us-west-2: ami-0499f362a0a2049b2
+
+```
+
+* [builder: amazon-ebs](https://www.packer.io/docs/builders/amazon-ebs.html)
+* [provisioner: ansible](https://www.packer.io/docs/provisioners/ansible.html)
+
+Verification
+
+```bash
+aws ec2 run-instances --image-id ami-0499f362a0a2049b2 \
+    --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.large --key-name id_rsa_perf \
+    --subnet subnet-4879292d \
+    --query 'Instances[*].InstanceId' \
+    --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-packer-test\"}]}]"
+
+$ rhel.sh ec2-34-209-84-227.us-west-2.compute.amazonaws.com
+Warning: Permanently added 'ec2-34-209-84-227.us-west-2.compute.amazonaws.com,34.209.84.227' (ECDSA) to the list of known hosts.
+[ec2-user@ip-172-31-32-71 ~]$ ll /etc/f
+filesystems  firewalld/   foo.conf     fstab        
+[ec2-user@ip-172-31-32-71 ~]$ ll /etc/foo.conf 
+-rw-r--r--. 1 root root 0 Nov  7 19:40 /etc/foo.conf
+
+
+```
+
+Observation
+
+* An ec2 instance named `Packer Builder` will be created/terminated during the process.
+* keyword `rhel` in the AMI name indicates the platform `Red Hat`. 
+
+

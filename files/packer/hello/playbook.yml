@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+  - name: print hostname
+    debug:
+      msg: "hostname: {{ inventory_hostname }}"
+  - name: touch a file
+    file:
+      path: "{{ file_path }}"
+      state: touch
+    become: true

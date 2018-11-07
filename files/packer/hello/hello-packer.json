@@ -1,0 +1,48 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "aws_ssh_private_key_file": ""
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "us-west-2",
+      "source_ami": "ami-c6e27cbe",
+      "instance_type": "t2.large",
+      "ssh_username": "ec2-user",
+      "ssh_keypair_name": "id_rsa_perf",
+      "ssh_private_key_file": "{{user `aws_ssh_private_key_file`}}",
+      "security_group_id": "sg-5c5ace38",
+      "subnet_id": "subnet-4879292d",
+      "ami_name": "hongkliu-packer-rhel-example-{{timestamp}}",
+      "ami_description": "Provided by Red Hat, Inc.",
+      "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/sda1",
+          "volume_size": 23,
+          "volume_type": "gp2",
+          "delete_on_termination": true
+        }
+      ],
+      "ami_block_device_mappings": [
+        {
+          "device_name": "/dev/sdb",
+          "volume_size": 70,
+          "volume_type": "gp2",
+          "delete_on_termination": true
+        }
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "./playbook.yml",
+      "user": "ec2-user",
+      "extra_arguments": [ "--extra-vars", "file_path={{user `file_path`}}" ]
+    }
+  ]
+}

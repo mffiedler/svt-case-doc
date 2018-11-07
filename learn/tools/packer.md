@@ -58,4 +58,6 @@ Observation
 * An ec2 instance named `Packer Builder` will be created/terminated during the process.
 * keyword `rhel` in the AMI name indicates the platform `Red Hat`. 
 
-
+Clean up
+ * delete the created AMI
+ * delete the snapshot for the AMI

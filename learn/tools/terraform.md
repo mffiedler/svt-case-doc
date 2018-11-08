@@ -28,7 +28,7 @@ $ terraform destroy -var-file="secret.tfvars" -auto-approve
 Terraform Ansible provisioner: Not yet supported natively. See
 * https://alex.dzyoba.com/blog/terraform-ansible/
 * https://nicholasbering.ca/tools/2018/01/08/introducing-terraform-provider-ansible/
-* $ cat terraform.tfstate
+* parse the results of `cat terraform.tfstate`
 
 Qs:
 

@@ -37,6 +37,11 @@ Follow [those steps](README.md#prerequisites).
 
 ### Dep. Management
 
+## awesome
+https://github.com/avelino/awesome-go
+
+https://github.com/gostor/awesome-go-storage
+
 ### logging
 
 * [sirupsen/logrus](https://github.com/sirupsen/logrus)
@@ -65,6 +70,12 @@ https://kubernetes.io/docs/contribute/generate-ref-docs/kubernetes-api/
 swagger:
 
 https://swagger.io/docs/specification/about/
+
+database:
+
+https://flaviocopes.com/golang-sql-database/
+https://github.com/golang-migrate/migrate
+https://github.com/pressly/goose
 
 ## CICD
 

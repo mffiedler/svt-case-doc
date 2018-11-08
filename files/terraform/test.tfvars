@@ -1,0 +1,3 @@
+variable "coolKey" {
+  default = "coolValue"
+}

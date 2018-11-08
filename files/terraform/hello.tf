@@ -5,6 +5,6 @@ provider "aws" {
 }
 
 resource "aws_instance" "hongkliu-tf-example" {
-  ami           = "ami-2757f631"
+  ami           = "ami-c6e27cbe"
   instance_type = "t2.micro"
 }

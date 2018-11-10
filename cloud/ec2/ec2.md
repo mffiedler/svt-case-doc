@@ -31,7 +31,7 @@ config  credentials
 
 ## [Cli tutorial](http://docs.aws.amazon.com/cli/latest/userguide/tutorial-ec2-ubuntu.html)
 
-Fedora 27: ami-959441ed; 28: ami-f5fc948d
+Fedora 27: ami-959441ed; 28: ami-f5fc948d; 29: ami-07e40fe5cf09f0d68
 
 ### Fedora 26
 List of AMIs is [here](https://alt.fedoraproject.org/cloud/).

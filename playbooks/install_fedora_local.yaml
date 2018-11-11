@@ -1,0 +1,27 @@
+---
+- hosts: all
+  vars:
+    ###https://docs.ansible.com/ansible/latest/reference_appendices/faq.html#how-do-i-handle-python-not-having-a-python-interpreter-at-usr-bin-python-on-a-remote-machine
+    ###
+    ansible_python_interpreter: /usr/bin/python3
+    ansible_become_pass: 111
+  vars_files:
+    - external_vars.yaml
+  tasks:
+  - name: print hostname
+    debug:
+      msg: "hostname: {{ inventory_hostname }}"
+
+  - name: dnf pkgs
+    dnf:
+      name: "{{ packages }}"
+      state: present
+    vars:
+      packages:
+        - podman
+        - buildah
+        - skopeo
+        - bash-completion
+        - git
+        - tmux
+    become: true

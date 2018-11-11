@@ -33,8 +33,8 @@ $ which protoc-gen-go
 
 $ go get github.com/hongkailiu/test-go
 $ cd $GOPATH/src/github.com/hongkailiu/test-go
-$ mkdir -p ./proto_buffer/gen
-$ protoc -I=./proto_buffer/ --go_out=./proto_buffer/gen ./proto_buffer/proto/addressbook.proto
+$ mkdir -p ./probuf/gen
+$ protoc -I=./probuf/ --go_out=./probuf/gen ./probuf/proto/addressbook.proto
 $ tree ./proto_buffer/gen/
 ./proto_buffer/gen/
 └── proto

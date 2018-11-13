@@ -37,11 +37,11 @@ Fedora 27: ami-959441ed; 28: ami-f5fc948d; 29: ami-07e40fe5cf09f0d68
 List of AMIs is [here](https://alt.fedoraproject.org/cloud/).
 
 ```sh
-(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id ami-2c1c0f55 \
-    --security-group-ids sg-5c5ace38 --count 1 --instance-type m4.large --key-name id_rsa_perf \
-    --subnet subnet-4879292d --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 30}}]" \
+(awsenv) [hongkliu@hongkliu awscli]$ aws ec2 run-instances --image-id  ami-07e40fe5cf09f0d68 \
+    --security-group-ids sg-5c5ace38 --count 1 --instance-type m5.2xlarge --key-name id_rsa_perf \
+    --subnet subnet-4879292d --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\", \"Ebs\":{\"VolumeSize\": 30, \"VolumeType\": \"gp2\"}}]" \
     --query 'Instances[*].InstanceId' \
-    --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-fedora26-test\"}]}]"
+    --tag-specifications="[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"qe-hongkliu-fedora29-test\"}]}]"
 ```
 
 ### Standard RHEL 7.3

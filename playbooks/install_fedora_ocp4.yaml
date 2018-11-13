@@ -1,0 +1,81 @@
+###$ ansible-playbook -i "ec2-18-236-85-195.us-west-2.compute.amazonaws.com," playbooks/install_fedora_ocp4.yaml -e "aws_access_key_id=aaa aws_secret_access_key=bbb"
+---
+- hosts: all
+  vars:
+    ###https://docs.ansible.com/ansible/latest/reference_appendices/faq.html#how-do-i-handle-python-not-having-a-python-interpreter-at-usr-bin-python-on-a-remote-machine
+    ###
+    ansible_python_interpreter: /usr/bin/python3
+    ###ansible_become_pass: 111
+    kerberos_id: hongkliu
+  vars_files:
+    - external_vars.yaml
+  tasks:
+  - name: print hostname
+    debug:
+      msg: "hostname: {{ inventory_hostname }}"
+
+  - name: dnf pkgs
+    dnf:
+      name: "{{ packages }}"
+      state: present
+    vars:
+      packages:
+        - git
+        - golang-bin
+        - gcc-c++
+        ### this will install kubectl as well on fedora
+        - origin-clients
+    become: true
+
+  - name: create aws configuration folder
+    file:
+      path: ~/.aws
+      state: directory
+
+  - name: configure aws files
+    template:
+      src: "{{ item }}"
+      dest: "~/.aws/{{ item | basename | regex_replace('\\.j2','') }}"
+    with_fileglob:
+      - templates/ocp4/aws/*.j2
+
+  - name: create secrets folder
+    file:
+      path: ~/.secrets
+      state: directory
+
+  - name: download openshift_pull_secret.json
+    get_url:
+      url: https://gist.githubusercontent.com/justaugustus/2ed1d6117ff7eea30321639b75f766af/raw/dd79b5baade329a6421fd3629d4a4e71695c7846/installer-pull-secret.json
+      dest: "~/.secrets/openshift_pull_secret.json"
+
+  - name: copy the libra.pem file
+    copy:
+      src: "{{ libra_pem_key_file }}"
+      dest: "~/.ssh/libra.pem"
+      mode: 0600
+
+  - name: generate libra pub key
+    shell: ssh-keygen -y -f ~/.ssh/libra.pem > ~/.ssh/libra.pub
+
+  - name: add go env vars into ~/.bash_profile
+    blockinfile:
+      path: "~/.bash_profile"
+      marker: "### {mark} ANSIBLE MANAGED BLOCK ###"
+      insertbefore: "export PATH"
+      content: |
+        export GOPATH=$HOME/go
+        export PATH=$PATH:$GOPATH/bin
+        export OS_OUTPUT_GOPATH=1
+
+  - name: go get github.com/openshift/installer
+    command: go get -d github.com/openshift/installer/cmd/openshift-install
+
+  - name: cp tmp files
+    template:
+      src: "{{ item }}"
+      dest: "/tmp/{{ item | basename | regex_replace('\\.j2','') }}"
+    with_fileglob:
+    - templates/ocp4/tmp/*.j2
+
+

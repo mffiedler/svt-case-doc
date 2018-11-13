@@ -2,3 +2,4 @@
 ansible_user: fedora
 ansible_ssh_private_key_file: /home/hongkliu/.ssh/id_rsa_perf
 perf_private_key_file: /home/hongkliu/.ssh/id_rsa_perf
+libra_pem_key_file: /home/hongkliu/.ssh/libra.pem
